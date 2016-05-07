@@ -3,6 +3,11 @@
 # Distributed under the GNU GPL v3. For full terms see the file LICENSE.
 
 cmake_minimum_required(VERSION 2.8)
-project(aurum)
+project(auc)
 
-add_subdirectory(auc)
+file(GLOB_RECURSE SOURCE_FILES
+    "${PROJECT_SOURCE_DIR}/*.hpp"
+    "${PROJECT_SOURCE_DIR}/*.cpp"
+)
+
+add_executable(auc ${SOURCE_FILES})
