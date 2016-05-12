@@ -4,20 +4,14 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "AST.hpp"
 #include "TypeExpr.hpp"
-#include "Expression.hpp"
-#include "BlockExpressions.hpp"
-#include "DeclarativeExpressions.hpp"
-#include "ImperativeExpressions.hpp"
-#include "ValueExpressions.hpp"
 
 #include <sstream>
 
 using namespace AST;
 
-std::string AST::AST::toString() {
+std::string TypeExpr::toString() {
     std::ostringstream str;
-    str << "AST: " << DeclListToString(expressions);
+    str << "TypeExpr(Name: " << name << ")";
     return str.str();
 }

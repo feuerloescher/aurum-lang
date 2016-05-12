@@ -5,11 +5,13 @@
  */
 
 #include "AST/AST.hpp"
+#include "AST/ValueExpressions.hpp"
 
 #include <iostream>
 
 int main() {
     AST::AST ast;
     std::cout << ast.toString() << std::endl;
+    AST::VariableExpr varExpr("var");
     return 0;
 }

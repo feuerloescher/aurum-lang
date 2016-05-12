@@ -4,26 +4,28 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_AST_HPP
-#define AUC_AST_HPP
+#ifndef AUC_TYPEEXPR_HPP
+#define AUC_TYPEEXPR_HPP
 
 #include "common.hpp"
-#include "DeclarativeExpressions.hpp"
+#include "Expression.hpp"
 
 #include <string>
 
 namespace AST {
 
-class AST {
+class TypeExpr : Expression {
 
 protected:
-    DeclarativeExprList expressions;
+    std::string name;
+
+    TypeExpr();
 
 public:
-    std::string toString();
+    virtual std::string toString();
 
-}; // class AST
+}; // class TypeExpr
 
 } // namespace AST
 
-#endif // AUC_AST_HPP
+#endif // AUC_TYPEEXPR_HPP

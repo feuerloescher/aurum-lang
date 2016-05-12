@@ -7,6 +7,8 @@
 #ifndef AUC_EXPRESSION_HPP
 #define AUC_EXPRESSION_HPP
 
+#include "common.hpp"
+
 #include <string>
 
 namespace AST {
