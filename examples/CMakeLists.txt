@@ -3,6 +3,4 @@
 # Distributed under the GNU GPL v3. For full terms see the file LICENSE.
 
 cmake_minimum_required(VERSION 2.8)
-project(aurum_src)
-
-add_subdirectory(auc)
+project(aurum_examples)

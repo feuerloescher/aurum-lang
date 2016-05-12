@@ -10,4 +10,11 @@ file(GLOB_RECURSE SOURCE_FILES
     "${PROJECT_SOURCE_DIR}/*.cpp"
 )
 
-add_executable(auc ${SOURCE_FILES})
+set(MAIN_SRC "${PROJECT_SOURCE_DIR}/main.cpp")
+
+list(REMOVE_ITEM SOURCE_FILES ${MAIN_SRC})
+
+add_library(auc_lib SHARED ${SOURCE_FILES})
+
+add_executable(auc ${MAIN_SRC})
+target_link_libraries(auc auc_lib)
