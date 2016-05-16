@@ -5,6 +5,8 @@
 cmake_minimum_required(VERSION 2.8)
 project(auc)
 
+include_directories("${PROJECT_SOURCE_DIR}")
+
 file(GLOB_RECURSE SOURCE_FILES
     "${PROJECT_SOURCE_DIR}/*.hpp"
     "${PROJECT_SOURCE_DIR}/*.cpp"

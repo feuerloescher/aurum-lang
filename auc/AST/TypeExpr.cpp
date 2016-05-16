@@ -10,8 +10,6 @@
 
 using namespace AST;
 
-std::string TypeExpr::toString() {
-    std::ostringstream str;
-    str << "TypeExpr(Name: " << name << ")";
-    return str.str();
+void TypeExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }

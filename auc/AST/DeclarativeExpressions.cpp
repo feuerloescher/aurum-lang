@@ -10,19 +10,20 @@
 
 using namespace AST;
 
-std::string FunctionDeclExpr::toString() {
-    std::ostringstream str;
-    str << "FunctionDeclExpr(Name: " << name << "; Body: "
-        << ImpListToString(body) << ")";
-    return str.str();
+FunctionDeclExpr::FunctionDeclExpr(std::string name, ImperativeExprList body)
+    : name(name), body(body) {
 }
 
-std::string AST::DeclListToString(DeclarativeExprList list) {
-    std::ostringstream str;
-    str << "DeclarativeExprList {\n";
-    for (ASTPtr<DeclarativeExpr> expression : list) {
-        str << expression->toString() << "\n\n";
+void FunctionDeclExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+void FunctionDeclExpr::runPassOnChildren(ASTPass& pass) {
+    for (ASTPtr<ImperativeExpr> expression : body) {
+        expression->runPass(pass);
     }
-    str << "}";
-    return str.str();
+}
+
+std::string FunctionDeclExpr::getName() {
+    return name;
 }

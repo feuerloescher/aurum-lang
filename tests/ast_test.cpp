@@ -6,14 +6,23 @@
 
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/ValueExpressions.hpp"
+#include "Passes/PrintPass.hpp"
 
 #include <iostream>
 
 using namespace AST;
+using namespace Passes;
 
 int main() {
-    AbstractSyntaxTree ast;
-    std::cout << ast.toString() << std::endl;
-    VariableExpr varExpr("var");
+    ASTPtr<VariableExpr> varExpr1{new VariableExpr("var1")};
+    ASTPtr<VariableExpr> varExpr2{new VariableExpr("var2")};
+    ASTPtr<BinaryAssignOpExpr> opExpr{
+        new BinaryAssignOpExpr("+=", varExpr1, varExpr2)};
+    ASTPtr<FunctionDeclExpr> funcExpr{
+        new FunctionDeclExpr("main", ImperativeExprList{opExpr})};
+    AbstractSyntaxTree ast(DeclarativeExprList{funcExpr});
+
+    PrintPass printer(std::cout);
+    printer.runOn(ast);
     return 0;
 }

@@ -10,29 +10,23 @@
 #include "common.hpp"
 #include "TypeExpr.hpp"
 #include "Expression.hpp"
-
-#include <string>
+#include "ASTPass.hpp"
 
 namespace AST {
 
 class ValueExpr;
 
-class ImperativeExpr : Expression {
-
-protected:
-    ImperativeExpr();
+class ImperativeExpr : public Expression {
 
 public:
-    virtual std::string toString() = 0;
+    virtual void runPass(ASTPass& pass) = 0;
 
 }; // class ImperativeExpr
 
 typedef ASTList<ImperativeExpr> ImperativeExprList;
 
-std::string ImpListToString(ImperativeExprList list);
 
-
-class ReturnExpr : ImperativeExpr {
+class ReturnExpr : public ImperativeExpr {
 
 protected:
     ASTPtr<ValueExpr> value;
@@ -41,12 +35,12 @@ protected:
 
 public:
     ReturnExpr(ASTPtr<ValueExpr> value);
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
 
 }; // class ReturnExpr
 
 
-class VariableDefExpr : ImperativeExpr {
+class VariableDefExpr : public ImperativeExpr {
 
 protected:
     std::string name;
@@ -56,12 +50,12 @@ protected:
 
 public:
     VariableDefExpr(std::string name, ASTPtr<TypeExpr> type);
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
 
 }; // class VariableDefExpr
 
 
-class VariableDefAssignExpr : VariableDefExpr {
+class VariableDefAssignExpr : public VariableDefExpr {
 
 protected:
     std::string name;
@@ -73,7 +67,7 @@ protected:
 public:
     VariableDefAssignExpr(std::string name, ASTPtr<TypeExpr> type,
         ASTPtr<ValueExpr> value);
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
 
 }; // class VariableDefAssignExpr
 

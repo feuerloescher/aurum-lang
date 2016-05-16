@@ -9,14 +9,14 @@
 
 #include "common.hpp"
 
-#include <string>
-
 namespace AST {
+
+class ASTPass;
 
 class Expression {
 
 public:
-    virtual std::string toString() = 0;
+    virtual void runPass(ASTPass& pass) = 0;
 
 }; // class Expression
 

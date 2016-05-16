@@ -5,19 +5,19 @@
  */
 
 #include "AbstractSyntaxTree.hpp"
-#include "TypeExpr.hpp"
-#include "Expression.hpp"
-#include "BlockExpressions.hpp"
-#include "DeclarativeExpressions.hpp"
-#include "ImperativeExpressions.hpp"
-#include "ValueExpressions.hpp"
-
-#include <sstream>
 
 using namespace AST;
 
-std::string AbstractSyntaxTree::toString() {
-    std::ostringstream str;
-    str << "AbstractSyntaxTree: " << DeclListToString(expressions);
-    return str.str();
+AbstractSyntaxTree::AbstractSyntaxTree(DeclarativeExprList expressions)
+    : expressions(expressions) {
+}
+
+void AbstractSyntaxTree::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+void AbstractSyntaxTree::runPassOnChildren(ASTPass& pass) {
+    for (ASTPtr<DeclarativeExpr> expression : expressions) {
+        expression->runPass(pass);
+    }
 }

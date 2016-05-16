@@ -10,16 +10,22 @@
 
 using namespace AST;
 
-std::string IfExpr::toString() {
-    std::ostringstream str;
-    str << "IfExpr(Condition: " << condition->toString() << "; Body: "
-        << ImpListToString(body) << ")";
-    return str.str();
+void IfExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }
 
-std::string WhileLoopExpr::toString() {
-    std::ostringstream str;
-    str << "WhileLoopExpr(Condition: " << condition->toString() << "; Body: "
-        << ImpListToString(body) << ")";
-    return str.str();
+void IfExpr::runPassOnChildren(ASTPass& pass) {
+    for (ASTPtr<ImperativeExpr> expression : body) {
+        expression->runPass(pass);
+    }
+}
+
+void WhileLoopExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+void WhileLoopExpr::runPassOnChildren(ASTPass& pass) {
+    for (ASTPtr<ImperativeExpr> expression : body) {
+        expression->runPass(pass);
+    }
 }

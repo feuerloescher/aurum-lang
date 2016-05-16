@@ -9,12 +9,11 @@
 
 #include "common.hpp"
 #include "Expression.hpp"
-
-#include <string>
+#include "ASTPass.hpp"
 
 namespace AST {
 
-class TypeExpr : Expression {
+class TypeExpr : public Expression {
 
 protected:
     std::string name;
@@ -22,7 +21,7 @@ protected:
     TypeExpr();
 
 public:
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
 
 }; // class TypeExpr
 

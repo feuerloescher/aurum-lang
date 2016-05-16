@@ -11,36 +11,14 @@
 
 using namespace AST;
 
-ImperativeExpr::ImperativeExpr() {
-
+void ReturnExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }
 
-std::string AST::ImpListToString(ImperativeExprList list) {
-    std::ostringstream str;
-    str << "ImperativeExprList {\n";
-    for (ASTPtr<ImperativeExpr> expression : list) {
-        str << expression->toString() << ";\n";
-    }
-    str << "}";
-    return str.str();
+void VariableDefExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }
 
-std::string ReturnExpr::toString() {
-    std::ostringstream str;
-    str << "ReturnExpr(Value: " << value << ")";
-    return str.str();
-}
-
-std::string VariableDefExpr::toString() {
-    std::ostringstream str;
-    str << "VariableDefExpr(Name: " << name << "; TypeExpr: " << type->toString()
-        << ")";
-    return str.str();
-}
-
-std::string VariableDefAssignExpr::toString() {
-    std::ostringstream str;
-    str << "VariableDefAssignExpr(Name: " << name << "; TypeExpr: "
-        << type->toString() << "; Value: " << value->toString() << ")";
-    return str.str();
+void VariableDefAssignExpr::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }

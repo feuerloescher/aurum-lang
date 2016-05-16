@@ -10,12 +10,11 @@
 #include "common.hpp"
 #include "ImperativeExpressions.hpp"
 #include "ValueExpressions.hpp"
-
-#include <string>
+#include "ASTPass.hpp"
 
 namespace AST {
 
-class BlockExpr : ImperativeExpr {
+class BlockExpr : public ImperativeExpr {
 
 protected:
     ImperativeExprList body;
@@ -23,7 +22,8 @@ protected:
     BlockExpr();
 
 public:
-    virtual std::string toString() = 0;
+    virtual void runPass(ASTPass& pass) = 0;
+    virtual void runPassOnChildren(ASTPass& pass) = 0;
 
 }; // class BlockExpr
 
@@ -37,19 +37,23 @@ protected:
 
 public:
     IfExpr(ASTPtr<ValueExpr> condition, ASTPtr<ImperativeExprList> body);
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
 
 }; // class IfExpr
 
 
-class WhileLoopExpr : public IfExpr {
+class WhileLoopExpr : public BlockExpr {
 
 protected:
+    ASTPtr<ValueExpr> condition;
+
     WhileLoopExpr();
 
 public:
     WhileLoopExpr(ASTPtr<ValueExpr> condition, ASTPtr<ImperativeExprList> body);
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
 
 }; // class WhileLoopExpr
 

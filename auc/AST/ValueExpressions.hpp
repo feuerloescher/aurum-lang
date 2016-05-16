@@ -9,27 +9,23 @@
 
 #include "common.hpp"
 #include "ImperativeExpressions.hpp"
+#include "ASTPass.hpp"
 
 #include <string>
 
 namespace AST {
 
-class ValueExpr : ImperativeExpr {
-
-protected:
-    ValueExpr();
+class ValueExpr : public ImperativeExpr {
 
 public:
-    virtual std::string toString() = 0;
+    virtual void runPass(ASTPass& pass) = 0;
 
 }; // class ValueExpr
 
 typedef ASTList<ValueExpr> ValueExprList;
 
-std::string ParamListToString(ValueExprList list);
 
-
-class FunctionCallExpr : ValueExpr {
+class FunctionCallExpr : public ValueExpr {
 
 protected:
     std::string name;
@@ -38,12 +34,13 @@ protected:
     FunctionCallExpr();
 
 public:
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
 
 }; // class FunctionCallExpr
 
 
-class ConstIntExpr : ValueExpr {
+class ConstIntExpr : public ValueExpr {
 
 protected:
     uint32_t value;
@@ -51,12 +48,12 @@ protected:
     ConstIntExpr();
 
 public:
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
 
 }; // class ConstNumberExpr
 
 
-class VariableExpr : ValueExpr {
+class VariableExpr : public ValueExpr {
 
 protected:
     std::string name;
@@ -66,12 +63,14 @@ protected:
 public:
     VariableExpr(std::string name);
 
-    virtual std::string toString();
+    virtual void runPass(ASTPass& pass);
+
+    std::string getName();
 
 }; // class VariableExpr
 
 
-class UnaryOpExpr : ValueExpr {
+class UnaryOpExpr : public ValueExpr {
 
 protected:
     std::string name;
@@ -80,12 +79,17 @@ protected:
     UnaryOpExpr();
 
 public:
-    virtual std::string toString();
+    UnaryOpExpr(std::string name, ASTPtr<ValueExpr> operand);
+
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
+
+    std::string getName();
 
 }; // class UnaryOpExpr
 
 
-class BinaryOpExpr : ValueExpr {
+class BinaryOpExpr : public ValueExpr {
 
 protected:
     std::string name;
@@ -95,36 +99,53 @@ protected:
     BinaryOpExpr();
 
 public:
-    virtual std::string toString();
+    BinaryOpExpr(std::string name, ASTPtr<ValueExpr> operand1,
+        ASTPtr<ValueExpr> operand2);
+
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
+
+    std::string getName();
 
 }; // class BinaryOpExpr
 
 
-class UnaryAssignOpExpr : ValueExpr {
+class UnaryAssignOpExpr : public ValueExpr {
 
 protected:
-    ASTPtr<VariableExpr> variable;
     std::string name;
+    ASTPtr<VariableExpr> variable;
 
     UnaryAssignOpExpr();
 
 public:
-    virtual std::string toString();
+    UnaryAssignOpExpr(std::string name, ASTPtr<VariableExpr> variable);
+
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
+
+    std::string getName();
 
 }; // class UnaryAssignOpExpr
 
 
-class BinaryAssignOpExpr : ValueExpr {
+class BinaryAssignOpExpr : public ValueExpr {
 
 protected:
-    ASTPtr<VariableExpr> variable;
     std::string name;
+    ASTPtr<VariableExpr> variable;
     ASTPtr<ValueExpr> operand;
 
     BinaryAssignOpExpr();
 
 public:
-    virtual std::string toString();
+    BinaryAssignOpExpr(std::string name, ASTPtr<VariableExpr> variable,
+        ASTPtr<ValueExpr> operand);
+
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
+
+    std::string getName();
 
 }; // class BinaryAssignOpExpr
 

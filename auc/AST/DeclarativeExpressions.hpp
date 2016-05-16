@@ -10,27 +10,23 @@
 #include "common.hpp"
 #include "Expression.hpp"
 #include "ImperativeExpressions.hpp"
+#include "ASTPass.hpp"
 
 #include <string>
 
 namespace AST {
 
-class DeclarativeExpr : Expression {
-
-protected:
-    DeclarativeExpr();
+class DeclarativeExpr : public Expression {
 
 public:
-    virtual std::string toString() = 0;
+    virtual void runPass(ASTPass& pass) = 0;
 
 }; // class DeclarativeExpr
 
 typedef ASTList<DeclarativeExpr> DeclarativeExprList;
 
-std::string DeclListToString(DeclarativeExprList list);
 
-
-class FunctionDeclExpr : DeclarativeExpr {
+class FunctionDeclExpr : public DeclarativeExpr {
 
 protected:
     std::string name;
@@ -39,8 +35,12 @@ protected:
     FunctionDeclExpr();
 
 public:
-    FunctionDeclExpr(std::string name, ASTPtr<ImperativeExprList> body);
-    virtual std::string toString();
+    FunctionDeclExpr(std::string name, ImperativeExprList body);
+
+    virtual void runPass(ASTPass& pass);
+    virtual void runPassOnChildren(ASTPass& pass);
+
+    std::string getName();
 
 }; // class FunctionDeclExpr
 

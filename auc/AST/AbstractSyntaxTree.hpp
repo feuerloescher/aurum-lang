@@ -9,8 +9,7 @@
 
 #include "common.hpp"
 #include "DeclarativeExpressions.hpp"
-
-#include <string>
+#include "ASTPass.hpp"
 
 namespace AST {
 
@@ -20,7 +19,10 @@ protected:
     DeclarativeExprList expressions;
 
 public:
-    std::string toString();
+    AbstractSyntaxTree(DeclarativeExprList expressions);
+
+    void runPass(ASTPass& pass);
+    void runPassOnChildren(ASTPass& pass);
 
 }; // class AbstractSyntaxTree
 
