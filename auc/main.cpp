@@ -4,7 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "AST/AST.hpp"
+#include "AST/AbstractSyntaxTree.hpp"
 #include "AST/ValueExpressions.hpp"
 
 #include <iostream>

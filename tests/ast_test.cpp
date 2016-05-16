@@ -4,14 +4,16 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "AST/AST.hpp"
+#include "AST/AbstractSyntaxTree.hpp"
 #include "AST/ValueExpressions.hpp"
 
 #include <iostream>
 
+using namespace AST;
+
 int main() {
-    AST::AST ast;
+    AbstractSyntaxTree ast;
     std::cout << ast.toString() << std::endl;
-    AST::VariableExpr varExpr("var");
+    VariableExpr varExpr("var");
     return 0;
 }

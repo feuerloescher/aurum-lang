@@ -4,7 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "AST.hpp"
+#include "AbstractSyntaxTree.hpp"
 #include "TypeExpr.hpp"
 #include "Expression.hpp"
 #include "BlockExpressions.hpp"
@@ -16,8 +16,8 @@
 
 using namespace AST;
 
-std::string AST::AST::toString() {
+std::string AbstractSyntaxTree::toString() {
     std::ostringstream str;
-    str << "AST: " << DeclListToString(expressions);
+    str << "AbstractSyntaxTree: " << DeclListToString(expressions);
     return str.str();
 }
