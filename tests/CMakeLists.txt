@@ -10,5 +10,6 @@ include_directories("${PROJECT_SOURCE_DIR}/../src/auc")
 # TODO: Add macro (or similar) to automatically create an executable
 # for each test code file
 add_executable(ast_test ast_test.cpp)
+add_test(ast_test ast_test)
 
 target_link_libraries(ast_test auc_lib)

@@ -14,7 +14,7 @@ set(MAIN_SRC "${PROJECT_SOURCE_DIR}/main.cpp")
 
 list(REMOVE_ITEM SOURCE_FILES ${MAIN_SRC})
 
-add_library(auc_lib SHARED ${SOURCE_FILES})
+add_library(auc_lib STATIC ${SOURCE_FILES})
 
 add_executable(auc ${MAIN_SRC})
 target_link_libraries(auc auc_lib)
