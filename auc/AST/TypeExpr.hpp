@@ -11,6 +11,8 @@
 #include "Expression.hpp"
 #include "ASTPass.hpp"
 
+#include <string>
+
 namespace AST {
 
 class TypeExpr : public Expression {
