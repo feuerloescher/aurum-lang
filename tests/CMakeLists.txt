@@ -12,4 +12,4 @@ include_directories("${PROJECT_SOURCE_DIR}/../src/auc")
 add_executable(ast_test ast_test.cpp)
 add_test(ast_test ast_test)
 
-target_link_libraries(ast_test auc_lib)
+target_link_libraries(ast_test auc_lib gcov)
