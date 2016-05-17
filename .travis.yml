@@ -5,20 +5,25 @@ os: linux
 dist: trusty
 sudo: required
 before_install:
-  - pip install --user cpp-coveralls
-before_script: mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug && cd ..
-script: cd build && make -j2 && make test && cd ..
-after_success:
-  - coveralls --include /home/travis/build/feuerloescher/aurum-lang --exclude /usr --exclude /home/travis/build/feuerloescher/aurum-lang/build --exclude /home/travis/build/feuerloescher/aurum-lang/cov-build --gcov-options '\-lp'
+  - gem install coveralls-lcov
 addons:
+ apt:
+   packages:
+   - lcov
  coverity_scan:
    project:
     name: "feuerloescher/aurum-lang"
     description: "Build submitted via Travis CI"
    notification_email: max.mail@dameweb.de
-   build_command_prepend: "mkdir cov-build && cd cov-build && cmake ../ -DCMAKE_BUILD_TYPE=Debug"
+   build_command_prepend: "mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug"
    build_command: "make -j2"
    branch_pattern: master
+script: cd build && make -j2 && make test && cd ..
+after_success:
+  - cd build && lcov --directory . --capture --output-file coverage.info
+  - lcov --remove coverage.info 'tests/*' '/usr/*' --output-file coverage.info
+  - lcov --list coverage.info
+  - coveralls-lcov coverage.info
 env:
   global:
   - LANG="en_US.UTF-8"
