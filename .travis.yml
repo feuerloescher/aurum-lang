@@ -3,8 +3,12 @@ compiler:
 - clang
 os:
 - linux
-before_script: mkdir build && cd build && cmake ../
+before_install:
+  - pip install --user cpp-coveralls
+before_script: mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug
 script: make -j2 && make test
+after_success:
+  - coveralls --gcov-options '\-lp'
 env:
   global:
   - LANG="en_US.UTF-8"
