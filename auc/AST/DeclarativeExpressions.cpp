@@ -27,10 +27,10 @@ ASTPtr<TypeExpr> FunctionDeclExpr::getType() {
     return type;
 }
 
-ASTList<VariableDefExpr> FunctionDeclExpr::getParameters() {
+VariableDefExprList& FunctionDeclExpr::getParameters() {
     return parameters;
 }
 
-ImperativeExprList FunctionDeclExpr::getBody() {
+ImperativeExprList& FunctionDeclExpr::getBody() {
     return body;
 }

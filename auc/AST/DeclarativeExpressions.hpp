@@ -44,8 +44,8 @@ public:
 
     std::string getName();
     ASTPtr<TypeExpr> getType();
-    ASTList<VariableDefExpr> getParameters();
-    ImperativeExprList getBody();
+    VariableDefExprList& getParameters();
+    ImperativeExprList& getBody();
 
 }; // class FunctionDeclExpr
 

@@ -18,7 +18,7 @@ void FunctionCallExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTList<ValueExpr> FunctionCallExpr::getParameters() {
+ASTList<ValueExpr>& FunctionCallExpr::getParameters() {
     return parameters;
 }
 

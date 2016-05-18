@@ -35,7 +35,7 @@ protected:
 
 public:
     virtual void runPass(ASTPass& pass);
-    ASTList<ValueExpr> getParameters();
+    ASTList<ValueExpr>& getParameters();
 
 }; // class FunctionCallExpr
 
