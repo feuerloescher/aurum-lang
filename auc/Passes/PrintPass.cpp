@@ -40,12 +40,18 @@ void PrintPass::runOn(AbstractSyntaxTree& ast) {
 }
 
 void PrintPass::runOn(FunctionDeclExpr& expr) {
-    stream << "FunctionDeclExpr(" << expr.getName();
+    stream << "FunctionDeclExpr(";
+    expr.getType()->runPass(*this);
+    stream << " " << expr.getName() << "(";
+    bool first = true;
     for (ASTPtr<VariableDefExpr> innerExpr : expr.getParameters()) {
-        stream << "; ";
+        if (!first) {
+            stream << ", ";
+        }
+        first = false;
         innerExpr->runPass(*this);
     }
-    stream << ") {\n";
+    stream << ")) {\n";
     indentWidth++;
     for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
         indent();

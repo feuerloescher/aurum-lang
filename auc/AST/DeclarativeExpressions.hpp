@@ -30,17 +30,20 @@ class FunctionDeclExpr : public DeclarativeExpr {
 
 protected:
     std::string name;
+    ASTPtr<TypeExpr> type;
     ASTList<VariableDefExpr> parameters;
     ImperativeExprList body;
 
     FunctionDeclExpr();
 
 public:
-    FunctionDeclExpr(std::string name, ImperativeExprList body);
+    FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type,
+        ASTList<VariableDefExpr> parameters, ImperativeExprList body);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
+    ASTPtr<TypeExpr> getType();
     ASTList<VariableDefExpr> getParameters();
     ImperativeExprList getBody();
 

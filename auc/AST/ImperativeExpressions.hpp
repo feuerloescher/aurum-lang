@@ -61,6 +61,8 @@ public:
 
 }; // class VariableDefExpr
 
+typedef ASTList<VariableDefExpr> VariableDefExprList;
+
 
 class VariableDefAssignExpr : public ImperativeExpr {
 

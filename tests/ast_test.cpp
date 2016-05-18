@@ -16,28 +16,39 @@ using namespace Passes;
 
 int main() {
     ASTPtr<TypeExpr> typeInt{new TypeExpr("int")};
-    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(5)};
-    ASTPtr<VariableDefAssignExpr> defAssignX{
-        new VariableDefAssignExpr("x", typeInt, constInt)};
+    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(2)};
+    ASTPtr<ReturnExpr> ret{new ReturnExpr(constInt)};
+    ASTPtr<FunctionDeclExpr> funcDecl{new FunctionDeclExpr("two", typeInt,
+        VariableDefExprList{}, ImperativeExprList{ret})};
 
     ASTPtr<TypeExpr> typeInt2{new TypeExpr("int")};
+    ASTPtr<ConstIntExpr> constInt2{new ConstIntExpr(5)};
+    ASTPtr<VariableDefAssignExpr> defAssignX{
+        new VariableDefAssignExpr("x", typeInt2, constInt2)};
+
+    ASTPtr<TypeExpr> typeInt3{new TypeExpr("int")};
     ASTPtr<VariableDefExpr> defY{
-        new VariableDefExpr("y", typeInt2)};
+        new VariableDefExpr("y", typeInt3)};
 
     ASTPtr<VariableExpr> varX{new VariableExpr("x")};
     ASTPtr<VariableExpr> varY{new VariableExpr("y")};
 
     ASTPtr<UnaryOpExpr> unaryOp{new UnaryOpExpr("-", varX)};
-    ASTPtr<BinaryAssignOpExpr> assignOp{
+    ASTPtr<BinaryAssignOpExpr> binaryAssignOp{
         new BinaryAssignOpExpr("=", varY, unaryOp)};
 
     ASTPtr<VariableExpr> varY2{new VariableExpr("y")};
-    ASTPtr<ReturnExpr> ret{new ReturnExpr(varY2)};
+    ASTPtr<UnaryAssignOpExpr> unaryAssignOp{new UnaryAssignOpExpr("++", varY2)};
 
-    ASTPtr<FunctionDeclExpr> funcExpr{
-        new FunctionDeclExpr("main", ImperativeExprList{
-            defAssignX, defY, assignOp, ret})};
-    AbstractSyntaxTree ast(DeclarativeExprList{funcExpr});
+    ASTPtr<VariableExpr> varY3{new VariableExpr("y")};
+    ASTPtr<ReturnExpr> ret2{new ReturnExpr(varY3)};
+
+    ASTPtr<TypeExpr> typeInt4{new TypeExpr("int")};
+    ASTPtr<FunctionDeclExpr> funcDecl2{
+        new FunctionDeclExpr("main", typeInt4, VariableDefExprList{},
+        ImperativeExprList{
+            defAssignX, defY, binaryAssignOp, unaryAssignOp, ret2})};
+    AbstractSyntaxTree ast(DeclarativeExprList{funcDecl, funcDecl2});
 
     PrintPass printer(std::cout);
     printer.runOn(ast);
