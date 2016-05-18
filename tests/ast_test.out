@@ -1,0 +1,8 @@
+AbstractSyntaxTree {
+  FunctionDeclExpr(main) {
+    VariableDefAssignExpr(TypeExpr(int) x = ConstIntExpr(5))
+    VariableDefExpr(TypeExpr(int) y)
+    BinaryAssignOpExpr(VariableExpr(y) = UnaryOpExpr(-VariableExpr(x)))
+    ReturnExpr(VariableExpr(y))
+  }
+}

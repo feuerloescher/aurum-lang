@@ -10,7 +10,7 @@ include_directories("${PROJECT_SOURCE_DIR}/../src/auc")
 # TODO: Add macro (or similar) to automatically create an executable
 # for each test code file
 add_executable(ast_test ast_test.cpp)
-add_test(ast_test ast_test)
+add_test(ast_test /bin/bash -c "./ast_test > ast_test.out && (test ! -f ../../tests/ast_test.out || diff ast_test.out ../../tests/ast_test.out)")
 
 target_link_libraries(ast_test auc_lib gcov)
 
