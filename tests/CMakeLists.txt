@@ -13,3 +13,20 @@ add_executable(ast_test ast_test.cpp)
 add_test(ast_test ast_test)
 
 target_link_libraries(ast_test auc_lib gcov)
+
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_custom_command(OUTPUT CMakeFiles/ast_test.dir/ast_test.cpp.gcda
+        COMMAND make test
+        DEPENDS ast_test)
+    add_custom_target(run_coverage_test
+        DEPENDS CMakeFiles/ast_test.dir/ast_test.cpp.gcda)
+
+    add_custom_command(OUTPUT coverage.info
+        COMMAND rm -f coverage.info
+        COMMAND lcov --directory .. --capture --output-file coverage.info
+        COMMAND lcov --remove coverage.info 'tests/*' '/usr/*' --output-file coverage.info
+        COMMAND lcov --list coverage.info
+        DEPENDS CMakeFiles/ast_test.dir/ast_test.cpp.gcda)
+    add_custom_target(test_coverage
+        DEPENDS coverage.info)
+endif()

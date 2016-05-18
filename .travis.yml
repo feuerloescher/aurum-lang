@@ -20,10 +20,7 @@ addons:
    branch_pattern: master
 script: cd build && make -j2 && make test && cd ..
 after_success:
-  - cd build && lcov --directory . --capture --output-file coverage.info
-  - lcov --remove coverage.info 'tests/*' '/usr/*' --output-file coverage.info
-  - lcov --list coverage.info
-  - coveralls-lcov coverage.info
+  - cd build && make test_coverage && coveralls-lcov coverage.info && cd ..
 env:
   global:
   - LANG="en_US.UTF-8"
