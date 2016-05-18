@@ -18,15 +18,22 @@ void FunctionCallExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void FunctionCallExpr::runPassOnChildren(ASTPass& pass) {
-    for (ASTPtr<ValueExpr> expression : parameters) {
-        expression->runPass(pass);
-    }
+ASTList<ValueExpr> FunctionCallExpr::getParameters() {
+    return parameters;
+}
+
+
+ConstIntExpr::ConstIntExpr(uint32_t value) : value(value) {
 }
 
 void ConstIntExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
+
+uint32_t ConstIntExpr::getValue() {
+    return value;
+}
+
 
 void VariableExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
@@ -45,12 +52,12 @@ void UnaryOpExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void UnaryOpExpr::runPassOnChildren(ASTPass& pass) {
-    operand->runPass(pass);
-}
-
 std::string UnaryOpExpr::getName() {
     return name;
+}
+
+ASTPtr<ValueExpr> UnaryOpExpr::getOperand() {
+    return operand;
 }
 
 
@@ -63,13 +70,16 @@ void BinaryOpExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void BinaryOpExpr::runPassOnChildren(ASTPass& pass) {
-    operand1->runPass(pass);
-    operand2->runPass(pass);
-}
-
 std::string BinaryOpExpr::getName() {
     return name;
+}
+
+ASTPtr<ValueExpr> BinaryOpExpr::getOperand1() {
+    return operand1;
+}
+
+ASTPtr<ValueExpr> BinaryOpExpr::getOperand2() {
+    return operand2;
 }
 
 
@@ -82,12 +92,12 @@ void UnaryAssignOpExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void UnaryAssignOpExpr::runPassOnChildren(ASTPass& pass) {
-    variable->runPass(pass);
-}
-
 std::string UnaryAssignOpExpr::getName() {
     return name;
+}
+
+ASTPtr<VariableExpr> UnaryAssignOpExpr::getVariable() {
+    return variable;
 }
 
 
@@ -100,11 +110,14 @@ void BinaryAssignOpExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void BinaryAssignOpExpr::runPassOnChildren(ASTPass& pass) {
-    variable->runPass(pass);
-    operand->runPass(pass);
-}
-
 std::string BinaryAssignOpExpr::getName() {
     return name;
+}
+
+ASTPtr<VariableExpr> BinaryAssignOpExpr::getVariable() {
+    return variable;
+}
+
+ASTPtr<ValueExpr> BinaryAssignOpExpr::getOperand() {
+    return operand;
 }

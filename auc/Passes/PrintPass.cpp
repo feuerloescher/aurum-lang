@@ -27,95 +27,126 @@ std::ostream& PrintPass::indent() {
 }
 
 void PrintPass::runOn(AbstractSyntaxTree& ast) {
-    indent() << "AbstractSyntaxTree {\n";
+    stream << "AbstractSyntaxTree {";
     indentWidth++;
-    ast.runPassOnChildren(*this);
+    for (ASTPtr<DeclarativeExpr> expr : ast.getExpressions()) {
+        stream << "\n";
+        indent();
+        expr->runPass(*this);
+        stream << "\n";
+    }
     indentWidth--;
     indent() << "}\n";
 }
 
 void PrintPass::runOn(FunctionDeclExpr& expr) {
-    indent() << "FunctionDeclExpr(" << expr.getName() << ") {\n";
+    stream << "FunctionDeclExpr(" << expr.getName();
+    for (ASTPtr<VariableDefExpr> innerExpr : expr.getParameters()) {
+        stream << "; ";
+        innerExpr->runPass(*this);
+    }
+    stream << ") {\n";
     indentWidth++;
-    expr.runPassOnChildren(*this);
+    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+        indent();
+        innerExpr->runPass(*this);
+        stream << "\n";
+    }
     indentWidth--;
-    indent() << "}\n";
+    indent() << "}";
 }
 
 void PrintPass::runOn(ReturnExpr& expr) {
-    indent() << "ReturnExpr\n";
+    stream << "ReturnExpr(";
+    expr.getValue()->runPass(*this);
+    stream << ")";
 }
 
 void PrintPass::runOn(VariableDefExpr& expr) {
-    indent() << "VariableDefExpr\n";
+    stream << "VariableDefExpr(";
+    expr.getType()->runPass(*this);
+    stream << " " << expr.getName() << ")";
 }
 void PrintPass::runOn(VariableDefAssignExpr& expr) {
-    indent() << "VariableDefAssignExpr\n";
+    stream << "VariableDefAssignExpr(";
+    expr.getType()->runPass(*this);
+    stream << " " << expr.getName() << " = ";
+    expr.getValue()->runPass(*this);
+    stream << ")";
 }
 
 void PrintPass::runOn(IfExpr& expr) {
-    indent() << "IfExpr {\n";
+    stream << "IfExpr {\n";
     indentWidth++;
-    expr.runPassOnChildren(*this);
+    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+        indent();
+        innerExpr->runPass(*this);
+        stream << "\n";
+    }
     indentWidth--;
+    indent() << "}";
 }
 
 void PrintPass::runOn(WhileLoopExpr& expr) {
-    indent() << "WhileLoopExpr {\n";
+    stream << "WhileLoopExpr {\n";
     indentWidth++;
-    expr.runPassOnChildren(*this);
+    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+        indent();
+        innerExpr->runPass(*this);
+        stream << "\n";
+    }
     indentWidth--;
-    indent() << "}\n";
+    indent() << "}";
 }
 
 void PrintPass::runOn(TypeExpr& expr) {
-    indent() << "TypeExpr\n";
+    stream << "TypeExpr(" << expr.getName() << ")";
 }
 
 void PrintPass::runOn(FunctionCallExpr& expr) {
-    indent() << "FunctionCallExpr {\n";
+    stream << "FunctionCallExpr(";
     indentWidth++;
-    expr.runPassOnChildren(*this);
+    for (ASTPtr<ValueExpr> innerExpr : expr.getParameters()) {
+        indent();
+        innerExpr->runPass(*this);
+        stream << "\n";
+    }
     indentWidth--;
-    indent() << "}\n";
+    indent() << ")\n";
 }
 
 void PrintPass::runOn(ConstIntExpr& expr) {
-    indent() << "ConstIntExpr\n";
+    stream << "ConstIntExpr(" << expr.getValue() << ")";
 }
 
 void PrintPass::runOn(VariableExpr& expr) {
-    indent() << "VariableExpr(" << expr.getName() << ")\n";
+    stream << "VariableExpr(" << expr.getName() << ")";
 }
 
 void PrintPass::runOn(UnaryOpExpr& expr) {
-    indent() << "UnaryOpExpr {\n";
-    indentWidth++;
-    expr.runPassOnChildren(*this);
-    indentWidth--;
-    indent() << "}\n";
+    stream << "UnaryOpExpr(" << expr.getName();
+    expr.getOperand()->runPass(*this);
+    stream << ")";
 }
 
 void PrintPass::runOn(BinaryOpExpr& expr) {
-    indent() << "BinaryOpExpr {\n";
-    indentWidth++;
-    expr.runPassOnChildren(*this);
-    indentWidth--;
-    indent() << "}\n";
+    stream << "BinaryOpExpr(";
+    expr.getOperand1()->runPass(*this);
+    stream << " " << expr.getName() << " ";
+    expr.getOperand2()->runPass(*this);
+    stream << ")";
 }
 
 void PrintPass::runOn(UnaryAssignOpExpr& expr) {
-    indent() << "UnaryAssignOpExpr {\n";
-    indentWidth++;
-    expr.runPassOnChildren(*this);
-    indentWidth--;
-    indent() << "}\n";
+    stream << "UnaryAssignOpExpr(" << expr.getName();
+    expr.getVariable()->runPass(*this);
+    stream << ")";
 }
 
 void PrintPass::runOn(BinaryAssignOpExpr& expr) {
-    indent() << "BinaryAssignOpExpr(" << expr.getName() << ") {\n";
-    indentWidth++;
-    expr.runPassOnChildren(*this);
-    indentWidth--;
-    indent() << "}\n";
+    stream << "BinaryAssignOpExpr(";
+    expr.getVariable()->runPass(*this);
+    stream << " " << expr.getName() << " ";
+    expr.getOperand()->runPass(*this);
+    stream << ")";
 }

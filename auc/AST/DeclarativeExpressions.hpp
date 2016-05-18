@@ -30,6 +30,7 @@ class FunctionDeclExpr : public DeclarativeExpr {
 
 protected:
     std::string name;
+    ASTList<VariableDefExpr> parameters;
     ImperativeExprList body;
 
     FunctionDeclExpr();
@@ -38,9 +39,10 @@ public:
     FunctionDeclExpr(std::string name, ImperativeExprList body);
 
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
     std::string getName();
+    ASTList<VariableDefExpr> getParameters();
+    ImperativeExprList getBody();
 
 }; // class FunctionDeclExpr
 

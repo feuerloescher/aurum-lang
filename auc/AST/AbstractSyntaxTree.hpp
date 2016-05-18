@@ -22,7 +22,7 @@ public:
     AbstractSyntaxTree(DeclarativeExprList expressions);
 
     void runPass(ASTPass& pass);
-    void runPassOnChildren(ASTPass& pass);
+    DeclarativeExprList getExpressions();
 
 }; // class AbstractSyntaxTree
 

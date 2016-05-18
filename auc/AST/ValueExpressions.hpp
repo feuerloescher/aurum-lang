@@ -35,7 +35,7 @@ protected:
 
 public:
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
+    ASTList<ValueExpr> getParameters();
 
 }; // class FunctionCallExpr
 
@@ -48,7 +48,11 @@ protected:
     ConstIntExpr();
 
 public:
+    ConstIntExpr(uint32_t value);
+
     virtual void runPass(ASTPass& pass);
+
+    uint32_t getValue();
 
 }; // class ConstNumberExpr
 
@@ -82,9 +86,9 @@ public:
     UnaryOpExpr(std::string name, ASTPtr<ValueExpr> operand);
 
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
     std::string getName();
+    ASTPtr<ValueExpr> getOperand();
 
 }; // class UnaryOpExpr
 
@@ -103,9 +107,10 @@ public:
         ASTPtr<ValueExpr> operand2);
 
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
     std::string getName();
+    ASTPtr<ValueExpr> getOperand1();
+    ASTPtr<ValueExpr> getOperand2();
 
 }; // class BinaryOpExpr
 
@@ -122,9 +127,9 @@ public:
     UnaryAssignOpExpr(std::string name, ASTPtr<VariableExpr> variable);
 
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
     std::string getName();
+    ASTPtr<VariableExpr> getVariable();
 
 }; // class UnaryAssignOpExpr
 
@@ -143,9 +148,10 @@ public:
         ASTPtr<ValueExpr> operand);
 
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
     std::string getName();
+    ASTPtr<VariableExpr> getVariable();
+    ASTPtr<ValueExpr> getOperand();
 
 }; // class BinaryAssignOpExpr
 

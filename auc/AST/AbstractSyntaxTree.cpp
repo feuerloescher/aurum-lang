@@ -16,8 +16,6 @@ void AbstractSyntaxTree::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void AbstractSyntaxTree::runPassOnChildren(ASTPass& pass) {
-    for (ASTPtr<DeclarativeExpr> expression : expressions) {
-        expression->runPass(pass);
-    }
+DeclarativeExprList AbstractSyntaxTree::getExpressions() {
+    return expressions;
 }

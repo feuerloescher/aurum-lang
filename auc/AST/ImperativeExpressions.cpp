@@ -11,14 +11,52 @@
 
 using namespace AST;
 
+ReturnExpr::ReturnExpr(ASTPtr<ValueExpr> value) : value(value) {
+}
+
 void ReturnExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+ASTPtr<ValueExpr> ReturnExpr::getValue() {
+    return value;
+}
+
+
+VariableDefExpr::VariableDefExpr(std::string name, ASTPtr<TypeExpr> type)
+    : name(name), type(type) {
 }
 
 void VariableDefExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
+std::string VariableDefExpr::getName() {
+    return name;
+}
+
+ASTPtr<TypeExpr> VariableDefExpr::getType() {
+    return type;
+}
+
+
+VariableDefAssignExpr::VariableDefAssignExpr(std::string name,
+    ASTPtr<TypeExpr> type, ASTPtr<ValueExpr> value)
+    : name(name), type(type), value(value) {
+}
+
 void VariableDefAssignExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+std::string VariableDefAssignExpr::getName() {
+    return name;
+}
+
+ASTPtr<TypeExpr> VariableDefAssignExpr::getType() {
+    return type;
+}
+
+ASTPtr<ValueExpr> VariableDefAssignExpr::getValue() {
+    return value;
 }

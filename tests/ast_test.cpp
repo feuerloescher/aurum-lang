@@ -6,6 +6,7 @@
 
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/ValueExpressions.hpp"
+#include "AST/TypeExpr.hpp"
 #include "Passes/PrintPass.hpp"
 
 #include <iostream>
@@ -14,12 +15,28 @@ using namespace AST;
 using namespace Passes;
 
 int main() {
-    ASTPtr<VariableExpr> varExpr1{new VariableExpr("var1")};
-    ASTPtr<VariableExpr> varExpr2{new VariableExpr("var2")};
-    ASTPtr<BinaryAssignOpExpr> opExpr{
-        new BinaryAssignOpExpr("+=", varExpr1, varExpr2)};
+    ASTPtr<TypeExpr> typeInt{new TypeExpr("int")};
+    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(5)};
+    ASTPtr<VariableDefAssignExpr> defAssignX{
+        new VariableDefAssignExpr("x", typeInt, constInt)};
+
+    ASTPtr<TypeExpr> typeInt2{new TypeExpr("int")};
+    ASTPtr<VariableDefExpr> defY{
+        new VariableDefExpr("y", typeInt2)};
+
+    ASTPtr<VariableExpr> varX{new VariableExpr("x")};
+    ASTPtr<VariableExpr> varY{new VariableExpr("y")};
+
+    ASTPtr<UnaryOpExpr> unaryOp{new UnaryOpExpr("-", varX)};
+    ASTPtr<BinaryAssignOpExpr> assignOp{
+        new BinaryAssignOpExpr("=", varY, unaryOp)};
+
+    ASTPtr<VariableExpr> varY2{new VariableExpr("y")};
+    ASTPtr<ReturnExpr> ret{new ReturnExpr(varY2)};
+
     ASTPtr<FunctionDeclExpr> funcExpr{
-        new FunctionDeclExpr("main", ImperativeExprList{opExpr})};
+        new FunctionDeclExpr("main", ImperativeExprList{
+            defAssignX, defY, assignOp, ret})};
     AbstractSyntaxTree ast(DeclarativeExprList{funcExpr});
 
     PrintPass printer(std::cout);

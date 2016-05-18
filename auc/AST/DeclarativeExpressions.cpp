@@ -18,12 +18,14 @@ void FunctionDeclExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void FunctionDeclExpr::runPassOnChildren(ASTPass& pass) {
-    for (ASTPtr<ImperativeExpr> expression : body) {
-        expression->runPass(pass);
-    }
-}
-
 std::string FunctionDeclExpr::getName() {
     return name;
+}
+
+ASTList<VariableDefExpr> FunctionDeclExpr::getParameters() {
+    return parameters;
+}
+
+ImperativeExprList FunctionDeclExpr::getBody() {
+    return body;
 }

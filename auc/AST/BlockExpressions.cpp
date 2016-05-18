@@ -10,22 +10,14 @@
 
 using namespace AST;
 
+ImperativeExprList BlockExpr::getBody() {
+    return body;
+}
+
 void IfExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void IfExpr::runPassOnChildren(ASTPass& pass) {
-    for (ASTPtr<ImperativeExpr> expression : body) {
-        expression->runPass(pass);
-    }
-}
-
 void WhileLoopExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
-}
-
-void WhileLoopExpr::runPassOnChildren(ASTPass& pass) {
-    for (ASTPtr<ImperativeExpr> expression : body) {
-        expression->runPass(pass);
-    }
 }

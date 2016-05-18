@@ -23,7 +23,8 @@ protected:
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
-    virtual void runPassOnChildren(ASTPass& pass) = 0;
+
+    ImperativeExprList getBody();
 
 }; // class BlockExpr
 
@@ -36,9 +37,8 @@ protected:
     IfExpr();
 
 public:
-    IfExpr(ASTPtr<ValueExpr> condition, ASTPtr<ImperativeExprList> body);
+    IfExpr(ASTPtr<ValueExpr> condition, ImperativeExprList body);
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
 }; // class IfExpr
 
@@ -51,9 +51,8 @@ protected:
     WhileLoopExpr();
 
 public:
-    WhileLoopExpr(ASTPtr<ValueExpr> condition, ASTPtr<ImperativeExprList> body);
+    WhileLoopExpr(ASTPtr<ValueExpr> condition, ImperativeExprList body);
     virtual void runPass(ASTPass& pass);
-    virtual void runPassOnChildren(ASTPass& pass);
 
 }; // class WhileLoopExpr
 

@@ -10,6 +10,13 @@
 
 using namespace AST;
 
+TypeExpr::TypeExpr(std::string name) : name(name) {
+}
+
 void TypeExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+std::string TypeExpr::getName() {
+    return name;
 }

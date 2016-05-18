@@ -23,7 +23,11 @@ protected:
     TypeExpr();
 
 public:
+    TypeExpr(std::string name);
+
     virtual void runPass(ASTPass& pass);
+
+    std::string getName();
 
 }; // class TypeExpr
 
