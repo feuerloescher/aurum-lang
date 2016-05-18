@@ -20,7 +20,7 @@ addons:
    branch_pattern: master
 script: cd build && make -j2 && make test && cd ..
 after_success:
-  - cd build && make test_coverage && coveralls-lcov coverage.info && cd ..
+  - cd build && make test_coverage && coveralls-lcov tests/coverage.info && cd ..
 env:
   global:
   - LANG="en_US.UTF-8"
