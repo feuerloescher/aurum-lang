@@ -21,7 +21,6 @@ protected:
 public:
     AbstractSyntaxTree(DeclarativeExprList expressions);
 
-    void runPass(ASTPass& pass);
     DeclarativeExprList& getExpressions();
 
 }; // class AbstractSyntaxTree

@@ -12,10 +12,6 @@ AbstractSyntaxTree::AbstractSyntaxTree(DeclarativeExprList expressions)
     : expressions(expressions) {
 }
 
-void AbstractSyntaxTree::runPass(ASTPass& pass) {
-    pass.runOn(*this);
-}
-
 DeclarativeExprList& AbstractSyntaxTree::getExpressions() {
     return expressions;
 }

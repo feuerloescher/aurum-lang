@@ -34,7 +34,10 @@ protected:
     FunctionCallExpr();
 
 public:
+    FunctionCallExpr(std::string name, ASTList<ValueExpr> parameters);
+
     virtual void runPass(ASTPass& pass);
+    std::string getName();
     ASTList<ValueExpr>& getParameters();
 
 }; // class FunctionCallExpr

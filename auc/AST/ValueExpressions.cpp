@@ -10,12 +10,16 @@
 
 using namespace AST;
 
-VariableExpr::VariableExpr(std::string name) : name(name) {
-
+FunctionCallExpr::FunctionCallExpr(std::string name,
+    ASTList<ValueExpr> parameters) : name(name), parameters(parameters) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+std::string FunctionCallExpr::getName() {
+    return name;
 }
 
 ASTList<ValueExpr>& FunctionCallExpr::getParameters() {
@@ -34,6 +38,10 @@ uint32_t ConstIntExpr::getValue() {
     return value;
 }
 
+
+VariableExpr::VariableExpr(std::string name) : name(name) {
+
+}
 
 void VariableExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);

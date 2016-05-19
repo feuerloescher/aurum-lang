@@ -17,13 +17,18 @@ using namespace Passes;
 int main() {
     AbstractSyntaxTree ast(DeclarativeExprList{});
 
-    ASTPtr<TypeExpr> typeInt{new TypeExpr("int")};
-    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(2)};
-    ASTPtr<FunctionDeclExpr> funcDecl{new FunctionDeclExpr("two", typeInt,
-        VariableDefExprList{}, ImperativeExprList{})};
+    ASTPtr<VariableDefExpr> variable{
+        new VariableDefExpr("var", ASTPtr<TypeExpr>{new TypeExpr("int")})};
+    ASTPtr<FunctionDeclExpr> funcDecl{new FunctionDeclExpr("foo",
+        ASTPtr<TypeExpr>{new TypeExpr("int")},
+        VariableDefExprList{variable}, ImperativeExprList{})};
     ast.getExpressions().push_back(funcDecl);
 
-    ASTPtr<ReturnExpr> ret{new ReturnExpr(constInt)};
+    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(5)};
+    ASTPtr<BinaryOpExpr> binaryOp{new BinaryOpExpr("+",
+        ASTPtr<VariableExpr>{new VariableExpr("var")},
+        constInt)};
+    ASTPtr<ReturnExpr> ret{new ReturnExpr(binaryOp)};
     funcDecl->getBody().push_back(ret);
 
     ASTPtr<TypeExpr> typeInt2{new TypeExpr("int")};
@@ -33,9 +38,10 @@ int main() {
     ast.getExpressions().push_back(funcDecl2);
 
     ASTPtr<TypeExpr> typeInt3{new TypeExpr("int")};
-    ASTPtr<ConstIntExpr> constInt2{new ConstIntExpr(5)};
+    ASTPtr<FunctionCallExpr> funcCall{new FunctionCallExpr("foo",
+        ASTList<ValueExpr>{ASTPtr<ValueExpr>{new ConstIntExpr(5)}})};
     ASTPtr<VariableDefAssignExpr> defAssignX{
-        new VariableDefAssignExpr("x", typeInt3, constInt2)};
+        new VariableDefAssignExpr("x", typeInt3, funcCall)};
     funcDecl2->getBody().push_back(defAssignX);
 
     ASTPtr<TypeExpr> typeInt4{new TypeExpr("int")};

@@ -110,15 +110,16 @@ void PrintPass::runOn(TypeExpr& expr) {
 }
 
 void PrintPass::runOn(FunctionCallExpr& expr) {
-    stream << "FunctionCallExpr(";
-    indentWidth++;
+    stream << "FunctionCallExpr(" << expr.getName() << "(";
+    bool first = true;
     for (ASTPtr<ValueExpr> innerExpr : expr.getParameters()) {
-        indent();
+        if (!first) {
+            stream << ", ";
+        }
+        first = false;
         innerExpr->runPass(*this);
-        stream << "\n";
     }
-    indentWidth--;
-    indent() << ")\n";
+    stream << "))";
 }
 
 void PrintPass::runOn(ConstIntExpr& expr) {
