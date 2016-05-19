@@ -1,0 +1,3 @@
+[submodule "coco-r-cpp"]
+	path = coco-r-cpp
+	url = https://github.com/feuerloescher/coco-r-cpp.git
