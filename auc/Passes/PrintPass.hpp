@@ -26,16 +26,16 @@ public:
 
     virtual void runOn(AST::AbstractSyntaxTree& ast);
 
-    virtual void runOn(AST::FunctionDeclExpr& expr);
+    virtual void runOn(AST::FunctionDecl& expr);
 
-    virtual void runOn(AST::ReturnExpr& expr);
-    virtual void runOn(AST::VariableDefExpr& expr);
-    virtual void runOn(AST::VariableDefAssignExpr& expr);
+    virtual void runOn(AST::ReturnStmt& expr);
+    virtual void runOn(AST::VariableDefStmt& expr);
+    virtual void runOn(AST::VariableDefAssignStmt& expr);
 
-    virtual void runOn(AST::IfExpr& expr);
-    virtual void runOn(AST::WhileLoopExpr& expr);
+    virtual void runOn(AST::IfStmt& expr);
+    virtual void runOn(AST::WhileLoop& expr);
 
-    virtual void runOn(AST::TypeExpr& expr);
+    virtual void runOn(AST::Type& expr);
 
     virtual void runOn(AST::FunctionCallExpr& expr);
     virtual void runOn(AST::ConstIntExpr& expr);

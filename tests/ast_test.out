@@ -1,13 +1,13 @@
 AbstractSyntaxTree {
-  FunctionDeclExpr(TypeExpr(int) foo(VariableDefExpr(TypeExpr(int) var))) {
-    ReturnExpr(BinaryOpExpr(VariableExpr(var) + ConstIntExpr(5)))
+  FunctionDecl(Type(int) foo(VariableDefStmt(Type(int) var))) {
+    ReturnStmt(BinaryOpExpr(VariableExpr(var) + ConstIntExpr(5)))
   }
 
-  FunctionDeclExpr(TypeExpr(int) main()) {
-    VariableDefAssignExpr(TypeExpr(int) x = FunctionCallExpr(foo(ConstIntExpr(5))))
-    VariableDefExpr(TypeExpr(int) y)
+  FunctionDecl(Type(int) main()) {
+    VariableDefAssignStmt(Type(int) x = FunctionCallExpr(foo(ConstIntExpr(5))))
+    VariableDefStmt(Type(int) y)
     BinaryAssignOpExpr(VariableExpr(y) = UnaryOpExpr(-VariableExpr(x)))
     UnaryAssignOpExpr(++VariableExpr(y))
-    ReturnExpr(VariableExpr(y))
+    ReturnStmt(VariableExpr(y))
   }
 }

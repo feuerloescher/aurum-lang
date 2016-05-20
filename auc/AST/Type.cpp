@@ -4,20 +4,19 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "BlockExpressions.hpp"
+#include "Type.hpp"
 
 #include <sstream>
 
 using namespace AST;
 
-ImperativeExprList BlockExpr::getBody() {
-    return body;
+Type::Type(std::string name) : name(name) {
 }
 
-void IfExpr::runPass(ASTPass& pass) {
+void Type::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-void WhileLoopExpr::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+std::string Type::getName() {
+    return name;
 }

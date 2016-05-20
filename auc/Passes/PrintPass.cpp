@@ -6,11 +6,11 @@
 
 #include "PrintPass.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
-#include "AST/DeclarativeExpressions.hpp"
-#include "AST/ImperativeExpressions.hpp"
-#include "AST/BlockExpressions.hpp"
-#include "AST/TypeExpr.hpp"
-#include "AST/ValueExpressions.hpp"
+#include "AST/Declarations.hpp"
+#include "AST/Statements.hpp"
+#include "AST/Blocks.hpp"
+#include "AST/Type.hpp"
+#include "AST/Expressions.hpp"
 
 using namespace AST;
 using namespace Passes;
@@ -29,131 +29,131 @@ std::ostream& PrintPass::indent() {
 void PrintPass::runOn(AbstractSyntaxTree& ast) {
     stream << "AbstractSyntaxTree {";
     indentWidth++;
-    for (ASTPtr<DeclarativeExpr> expr : ast.getExpressions()) {
+    for (ASTPtr<Declaration> decl : ast.getExpressions()) {
         stream << "\n";
         indent();
-        expr->runPass(*this);
+        decl->runPass(*this);
         stream << "\n";
     }
     indentWidth--;
     indent() << "}\n";
 }
 
-void PrintPass::runOn(FunctionDeclExpr& expr) {
-    stream << "FunctionDeclExpr(";
-    expr.getType()->runPass(*this);
-    stream << " " << expr.getName() << "(";
+void PrintPass::runOn(FunctionDecl& decl) {
+    stream << "FunctionDecl(";
+    decl.getType()->runPass(*this);
+    stream << " " << decl.getName() << "(";
     bool first = true;
-    for (ASTPtr<VariableDefExpr> innerExpr : expr.getParameters()) {
+    for (ASTPtr<VariableDefStmt> innerStmt : decl.getParameters()) {
         if (!first) {
             stream << ", ";
         }
         first = false;
-        innerExpr->runPass(*this);
+        innerStmt->runPass(*this);
     }
     stream << ")) {\n";
     indentWidth++;
-    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+    for (ASTPtr<Statement> innerStmt : decl.getBody()) {
         indent();
-        innerExpr->runPass(*this);
+        innerStmt->runPass(*this);
         stream << "\n";
     }
     indentWidth--;
     indent() << "}";
 }
 
-void PrintPass::runOn(ReturnExpr& expr) {
-    stream << "ReturnExpr(";
-    expr.getValue()->runPass(*this);
+void PrintPass::runOn(ReturnStmt& stmt) {
+    stream << "ReturnStmt(";
+    stmt.getValue()->runPass(*this);
     stream << ")";
 }
 
-void PrintPass::runOn(VariableDefExpr& expr) {
-    stream << "VariableDefExpr(";
-    expr.getType()->runPass(*this);
-    stream << " " << expr.getName() << ")";
+void PrintPass::runOn(VariableDefStmt& stmt) {
+    stream << "VariableDefStmt(";
+    stmt.getType()->runPass(*this);
+    stream << " " << stmt.getName() << ")";
 }
-void PrintPass::runOn(VariableDefAssignExpr& expr) {
-    stream << "VariableDefAssignExpr(";
-    expr.getType()->runPass(*this);
-    stream << " " << expr.getName() << " = ";
-    expr.getValue()->runPass(*this);
+void PrintPass::runOn(VariableDefAssignStmt& stmt) {
+    stream << "VariableDefAssignStmt(";
+    stmt.getType()->runPass(*this);
+    stream << " " << stmt.getName() << " = ";
+    stmt.getValue()->runPass(*this);
     stream << ")";
 }
 
-void PrintPass::runOn(IfExpr& expr) {
-    stream << "IfExpr {\n";
+void PrintPass::runOn(IfStmt& stmt) {
+    stream << "IfStmt {\n";
     indentWidth++;
-    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
         indent();
-        innerExpr->runPass(*this);
+        innerStmt->runPass(*this);
         stream << "\n";
     }
     indentWidth--;
     indent() << "}";
 }
 
-void PrintPass::runOn(WhileLoopExpr& expr) {
-    stream << "WhileLoopExpr {\n";
+void PrintPass::runOn(WhileLoop& stmt) {
+    stream << "WhileLoop {\n";
     indentWidth++;
-    for (ASTPtr<ImperativeExpr> innerExpr : expr.getBody()) {
+    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
         indent();
-        innerExpr->runPass(*this);
+        innerStmt->runPass(*this);
         stream << "\n";
     }
     indentWidth--;
     indent() << "}";
 }
 
-void PrintPass::runOn(TypeExpr& expr) {
-    stream << "TypeExpr(" << expr.getName() << ")";
+void PrintPass::runOn(Type& stmt) {
+    stream << "Type(" << stmt.getName() << ")";
 }
 
-void PrintPass::runOn(FunctionCallExpr& expr) {
-    stream << "FunctionCallExpr(" << expr.getName() << "(";
+void PrintPass::runOn(FunctionCallExpr& stmt) {
+    stream << "FunctionCallExpr(" << stmt.getName() << "(";
     bool first = true;
-    for (ASTPtr<ValueExpr> innerExpr : expr.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getParameters()) {
         if (!first) {
             stream << ", ";
         }
         first = false;
-        innerExpr->runPass(*this);
+        expr->runPass(*this);
     }
     stream << "))";
 }
 
-void PrintPass::runOn(ConstIntExpr& expr) {
-    stream << "ConstIntExpr(" << expr.getValue() << ")";
+void PrintPass::runOn(ConstIntExpr& stmt) {
+    stream << "ConstIntExpr(" << stmt.getValue() << ")";
 }
 
-void PrintPass::runOn(VariableExpr& expr) {
-    stream << "VariableExpr(" << expr.getName() << ")";
+void PrintPass::runOn(VariableExpr& stmt) {
+    stream << "VariableExpr(" << stmt.getName() << ")";
 }
 
-void PrintPass::runOn(UnaryOpExpr& expr) {
-    stream << "UnaryOpExpr(" << expr.getName();
-    expr.getOperand()->runPass(*this);
+void PrintPass::runOn(UnaryOpExpr& stmt) {
+    stream << "UnaryOpExpr(" << stmt.getName();
+    stmt.getOperand()->runPass(*this);
     stream << ")";
 }
 
-void PrintPass::runOn(BinaryOpExpr& expr) {
+void PrintPass::runOn(BinaryOpExpr& stmt) {
     stream << "BinaryOpExpr(";
-    expr.getOperand1()->runPass(*this);
-    stream << " " << expr.getName() << " ";
-    expr.getOperand2()->runPass(*this);
+    stmt.getOperand1()->runPass(*this);
+    stream << " " << stmt.getName() << " ";
+    stmt.getOperand2()->runPass(*this);
     stream << ")";
 }
 
-void PrintPass::runOn(UnaryAssignOpExpr& expr) {
-    stream << "UnaryAssignOpExpr(" << expr.getName();
-    expr.getVariable()->runPass(*this);
+void PrintPass::runOn(UnaryAssignOpExpr& stmt) {
+    stream << "UnaryAssignOpExpr(" << stmt.getName();
+    stmt.getVariable()->runPass(*this);
     stream << ")";
 }
 
-void PrintPass::runOn(BinaryAssignOpExpr& expr) {
+void PrintPass::runOn(BinaryAssignOpExpr& stmt) {
     stream << "BinaryAssignOpExpr(";
-    expr.getVariable()->runPass(*this);
-    stream << " " << expr.getName() << " ";
-    expr.getOperand()->runPass(*this);
+    stmt.getVariable()->runPass(*this);
+    stream << " " << stmt.getName() << " ";
+    stmt.getOperand()->runPass(*this);
     stream << ")";
 }

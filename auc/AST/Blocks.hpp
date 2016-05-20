@@ -8,47 +8,47 @@
 #define AUC_BLOCKEXPRESSIONS_HPP
 
 #include "common.hpp"
-#include "ImperativeExpressions.hpp"
-#include "ValueExpressions.hpp"
+#include "Statements.hpp"
+#include "Expressions.hpp"
 #include "ASTPass.hpp"
 
 namespace AST {
 
-class BlockExpr : public ImperativeExpr {
+class Block : public Statement {
 
 protected:
-    ImperativeExprList body;
+    StatementList body;
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
 
-    ImperativeExprList getBody();
+    StatementList getBody();
 
-}; // class BlockExpr
-
-
-class IfExpr : public BlockExpr {
-
-protected:
-    ASTPtr<ValueExpr> condition;
-
-public:
-    IfExpr(ASTPtr<ValueExpr> condition);
-    virtual void runPass(ASTPass& pass);
-
-}; // class IfExpr
+}; // class Block
 
 
-class WhileLoopExpr : public BlockExpr {
+class IfStmt : public Block {
 
 protected:
-    ASTPtr<ValueExpr> condition;
+    ASTPtr<Expression> condition;
 
 public:
-    WhileLoopExpr(ASTPtr<ValueExpr> condition);
+    IfStmt(ASTPtr<Expression> condition);
     virtual void runPass(ASTPass& pass);
 
-}; // class WhileLoopExpr
+}; // class IfStmt
+
+
+class WhileLoop : public Block {
+
+protected:
+    ASTPtr<Expression> condition;
+
+public:
+    WhileLoop(ASTPtr<Expression> condition);
+    virtual void runPass(ASTPass& pass);
+
+}; // class WhileLoop
 
 } // namespace AST
 

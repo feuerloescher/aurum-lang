@@ -4,19 +4,20 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "TypeExpr.hpp"
+#include "Blocks.hpp"
 
 #include <sstream>
 
 using namespace AST;
 
-TypeExpr::TypeExpr(std::string name) : name(name) {
+StatementList Block::getBody() {
+    return body;
 }
 
-void TypeExpr::runPass(ASTPass& pass) {
+void IfStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-std::string TypeExpr::getName() {
-    return name;
+void WhileLoop::runPass(ASTPass& pass) {
+    pass.runOn(*this);
 }

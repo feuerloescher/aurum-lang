@@ -5,7 +5,7 @@
  */
 
 #include "AST/AbstractSyntaxTree.hpp"
-#include "AST/ValueExpressions.hpp"
+#include "AST/Expressions.hpp"
 
 #include <iostream>
 

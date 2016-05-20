@@ -4,7 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "ValueExpressions.hpp"
+#include "Expressions.hpp"
 
 #include <sstream>
 
@@ -21,7 +21,7 @@ std::string FunctionCallExpr::getName() {
     return name;
 }
 
-ASTList<ValueExpr>& FunctionCallExpr::getParameters() {
+ASTList<Expression>& FunctionCallExpr::getParameters() {
     return parameters;
 }
 
@@ -51,7 +51,7 @@ std::string VariableExpr::getName() {
 }
 
 
-UnaryOpExpr::UnaryOpExpr(std::string name, ASTPtr<ValueExpr> operand)
+UnaryOpExpr::UnaryOpExpr(std::string name, ASTPtr<Expression> operand)
     : name(name), operand(operand) {
 }
 
@@ -63,13 +63,13 @@ std::string UnaryOpExpr::getName() {
     return name;
 }
 
-ASTPtr<ValueExpr> UnaryOpExpr::getOperand() {
+ASTPtr<Expression> UnaryOpExpr::getOperand() {
     return operand;
 }
 
 
-BinaryOpExpr::BinaryOpExpr(std::string name, ASTPtr<ValueExpr> operand1,
-    ASTPtr<ValueExpr> operand2)
+BinaryOpExpr::BinaryOpExpr(std::string name, ASTPtr<Expression> operand1,
+    ASTPtr<Expression> operand2)
     : name(name), operand1(operand1), operand2(operand2) {
 }
 
@@ -81,11 +81,11 @@ std::string BinaryOpExpr::getName() {
     return name;
 }
 
-ASTPtr<ValueExpr> BinaryOpExpr::getOperand1() {
+ASTPtr<Expression> BinaryOpExpr::getOperand1() {
     return operand1;
 }
 
-ASTPtr<ValueExpr> BinaryOpExpr::getOperand2() {
+ASTPtr<Expression> BinaryOpExpr::getOperand2() {
     return operand2;
 }
 
@@ -109,7 +109,7 @@ ASTPtr<VariableExpr> UnaryAssignOpExpr::getVariable() {
 
 
 BinaryAssignOpExpr::BinaryAssignOpExpr(std::string name,
-    ASTPtr<VariableExpr> variable, ASTPtr<ValueExpr> operand)
+    ASTPtr<VariableExpr> variable, ASTPtr<Expression> operand)
     : name(name), variable(variable), operand(operand) {
 }
 
@@ -125,6 +125,6 @@ ASTPtr<VariableExpr> BinaryAssignOpExpr::getVariable() {
     return variable;
 }
 
-ASTPtr<ValueExpr> BinaryAssignOpExpr::getOperand() {
+ASTPtr<Expression> BinaryAssignOpExpr::getOperand() {
     return operand;
 }

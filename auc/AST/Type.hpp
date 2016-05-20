@@ -8,26 +8,25 @@
 #define AUC_TYPEEXPR_HPP
 
 #include "common.hpp"
-#include "Expression.hpp"
 #include "ASTPass.hpp"
 
 #include <string>
 
 namespace AST {
 
-class TypeExpr : public Expression {
+class Type {
 
 protected:
     std::string name;
 
 public:
-    TypeExpr(std::string name);
+    Type(std::string name);
 
-    virtual void runPass(ASTPass& pass);
+    void runPass(ASTPass& pass);
 
     std::string getName();
 
-}; // class TypeExpr
+}; // class Type
 
 } // namespace AST
 

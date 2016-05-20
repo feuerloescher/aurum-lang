@@ -8,6 +8,6 @@
 
 using namespace AST;
 
-DeclarativeExprList& AbstractSyntaxTree::getExpressions() {
+DeclarationList& AbstractSyntaxTree::getExpressions() {
     return expressions;
 }

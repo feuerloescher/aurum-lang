@@ -5,8 +5,11 @@
  */
 
 #include "AST/AbstractSyntaxTree.hpp"
-#include "AST/ValueExpressions.hpp"
-#include "AST/TypeExpr.hpp"
+#include "AST/Declarations.hpp"
+#include "AST/Statements.hpp"
+#include "AST/Blocks.hpp"
+#include "AST/Type.hpp"
+#include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
 
 #include <iostream>
@@ -18,30 +21,27 @@ using namespace std;
 int main() {
     AbstractSyntaxTree ast;
 
-    auto variable = make_shared<VariableDefExpr>("var",
-        make_shared<TypeExpr>("int"));
-    auto funcDecl = make_shared<FunctionDeclExpr>("foo",
-        make_shared<TypeExpr>("int"));
+    auto variable = make_shared<VariableDefStmt>("var",
+        make_shared<Type>("int"));
+    auto funcDecl = make_shared<FunctionDecl>("foo", make_shared<Type>("int"));
     funcDecl->getParameters().push_back(variable);
     ast.getExpressions().push_back(funcDecl);
 
     auto binaryOp = make_shared<BinaryOpExpr>("+",
-        make_shared<VariableExpr>("var"),
-        make_shared<ConstIntExpr>(5));
-    auto ret = make_shared<ReturnExpr>(binaryOp);
+        make_shared<VariableExpr>("var"), make_shared<ConstIntExpr>(5));
+    auto ret = make_shared<ReturnStmt>(binaryOp);
     funcDecl->getBody().push_back(ret);
 
-    auto mainDecl = make_shared<FunctionDeclExpr>("main",
-        make_shared<TypeExpr>("int"));
+    auto mainDecl = make_shared<FunctionDecl>("main", make_shared<Type>("int"));
     ast.getExpressions().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo");
     funcCall->getParameters().push_back(make_shared<ConstIntExpr>(5));
-    auto defAssignX = make_shared<VariableDefAssignExpr>("x",
-        make_shared<TypeExpr>("int"), funcCall);
+    auto defAssignX = make_shared<VariableDefAssignStmt>("x",
+        make_shared<Type>("int"), funcCall);
     mainDecl->getBody().push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefExpr>("y", make_shared<TypeExpr>("int"));
+    auto defY = make_shared<VariableDefStmt>("y", make_shared<Type>("int"));
     mainDecl->getBody().push_back(defY);
 
     auto unaryOp = make_shared<UnaryOpExpr>("-",
@@ -55,7 +55,7 @@ int main() {
     mainDecl->getBody().push_back(unaryAssignOp);
 
     ASTPtr<VariableExpr> varY3{new VariableExpr("y")};
-    auto ret2 = make_shared<ReturnExpr>(make_shared<VariableExpr>("y"));
+    auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
     mainDecl->getBody().push_back(ret2);
 
     PrintPass printer(std::cout);

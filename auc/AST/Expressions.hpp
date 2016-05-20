@@ -8,40 +8,40 @@
 #define AUC_VALUEEXPRESSIONS_HPP
 
 #include "common.hpp"
-#include "ImperativeExpressions.hpp"
+#include "Statements.hpp"
 #include "ASTPass.hpp"
 
 #include <string>
 
 namespace AST {
 
-class ValueExpr : public ImperativeExpr {
+class Expression : public Statement {
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
 
-}; // class ValueExpr
+}; // class Expression
 
-typedef ASTList<ValueExpr> ValueExprList;
+typedef ASTList<Expression> ExpressionList;
 
 
-class FunctionCallExpr : public ValueExpr {
+class FunctionCallExpr : public Expression {
 
 protected:
     std::string name;
-    ASTList<ValueExpr> parameters;
+    ASTList<Expression> parameters;
 
 public:
     FunctionCallExpr(std::string name);
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
-    ASTList<ValueExpr>& getParameters();
+    ASTList<Expression>& getParameters();
 
 }; // class FunctionCallExpr
 
 
-class ConstIntExpr : public ValueExpr {
+class ConstIntExpr : public Expression {
 
 protected:
     uint32_t value;
@@ -56,7 +56,7 @@ public:
 }; // class ConstNumberExpr
 
 
-class VariableExpr : public ValueExpr {
+class VariableExpr : public Expression {
 
 protected:
     std::string name;
@@ -71,44 +71,44 @@ public:
 }; // class VariableExpr
 
 
-class UnaryOpExpr : public ValueExpr {
+class UnaryOpExpr : public Expression {
 
 protected:
     std::string name;
-    ASTPtr<ValueExpr> operand;
+    ASTPtr<Expression> operand;
 
 public:
-    UnaryOpExpr(std::string name, ASTPtr<ValueExpr> operand);
+    UnaryOpExpr(std::string name, ASTPtr<Expression> operand);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<ValueExpr> getOperand();
+    ASTPtr<Expression> getOperand();
 
 }; // class UnaryOpExpr
 
 
-class BinaryOpExpr : public ValueExpr {
+class BinaryOpExpr : public Expression {
 
 protected:
     std::string name;
-    ASTPtr<ValueExpr> operand1;
-    ASTPtr<ValueExpr> operand2;
+    ASTPtr<Expression> operand1;
+    ASTPtr<Expression> operand2;
 
 public:
-    BinaryOpExpr(std::string name, ASTPtr<ValueExpr> operand1,
-        ASTPtr<ValueExpr> operand2);
+    BinaryOpExpr(std::string name, ASTPtr<Expression> operand1,
+        ASTPtr<Expression> operand2);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<ValueExpr> getOperand1();
-    ASTPtr<ValueExpr> getOperand2();
+    ASTPtr<Expression> getOperand1();
+    ASTPtr<Expression> getOperand2();
 
 }; // class BinaryOpExpr
 
 
-class UnaryAssignOpExpr : public ValueExpr {
+class UnaryAssignOpExpr : public Expression {
 
 protected:
     std::string name;
@@ -125,24 +125,24 @@ public:
 }; // class UnaryAssignOpExpr
 
 
-class BinaryAssignOpExpr : public ValueExpr {
+class BinaryAssignOpExpr : public Expression {
 
 protected:
     std::string name;
     ASTPtr<VariableExpr> variable;
-    ASTPtr<ValueExpr> operand;
+    ASTPtr<Expression> operand;
 
     BinaryAssignOpExpr();
 
 public:
     BinaryAssignOpExpr(std::string name, ASTPtr<VariableExpr> variable,
-        ASTPtr<ValueExpr> operand);
+        ASTPtr<Expression> operand);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
     ASTPtr<VariableExpr> getVariable();
-    ASTPtr<ValueExpr> getOperand();
+    ASTPtr<Expression> getOperand();
 
 }; // class BinaryAssignOpExpr
 

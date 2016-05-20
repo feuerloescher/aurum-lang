@@ -8,43 +8,42 @@
 #define AUC_DECLARATIVEEXPRESSIONS_HPP
 
 #include "common.hpp"
-#include "Expression.hpp"
-#include "ImperativeExpressions.hpp"
+#include "Statements.hpp"
 #include "ASTPass.hpp"
 
 #include <string>
 
 namespace AST {
 
-class DeclarativeExpr : public Expression {
+class Declaration {
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
 
-}; // class DeclarativeExpr
+}; // class Declaration
 
-typedef ASTList<DeclarativeExpr> DeclarativeExprList;
+typedef ASTList<Declaration> DeclarationList;
 
 
-class FunctionDeclExpr : public DeclarativeExpr {
+class FunctionDecl : public Declaration {
 
 protected:
     std::string name;
-    ASTPtr<TypeExpr> type;
-    ASTList<VariableDefExpr> parameters;
-    ImperativeExprList body;
+    ASTPtr<Type> type;
+    ASTList<VariableDefStmt> parameters;
+    StatementList body;
 
 public:
-    FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type);
+    FunctionDecl(std::string name, ASTPtr<Type> type);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<TypeExpr> getType();
-    VariableDefExprList& getParameters();
-    ImperativeExprList& getBody();
+    ASTPtr<Type> getType();
+    VariableDefStmtList& getParameters();
+    StatementList& getBody();
 
-}; // class FunctionDeclExpr
+}; // class FunctionDecl
 
 } // namespace AST
 

@@ -13,21 +13,21 @@ namespace AST {
 
 class AbstractSyntaxTree;
 
-class DeclarativeExpr;
-class FunctionDeclExpr;
+class Declaration;
+class FunctionDecl;
 
-class ImperativeExpr;
-class ReturnExpr;
-class VariableDefExpr;
-class VariableDefAssignExpr;
+class Statement;
+class ReturnStmt;
+class VariableDefStmt;
+class VariableDefAssignStmt;
 
-class BlockExpr;
-class IfExpr;
-class WhileLoopExpr;
+class Block;
+class IfStmt;
+class WhileLoop;
 
-class TypeExpr;
+class Type;
 
-class ValueExpr;
+class Expression;
 class FunctionCallExpr;
 class ConstIntExpr;
 class VariableExpr;
@@ -41,21 +41,21 @@ class ASTPass {
 public:
     virtual void runOn(AbstractSyntaxTree& ast) = 0;
 
-    void runOn(DeclarativeExpr& expr);
-    virtual void runOn(FunctionDeclExpr& expr) = 0;
+    void runOn(Declaration& expr);
+    virtual void runOn(FunctionDecl& expr) = 0;
 
-    void runOn(ImperativeExpr& expr);
-    virtual void runOn(ReturnExpr& expr) = 0;
-    virtual void runOn(VariableDefExpr& expr) = 0;
-    virtual void runOn(VariableDefAssignExpr& expr) = 0;
+    void runOn(Statement& expr);
+    virtual void runOn(ReturnStmt& expr) = 0;
+    virtual void runOn(VariableDefStmt& expr) = 0;
+    virtual void runOn(VariableDefAssignStmt& expr) = 0;
 
-    void runOn(BlockExpr& expr);
-    virtual void runOn(IfExpr& expr) = 0;
-    virtual void runOn(WhileLoopExpr& expr) = 0;
+    void runOn(Block& expr);
+    virtual void runOn(IfStmt& expr) = 0;
+    virtual void runOn(WhileLoop& expr) = 0;
 
-    virtual void runOn(TypeExpr& expr) = 0;
+    virtual void runOn(Type& expr) = 0;
 
-    void runOn(ValueExpr& expr);
+    void runOn(Expression& expr);
     virtual void runOn(FunctionCallExpr& expr) = 0;
     virtual void runOn(ConstIntExpr& expr) = 0;
     virtual void runOn(VariableExpr& expr) = 0;

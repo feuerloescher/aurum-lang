@@ -10,18 +10,18 @@
 
 using namespace AST;
 
-void ASTPass::runOn(DeclarativeExpr& expr) {
-    throw std::runtime_error("Unknown DeclarativeExpr type");
+void ASTPass::runOn(Declaration& expr) {
+    throw std::runtime_error("Unknown Declaration type");
 }
 
-void ASTPass::runOn(ImperativeExpr& expr) {
-    throw std::runtime_error("Unknown ImperativeExpr type");
+void ASTPass::runOn(Statement& expr) {
+    throw std::runtime_error("Unknown Statement type");
 }
 
-void ASTPass::runOn(BlockExpr& expr) {
-    throw std::runtime_error("Unknown BlockExpr type");
+void ASTPass::runOn(Block& expr) {
+    throw std::runtime_error("Unknown Block type");
 }
 
-void ASTPass::runOn(ValueExpr& expr) {
-    throw std::runtime_error("Unknown ValueExpr type");
+void ASTPass::runOn(Expression& expr) {
+    throw std::runtime_error("Unknown Expression type");
 }
