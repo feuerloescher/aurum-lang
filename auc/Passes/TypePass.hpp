@@ -4,23 +4,19 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_IDENTIFIERPASS_HPP
-#define AUC_IDENTIFIERPASS_HPP
+#ifndef AUC_TYPECHECKPASS_HPP
+#define AUC_TYPECHECKPASS_HPP
 
 #include "AST/ASTPass.hpp"
-#include "AST/Declarations.hpp"
 #include "AST/common.hpp"
 
 namespace Passes {
 
-/// Resolve string identifiers of variables and functions
-class IdentifierPass : public AST::ASTPass {
-
-protected:
-    AST::Block* currentBlock;
+/// Resolve and check types of expressions
+class TypePass : public AST::ASTPass {
 
 public:
-    IdentifierPass(AST::AbstractSyntaxTree& ast);
+    TypePass(AST::AbstractSyntaxTree& ast);
 
     virtual void run();
 
@@ -44,8 +40,8 @@ public:
     virtual void runOn(AST::UnaryAssignOpExpr&);
     virtual void runOn(AST::BinaryAssignOpExpr&);
 
-}; // class IdentifierPass
+}; // class TypePass
 
 } // namespace Passes
 
-#endif // AUC_IDENTIFIERPASS_HPP
+#endif // AUC_TYPECHECKPASS_HPP

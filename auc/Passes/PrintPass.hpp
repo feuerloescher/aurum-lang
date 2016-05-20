@@ -14,6 +14,7 @@
 
 namespace Passes {
 
+/// Print an AST with type information and indentation to an output stream
 class PrintPass : public AST::ASTPass {
 
     std::ostream& stream;

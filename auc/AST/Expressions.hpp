@@ -17,8 +17,13 @@ namespace AST {
 
 class Expression : public Statement {
 
+protected:
+    Type* type;
+
 public:
     virtual void runPass(ASTPass& pass) = 0;
+    virtual Type* getType();
+    virtual void setType(Type* type);
 
 }; // class Expression
 
@@ -68,6 +73,7 @@ public:
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
+    VariableDefStmt* getVariableDefStmt();
     void setVariableDefStmt(VariableDefStmt* variableDefStmt);
 
 }; // class VariableExpr

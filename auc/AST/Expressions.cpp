@@ -8,6 +8,15 @@
 
 using namespace AST;
 
+Type* Expression::getType() {
+    return type;
+}
+
+void Expression::setType(Type* type) {
+    this->type = type;
+}
+
+
 FunctionCallExpr::FunctionCallExpr(std::string name) : name(name) {
 }
 
@@ -46,6 +55,10 @@ void VariableExpr::runPass(ASTPass& pass) {
 
 std::string VariableExpr::getName() {
     return name;
+}
+
+VariableDefStmt* VariableExpr::getVariableDefStmt() {
+    return variableDefStmt;
 }
 
 void VariableExpr::setVariableDefStmt(VariableDefStmt* variableDefStmt) {

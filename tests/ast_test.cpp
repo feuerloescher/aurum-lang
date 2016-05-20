@@ -13,6 +13,7 @@
 #include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
 #include "Passes/IdentifierPass.hpp"
+#include "Passes/TypePass.hpp"
 
 #include <iostream>
 
@@ -70,5 +71,8 @@ int main() {
 
     IdentifierPass identifier(ast);
     identifier.run();
+
+    TypePass typePass(ast);
+    typePass.run();
     return 0;
 }
