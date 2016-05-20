@@ -19,7 +19,7 @@ protected:
     DeclarativeExprList expressions;
 
 public:
-    AbstractSyntaxTree(DeclarativeExprList expressions);
+    //~ AbstractSyntaxTree() = default;
 
     DeclarativeExprList& getExpressions();
 

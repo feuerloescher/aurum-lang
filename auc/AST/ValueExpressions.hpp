@@ -31,10 +31,8 @@ protected:
     std::string name;
     ASTList<ValueExpr> parameters;
 
-    FunctionCallExpr();
-
 public:
-    FunctionCallExpr(std::string name, ASTList<ValueExpr> parameters);
+    FunctionCallExpr(std::string name);
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
@@ -47,8 +45,6 @@ class ConstIntExpr : public ValueExpr {
 
 protected:
     uint32_t value;
-
-    ConstIntExpr();
 
 public:
     ConstIntExpr(uint32_t value);
@@ -65,8 +61,6 @@ class VariableExpr : public ValueExpr {
 protected:
     std::string name;
 
-    VariableExpr();
-
 public:
     VariableExpr(std::string name);
 
@@ -82,8 +76,6 @@ class UnaryOpExpr : public ValueExpr {
 protected:
     std::string name;
     ASTPtr<ValueExpr> operand;
-
-    UnaryOpExpr();
 
 public:
     UnaryOpExpr(std::string name, ASTPtr<ValueExpr> operand);
@@ -103,8 +95,6 @@ protected:
     ASTPtr<ValueExpr> operand1;
     ASTPtr<ValueExpr> operand2;
 
-    BinaryOpExpr();
-
 public:
     BinaryOpExpr(std::string name, ASTPtr<ValueExpr> operand1,
         ASTPtr<ValueExpr> operand2);
@@ -123,8 +113,6 @@ class UnaryAssignOpExpr : public ValueExpr {
 protected:
     std::string name;
     ASTPtr<VariableExpr> variable;
-
-    UnaryAssignOpExpr();
 
 public:
     UnaryAssignOpExpr(std::string name, ASTPtr<VariableExpr> variable);

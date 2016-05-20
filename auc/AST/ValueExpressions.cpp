@@ -10,8 +10,7 @@
 
 using namespace AST;
 
-FunctionCallExpr::FunctionCallExpr(std::string name,
-    ASTList<ValueExpr> parameters) : name(name), parameters(parameters) {
+FunctionCallExpr::FunctionCallExpr(std::string name) : name(name) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {

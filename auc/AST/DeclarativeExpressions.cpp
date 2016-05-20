@@ -10,9 +10,8 @@
 
 using namespace AST;
 
-FunctionDeclExpr::FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type,
-        ASTList<VariableDefExpr> parameters, ImperativeExprList body)
-    : name(name), type(type), parameters(parameters), body(body) {
+FunctionDeclExpr::FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type)
+    : name(name), type(type) {
 }
 
 void FunctionDeclExpr::runPass(ASTPass& pass) {

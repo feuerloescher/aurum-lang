@@ -34,11 +34,8 @@ protected:
     ASTList<VariableDefExpr> parameters;
     ImperativeExprList body;
 
-    FunctionDeclExpr();
-
 public:
-    FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type,
-        ASTList<VariableDefExpr> parameters, ImperativeExprList body);
+    FunctionDeclExpr(std::string name, ASTPtr<TypeExpr> type);
 
     virtual void runPass(ASTPass& pass);
 

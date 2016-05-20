@@ -20,8 +20,6 @@ class TypeExpr : public Expression {
 protected:
     std::string name;
 
-    TypeExpr();
-
 public:
     TypeExpr(std::string name);
 

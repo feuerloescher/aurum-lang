@@ -13,56 +13,50 @@
 
 using namespace AST;
 using namespace Passes;
+using namespace std;
 
 int main() {
-    AbstractSyntaxTree ast(DeclarativeExprList{});
+    AbstractSyntaxTree ast;
 
-    ASTPtr<VariableDefExpr> variable{
-        new VariableDefExpr("var", ASTPtr<TypeExpr>{new TypeExpr("int")})};
-    ASTPtr<FunctionDeclExpr> funcDecl{new FunctionDeclExpr("foo",
-        ASTPtr<TypeExpr>{new TypeExpr("int")},
-        VariableDefExprList{variable}, ImperativeExprList{})};
+    auto variable = make_shared<VariableDefExpr>("var",
+        make_shared<TypeExpr>("int"));
+    auto funcDecl = make_shared<FunctionDeclExpr>("foo",
+        make_shared<TypeExpr>("int"));
+    funcDecl->getParameters().push_back(variable);
     ast.getExpressions().push_back(funcDecl);
 
-    ASTPtr<ConstIntExpr> constInt{new ConstIntExpr(5)};
-    ASTPtr<BinaryOpExpr> binaryOp{new BinaryOpExpr("+",
-        ASTPtr<VariableExpr>{new VariableExpr("var")},
-        constInt)};
-    ASTPtr<ReturnExpr> ret{new ReturnExpr(binaryOp)};
+    auto binaryOp = make_shared<BinaryOpExpr>("+",
+        make_shared<VariableExpr>("var"),
+        make_shared<ConstIntExpr>(5));
+    auto ret = make_shared<ReturnExpr>(binaryOp);
     funcDecl->getBody().push_back(ret);
 
-    ASTPtr<TypeExpr> typeInt2{new TypeExpr("int")};
-    ASTPtr<FunctionDeclExpr> funcDecl2{
-        new FunctionDeclExpr("main", typeInt2, VariableDefExprList{},
-        ImperativeExprList{})};
-    ast.getExpressions().push_back(funcDecl2);
+    auto mainDecl = make_shared<FunctionDeclExpr>("main",
+        make_shared<TypeExpr>("int"));
+    ast.getExpressions().push_back(mainDecl);
 
-    ASTPtr<TypeExpr> typeInt3{new TypeExpr("int")};
-    ASTPtr<FunctionCallExpr> funcCall{new FunctionCallExpr("foo",
-        ASTList<ValueExpr>{ASTPtr<ValueExpr>{new ConstIntExpr(5)}})};
-    ASTPtr<VariableDefAssignExpr> defAssignX{
-        new VariableDefAssignExpr("x", typeInt3, funcCall)};
-    funcDecl2->getBody().push_back(defAssignX);
+    auto funcCall = make_shared<FunctionCallExpr>("foo");
+    funcCall->getParameters().push_back(make_shared<ConstIntExpr>(5));
+    auto defAssignX = make_shared<VariableDefAssignExpr>("x",
+        make_shared<TypeExpr>("int"), funcCall);
+    mainDecl->getBody().push_back(defAssignX);
 
-    ASTPtr<TypeExpr> typeInt4{new TypeExpr("int")};
-    ASTPtr<VariableDefExpr> defY{
-        new VariableDefExpr("y", typeInt4)};
-    funcDecl2->getBody().push_back(defY);
+    auto defY = make_shared<VariableDefExpr>("y", make_shared<TypeExpr>("int"));
+    mainDecl->getBody().push_back(defY);
 
-    ASTPtr<VariableExpr> varX{new VariableExpr("x")};
-    ASTPtr<VariableExpr> varY{new VariableExpr("y")};
-    ASTPtr<UnaryOpExpr> unaryOp{new UnaryOpExpr("-", varX)};
-    ASTPtr<BinaryAssignOpExpr> binaryAssignOp{
-        new BinaryAssignOpExpr("=", varY, unaryOp)};
-    funcDecl2->getBody().push_back(binaryAssignOp);
+    auto unaryOp = make_shared<UnaryOpExpr>("-",
+        make_shared<VariableExpr>("x"));
+    auto binaryAssignOp = make_shared<BinaryAssignOpExpr>("=",
+        make_shared<VariableExpr>("y"), unaryOp);
+    mainDecl->getBody().push_back(binaryAssignOp);
 
-    ASTPtr<VariableExpr> varY2{new VariableExpr("y")};
-    ASTPtr<UnaryAssignOpExpr> unaryAssignOp{new UnaryAssignOpExpr("++", varY2)};
-    funcDecl2->getBody().push_back(unaryAssignOp);
+    auto unaryAssignOp = make_shared<UnaryAssignOpExpr>("++",
+        make_shared<VariableExpr>("y"));
+    mainDecl->getBody().push_back(unaryAssignOp);
 
     ASTPtr<VariableExpr> varY3{new VariableExpr("y")};
-    ASTPtr<ReturnExpr> ret2{new ReturnExpr(varY3)};
-    funcDecl2->getBody().push_back(ret2);
+    auto ret2 = make_shared<ReturnExpr>(make_shared<VariableExpr>("y"));
+    mainDecl->getBody().push_back(ret2);
 
     PrintPass printer(std::cout);
     printer.runOn(ast);

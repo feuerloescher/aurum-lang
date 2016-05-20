@@ -33,8 +33,6 @@ class ReturnExpr : public ImperativeExpr {
 protected:
     ASTPtr<ValueExpr> value;
 
-    ReturnExpr();
-
 public:
     ReturnExpr(ASTPtr<ValueExpr> value);
     virtual void runPass(ASTPass& pass);
@@ -49,8 +47,6 @@ class VariableDefExpr : public ImperativeExpr {
 protected:
     std::string name;
     ASTPtr<TypeExpr> type;
-
-    VariableDefExpr();
 
 public:
     VariableDefExpr(std::string name, ASTPtr<TypeExpr> type);
@@ -70,8 +66,6 @@ protected:
     std::string name;
     ASTPtr<TypeExpr> type;
     ASTPtr<ValueExpr> value;
-
-    VariableDefAssignExpr();
 
 public:
     VariableDefAssignExpr(std::string name, ASTPtr<TypeExpr> type,
