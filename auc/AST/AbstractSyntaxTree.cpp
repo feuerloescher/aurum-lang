@@ -12,6 +12,10 @@ DeclarationList& AbstractSyntaxTree::getDeclarations() {
     return declarations;
 }
 
-ASTMap<FunctionDecl>& AbstractSyntaxTree::getFunctionDecls() {
+ASTMap<FunctionDef>& AbstractSyntaxTree::getFunctionDefs() {
     return functionDecls;
+}
+
+Block& AbstractSyntaxTree::getRootBlock() {
+    return rootBlock;
 }

@@ -16,8 +16,8 @@ ASTPass::ASTPass(AbstractSyntaxTree& ast) : ast(ast) {
 void ASTPass::runOn(Declaration& expr) {
     throw std::runtime_error("Declaration unhandled");
 }
-void ASTPass::runOn(FunctionDecl& expr) {
-    throw std::runtime_error("FunctionDecl unhandled");
+void ASTPass::runOn(FunctionDef& expr) {
+    throw std::runtime_error("FunctionDef unhandled");
 }
 
 void ASTPass::runOn(Statement& expr) {

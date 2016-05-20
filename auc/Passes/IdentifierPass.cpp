@@ -11,31 +11,34 @@
 #include "AST/Blocks.hpp"
 #include "AST/Type.hpp"
 #include "AST/Expressions.hpp"
+#include "AST/Errors.hpp"
 
 using namespace AST;
 using namespace Passes;
 
-IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast) : ASTPass(ast) {
+IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast)
+    : ASTPass(ast), currentBlock(&ast.getRootBlock()) {
 }
 
 void IdentifierPass::run() {
-    ast.getFunctionDecls().clear();
+    ast.getFunctionDefs().clear();
+    currentBlock = &ast.getRootBlock();
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
 }
 
-void IdentifierPass::runOn(FunctionDecl& decl) {
-    if (!ast.getFunctionDecls().insert(decl)) {
-        throw std::runtime_error("Function name " + decl.getName()
-            + " already exists in this compilation unit.");
+void IdentifierPass::runOn(FunctionDef& func) {
+    if (!ast.getFunctionDefs().insert(func)) {
+        throw ExistingIdentifierError(func.getName());
     }
-    for (ASTPtr<VariableDefStmt> innerStmt : decl.getParameters()) {
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
+        if (!func.getBody().getVariables().insert(*innerStmt)) {
+            throw ExistingIdentifierError(innerStmt->getName());
+        }
     }
-    for (ASTPtr<Statement> innerStmt : decl.getBody()) {
-        innerStmt->runPass(*this);
-    }
+    func.getBody().runPass(*this);
 }
 
 void IdentifierPass::runOn(ReturnStmt& stmt) {
@@ -43,22 +46,35 @@ void IdentifierPass::runOn(ReturnStmt& stmt) {
 }
 
 void IdentifierPass::runOn(VariableDefStmt& stmt) {
+    if (!currentBlock->getVariables().insert(stmt)) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
+    if (!currentBlock->getVariables().insert(stmt)) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
     stmt.getValue()->runPass(*this);
 }
 
-void IdentifierPass::runOn(IfStmt& stmt) {
-    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
+void IdentifierPass::runOn(Block& stmt) {
+    stmt.setParentBlock(currentBlock);
+    currentBlock = &stmt;
+    for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }
+    currentBlock = stmt.getParentBlock();
+}
+
+void IdentifierPass::runOn(IfStmt& stmt) {
+    stmt.getCondition()->runPass(*this);
+    stmt.getBody().runPass(*this);
 }
 
 void IdentifierPass::runOn(WhileLoop& stmt) {
-    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
-        innerStmt->runPass(*this);
-    }
+    stmt.getCondition()->runPass(*this);
+    stmt.getBody().runPass(*this);
 }
 
 void IdentifierPass::runOn(FunctionCallExpr& stmt) {
@@ -71,6 +87,12 @@ void IdentifierPass::runOn(ConstIntExpr& stmt) {
 }
 
 void IdentifierPass::runOn(VariableExpr& stmt) {
+    VariableDefStmt* variableDef = currentBlock->getVariables().find(
+        stmt.getName());
+    if (!variableDef) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
+    stmt.setVariableDefStmt(variableDef);
 }
 
 void IdentifierPass::runOn(UnaryOpExpr& stmt) {

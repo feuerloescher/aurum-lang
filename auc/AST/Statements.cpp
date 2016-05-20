@@ -42,19 +42,11 @@ ASTPtr<Type> VariableDefStmt::getType() {
 
 VariableDefAssignStmt::VariableDefAssignStmt(std::string name,
     ASTPtr<Type> type, ASTPtr<Expression> value)
-    : name(name), type(type), value(value) {
+    : VariableDefStmt(name, type), value(value) {
 }
 
 void VariableDefAssignStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
-}
-
-std::string VariableDefAssignStmt::getName() {
-    return name;
-}
-
-ASTPtr<Type> VariableDefAssignStmt::getType() {
-    return type;
 }
 
 ASTPtr<Expression> VariableDefAssignStmt::getValue() {

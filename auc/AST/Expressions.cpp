@@ -38,8 +38,8 @@ uint32_t ConstIntExpr::getValue() {
 }
 
 
-VariableExpr::VariableExpr(std::string name) : name(name) {
-
+VariableExpr::VariableExpr(std::string name)
+    : name(name), variableDefStmt(nullptr) {
 }
 
 void VariableExpr::runPass(ASTPass& pass) {
@@ -48,6 +48,10 @@ void VariableExpr::runPass(ASTPass& pass) {
 
 std::string VariableExpr::getName() {
     return name;
+}
+
+void VariableExpr::setVariableDefStmt(VariableDefStmt* variableDefStmt) {
+    this->variableDefStmt = variableDefStmt;
 }
 
 

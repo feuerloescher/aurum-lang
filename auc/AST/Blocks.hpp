@@ -11,42 +11,60 @@
 #include "Statements.hpp"
 #include "Expressions.hpp"
 #include "ASTPass.hpp"
+#include "ASTMap.hpp"
 
 namespace AST {
 
 class Block : public Statement {
 
 protected:
-    StatementList body;
+    StatementList statements;
+    ASTMap<VariableDefStmt> variables;
+    Block* parentBlock;
 
 public:
-    virtual void runPass(ASTPass& pass) = 0;
+    Block();
 
-    StatementList getBody();
+    virtual void runPass(ASTPass& pass);
+
+    StatementList& getStatements();
+    void push_back(ASTPtr<Statement> statement);
+
+    ASTMap<VariableDefStmt>& getVariables();
+    Block* getParentBlock();
+    void setParentBlock(Block* block);
 
 }; // class Block
 
 
-class IfStmt : public Block {
+class IfStmt : public Statement {
 
 protected:
     ASTPtr<Expression> condition;
+    Block body;
 
 public:
     IfStmt(ASTPtr<Expression> condition);
     virtual void runPass(ASTPass& pass);
 
+    ASTPtr<Expression> getCondition();
+    Block& getBody();
+
 }; // class IfStmt
 
 
-class WhileLoop : public Block {
+class WhileLoop : public Statement {
 
 protected:
     ASTPtr<Expression> condition;
+    Block body;
 
 public:
     WhileLoop(ASTPtr<Expression> condition);
     virtual void runPass(ASTPass& pass);
+
+    ASTPtr<Expression> getCondition();
+    Block& getBody();
 
 }; // class WhileLoop
 

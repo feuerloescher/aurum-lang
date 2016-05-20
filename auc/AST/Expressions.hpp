@@ -60,6 +60,7 @@ class VariableExpr : public Expression {
 
 protected:
     std::string name;
+    VariableDefStmt* variableDefStmt;
 
 public:
     VariableExpr(std::string name);
@@ -67,6 +68,7 @@ public:
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
+    void setVariableDefStmt(VariableDefStmt* variableDefStmt);
 
 }; // class VariableExpr
 

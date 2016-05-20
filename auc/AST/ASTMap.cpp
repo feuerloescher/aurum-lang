@@ -20,4 +20,14 @@ bool ASTMap<T>::insert(T& t) {
         std::reference_wrapper<T>(t))).second;
 }
 
-template class AST::ASTMap<FunctionDecl>;
+template <class T>
+T* ASTMap<T>::find(std::string name) {
+    auto element = internalMap.find(name);
+    if (element != internalMap.end()) {
+        return &element->second.get();
+    }
+    return nullptr;
+}
+
+template class AST::ASTMap<FunctionDef>;
+template class AST::ASTMap<VariableDefStmt>;

@@ -10,12 +10,51 @@
 
 using namespace AST;
 
-StatementList Block::getBody() {
+Block::Block() : parentBlock(nullptr) {
+}
+
+void Block::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+StatementList& Block::getStatements() {
+    return statements;
+}
+
+void Block::push_back(ASTPtr<Statement> statement) {
+    statements.push_back(statement);
+}
+
+ASTMap<VariableDefStmt>& Block::getVariables() {
+    return variables;
+}
+
+Block* Block::getParentBlock() {
+    return parentBlock;
+}
+
+void Block::setParentBlock(Block* block) {
+    parentBlock = block;
+}
+
+ASTPtr<Expression> IfStmt::getCondition() {
+    return condition;
+}
+
+Block& IfStmt::getBody() {
     return body;
 }
 
 void IfStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+ASTPtr<Expression> WhileLoop::getCondition() {
+    return condition;
+}
+
+Block& WhileLoop::getBody() {
+    return body;
 }
 
 void WhileLoop::runPass(ASTPass& pass) {

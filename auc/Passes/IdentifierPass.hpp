@@ -15,27 +15,31 @@ namespace Passes {
 
 class IdentifierPass : public AST::ASTPass {
 
+protected:
+    AST::Block* currentBlock;
+
 public:
     IdentifierPass(AST::AbstractSyntaxTree& ast);
 
     virtual void run();
 
-    virtual void runOn(AST::FunctionDecl& expr);
+    virtual void runOn(AST::FunctionDef&);
 
-    virtual void runOn(AST::ReturnStmt& expr);
-    virtual void runOn(AST::VariableDefStmt& expr);
-    virtual void runOn(AST::VariableDefAssignStmt& expr);
+    virtual void runOn(AST::ReturnStmt&);
+    virtual void runOn(AST::VariableDefStmt&);
+    virtual void runOn(AST::VariableDefAssignStmt&);
 
-    virtual void runOn(AST::IfStmt& expr);
-    virtual void runOn(AST::WhileLoop& expr);
+    virtual void runOn(AST::Block&);
+    virtual void runOn(AST::IfStmt&);
+    virtual void runOn(AST::WhileLoop&);
 
-    virtual void runOn(AST::FunctionCallExpr& expr);
-    virtual void runOn(AST::ConstIntExpr& expr);
-    virtual void runOn(AST::VariableExpr& expr);
-    virtual void runOn(AST::UnaryOpExpr& expr);
-    virtual void runOn(AST::BinaryOpExpr& expr);
-    virtual void runOn(AST::UnaryAssignOpExpr& expr);
-    virtual void runOn(AST::BinaryAssignOpExpr& expr);
+    virtual void runOn(AST::FunctionCallExpr&);
+    virtual void runOn(AST::ConstIntExpr&);
+    virtual void runOn(AST::VariableExpr&);
+    virtual void runOn(AST::UnaryOpExpr&);
+    virtual void runOn(AST::BinaryOpExpr&);
+    virtual void runOn(AST::UnaryAssignOpExpr&);
+    virtual void runOn(AST::BinaryAssignOpExpr&);
 
 }; // class IdentifierPass
 

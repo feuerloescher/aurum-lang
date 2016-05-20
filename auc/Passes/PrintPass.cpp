@@ -40,8 +40,8 @@ void PrintPass::run() {
     indent() << "}\n";
 }
 
-void PrintPass::runOn(FunctionDecl& decl) {
-    stream << "FunctionDecl(";
+void PrintPass::runOn(FunctionDef& decl) {
+    stream << "FunctionDef(";
     decl.getType()->runPass(*this);
     stream << " " << decl.getName() << "(";
     bool first = true;
@@ -52,15 +52,8 @@ void PrintPass::runOn(FunctionDecl& decl) {
         first = false;
         innerStmt->runPass(*this);
     }
-    stream << ")) {\n";
-    indentWidth++;
-    for (ASTPtr<Statement> innerStmt : decl.getBody()) {
-        indent();
-        innerStmt->runPass(*this);
-        stream << "\n";
-    }
-    indentWidth--;
-    indent() << "}";
+    stream << ")) ";
+    decl.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(ReturnStmt& stmt) {
@@ -83,10 +76,10 @@ void PrintPass::runOn(VariableDefAssignStmt& stmt) {
     stream << ")";
 }
 
-void PrintPass::runOn(IfStmt& stmt) {
-    stream << "IfStmt {\n";
+void PrintPass::runOn(Block& stmt) {
+    stream << "{\n";
     indentWidth++;
-    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
+    for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         indent();
         innerStmt->runPass(*this);
         stream << "\n";
@@ -95,16 +88,18 @@ void PrintPass::runOn(IfStmt& stmt) {
     indent() << "}";
 }
 
+void PrintPass::runOn(IfStmt& stmt) {
+    stream << "IfStmt(";
+    stmt.getCondition()->runPass(*this);
+    stream << ") ";
+    stmt.getBody().runPass(*this);
+}
+
 void PrintPass::runOn(WhileLoop& stmt) {
-    stream << "WhileLoop {\n";
-    indentWidth++;
-    for (ASTPtr<Statement> innerStmt : stmt.getBody()) {
-        indent();
-        innerStmt->runPass(*this);
-        stream << "\n";
-    }
-    indentWidth--;
-    indent() << "}";
+    stream << "WhileLoop(";
+    stmt.getCondition()->runPass(*this);
+    stream << ") ";
+    stmt.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(Type& stmt) {

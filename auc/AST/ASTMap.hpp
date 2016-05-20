@@ -8,7 +8,6 @@
 #define AUC_ASTMAP_HPP
 
 #include "common.hpp"
-#include "ASTPass.hpp"
 
 #include <functional>
 #include <map>
@@ -20,11 +19,12 @@ template <class T>
 class ASTMap {
 
 protected:
-    std::map<std::string, std::reference_wrapper<T>> internalMap;
+    std::map<std::string, ASTRef<T>> internalMap;
 
 public:
     void clear();
     bool insert(T& t);
+    T* find(std::string name);
 
 }; // class Type
 

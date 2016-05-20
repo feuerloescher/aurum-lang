@@ -10,26 +10,26 @@
 
 using namespace AST;
 
-FunctionDecl::FunctionDecl(std::string name, ASTPtr<Type> type)
+FunctionDef::FunctionDef(std::string name, ASTPtr<Type> type)
     : name(name), type(type) {
 }
 
-void FunctionDecl::runPass(ASTPass& pass) {
+void FunctionDef::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-std::string FunctionDecl::getName() {
+std::string FunctionDef::getName() {
     return name;
 }
 
-ASTPtr<Type> FunctionDecl::getType() {
+ASTPtr<Type> FunctionDef::getType() {
     return type;
 }
 
-VariableDefStmtList& FunctionDecl::getParameters() {
+VariableDefStmtList& FunctionDef::getParameters() {
     return parameters;
 }
 
-StatementList& FunctionDecl::getBody() {
+Block& FunctionDef::getBody() {
     return body;
 }

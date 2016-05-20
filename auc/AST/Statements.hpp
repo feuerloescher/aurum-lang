@@ -57,11 +57,9 @@ public:
 typedef ASTList<VariableDefStmt> VariableDefStmtList;
 
 
-class VariableDefAssignStmt : public Statement {
+class VariableDefAssignStmt : public VariableDefStmt {
 
 protected:
-    std::string name;
-    ASTPtr<Type> type;
     ASTPtr<Expression> value;
 
 public:
@@ -69,8 +67,6 @@ public:
         ASTPtr<Expression> value);
     virtual void runPass(ASTPass& pass);
 
-    std::string getName();
-    ASTPtr<Type> getType();
     ASTPtr<Expression> getValue();
 
 }; // class VariableDefAssignStmt

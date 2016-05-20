@@ -8,7 +8,7 @@
 #define AUC_DECLARATIONS_HPP
 
 #include "common.hpp"
-#include "Statements.hpp"
+#include "Blocks.hpp"
 #include "ASTPass.hpp"
 
 #include <string>
@@ -25,25 +25,25 @@ public:
 typedef ASTList<Declaration> DeclarationList;
 
 
-class FunctionDecl : public Declaration {
+class FunctionDef : public Declaration {
 
 protected:
     std::string name;
     ASTPtr<Type> type;
     ASTList<VariableDefStmt> parameters;
-    StatementList body;
+    Block body;
 
 public:
-    FunctionDecl(std::string name, ASTPtr<Type> type);
+    FunctionDef(std::string name, ASTPtr<Type> type);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
     ASTPtr<Type> getType();
     VariableDefStmtList& getParameters();
-    StatementList& getBody();
+    Block& getBody();
 
-}; // class FunctionDecl
+}; // class FunctionDef
 
 } // namespace AST
 

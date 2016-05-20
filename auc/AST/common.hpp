@@ -7,14 +7,21 @@
 #ifndef AUC_COMMON_HPP
 #define AUC_COMMON_HPP
 
+#include <functional>
 #include <memory>
 #include <vector>
 
 namespace AST {
 
+/// Managed pointer
 template <class T>
 using ASTPtr = std::shared_ptr<T>;
 
+/// Reference
+template <class T>
+using ASTRef = std::reference_wrapper<T>;
+
+/// Managed list
 template <class T>
 using ASTList = std::vector<ASTPtr<T>>;
 
