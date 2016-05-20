@@ -6,8 +6,6 @@
 
 #include "Expressions.hpp"
 
-#include <sstream>
-
 using namespace AST;
 
 FunctionCallExpr::FunctionCallExpr(std::string name) : name(name) {

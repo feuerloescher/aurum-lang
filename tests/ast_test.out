@@ -1,11 +1,11 @@
 AbstractSyntaxTree {
-  FunctionDef(Type(int) foo(VariableDefStmt(Type(int) var))) {
+  FunctionDef(TypeStmt(int) foo(VariableDefStmt(TypeStmt(int) var))) {
     ReturnStmt(BinaryOpExpr(VariableExpr(var) + ConstIntExpr(5)))
   }
 
-  FunctionDef(Type(int) main()) {
-    VariableDefAssignStmt(Type(int) x = FunctionCallExpr(foo(ConstIntExpr(5))))
-    VariableDefStmt(Type(int) y)
+  FunctionDef(TypeStmt(int) main()) {
+    VariableDefAssignStmt(TypeStmt(int) x = FunctionCallExpr(foo(ConstIntExpr(5))))
+    VariableDefStmt(TypeStmt(int) y)
     BinaryAssignOpExpr(VariableExpr(y) = UnaryOpExpr(-VariableExpr(x)))
     UnaryAssignOpExpr(++VariableExpr(y))
     ReturnStmt(VariableExpr(y))

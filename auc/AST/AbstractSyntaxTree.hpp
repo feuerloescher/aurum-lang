@@ -12,6 +12,7 @@
 #include "Declarations.hpp"
 #include "ASTPass.hpp"
 #include "Blocks.hpp"
+#include "Type.hpp"
 
 namespace AST {
 
@@ -20,11 +21,13 @@ class AbstractSyntaxTree {
 protected:
     DeclarationList declarations;
     ASTMap<FunctionDef> functionDecls;
+    ASTMap<Type> types;
     Block rootBlock;
 
 public:
     DeclarationList& getDeclarations();
     ASTMap<FunctionDef>& getFunctionDefs();
+    ASTMap<Type>& getTypes();
     Block& getRootBlock();
 
 }; // class AbstractSyntaxTree

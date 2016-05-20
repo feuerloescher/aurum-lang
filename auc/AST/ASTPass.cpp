@@ -43,8 +43,8 @@ void ASTPass::runOn(WhileLoop& expr) {
     throw std::runtime_error("WhileLoop unhandled");
 }
 
-void ASTPass::runOn(Type& expr) {
-    throw std::runtime_error("Type unhandled");
+void ASTPass::runOn(TypeStmt& expr) {
+    throw std::runtime_error("TypeStmt unhandled");
 }
 
 void ASTPass::runOn(Expression& expr) {

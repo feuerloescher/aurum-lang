@@ -6,8 +6,6 @@
 
 #include "Blocks.hpp"
 
-#include <sstream>
-
 using namespace AST;
 
 Block::Block() : parentBlock(nullptr) {

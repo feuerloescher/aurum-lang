@@ -6,11 +6,9 @@
 
 #include "Declarations.hpp"
 
-#include <sstream>
-
 using namespace AST;
 
-FunctionDef::FunctionDef(std::string name, ASTPtr<Type> type)
+FunctionDef::FunctionDef(std::string name, ASTPtr<TypeStmt> type)
     : name(name), type(type) {
 }
 
@@ -22,7 +20,7 @@ std::string FunctionDef::getName() {
     return name;
 }
 
-ASTPtr<Type> FunctionDef::getType() {
+ASTPtr<TypeStmt> FunctionDef::getTypeStmt() {
     return type;
 }
 

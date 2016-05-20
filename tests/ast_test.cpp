@@ -5,10 +5,11 @@
  */
 
 #include "AST/AbstractSyntaxTree.hpp"
+#include "AST/ScalarTypes.hpp"
 #include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
-#include "AST/Type.hpp"
+#include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
 #include "Passes/IdentifierPass.hpp"
@@ -22,9 +23,13 @@ using namespace std;
 int main() {
     AbstractSyntaxTree ast;
 
+    IntType intType;
+    ast.getTypes().insert(intType);
+
     auto variable = make_shared<VariableDefStmt>("var",
-        make_shared<Type>("int"));
-    auto funcDecl = make_shared<FunctionDef>("foo", make_shared<Type>("int"));
+        make_shared<TypeStmt>("int"));
+    auto funcDecl = make_shared<FunctionDef>("foo",
+        make_shared<TypeStmt>("int"));
     funcDecl->getParameters().push_back(variable);
     ast.getDeclarations().push_back(funcDecl);
 
@@ -33,16 +38,17 @@ int main() {
     auto ret = make_shared<ReturnStmt>(binaryOp);
     funcDecl->getBody().push_back(ret);
 
-    auto mainDecl = make_shared<FunctionDef>("main", make_shared<Type>("int"));
+    auto mainDecl = make_shared<FunctionDef>("main",
+        make_shared<TypeStmt>("int"));
     ast.getDeclarations().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo");
     funcCall->getParameters().push_back(make_shared<ConstIntExpr>(5));
     auto defAssignX = make_shared<VariableDefAssignStmt>("x",
-        make_shared<Type>("int"), funcCall);
+        make_shared<TypeStmt>("int"), funcCall);
     mainDecl->getBody().push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefStmt>("y", make_shared<Type>("int"));
+    auto defY = make_shared<VariableDefStmt>("y", make_shared<TypeStmt>("int"));
     mainDecl->getBody().push_back(defY);
 
     auto unaryOp = make_shared<UnaryOpExpr>("-",

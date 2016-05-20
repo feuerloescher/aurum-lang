@@ -29,17 +29,17 @@ class FunctionDef : public Declaration {
 
 protected:
     std::string name;
-    ASTPtr<Type> type;
+    ASTPtr<TypeStmt> type;
     ASTList<VariableDefStmt> parameters;
     Block body;
 
 public:
-    FunctionDef(std::string name, ASTPtr<Type> type);
+    FunctionDef(std::string name, ASTPtr<TypeStmt> type);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<Type> getType();
+    ASTPtr<TypeStmt> getTypeStmt();
     VariableDefStmtList& getParameters();
     Block& getBody();
 

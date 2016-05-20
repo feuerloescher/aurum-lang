@@ -9,9 +9,10 @@
 #include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
-#include "AST/Type.hpp"
+#include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "AST/Errors.hpp"
+#include "AST/Type.hpp"
 
 using namespace AST;
 using namespace Passes;
@@ -32,6 +33,7 @@ void IdentifierPass::runOn(FunctionDef& func) {
     if (!ast.getFunctionDefs().insert(func)) {
         throw ExistingIdentifierError(func.getName());
     }
+    func.getTypeStmt()->runPass(*this);
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
         if (!func.getBody().getVariables().insert(*innerStmt)) {
@@ -49,12 +51,14 @@ void IdentifierPass::runOn(VariableDefStmt& stmt) {
     if (!currentBlock->getVariables().insert(stmt)) {
         throw UnknownIdentifierError(stmt.getName());
     }
+    stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
     if (!currentBlock->getVariables().insert(stmt)) {
         throw UnknownIdentifierError(stmt.getName());
     }
+    stmt.getTypeStmt()->runPass(*this);
     stmt.getValue()->runPass(*this);
 }
 
@@ -75,6 +79,14 @@ void IdentifierPass::runOn(IfStmt& stmt) {
 void IdentifierPass::runOn(WhileLoop& stmt) {
     stmt.getCondition()->runPass(*this);
     stmt.getBody().runPass(*this);
+}
+
+void IdentifierPass::runOn(TypeStmt& stmt) {
+    Type* type = ast.getTypes().find(stmt.getName());
+    if (!type) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
+    stmt.setType(type);
 }
 
 void IdentifierPass::runOn(FunctionCallExpr& stmt) {

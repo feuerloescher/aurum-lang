@@ -6,6 +6,7 @@
 
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
+#include "Type.hpp"
 
 using namespace AST;
 
@@ -31,3 +32,4 @@ T* ASTMap<T>::find(std::string name) {
 
 template class AST::ASTMap<FunctionDef>;
 template class AST::ASTMap<VariableDefStmt>;
+template class AST::ASTMap<Type>;

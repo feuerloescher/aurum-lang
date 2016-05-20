@@ -7,8 +7,6 @@
 #include "Statements.hpp"
 #include "Expressions.hpp"
 
-#include <sstream>
-
 using namespace AST;
 
 ReturnStmt::ReturnStmt(ASTPtr<Expression> value) : value(value) {
@@ -23,8 +21,8 @@ ASTPtr<Expression> ReturnStmt::getValue() {
 }
 
 
-VariableDefStmt::VariableDefStmt(std::string name, ASTPtr<Type> type)
-    : name(name), type(type) {
+VariableDefStmt::VariableDefStmt(std::string name, ASTPtr<TypeStmt> typeStmt)
+    : name(name), typeStmt(typeStmt) {
 }
 
 void VariableDefStmt::runPass(ASTPass& pass) {
@@ -35,13 +33,13 @@ std::string VariableDefStmt::getName() {
     return name;
 }
 
-ASTPtr<Type> VariableDefStmt::getType() {
-    return type;
+ASTPtr<TypeStmt> VariableDefStmt::getTypeStmt() {
+    return typeStmt;
 }
 
 
 VariableDefAssignStmt::VariableDefAssignStmt(std::string name,
-    ASTPtr<Type> type, ASTPtr<Expression> value)
+    ASTPtr<TypeStmt> type, ASTPtr<Expression> value)
     : VariableDefStmt(name, type), value(value) {
 }
 

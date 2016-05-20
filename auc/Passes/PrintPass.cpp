@@ -9,7 +9,7 @@
 #include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
-#include "AST/Type.hpp"
+#include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 
 using namespace AST;
@@ -40,12 +40,12 @@ void PrintPass::run() {
     indent() << "}\n";
 }
 
-void PrintPass::runOn(FunctionDef& decl) {
+void PrintPass::runOn(FunctionDef& func) {
     stream << "FunctionDef(";
-    decl.getType()->runPass(*this);
-    stream << " " << decl.getName() << "(";
+    func.getTypeStmt()->runPass(*this);
+    stream << " " << func.getName() << "(";
     bool first = true;
-    for (ASTPtr<VariableDefStmt> innerStmt : decl.getParameters()) {
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         if (!first) {
             stream << ", ";
         }
@@ -53,7 +53,7 @@ void PrintPass::runOn(FunctionDef& decl) {
         innerStmt->runPass(*this);
     }
     stream << ")) ";
-    decl.getBody().runPass(*this);
+    func.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(ReturnStmt& stmt) {
@@ -64,13 +64,13 @@ void PrintPass::runOn(ReturnStmt& stmt) {
 
 void PrintPass::runOn(VariableDefStmt& stmt) {
     stream << "VariableDefStmt(";
-    stmt.getType()->runPass(*this);
+    stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName() << ")";
 }
 
 void PrintPass::runOn(VariableDefAssignStmt& stmt) {
     stream << "VariableDefAssignStmt(";
-    stmt.getType()->runPass(*this);
+    stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName() << " = ";
     stmt.getValue()->runPass(*this);
     stream << ")";
@@ -102,8 +102,8 @@ void PrintPass::runOn(WhileLoop& stmt) {
     stmt.getBody().runPass(*this);
 }
 
-void PrintPass::runOn(Type& stmt) {
-    stream << "Type(" << stmt.getName() << ")";
+void PrintPass::runOn(TypeStmt& stmt) {
+    stream << "TypeStmt(" << stmt.getName() << ")";
 }
 
 void PrintPass::runOn(FunctionCallExpr& stmt) {

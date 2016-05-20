@@ -8,7 +8,7 @@
 #define AUC_STATEMENTS_HPP
 
 #include "common.hpp"
-#include "Type.hpp"
+#include "TypeStmt.hpp"
 #include "ASTPass.hpp"
 
 #include <string>
@@ -43,14 +43,14 @@ class VariableDefStmt : public Statement {
 
 protected:
     std::string name;
-    ASTPtr<Type> type;
+    ASTPtr<TypeStmt> typeStmt;
 
 public:
-    VariableDefStmt(std::string name, ASTPtr<Type> type);
+    VariableDefStmt(std::string name, ASTPtr<TypeStmt> typeStmt);
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<Type> getType();
+    ASTPtr<TypeStmt> getTypeStmt();
 
 }; // class VariableDefStmt
 
@@ -63,7 +63,7 @@ protected:
     ASTPtr<Expression> value;
 
 public:
-    VariableDefAssignStmt(std::string name, ASTPtr<Type> type,
+    VariableDefAssignStmt(std::string name, ASTPtr<TypeStmt> type,
         ASTPtr<Expression> value);
     virtual void runPass(ASTPass& pass);
 

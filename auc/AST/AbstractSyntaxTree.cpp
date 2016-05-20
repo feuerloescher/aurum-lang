@@ -16,6 +16,10 @@ ASTMap<FunctionDef>& AbstractSyntaxTree::getFunctionDefs() {
     return functionDecls;
 }
 
+ASTMap<Type>& AbstractSyntaxTree::getTypes() {
+    return types;
+}
+
 Block& AbstractSyntaxTree::getRootBlock() {
     return rootBlock;
 }

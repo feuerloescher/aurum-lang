@@ -26,7 +26,7 @@ public:
     bool insert(T& t);
     T* find(std::string name);
 
-}; // class Type
+}; // class TypeStmt
 
 } // namespace AST
 

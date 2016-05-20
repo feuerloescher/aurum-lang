@@ -25,7 +25,7 @@ class Block;
 class IfStmt;
 class WhileLoop;
 
-class Type;
+class TypeStmt;
 
 class Expression;
 class FunctionCallExpr;
@@ -58,7 +58,7 @@ public:
     virtual void runOn(IfStmt&);
     virtual void runOn(WhileLoop&);
 
-    virtual void runOn(Type&);
+    virtual void runOn(TypeStmt&);
 
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);
