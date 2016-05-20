@@ -11,6 +11,7 @@
 #include "AST/Type.hpp"
 #include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
+#include "Passes/IdentifierPass.hpp"
 
 #include <iostream>
 
@@ -25,7 +26,7 @@ int main() {
         make_shared<Type>("int"));
     auto funcDecl = make_shared<FunctionDecl>("foo", make_shared<Type>("int"));
     funcDecl->getParameters().push_back(variable);
-    ast.getExpressions().push_back(funcDecl);
+    ast.getDeclarations().push_back(funcDecl);
 
     auto binaryOp = make_shared<BinaryOpExpr>("+",
         make_shared<VariableExpr>("var"), make_shared<ConstIntExpr>(5));
@@ -33,7 +34,7 @@ int main() {
     funcDecl->getBody().push_back(ret);
 
     auto mainDecl = make_shared<FunctionDecl>("main", make_shared<Type>("int"));
-    ast.getExpressions().push_back(mainDecl);
+    ast.getDeclarations().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo");
     funcCall->getParameters().push_back(make_shared<ConstIntExpr>(5));
@@ -58,7 +59,10 @@ int main() {
     auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
     mainDecl->getBody().push_back(ret2);
 
-    PrintPass printer(std::cout);
-    printer.runOn(ast);
+    PrintPass printer(ast, std::cout);
+    printer.run();
+
+    IdentifierPass identifier(ast);
+    identifier.run();
     return 0;
 }

@@ -15,7 +15,8 @@
 using namespace AST;
 using namespace Passes;
 
-PrintPass::PrintPass(std::ostream& stream) : stream(stream) {
+PrintPass::PrintPass(AbstractSyntaxTree& ast, std::ostream& stream)
+    : ASTPass(ast), stream(stream) {
     indentWidth = 0;
 }
 
@@ -26,10 +27,10 @@ std::ostream& PrintPass::indent() {
     return stream;
 }
 
-void PrintPass::runOn(AbstractSyntaxTree& ast) {
+void PrintPass::run() {
     stream << "AbstractSyntaxTree {";
     indentWidth++;
-    for (ASTPtr<Declaration> decl : ast.getExpressions()) {
+    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         stream << "\n";
         indent();
         decl->runPass(*this);
@@ -73,6 +74,7 @@ void PrintPass::runOn(VariableDefStmt& stmt) {
     stmt.getType()->runPass(*this);
     stream << " " << stmt.getName() << ")";
 }
+
 void PrintPass::runOn(VariableDefAssignStmt& stmt) {
     stream << "VariableDefAssignStmt(";
     stmt.getType()->runPass(*this);

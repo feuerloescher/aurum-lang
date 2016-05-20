@@ -8,6 +8,10 @@
 
 using namespace AST;
 
-DeclarationList& AbstractSyntaxTree::getExpressions() {
-    return expressions;
+DeclarationList& AbstractSyntaxTree::getDeclarations() {
+    return declarations;
+}
+
+ASTMap<FunctionDecl>& AbstractSyntaxTree::getFunctionDecls() {
+    return functionDecls;
 }

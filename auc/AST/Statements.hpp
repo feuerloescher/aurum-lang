@@ -4,8 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_IMPERATIVEEXPRESSIONS_HPP
-#define AUC_IMPERATIVEEXPRESSIONS_HPP
+#ifndef AUC_STATEMENTS_HPP
+#define AUC_STATEMENTS_HPP
 
 #include "common.hpp"
 #include "Type.hpp"
@@ -77,4 +77,4 @@ public:
 
 } // namespace AST
 
-#endif // AUC_IMPERATIVEEXPRESSIONS_HPP
+#endif // AUC_STATEMENTS_HPP

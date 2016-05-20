@@ -4,8 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_DECLARATIVEEXPRESSIONS_HPP
-#define AUC_DECLARATIVEEXPRESSIONS_HPP
+#ifndef AUC_DECLARATIONS_HPP
+#define AUC_DECLARATIONS_HPP
 
 #include "common.hpp"
 #include "Statements.hpp"
@@ -47,4 +47,4 @@ public:
 
 } // namespace AST
 
-#endif // AUC_DECLARATIVEEXPRESSIONS_HPP
+#endif // AUC_DECLARATIONS_HPP

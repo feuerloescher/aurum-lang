@@ -38,31 +38,36 @@ class BinaryAssignOpExpr;
 
 class ASTPass {
 
+protected:
+    AbstractSyntaxTree& ast;
+
 public:
-    virtual void runOn(AbstractSyntaxTree& ast) = 0;
+    ASTPass(AbstractSyntaxTree& ast);
+
+    virtual void run() = 0;
 
     void runOn(Declaration& expr);
-    virtual void runOn(FunctionDecl& expr) = 0;
+    virtual void runOn(FunctionDecl& expr);
 
     void runOn(Statement& expr);
-    virtual void runOn(ReturnStmt& expr) = 0;
-    virtual void runOn(VariableDefStmt& expr) = 0;
-    virtual void runOn(VariableDefAssignStmt& expr) = 0;
+    virtual void runOn(ReturnStmt& expr);
+    virtual void runOn(VariableDefStmt& expr);
+    virtual void runOn(VariableDefAssignStmt& expr);
 
     void runOn(Block& expr);
-    virtual void runOn(IfStmt& expr) = 0;
-    virtual void runOn(WhileLoop& expr) = 0;
+    virtual void runOn(IfStmt& expr);
+    virtual void runOn(WhileLoop& expr);
 
-    virtual void runOn(Type& expr) = 0;
+    virtual void runOn(Type& expr);
 
     void runOn(Expression& expr);
-    virtual void runOn(FunctionCallExpr& expr) = 0;
-    virtual void runOn(ConstIntExpr& expr) = 0;
-    virtual void runOn(VariableExpr& expr) = 0;
-    virtual void runOn(UnaryOpExpr& expr) = 0;
-    virtual void runOn(BinaryOpExpr& expr) = 0;
-    virtual void runOn(UnaryAssignOpExpr& expr) = 0;
-    virtual void runOn(BinaryAssignOpExpr& expr) = 0;
+    virtual void runOn(FunctionCallExpr& expr);
+    virtual void runOn(ConstIntExpr& expr);
+    virtual void runOn(VariableExpr& expr);
+    virtual void runOn(UnaryOpExpr& expr);
+    virtual void runOn(BinaryOpExpr& expr);
+    virtual void runOn(UnaryAssignOpExpr& expr);
+    virtual void runOn(BinaryAssignOpExpr& expr);
 
 }; // class ASTPass
 

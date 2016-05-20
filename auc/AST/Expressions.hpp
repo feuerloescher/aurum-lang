@@ -4,8 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_VALUEEXPRESSIONS_HPP
-#define AUC_VALUEEXPRESSIONS_HPP
+#ifndef AUC_EXPRESSIONS_HPP
+#define AUC_EXPRESSIONS_HPP
 
 #include "common.hpp"
 #include "Statements.hpp"
@@ -148,4 +148,4 @@ public:
 
 } // namespace AST
 
-#endif // AUC_VALUEEXPRESSIONS_HPP
+#endif // AUC_EXPRESSIONS_HPP

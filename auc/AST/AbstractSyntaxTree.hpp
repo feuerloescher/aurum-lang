@@ -8,6 +8,7 @@
 #define AUC_ABSTRACTSYNTAXTREE_HPP
 
 #include "common.hpp"
+#include "ASTMap.hpp"
 #include "Declarations.hpp"
 #include "ASTPass.hpp"
 
@@ -16,12 +17,12 @@ namespace AST {
 class AbstractSyntaxTree {
 
 protected:
-    DeclarationList expressions;
+    DeclarationList declarations;
+    ASTMap<FunctionDecl> functionDecls;
 
 public:
-    //~ AbstractSyntaxTree() = default;
-
-    DeclarationList& getExpressions();
+    DeclarationList& getDeclarations();
+    ASTMap<FunctionDecl>& getFunctionDecls();
 
 }; // class AbstractSyntaxTree
 

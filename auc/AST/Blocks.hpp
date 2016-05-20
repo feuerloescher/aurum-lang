@@ -4,8 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_BLOCKEXPRESSIONS_HPP
-#define AUC_BLOCKEXPRESSIONS_HPP
+#ifndef AUC_BLOCKS_HPP
+#define AUC_BLOCKS_HPP
 
 #include "common.hpp"
 #include "Statements.hpp"
@@ -52,4 +52,4 @@ public:
 
 } // namespace AST
 
-#endif // AUC_BLOCKEXPRESSIONS_HPP
+#endif // AUC_BLOCKS_HPP

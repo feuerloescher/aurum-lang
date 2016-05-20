@@ -16,7 +16,7 @@ template <class T>
 using ASTPtr = std::shared_ptr<T>;
 
 template <class T>
-using ASTList = std::vector< ASTPtr<T> >;
+using ASTList = std::vector<ASTPtr<T>>;
 
 } // namespace AST
 
