@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['the_20aurum_20language',['The Aurum language',['../index.html',1,'']]],
   ['todo_20list',['Todo List',['../todo.html',1,'']]],
   ['type',['type',['../classAST_1_1FunctionDef.html#a405505e98b2b9a0bfc1f084193f34b39',1,'AST::FunctionDef::type()'],['../classAST_1_1Expression.html#a62d73e59b65d096c9eb3c82856288b0b',1,'AST::Expression::type()'],['../classAST_1_1TypeStmt.html#ab5ea21bbbb8bec5177089ce19a7c2452',1,'AST::TypeStmt::type()']]],
   ['type',['Type',['../classAST_1_1Type.html',1,'AST']]],
