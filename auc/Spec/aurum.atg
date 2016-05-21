@@ -1,0 +1,114 @@
+/**
+ * auc - The Aurum compiler
+ * Copyright (c) 2016  Alexander Tsaregorodtsev <tuxerr.at@gmail.com>
+ * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
+ */
+
+//TODO: Resolve LL(1) conflicts
+COMPILER Aurum
+
+
+//TODO: Unicode support
+CHARACTERS
+    letter   = 'a'..'z' + 'A' .. 'Z'.
+    digit    = '0'..'9'.
+    hexdigit = digit + 'A'..'F'.
+    octdigit = '0'..'7'.
+    bindigit = '0'..'1'.
+    identchar = ANY - "0123456789;(){}[]".
+
+//TODO: Float and String support
+TOKENS
+    //genericspec = letter | "?".
+    ident = identchar {identchar}.
+    integer =   "0x" hexdigit {hexdigit}
+    |           "0b" bindigit {bindigit}
+    |           "0" octdigit {octdigit}
+    |           ["-"] digit {digit} ["l" | "L"].
+    //funcident = functionchar {functionchar}.
+
+COMMENTS FROM "//" TO "\n"
+COMMENTS FROM "/*" TO "*/"
+
+IGNORE '\t' + '\r' + '\n' + '\f'
+
+PRODUCTIONS
+
+Aurum = {DeclarativeExpression}.
+
+DeclarativeExpression =
+    FunctionDeclaration
+|   FunctionDefinition
+|   ConstantDefinition.
+//|   ClassDefinition   TODO: Class definition
+//|   ImportDefinition  TODO: Import definition
+//|   TypeDefinition    TODO: Type definition
+//|   ExportBlock       TODO: Export definition
+
+FunctionDeclaration = FunctionHeader ["{" "}"] ";".
+
+FunctionDefinition = FunctionHeader "{" {ImperativeExpression} "}".
+FunctionHeader = {FunctionModifier} Type [OperatorDeclaration] ident "(" [ParameterModifier] [ Type {"," Type}] ")".
+
+FunctionModifier =
+    "export"
+|   "const"
+|   "hidden".
+
+//TODO: Array support
+Type = ident ["[" GenericType "]"].
+
+GenericType = GenericTypeSpecifier {"," GenericTypeSpecifier}.
+
+GenericTypeSpecifier = ident  [GenericModifier Type].
+
+GenericModifier =
+    "is"
+|   "has".
+
+OperatorDeclaration = "operator" "(" integer ")" .
+
+ParameterModifier = "\\". //TODO: Parameter Modifier Definition
+
+ImperativeExpression =
+    Block
+|   Return
+|   VariableDefinition
+|   VariableDefinitionAssignment
+|   FunctionCall
+|   AssignOperator
+|   UnaryOperator.
+
+Block =
+    IfCondition
+|   WhileLoop.
+//|   ForLoop       TODO: For loop definition
+//|   SimpleBlock   TODO: Simple block definition
+//|   UnsafeBlock   TODO: Unsafe block definition
+
+IfCondition =   "if" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}")
+                ["else" "if" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}")]
+                ["else" (ImperativeExpression | "{" {ImperativeExpression} "}")].
+
+WhileLoop = "while" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}").
+
+//TODO: Clarify ident statements
+Return = "return" [ident] ";".
+
+VariableDefinition = ident ident ";".
+
+VariableDefinitionAssignment = ident ident "=" ValueExpression ";".
+
+FunctionCall = InlineFunctionCall ";".
+
+InlineFunctionCall = ident "(" [ValueExpression {"," ValueExpression}] ")".
+
+AssignOperator = ident "=" ValueExpression ";".
+
+UnaryOperator = ident ident ValueExpression ";".
+
+ValueExpression = ident | InlineFunctionCall | "(" ValueExpression ident ValueExpression ")" | ValueExpression ident ValueExpression.
+
+ConstantDefinition = "const" ident ident "=" integer ";".
+
+END Aurum.
