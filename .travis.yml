@@ -18,7 +18,7 @@ addons:
    build_command_prepend: "mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug"
    build_command: "make -j2"
    branch_pattern: master
-script: cd build && make -j2 && make test && cd ..
+script: mkdir -p build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug && make -j2 && make test && cd ..
 after_success:
   - cd build && make test_coverage && coveralls-lcov tests/coverage.info && cd ..
 env:
