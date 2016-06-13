@@ -74,7 +74,7 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
 }
 
 void TypePass::runOn(ConstIntExpr& stmt) {
-    // TODO: Find scalar types more elegantly, e.g. store them directly in AST
+    /// \todo Find scalar types more elegantly, e.g. store them directly in AST
     Type* type = ast.getTypes().find("int");
     if (!type) {
         throw UnknownIdentifierError("int");

@@ -99,6 +99,8 @@ void IdentifierPass::runOn(ConstIntExpr& stmt) {
 }
 
 void IdentifierPass::runOn(VariableExpr& stmt) {
+    /// \todo Copy variables from parent blocks in runOn(Block),
+    /// or search through parent blocks here
     VariableDefStmt* variableDef = currentBlock->getVariables().find(
         stmt.getName());
     if (!variableDef) {

@@ -20,3 +20,12 @@ add_library(auc_lib STATIC ${SOURCE_FILES})
 
 add_executable(auc ${MAIN_SRC})
 target_link_libraries(auc auc_lib)
+
+FIND_PACKAGE(Doxygen)
+if (DOXYGEN_FOUND)
+    add_custom_target (docs
+        COMMAND ${DOXYGEN_EXECUTABLE} "${PROJECT_SOURCE_DIR}/Doxyfile"
+        SOURCES "${PROJECT_SOURCE_DIR}/Doxyfile")
+else()
+    message(WARNING "Doxygen is needed to build the documentation.")
+endif()
