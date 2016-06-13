@@ -4,8 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_TYPECHECKPASS_HPP
-#define AUC_TYPECHECKPASS_HPP
+#ifndef AUC_TYPEPASS_HPP
+#define AUC_TYPEPASS_HPP
 
 #include "AST/ASTPass.hpp"
 #include "AST/common.hpp"
@@ -33,7 +33,7 @@ public:
     virtual void runOn(AST::TypeStmt&);
 
     virtual void runOn(AST::FunctionCallExpr&);
-    virtual void runOn(AST::ConstIntExpr&);
+    virtual void runOn(AST::ConstUInt32Expr&);
     virtual void runOn(AST::VariableExpr&);
     virtual void runOn(AST::UnaryOpExpr&);
     virtual void runOn(AST::BinaryOpExpr&);
@@ -44,4 +44,4 @@ public:
 
 } // namespace Passes
 
-#endif // AUC_TYPECHECKPASS_HPP
+#endif // AUC_TYPEPASS_HPP

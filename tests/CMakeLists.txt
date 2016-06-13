@@ -14,7 +14,7 @@ file(GLOB SOURCE_FILES
 foreach(src_file ${SOURCE_FILES})
     STRING(REGEX REPLACE ".cpp\$" "" test_name "${src_file}")
     add_executable(${test_name} "${src_file}")
-    target_link_libraries(${test_name} auc_lib gcov)
+    target_link_libraries(${test_name} auc_lib gcov ${llvm_libs})
     add_test(${test_name} /bin/bash -c "./${test_name} > ${test_name}.out && (test ! -f ../../tests/${test_name}.out || diff ${test_name}.out ../../tests/${test_name}.out)")
 endforeach()
 

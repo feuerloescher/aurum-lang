@@ -95,7 +95,7 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     }
 }
 
-void IdentifierPass::runOn(ConstIntExpr& stmt) {
+void IdentifierPass::runOn(ConstUInt32Expr& stmt) {
 }
 
 void IdentifierPass::runOn(VariableExpr& stmt) {

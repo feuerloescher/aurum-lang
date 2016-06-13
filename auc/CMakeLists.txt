@@ -19,7 +19,7 @@ list(REMOVE_ITEM SOURCE_FILES ${MAIN_SRC})
 add_library(auc_lib STATIC ${SOURCE_FILES})
 
 add_executable(auc ${MAIN_SRC})
-target_link_libraries(auc auc_lib)
+target_link_libraries(auc auc_lib ${llvm_libs})
 
 FIND_PACKAGE(Doxygen)
 if (DOXYGEN_FOUND)

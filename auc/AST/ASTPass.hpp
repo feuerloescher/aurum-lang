@@ -29,7 +29,7 @@ class TypeStmt;
 
 class Expression;
 class FunctionCallExpr;
-class ConstIntExpr;
+class ConstUInt32Expr;
 class VariableExpr;
 class UnaryOpExpr;
 class BinaryOpExpr;
@@ -62,7 +62,7 @@ public:
 
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);
-    virtual void runOn(ConstIntExpr&);
+    virtual void runOn(ConstUInt32Expr&);
     virtual void runOn(VariableExpr&);
     virtual void runOn(UnaryOpExpr&);
     virtual void runOn(BinaryOpExpr&);

@@ -53,8 +53,8 @@ void ASTPass::runOn(Expression& expr) {
 void ASTPass::runOn(FunctionCallExpr& expr) {
     throw std::runtime_error("FunctionCallExpr unhandled");
 }
-void ASTPass::runOn(ConstIntExpr& expr) {
-    throw std::runtime_error("ConstIntExpr unhandled");
+void ASTPass::runOn(ConstUInt32Expr& expr) {
+    throw std::runtime_error("ConstUInt32Expr unhandled");
 }
 void ASTPass::runOn(VariableExpr& expr) {
     throw std::runtime_error("VariableExpr unhandled");

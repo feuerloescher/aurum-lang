@@ -14,6 +14,7 @@
 #include "Passes/PrintPass.hpp"
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
+#include "Passes/LLVMPass.hpp"
 
 #include <iostream>
 
@@ -28,28 +29,28 @@ int main() {
     ast.getTypes().insert(intType);
 
     auto variable = make_shared<VariableDefStmt>("var",
-        make_shared<TypeStmt>("int"));
+        make_shared<TypeStmt>("uint32"));
     auto funcDecl = make_shared<FunctionDef>("foo",
-        make_shared<TypeStmt>("int"));
+        make_shared<TypeStmt>("uint32"));
     funcDecl->getParameters().push_back(variable);
     ast.getDeclarations().push_back(funcDecl);
 
     auto binaryOp = make_shared<BinaryOpExpr>("+",
-        make_shared<VariableExpr>("var"), make_shared<ConstIntExpr>(5));
+        make_shared<VariableExpr>("var"), make_shared<ConstUInt32Expr>(5));
     auto ret = make_shared<ReturnStmt>(binaryOp);
     funcDecl->getBody().push_back(ret);
 
     auto mainDecl = make_shared<FunctionDef>("main",
-        make_shared<TypeStmt>("int"));
+        make_shared<TypeStmt>("uint32"));
     ast.getDeclarations().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo");
-    funcCall->getParameters().push_back(make_shared<ConstIntExpr>(5));
+    funcCall->getParameters().push_back(make_shared<ConstUInt32Expr>(5));
     auto defAssignX = make_shared<VariableDefAssignStmt>("x",
-        make_shared<TypeStmt>("int"), funcCall);
+        make_shared<TypeStmt>("uint32"), funcCall);
     mainDecl->getBody().push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefStmt>("y", make_shared<TypeStmt>("int"));
+    auto defY = make_shared<VariableDefStmt>("y", make_shared<TypeStmt>("uint32"));
     mainDecl->getBody().push_back(defY);
 
     auto unaryOp = make_shared<UnaryOpExpr>("-",
@@ -74,5 +75,8 @@ int main() {
 
     TypePass typePass(ast);
     typePass.run();
+
+    LLVMPass llvmPass(ast);
+    llvmPass.run();
     return 0;
 }

@@ -16,6 +16,14 @@ void Expression::setType(Type* type) {
     this->type = type;
 }
 
+llvm::Value* Expression::getValue() {
+    return value;
+}
+
+void Expression::setValue(llvm::Value* value) {
+    this->value = value;
+}
+
 
 FunctionCallExpr::FunctionCallExpr(std::string name) : name(name) {
 }
@@ -33,15 +41,15 @@ ASTList<Expression>& FunctionCallExpr::getParameters() {
 }
 
 
-ConstIntExpr::ConstIntExpr(uint32_t value) : value(value) {
+ConstUInt32Expr::ConstUInt32Expr(uint32_t numValue) : numValue(numValue) {
 }
 
-void ConstIntExpr::runPass(ASTPass& pass) {
+void ConstUInt32Expr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-uint32_t ConstIntExpr::getValue() {
-    return value;
+uint32_t ConstUInt32Expr::getNumValue() {
+    return numValue;
 }
 
 

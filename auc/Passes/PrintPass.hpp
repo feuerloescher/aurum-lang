@@ -41,7 +41,7 @@ public:
     virtual void runOn(AST::TypeStmt&);
 
     virtual void runOn(AST::FunctionCallExpr&);
-    virtual void runOn(AST::ConstIntExpr&);
+    virtual void runOn(AST::ConstUInt32Expr&);
     virtual void runOn(AST::VariableExpr&);
     virtual void runOn(AST::UnaryOpExpr&);
     virtual void runOn(AST::BinaryOpExpr&);

@@ -11,6 +11,7 @@
 #include "Statements.hpp"
 #include "ASTPass.hpp"
 
+#include <llvm/IR/Value.h>
 #include <string>
 
 namespace AST {
@@ -19,11 +20,14 @@ class Expression : public Statement {
 
 protected:
     Type* type;
+    llvm::Value* value;
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
     virtual Type* getType();
     virtual void setType(Type* type);
+    virtual llvm::Value* getValue();
+    virtual void setValue(llvm::Value* value);
 
 }; // class Expression
 
@@ -46,17 +50,17 @@ public:
 }; // class FunctionCallExpr
 
 
-class ConstIntExpr : public Expression {
+class ConstUInt32Expr : public Expression {
 
 protected:
-    uint32_t value;
+    uint32_t numValue;
 
 public:
-    ConstIntExpr(uint32_t value);
+    ConstUInt32Expr(uint32_t numValue);
 
     virtual void runPass(ASTPass& pass);
 
-    uint32_t getValue();
+    uint32_t getNumValue();
 
 }; // class ConstNumberExpr
 

@@ -4,23 +4,24 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_IDENTIFIERPASS_HPP
-#define AUC_IDENTIFIERPASS_HPP
+#ifndef AUC_LLVMPASS_HPP
+#define AUC_LLVMPASS_HPP
 
 #include "AST/ASTPass.hpp"
-#include "AST/Declarations.hpp"
 #include "AST/common.hpp"
+
+#include <llvm/IR/LLVMContext.h>
 
 namespace Passes {
 
-/// Resolve string identifiers of variables and functions
-class IdentifierPass : public AST::ASTPass {
+/// Generate LLVM Intermediate Representation
+class LLVMPass : public AST::ASTPass {
 
 protected:
-    AST::Block* currentBlock;
+    llvm::LLVMContext llvmContext;
 
 public:
-    IdentifierPass(AST::AbstractSyntaxTree& ast);
+    LLVMPass(AST::AbstractSyntaxTree& ast);
 
     virtual void run();
 
@@ -44,8 +45,8 @@ public:
     virtual void runOn(AST::UnaryAssignOpExpr&);
     virtual void runOn(AST::BinaryAssignOpExpr&);
 
-}; // class IdentifierPass
+}; // class LLVMPass
 
 } // namespace Passes
 
-#endif // AUC_IDENTIFIERPASS_HPP
+#endif // AUC_LLVMPASS_HPP

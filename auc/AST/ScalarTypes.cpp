@@ -9,5 +9,5 @@
 using namespace AST;
 
 std::string IntType::getName() {
-    return "int";
+    return "uint32";
 }
