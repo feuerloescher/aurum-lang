@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['variabledefassignstmt',['VariableDefAssignStmt',['../classAST_1_1VariableDefAssignStmt.html',1,'AST']]],
-  ['variabledefstmt',['VariableDefStmt',['../classAST_1_1VariableDefStmt.html',1,'AST']]],
-  ['variableexpr',['VariableExpr',['../classAST_1_1VariableExpr.html',1,'AST']]]
+  ['unaryassignopexpr',['UnaryAssignOpExpr',['../classAST_1_1UnaryAssignOpExpr.html',1,'AST']]],
+  ['unaryopexpr',['UnaryOpExpr',['../classAST_1_1UnaryOpExpr.html',1,'AST']]],
+  ['unknownidentifiererror',['UnknownIdentifierError',['../classAST_1_1UnknownIdentifierError.html',1,'AST']]]
 ];

@@ -83,13 +83,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
+      <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
       <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
-      <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_t"><span>t</span></a></li>
-      <li class="current"><a href="#index_v"><span>v</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
+      <li class="current"><a href="#index_w"><span>w</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -111,8 +112,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 &#160;
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>allocaInst
+: <a class="el" href="classAST_1_1VariableDefStmt.html#a4a0a8a047cb0ec55063067351a891f83">AST::VariableDefStmt</a>
+</li>
 <li>ast
 : <a class="el" href="classAST_1_1ASTPass.html#aa560aef92001c855939117afa84e26e4">AST::ASTPass</a>
+, <a class="el" href="classPasses_1_1IRExportPass.html#aa908419d5d2ea9c654ddaf68b60f446d">Passes::IRExportPass</a>
+, <a class="el" href="classPasses_1_1StdLibPass.html#aeaa9111b6cd3bee9425c0420f289e6fc">Passes::StdLibPass</a>
 </li>
 </ul>
 
@@ -133,6 +139,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>currentBlock
 : <a class="el" href="classPasses_1_1IdentifierPass.html#a463aaa006e331ac168f367f904d14159">Passes::IdentifierPass</a>
+, <a class="el" href="classPasses_1_1LLVMPass.html#a6a7b8e17173fe1d447d93a7df1c68fc9">Passes::LLVMPass</a>
 </li>
 </ul>
 
@@ -146,14 +153,43 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
 <li>functionDecls
-: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#adc5157841c525f76b3e85387ea39c475">AST::AbstractSyntaxTree</a>
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a004227990000bbcb9f0e02482b5a2783">AST::AbstractSyntaxTree</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>internalMap
-: <a class="el" href="classAST_1_1ASTMap.html#a550fb1a3517a2f39c003335be137777e">AST::ASTMap&lt; T &gt;</a>
+: <a class="el" href="classAST_1_1ASTMap.html#a637bfdbbbbd498513647283ab462d164">AST::ASTMap&lt; T &gt;</a>
+</li>
+<li>irBuilder
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#af21e24af3412ad0f7631e30c008dfa11">AST::AbstractSyntaxTree</a>
+</li>
+<li>isSigned
+: <a class="el" href="classAST_1_1IntType.html#ac38d56d554a8e02ad1bf5c7630fd86fd">AST::IntType</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
+<li>llvmBlock
+: <a class="el" href="classAST_1_1Block.html#a9df9fcd0d8f44e1902faf3cfb8f8489b">AST::Block</a>
+</li>
+<li>llvmContext
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#ab6a57652e86a63192ae2bcba7a09ff92">AST::AbstractSyntaxTree</a>
+, <a class="el" href="classPasses_1_1LLVMPass.html#ad14b80e02a52a303ce45036023ac45b0">Passes::LLVMPass</a>
+</li>
+<li>llvmFunction
+: <a class="el" href="classAST_1_1FunctionDef.html#a07008996ceb8e7f1e2c9bf12eab2adaf">AST::FunctionDef</a>
+</li>
+<li>llvmModule
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#ad83fc2d535267208c23d3458267a9d35">AST::AbstractSyntaxTree</a>
+</li>
+<li>llvmType
+: <a class="el" href="classAST_1_1Type.html#ad9444f6f03eca0cf0e6c448fc764adf1">AST::Type</a>
+</li>
+<li>llvmValue
+: <a class="el" href="classAST_1_1Expression.html#a33ed55c3b8043dbd38d436b55ae29ea9">AST::Expression</a>
 </li>
 </ul>
 
@@ -164,11 +200,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="classAST_1_1BinaryOpExpr.html#a9e82101509fc5b1e4744340daea78dbb">AST::BinaryOpExpr</a>
 , <a class="el" href="classAST_1_1FunctionCallExpr.html#a74c1dbc48768cff8b7e28ac14d38459b">AST::FunctionCallExpr</a>
 , <a class="el" href="classAST_1_1FunctionDef.html#a28d44e719984edf391842290d309a973">AST::FunctionDef</a>
+, <a class="el" href="classAST_1_1Type.html#a13b52014ce5b39ab6d87c9c9b5b2a2a2">AST::Type</a>
 , <a class="el" href="classAST_1_1TypeStmt.html#a427a9275d19093d58ca632d0048b97a4">AST::TypeStmt</a>
 , <a class="el" href="classAST_1_1UnaryAssignOpExpr.html#a1cc8b2b39a444d06b14906c02271de26">AST::UnaryAssignOpExpr</a>
 , <a class="el" href="classAST_1_1UnaryOpExpr.html#ac126478bf281a126e676a7d1e8625e28">AST::UnaryOpExpr</a>
 , <a class="el" href="classAST_1_1VariableDefStmt.html#abdcb8216ed5501ee5854ab83db34dcaf">AST::VariableDefStmt</a>
 , <a class="el" href="classAST_1_1VariableExpr.html#aaa58c4bf15624d1b67f7d6594f28ac0a">AST::VariableExpr</a>
+</li>
+<li>numValue
+: <a class="el" href="classAST_1_1ConstUInt32Expr.html#ab2a21f6e411c930dd6a80f0922402b8b">AST::ConstUInt32Expr</a>
 </li>
 </ul>
 
@@ -188,19 +228,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
+<li>parameterLLVMTypes
+: <a class="el" href="classAST_1_1FunctionDef.html#a252b8aec7a7ba51f9ed3a5dbb8b2f9c8">AST::FunctionDef</a>
+</li>
 <li>parameters
 : <a class="el" href="classAST_1_1FunctionCallExpr.html#ab68e9c171b740e03f844443a5f52f4c4">AST::FunctionCallExpr</a>
 , <a class="el" href="classAST_1_1FunctionDef.html#a46d4ee33b8bc4f00538b1f91415e690f">AST::FunctionDef</a>
 </li>
 <li>parentBlock
 : <a class="el" href="classAST_1_1Block.html#aa59bb17527fccfaf0a7c0a518d6df218">AST::Block</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>rootBlock
-: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a1667bdad36fcae42fc482ddaee29f06d">AST::AbstractSyntaxTree</a>
 </li>
 </ul>
 
@@ -214,12 +250,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>type
-: <a class="el" href="classAST_1_1Expression.html#a62d73e59b65d096c9eb3c82856288b0b">AST::Expression</a>
+: <a class="el" href="classAST_1_1Expression.html#aae1f1a73605bc2b1251da48d0b0c68b6">AST::Expression</a>
 , <a class="el" href="classAST_1_1FunctionDef.html#a405505e98b2b9a0bfc1f084193f34b39">AST::FunctionDef</a>
-, <a class="el" href="classAST_1_1TypeStmt.html#ab5ea21bbbb8bec5177089ce19a7c2452">AST::TypeStmt</a>
+, <a class="el" href="classAST_1_1TypeStmt.html#a36f82c2294871473243769440dd276d8">AST::TypeStmt</a>
 </li>
 <li>types
-: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a4755c6b70a6b0d3c1f7b13daa27e1371">AST::AbstractSyntaxTree</a>
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a3eee296d8135ec6556b30c2f3f5c390f">AST::AbstractSyntaxTree</a>
 </li>
 <li>typeStmt
 : <a class="el" href="classAST_1_1VariableDefStmt.html#ae44a4b9b3810c7b7da15ea12ae566c47">AST::VariableDefStmt</a>
@@ -229,8 +265,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
 <li>value
-: <a class="el" href="classAST_1_1ConstIntExpr.html#ad81fbc35d1842e26053b9f97d801c24f">AST::ConstIntExpr</a>
-, <a class="el" href="classAST_1_1ReturnStmt.html#a4e06aef4cf640d168c648d443072c95a">AST::ReturnStmt</a>
+: <a class="el" href="classAST_1_1ReturnStmt.html#a4e06aef4cf640d168c648d443072c95a">AST::ReturnStmt</a>
 , <a class="el" href="classAST_1_1VariableDefAssignStmt.html#aede8bc85aba742380411a1e1e7a5a64b">AST::VariableDefAssignStmt</a>
 </li>
 <li>variable
@@ -241,7 +276,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classAST_1_1VariableExpr.html#a5427ab6238c7533e568ee4f8005a328d">AST::VariableExpr</a>
 </li>
 <li>variables
-: <a class="el" href="classAST_1_1Block.html#a40a94d8b80ba0c388b733577d1681fba">AST::Block</a>
+: <a class="el" href="classAST_1_1Block.html#ae1076f4d983284bd5117fe6f53e9ece3">AST::Block</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_w"></a>- w -</h3><ul>
+<li>width
+: <a class="el" href="classAST_1_1IntType.html#aa386d4690acc49c495dd8028bb173766">AST::IntType</a>
 </li>
 </ul>
 </div><!-- contents -->

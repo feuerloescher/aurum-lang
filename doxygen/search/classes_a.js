@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['type',['Type',['../classAST_1_1Type.html',1,'AST']]],
-  ['typepass',['TypePass',['../classPasses_1_1TypePass.html',1,'Passes']]],
-  ['typestmt',['TypeStmt',['../classAST_1_1TypeStmt.html',1,'AST']]]
+  ['scalartype',['ScalarType',['../classAST_1_1ScalarType.html',1,'AST']]],
+  ['statement',['Statement',['../classAST_1_1Statement.html',1,'AST']]],
+  ['stdlibpass',['StdLibPass',['../classPasses_1_1StdLibPass.html',1,'Passes']]]
 ];

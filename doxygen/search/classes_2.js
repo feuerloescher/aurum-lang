@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['constintexpr',['ConstIntExpr',['../classAST_1_1ConstIntExpr.html',1,'AST']]]
+  ['constuint32expr',['ConstUInt32Expr',['../classAST_1_1ConstUInt32Expr.html',1,'AST']]]
 ];

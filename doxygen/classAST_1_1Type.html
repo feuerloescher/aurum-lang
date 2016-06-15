@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classAST_1_1Type-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">AST::Type Class Reference<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -110,11 +111,41 @@ Inheritance diagram for AST::Type:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afcefe167f7d8485b2ff7ee2061918d87"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#afcefe167f7d8485b2ff7ee2061918d87">getName</a> ()=0</td></tr>
-<tr class="separator:afcefe167f7d8485b2ff7ee2061918d87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31ec691e43ba275d4d117fe9bb46c8c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#a31ec691e43ba275d4d117fe9bb46c8c1">Type</a> (std::string <a class="el" href="classAST_1_1Type.html#a13b52014ce5b39ab6d87c9c9b5b2a2a2">name</a>)</td></tr>
+<tr class="separator:a31ec691e43ba275d4d117fe9bb46c8c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad59f2e420bbd8a13b3759530939f6bc2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#ad59f2e420bbd8a13b3759530939f6bc2">getName</a> ()</td></tr>
+<tr class="separator:ad59f2e420bbd8a13b3759530939f6bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebefc6cf11723a6cdef7a4b3ba2c84fc"><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#aebefc6cf11723a6cdef7a4b3ba2c84fc">getLLVMType</a> ()</td></tr>
+<tr class="separator:aebefc6cf11723a6cdef7a4b3ba2c84fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8541d53d1c71c81d54b9b60bf058e253"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#a8541d53d1c71c81d54b9b60bf058e253">createLLVMType</a> (llvm::LLVMContext &amp;llvmContext)=0</td></tr>
+<tr class="separator:a8541d53d1c71c81d54b9b60bf058e253"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a13b52014ce5b39ab6d87c9c9b5b2a2a2"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#a13b52014ce5b39ab6d87c9c9b5b2a2a2">name</a></td></tr>
+<tr class="separator:a13b52014ce5b39ab6d87c9c9b5b2a2a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9444f6f03eca0cf0e6c448fc764adf1"><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#ad9444f6f03eca0cf0e6c448fc764adf1">llvmType</a></td></tr>
+<tr class="separator:ad9444f6f03eca0cf0e6c448fc764adf1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a31ec691e43ba275d4d117fe9bb46c8c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Type::Type </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="afcefe167f7d8485b2ff7ee2061918d87"></a>
+<a class="anchor" id="a8541d53d1c71c81d54b9b60bf058e253"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -122,9 +153,10 @@ Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual std::string AST::Type::getName </td>
+          <td class="memname">virtual void AST::Type::createLLVMType </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">llvm::LLVMContext &amp;&#160;</td>
+          <td class="paramname"><em>llvmContext</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -135,12 +167,84 @@ Public Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classAST_1_1IntType.html#a72157ac065dcd418aa3e4971a5d06daf">AST::IntType</a>.</p>
+<p>Implemented in <a class="el" href="classAST_1_1IntType.html#a86aa24c9148e769727f356d399c5bacd">AST::IntType</a>.</p>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<a class="anchor" id="aebefc6cf11723a6cdef7a4b3ba2c84fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Type * Type::getLLVMType </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad59f2e420bbd8a13b3759530939f6bc2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Type::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ad9444f6f03eca0cf0e6c448fc764adf1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Type* AST::Type::llvmType</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a13b52014ce5b39ab6d87c9c9b5b2a2a2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string AST::Type::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Type_8hpp_source.html">Type.hpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Type_8cpp.html">Type.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

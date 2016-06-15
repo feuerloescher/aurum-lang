@@ -107,7 +107,7 @@ Inheritance diagram for AST::Expression:</div>
 <area href="classAST_1_1Statement.html" alt="AST::Statement" shape="rect" coords="510,0,670,24"/>
 <area href="classAST_1_1BinaryAssignOpExpr.html" alt="AST::BinaryAssignOpExpr" shape="rect" coords="0,112,160,136"/>
 <area href="classAST_1_1BinaryOpExpr.html" alt="AST::BinaryOpExpr" shape="rect" coords="170,112,330,136"/>
-<area href="classAST_1_1ConstIntExpr.html" alt="AST::ConstIntExpr" shape="rect" coords="340,112,500,136"/>
+<area href="classAST_1_1ConstUInt32Expr.html" alt="AST::ConstUInt32Expr" shape="rect" coords="340,112,500,136"/>
 <area href="classAST_1_1FunctionCallExpr.html" alt="AST::FunctionCallExpr" shape="rect" coords="510,112,670,136"/>
 <area href="classAST_1_1UnaryAssignOpExpr.html" alt="AST::UnaryAssignOpExpr" shape="rect" coords="680,112,840,136"/>
 <area href="classAST_1_1UnaryOpExpr.html" alt="AST::UnaryOpExpr" shape="rect" coords="850,112,1010,136"/>
@@ -119,18 +119,24 @@ Inheritance diagram for AST::Expression:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a52a6f9fbb78431150766ac244b0ea6b4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a52a6f9fbb78431150766ac244b0ea6b4">runPass</a> (<a class="el" href="classAST_1_1ASTPass.html">ASTPass</a> &amp;pass)=0</td></tr>
 <tr class="separator:a52a6f9fbb78431150766ac244b0ea6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a95b6d944cce17aae225680256dd2fb7f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classAST_1_1Type.html">Type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a95b6d944cce17aae225680256dd2fb7f">getType</a> ()</td></tr>
-<tr class="separator:a95b6d944cce17aae225680256dd2fb7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9c36e86aa522d5ed6585b7b34d927ee0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a9c36e86aa522d5ed6585b7b34d927ee0">setType</a> (<a class="el" href="classAST_1_1Type.html">Type</a> *<a class="el" href="classAST_1_1Expression.html#a62d73e59b65d096c9eb3c82856288b0b">type</a>)</td></tr>
-<tr class="separator:a9c36e86aa522d5ed6585b7b34d927ee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9782faebf06cc93d103af2d09eaed47"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#af9782faebf06cc93d103af2d09eaed47">getType</a> ()</td></tr>
+<tr class="separator:af9782faebf06cc93d103af2d09eaed47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b2990b2a0c03339f132c1621408a9e3"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a8b2990b2a0c03339f132c1621408a9e3">setType</a> (<a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">Type</a> &gt; <a class="el" href="classAST_1_1Expression.html#aae1f1a73605bc2b1251da48d0b0c68b6">type</a>)</td></tr>
+<tr class="separator:a8b2990b2a0c03339f132c1621408a9e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5aba4603ddbc8c1c894dd32f344d19b8"><td class="memItemLeft" align="right" valign="top">virtual llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a5aba4603ddbc8c1c894dd32f344d19b8">getLLVMValue</a> ()</td></tr>
+<tr class="separator:a5aba4603ddbc8c1c894dd32f344d19b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e97ec92bf0d5339ee41c3129c94143f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a3e97ec92bf0d5339ee41c3129c94143f">setLLVMValue</a> (llvm::Value *<a class="el" href="classAST_1_1Expression.html#a33ed55c3b8043dbd38d436b55ae29ea9">llvmValue</a>)</td></tr>
+<tr class="separator:a3e97ec92bf0d5339ee41c3129c94143f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a62d73e59b65d096c9eb3c82856288b0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1Type.html">Type</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a62d73e59b65d096c9eb3c82856288b0b">type</a></td></tr>
-<tr class="separator:a62d73e59b65d096c9eb3c82856288b0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae1f1a73605bc2b1251da48d0b0c68b6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">Type</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#aae1f1a73605bc2b1251da48d0b0c68b6">type</a></td></tr>
+<tr class="separator:aae1f1a73605bc2b1251da48d0b0c68b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33ed55c3b8043dbd38d436b55ae29ea9"><td class="memItemLeft" align="right" valign="top">llvm::Value *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Expression.html#a33ed55c3b8043dbd38d436b55ae29ea9">llvmValue</a></td></tr>
+<tr class="separator:a33ed55c3b8043dbd38d436b55ae29ea9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a95b6d944cce17aae225680256dd2fb7f"></a>
+<a class="anchor" id="a5aba4603ddbc8c1c894dd32f344d19b8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -138,7 +144,30 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classAST_1_1Type.html">Type</a> * Expression::getType </td>
+          <td class="memname">llvm::Value * Expression::getLLVMValue </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="af9782faebf06cc93d103af2d09eaed47"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">Type</a> &gt; Expression::getType </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -177,11 +206,35 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classAST_1_1Statement.html#ae2887901ba668bf8cf39e903acfc9703">AST::Statement</a>.</p>
 
-<p>Implemented in <a class="el" href="classAST_1_1BinaryAssignOpExpr.html#a1920f88e330403305c5fe1b540d6c517">AST::BinaryAssignOpExpr</a>, <a class="el" href="classAST_1_1UnaryAssignOpExpr.html#a69e5c5f96abee02ecb50aebc2df27873">AST::UnaryAssignOpExpr</a>, <a class="el" href="classAST_1_1BinaryOpExpr.html#a19c4e46337936a25eb71077fb939baaf">AST::BinaryOpExpr</a>, <a class="el" href="classAST_1_1UnaryOpExpr.html#a11988d742c9241b02c9ade9affc2833f">AST::UnaryOpExpr</a>, <a class="el" href="classAST_1_1VariableExpr.html#ac53ea8008e8444815f81a83cb9e970a9">AST::VariableExpr</a>, <a class="el" href="classAST_1_1ConstIntExpr.html#a323cb561bb50075adb3ecd60890c057c">AST::ConstIntExpr</a>, and <a class="el" href="classAST_1_1FunctionCallExpr.html#aa6ac70bfad64912acaa8ec3445cc085f">AST::FunctionCallExpr</a>.</p>
+<p>Implemented in <a class="el" href="classAST_1_1BinaryAssignOpExpr.html#a1920f88e330403305c5fe1b540d6c517">AST::BinaryAssignOpExpr</a>, <a class="el" href="classAST_1_1UnaryAssignOpExpr.html#a69e5c5f96abee02ecb50aebc2df27873">AST::UnaryAssignOpExpr</a>, <a class="el" href="classAST_1_1BinaryOpExpr.html#a19c4e46337936a25eb71077fb939baaf">AST::BinaryOpExpr</a>, <a class="el" href="classAST_1_1UnaryOpExpr.html#a11988d742c9241b02c9ade9affc2833f">AST::UnaryOpExpr</a>, <a class="el" href="classAST_1_1VariableExpr.html#ac53ea8008e8444815f81a83cb9e970a9">AST::VariableExpr</a>, <a class="el" href="classAST_1_1ConstUInt32Expr.html#aced14a9267fe893f6a9e66f0a0de2117">AST::ConstUInt32Expr</a>, and <a class="el" href="classAST_1_1FunctionCallExpr.html#aa6ac70bfad64912acaa8ec3445cc085f">AST::FunctionCallExpr</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a9c36e86aa522d5ed6585b7b34d927ee0"></a>
+<a class="anchor" id="a3e97ec92bf0d5339ee41c3129c94143f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Expression::setLLVMValue </td>
+          <td>(</td>
+          <td class="paramtype">llvm::Value *&#160;</td>
+          <td class="paramname"><em>llvmValue</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8b2990b2a0c03339f132c1621408a9e3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -191,7 +244,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Expression::setType </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1Type.html">Type</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">Type</a> &gt;&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
           <td></td>
         </tr>
@@ -206,7 +259,7 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a62d73e59b65d096c9eb3c82856288b0b"></a>
+<a class="anchor" id="a33ed55c3b8043dbd38d436b55ae29ea9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -214,7 +267,27 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classAST_1_1Type.html">Type</a>* AST::Expression::type</td>
+          <td class="memname">llvm::Value* AST::Expression::llvmValue</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aae1f1a73605bc2b1251da48d0b0c68b6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt;<a class="el" href="classAST_1_1Type.html">Type</a>&gt; AST::Expression::type</td>
         </tr>
       </table>
   </td>

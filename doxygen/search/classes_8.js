@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['returnstmt',['ReturnStmt',['../classAST_1_1ReturnStmt.html',1,'AST']]]
+  ['printpass',['PrintPass',['../classPasses_1_1PrintPass.html',1,'Passes']]]
 ];

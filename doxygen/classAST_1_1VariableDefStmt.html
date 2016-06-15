@@ -119,6 +119,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a028a1c21b1409732d7e09d1a9ffd4210"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa5e7c4112196f85c5f7f47e7a8acc1cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1TypeStmt.html">TypeStmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf">getTypeStmt</a> ()</td></tr>
 <tr class="separator:aa5e7c4112196f85c5f7f47e7a8acc1cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9378b39b10565aeb59007694c709ddc8"><td class="memItemLeft" align="right" valign="top">llvm::AllocaInst *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1VariableDefStmt.html#a9378b39b10565aeb59007694c709ddc8">getAllocaInst</a> ()</td></tr>
+<tr class="separator:a9378b39b10565aeb59007694c709ddc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a21740ea26ac35ec8693d169658a37a84"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1VariableDefStmt.html#a21740ea26ac35ec8693d169658a37a84">setAllocaInst</a> (llvm::AllocaInst *<a class="el" href="classAST_1_1VariableDefStmt.html#a4a0a8a047cb0ec55063067351a891f83">allocaInst</a>)</td></tr>
+<tr class="separator:a21740ea26ac35ec8693d169658a37a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -126,6 +130,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:abdcb8216ed5501ee5854ab83db34dcaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae44a4b9b3810c7b7da15ea12ae566c47"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1TypeStmt.html">TypeStmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1VariableDefStmt.html#ae44a4b9b3810c7b7da15ea12ae566c47">typeStmt</a></td></tr>
 <tr class="separator:ae44a4b9b3810c7b7da15ea12ae566c47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a0a8a047cb0ec55063067351a891f83"><td class="memItemLeft" align="right" valign="top">llvm::AllocaInst *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1VariableDefStmt.html#a4a0a8a047cb0ec55063067351a891f83">allocaInst</a></td></tr>
+<tr class="separator:a4a0a8a047cb0ec55063067351a891f83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a8cf32adc3709052ac9e691655bd89836"></a>
@@ -155,6 +161,21 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a9378b39b10565aeb59007694c709ddc8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::AllocaInst * VariableDefStmt::getAllocaInst </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a028a1c21b1409732d7e09d1a9ffd4210"></a>
 <div class="memitem">
 <div class="memproto">
@@ -213,7 +234,43 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a21740ea26ac35ec8693d169658a37a84"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void VariableDefStmt::setAllocaInst </td>
+          <td>(</td>
+          <td class="paramtype">llvm::AllocaInst *&#160;</td>
+          <td class="paramname"><em>allocaInst</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a4a0a8a047cb0ec55063067351a891f83"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::AllocaInst* AST::VariableDefStmt::allocaInst</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="abdcb8216ed5501ee5854ab83db34dcaf"></a>
 <div class="memitem">
 <div class="memproto">

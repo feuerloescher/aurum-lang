@@ -122,6 +122,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4587c589fcb08ec09a8142c8bc5725a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3ee74f5ced7bb560f236cbd68d760cfb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1Block.html">Block</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a3ee74f5ced7bb560f236cbd68d760cfb">getBody</a> ()</td></tr>
 <tr class="separator:a3ee74f5ced7bb560f236cbd68d760cfb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4abf225c822f244a5fbd8189537a9d85"><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a4abf225c822f244a5fbd8189537a9d85">getLLVMFunction</a> ()</td></tr>
+<tr class="separator:a4abf225c822f244a5fbd8189537a9d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7613b7a8a002b5cc5b5d7d2af8a450d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a7613b7a8a002b5cc5b5d7d2af8a450d8">setLLVMFunction</a> (llvm::Function *<a class="el" href="classAST_1_1FunctionDef.html#a07008996ceb8e7f1e2c9bf12eab2adaf">llvmFunction</a>)</td></tr>
+<tr class="separator:a7613b7a8a002b5cc5b5d7d2af8a450d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc06e8cfedcec210352f4aad6061fbb7"><td class="memItemLeft" align="right" valign="top">std::vector&lt; llvm::Type * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#acc06e8cfedcec210352f4aad6061fbb7">getParameterLLVMTypes</a> ()</td></tr>
+<tr class="separator:acc06e8cfedcec210352f4aad6061fbb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -133,6 +139,10 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:a46d4ee33b8bc4f00538b1f91415e690f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a127afe3f87161eb078bcfa95298fe3cf"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1Block.html">Block</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a127afe3f87161eb078bcfa95298fe3cf">body</a></td></tr>
 <tr class="separator:a127afe3f87161eb078bcfa95298fe3cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07008996ceb8e7f1e2c9bf12eab2adaf"><td class="memItemLeft" align="right" valign="top">llvm::Function *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a07008996ceb8e7f1e2c9bf12eab2adaf">llvmFunction</a></td></tr>
+<tr class="separator:a07008996ceb8e7f1e2c9bf12eab2adaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a252b8aec7a7ba51f9ed3a5dbb8b2f9c8"><td class="memItemLeft" align="right" valign="top">std::vector&lt; llvm::Type * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1FunctionDef.html#a252b8aec7a7ba51f9ed3a5dbb8b2f9c8">parameterLLVMTypes</a></td></tr>
+<tr class="separator:a252b8aec7a7ba51f9ed3a5dbb8b2f9c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a48a6a3b3be6458a61c3d660571d48478"></a>
@@ -177,12 +187,42 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4abf225c822f244a5fbd8189537a9d85"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Function * FunctionDef::getLLVMFunction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="af10ce80d7e2ba91ef5622cca65a3bf8a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">std::string FunctionDef::getName </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="acc06e8cfedcec210352f4aad6061fbb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; llvm::Type * &gt; &amp; FunctionDef::getParameterLLVMTypes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -248,6 +288,22 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a7613b7a8a002b5cc5b5d7d2af8a450d8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void FunctionDef::setLLVMFunction </td>
+          <td>(</td>
+          <td class="paramtype">llvm::Function *&#160;</td>
+          <td class="paramname"><em>llvmFunction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a127afe3f87161eb078bcfa95298fe3cf"></a>
 <div class="memitem">
@@ -269,6 +325,26 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a07008996ceb8e7f1e2c9bf12eab2adaf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::Function* AST::FunctionDef::llvmFunction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="a28d44e719984edf391842290d309a973"></a>
 <div class="memitem">
 <div class="memproto">
@@ -278,6 +354,26 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::string AST::FunctionDef::name</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a252b8aec7a7ba51f9ed3a5dbb8b2f9c8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;llvm::Type*&gt; AST::FunctionDef::parameterLLVMTypes</td>
         </tr>
       </table>
   </td>

@@ -118,21 +118,27 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab0a461d2187e21e9d18dcb1365e7953c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a011c4be85e628566a6e737f3977e66b8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a011c4be85e628566a6e737f3977e66b8">push_back</a> (<a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">ASTPtr</a>&lt; <a class="el" href="classAST_1_1Statement.html">Statement</a> &gt; statement)</td></tr>
 <tr class="separator:a011c4be85e628566a6e737f3977e66b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a969c1551efe73612d571046445079265"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a969c1551efe73612d571046445079265">getVariables</a> ()</td></tr>
-<tr class="separator:a969c1551efe73612d571046445079265"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a746073544796a0d7888560a14f2ab5e2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a746073544796a0d7888560a14f2ab5e2">getVariables</a> ()</td></tr>
+<tr class="separator:a746073544796a0d7888560a14f2ab5e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd2a808c03cd4ec71c32a0681f711e88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1Block.html">Block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#acd2a808c03cd4ec71c32a0681f711e88">getParentBlock</a> ()</td></tr>
 <tr class="separator:acd2a808c03cd4ec71c32a0681f711e88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2673559c67364353b0ed6f604ff6b7f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#ac2673559c67364353b0ed6f604ff6b7f">setParentBlock</a> (<a class="el" href="classAST_1_1Block.html">Block</a> *block)</td></tr>
 <tr class="separator:ac2673559c67364353b0ed6f604ff6b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed59509e5f9cb365008c62033b66e003"><td class="memItemLeft" align="right" valign="top">llvm::BasicBlock *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#aed59509e5f9cb365008c62033b66e003">getLLVMBlock</a> ()</td></tr>
+<tr class="separator:aed59509e5f9cb365008c62033b66e003"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab68cec1c2615b0714d74de628c510e4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#aab68cec1c2615b0714d74de628c510e4">setLLVMBlock</a> (llvm::BasicBlock *<a class="el" href="classAST_1_1Block.html#a9df9fcd0d8f44e1902faf3cfb8f8489b">llvmBlock</a>)</td></tr>
+<tr class="separator:aab68cec1c2615b0714d74de628c510e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a3ff4ec0cca7378785547df808a749eaa"><td class="memItemLeft" align="right" valign="top"><a class="el" href="namespaceAST.html#a8f7d7f26f337c3553d07b1ae66e9314c">StatementList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a3ff4ec0cca7378785547df808a749eaa">statements</a></td></tr>
 <tr class="separator:a3ff4ec0cca7378785547df808a749eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a40a94d8b80ba0c388b733577d1681fba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a40a94d8b80ba0c388b733577d1681fba">variables</a></td></tr>
-<tr class="separator:a40a94d8b80ba0c388b733577d1681fba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1076f4d983284bd5117fe6f53e9ece3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#ae1076f4d983284bd5117fe6f53e9ece3">variables</a></td></tr>
+<tr class="separator:ae1076f4d983284bd5117fe6f53e9ece3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa59bb17527fccfaf0a7c0a518d6df218"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1Block.html">Block</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#aa59bb17527fccfaf0a7c0a518d6df218">parentBlock</a></td></tr>
 <tr class="separator:aa59bb17527fccfaf0a7c0a518d6df218"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9df9fcd0d8f44e1902faf3cfb8f8489b"><td class="memItemLeft" align="right" valign="top">llvm::BasicBlock *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Block.html#a9df9fcd0d8f44e1902faf3cfb8f8489b">llvmBlock</a></td></tr>
+<tr class="separator:a9df9fcd0d8f44e1902faf3cfb8f8489b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a37658a946bf5067ad01d68d9ff086adc"></a>
@@ -151,6 +157,21 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aed59509e5f9cb365008c62033b66e003"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::BasicBlock * Block::getLLVMBlock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="acd2a808c03cd4ec71c32a0681f711e88"></a>
 <div class="memitem">
 <div class="memproto">
@@ -181,12 +202,12 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a969c1551efe73612d571046445079265"></a>
+<a class="anchor" id="a746073544796a0d7888560a14f2ab5e2"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> &gt; &amp; Block::getVariables </td>
+          <td class="memname"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a> * &gt; &amp; Block::getVariables </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -238,6 +259,22 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aab68cec1c2615b0714d74de628c510e4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Block::setLLVMBlock </td>
+          <td>(</td>
+          <td class="paramtype">llvm::BasicBlock *&#160;</td>
+          <td class="paramname"><em>llvmBlock</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="ac2673559c67364353b0ed6f604ff6b7f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -255,6 +292,26 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a9df9fcd0d8f44e1902faf3cfb8f8489b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::BasicBlock* AST::Block::llvmBlock</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a class="anchor" id="aa59bb17527fccfaf0a7c0a518d6df218"></a>
 <div class="memitem">
 <div class="memproto">
@@ -295,7 +352,7 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a40a94d8b80ba0c388b733577d1681fba"></a>
+<a class="anchor" id="ae1076f4d983284bd5117fe6f53e9ece3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -303,7 +360,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt;<a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a>&gt; AST::Block::variables</td>
+          <td class="memname"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt;<a class="el" href="classAST_1_1VariableDefStmt.html">VariableDefStmt</a>*&gt; AST::Block::variables</td>
         </tr>
       </table>
   </td>
