@@ -19,13 +19,13 @@ namespace AST {
 class Expression : public Statement {
 
 protected:
-    Type* type;
+    ASTPtr<Type> type;
     llvm::Value* llvmValue;
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
-    virtual Type* getType();
-    virtual void setType(Type* type);
+    virtual ASTPtr<Type> getType();
+    virtual void setType(ASTPtr<Type> type);
     virtual llvm::Value* getLLVMValue();
     virtual void setLLVMValue(llvm::Value* llvmValue);
 

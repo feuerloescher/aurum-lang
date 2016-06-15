@@ -8,6 +8,14 @@
 
 using namespace AST;
 
-std::string IntType::getName() {
-    return "uint32";
+ScalarType::ScalarType(std::string name)
+    : Type(name) {
+}
+
+IntType::IntType(std::string name, unsigned int width, bool isSigned)
+    : ScalarType(name), width(width), isSigned(isSigned) {
+}
+
+void IntType::createLLVMType(llvm::LLVMContext& llvmContext) {
+    llvmType = (llvm::Type*) llvm::Type::getInt64Ty(llvmContext);
 }

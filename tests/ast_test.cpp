@@ -12,6 +12,7 @@
 #include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
+#include "Passes/StdLibPass.hpp"
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
 #include "Passes/LLVMPass.hpp"
@@ -24,9 +25,6 @@ using namespace std;
 
 int main() {
     AbstractSyntaxTree ast;
-
-    IntType intType;
-    ast.getTypes().insert(intType);
 
     auto variable = make_shared<VariableDefStmt>("var",
         make_shared<TypeStmt>("uint32"));
@@ -69,6 +67,9 @@ int main() {
 
     PrintPass printer(ast, std::cout);
     printer.run();
+
+    StdLibPass stdLibPass(ast);
+    stdLibPass.run();
 
     IdentifierPass identifier(ast);
     identifier.run();

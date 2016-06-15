@@ -24,7 +24,14 @@ LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
     : ASTPass(ast), llvmContext(ast.getLLVMContext()), currentBlock(nullptr) {
 }
 
+void LLVMPass::createLLVMTypes() {
+    for (std::pair<std::string, ASTPtr<Type>> type : ast.getTypes()) {
+        type.second->createLLVMType(llvmContext);
+    }
+}
+
 void LLVMPass::run() {
+    createLLVMTypes();
     currentBlock = nullptr;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
@@ -33,9 +40,22 @@ void LLVMPass::run() {
 
 void LLVMPass::runOn(FunctionDef& func) {
     func.getTypeStmt()->runPass(*this);
-    currentBlock = &func.getBody();
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
+        func.getParameterLLVMTypes().push_back(
+            innerStmt->getTypeStmt()->getType()->getLLVMType());
+    }
+    func.setLLVMFunction(llvm::Function::Create(
+        llvm::FunctionType::get(func.getTypeStmt()->getType()->getLLVMType(),
+        func.getParameterLLVMTypes(), false),
+        llvm::Function::ExternalLinkage, func.getName(), &ast.getLLVMModule()));
+    currentBlock = &func.getBody();
+    currentBlock->setLLVMBlock(llvm::BasicBlock::Create(llvmContext, "entry",
+        func.getLLVMFunction()));
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+        innerStmt->runPass(*this);
+        func.getParameterLLVMTypes().push_back(
+            innerStmt->getTypeStmt()->getType()->getLLVMType());
     }
     func.getBody().runPass(*this);
 }
@@ -46,6 +66,9 @@ void LLVMPass::runOn(ReturnStmt& stmt) {
 
 void LLVMPass::runOn(VariableDefStmt& stmt) {
     stmt.getTypeStmt()->runPass(*this);
+    ast.getIRBuilder().CreateAlloca(
+        stmt.getTypeStmt()->getType()->getLLVMType(),
+        0, stmt.getName());
 }
 
 void LLVMPass::runOn(VariableDefAssignStmt& stmt) {

@@ -16,20 +16,29 @@ void ASTMap<T>::clear() {
 }
 
 template <class T>
-bool ASTMap<T>::insert(T& t) {
-    return internalMap.insert(std::make_pair(t.getName(),
-        std::reference_wrapper<T>(t))).second;
+bool ASTMap<T>::insert(T t) {
+    return internalMap.insert(std::make_pair(t->getName(), t)).second;
 }
 
 template <class T>
-T* ASTMap<T>::find(std::string name) {
+T ASTMap<T>::find(std::string name) {
     auto element = internalMap.find(name);
     if (element != internalMap.end()) {
-        return &element->second.get();
+        return element->second;
     }
     return nullptr;
 }
 
-template class AST::ASTMap<FunctionDef>;
-template class AST::ASTMap<VariableDefStmt>;
-template class AST::ASTMap<Type>;
+template <class T>
+typename InternalMapType<T>::iterator ASTMap<T>::begin() {
+    return internalMap.begin();
+}
+
+template <class T>
+typename InternalMapType<T>::iterator ASTMap<T>::end() {
+    return internalMap.end();
+}
+
+template class AST::ASTMap<FunctionDef*>;
+template class AST::ASTMap<VariableDefStmt*>;
+template class AST::ASTMap<ASTPtr<Type>>;

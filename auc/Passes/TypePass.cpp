@@ -13,6 +13,7 @@
 #include "AST/Expressions.hpp"
 #include "AST/Errors.hpp"
 #include "AST/Type.hpp"
+#include "AST/ScalarTypes.hpp"
 
 using namespace AST;
 using namespace Passes;
@@ -75,7 +76,7 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
 
 void TypePass::runOn(ConstUInt32Expr& stmt) {
     /// \todo Find scalar types more elegantly, e.g. store them directly in AST
-    Type* type = ast.getTypes().find("uint32");
+    ASTPtr<Type> type = ast.getTypes().find("uint32");
     if (!type) {
         throw UnknownIdentifierError("uint32");
     }

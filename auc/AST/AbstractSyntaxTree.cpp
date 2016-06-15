@@ -8,7 +8,7 @@
 
 using namespace AST;
 
-AbstractSyntaxTree::AbstractSyntaxTree() {
+AbstractSyntaxTree::AbstractSyntaxTree() : irBuilder(llvmContext) {
     llvmModule = llvm::make_unique<llvm::Module>("llvm module", llvmContext);
 }
 
@@ -16,12 +16,16 @@ DeclarationList& AbstractSyntaxTree::getDeclarations() {
     return declarations;
 }
 
-ASTMap<FunctionDef>& AbstractSyntaxTree::getFunctionDefs() {
+ASTMap<FunctionDef*>& AbstractSyntaxTree::getFunctionDefs() {
     return functionDecls;
 }
 
-ASTMap<Type>& AbstractSyntaxTree::getTypes() {
+ASTMap<ASTPtr<Type>>& AbstractSyntaxTree::getTypes() {
     return types;
+}
+
+llvm::IRBuilder<>& AbstractSyntaxTree::getIRBuilder() {
+    return irBuilder;
 }
 
 llvm::LLVMContext& AbstractSyntaxTree::getLLVMContext() {

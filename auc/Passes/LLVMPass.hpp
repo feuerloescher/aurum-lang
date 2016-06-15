@@ -24,6 +24,8 @@ protected:
 public:
     LLVMPass(AST::AbstractSyntaxTree& ast);
 
+    void createLLVMTypes();
+
     virtual void run();
 
     virtual void runOn(AST::FunctionDef&);

@@ -10,17 +10,29 @@
 #include "common.hpp"
 #include "Type.hpp"
 
+#include <llvm/IR/LLVMContext.h>
+#include <string>
+
 namespace AST {
 
 class ScalarType : public Type {
+
+public:
+    ScalarType(std::string name);
 
 }; // class ScalarType
 
 
 class IntType : public ScalarType {
 
+protected:
+    unsigned int width;
+    bool isSigned;
+
 public:
-    virtual std::string getName();
+    IntType(std::string name, unsigned int width, bool isSigned);
+
+    virtual void createLLVMType(llvm::LLVMContext& llvmContext);
 
 }; // class IntType
 

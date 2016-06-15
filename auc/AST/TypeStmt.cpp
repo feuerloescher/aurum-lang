@@ -19,10 +19,10 @@ std::string TypeStmt::getName() {
     return name;
 }
 
-Type* TypeStmt::getType() {
+ASTPtr<Type> TypeStmt::getType() {
     return type;
 }
 
-void TypeStmt::setType(Type* type) {
+void TypeStmt::setType(ASTPtr<Type> type) {
     this->type = type;
 }

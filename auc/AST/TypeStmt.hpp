@@ -19,7 +19,7 @@ class TypeStmt {
 
 protected:
     std::string name;
-    Type* type;
+    ASTPtr<Type> type;
 
 public:
     TypeStmt(std::string name);
@@ -27,8 +27,8 @@ public:
     void runPass(ASTPass& pass);
 
     std::string getName();
-    Type* getType();
-    void setType(Type* type);
+    ASTPtr<Type> getType();
+    void setType(ASTPtr<Type> type);
 
 }; // class TypeStmt
 

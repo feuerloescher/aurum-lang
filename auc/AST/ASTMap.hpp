@@ -16,15 +16,20 @@
 namespace AST {
 
 template <class T>
+using InternalMapType = std::map<std::string, T>;
+
+template <class T>
 class ASTMap {
 
 protected:
-    std::map<std::string, ASTRef<T>> internalMap;
+    InternalMapType<T> internalMap;
 
 public:
     void clear();
-    bool insert(T& t);
-    T* find(std::string name);
+    bool insert(T t);
+    T find(std::string name);
+    typename InternalMapType<T>::iterator begin();
+    typename InternalMapType<T>::iterator end();
 
 }; // class TypeStmt
 

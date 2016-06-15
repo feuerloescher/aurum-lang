@@ -9,14 +9,23 @@
 
 #include "common.hpp"
 
+#include <llvm/IR/Type.h>
 #include <string>
 
 namespace AST {
 
 class Type {
 
+protected:
+    std::string name;
+    llvm::Type* llvmType;
+
 public:
-    virtual std::string getName() = 0;
+    Type(std::string name);
+
+    std::string getName();
+    llvm::Type* getLLVMType();
+    virtual void createLLVMType(llvm::LLVMContext& llvmContext) = 0;
 
 }; // class Type
 

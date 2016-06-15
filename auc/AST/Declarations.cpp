@@ -39,3 +39,8 @@ llvm::Function* FunctionDef::getLLVMFunction() {
 void FunctionDef::setLLVMFunction(llvm::Function* llvmFunction) {
     this->llvmFunction = llvmFunction;
 }
+
+
+std::vector<llvm::Type*>& FunctionDef::getParameterLLVMTypes() {
+    return parameterLLVMTypes;
+}

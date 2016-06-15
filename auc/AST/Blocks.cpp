@@ -23,7 +23,7 @@ void Block::push_back(ASTPtr<Statement> statement) {
     statements.push_back(statement);
 }
 
-ASTMap<VariableDefStmt>& Block::getVariables() {
+ASTMap<VariableDefStmt*>& Block::getVariables() {
     return variables;
 }
 
@@ -39,13 +39,8 @@ llvm::BasicBlock* Block::getLLVMBlock() {
     return llvmBlock;
 }
 
-void Block::setBasicBlock(llvm::BasicBlock* llvmBlock) {
+void Block::setLLVMBlock(llvm::BasicBlock* llvmBlock) {
     this->llvmBlock = llvmBlock;
-    irBuilder.reset(new llvm::IRBuilder<>(llvmBlock, llvmBlock->begin()));
-}
-
-ASTPtr<llvm::IRBuilder<>> Block::getIRBuilder() {
-    return irBuilder;
 }
 
 

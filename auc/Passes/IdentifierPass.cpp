@@ -30,7 +30,7 @@ void IdentifierPass::run() {
 }
 
 void IdentifierPass::runOn(FunctionDef& func) {
-    if (!ast.getFunctionDefs().insert(func)) {
+    if (!ast.getFunctionDefs().insert(&func)) {
         throw ExistingIdentifierError(func.getName());
     }
     func.getTypeStmt()->runPass(*this);
@@ -46,14 +46,14 @@ void IdentifierPass::runOn(ReturnStmt& stmt) {
 }
 
 void IdentifierPass::runOn(VariableDefStmt& stmt) {
-    if (!currentBlock->getVariables().insert(stmt)) {
+    if (!currentBlock->getVariables().insert(&stmt)) {
         throw UnknownIdentifierError(stmt.getName());
     }
     stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
-    if (!currentBlock->getVariables().insert(stmt)) {
+    if (!currentBlock->getVariables().insert(&stmt)) {
         throw UnknownIdentifierError(stmt.getName());
     }
     stmt.getTypeStmt()->runPass(*this);
@@ -82,7 +82,7 @@ void IdentifierPass::runOn(WhileLoop& stmt) {
 }
 
 void IdentifierPass::runOn(TypeStmt& stmt) {
-    Type* type = ast.getTypes().find(stmt.getName());
+    ASTPtr<Type> type = ast.getTypes().find(stmt.getName());
     if (!type) {
         throw UnknownIdentifierError(stmt.getName());
     }

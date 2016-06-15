@@ -14,6 +14,7 @@
 #include "Blocks.hpp"
 #include "Type.hpp"
 
+#include <llvm/IR/IRBuilder.h>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/Module.h>
 
@@ -23,19 +24,22 @@ class AbstractSyntaxTree {
 
 protected:
     DeclarationList declarations;
-    ASTMap<FunctionDef> functionDecls;
-    ASTMap<Type> types;
+    ASTMap<FunctionDef*> functionDecls;
+    ASTMap<ASTPtr<Type>> types;
 
     llvm::LLVMContext llvmContext;
+    llvm::IRBuilder<> irBuilder;
     std::unique_ptr<llvm::Module> llvmModule;
+
 
 public:
     AbstractSyntaxTree();
 
     DeclarationList& getDeclarations();
-    ASTMap<FunctionDef>& getFunctionDefs();
-    ASTMap<Type>& getTypes();
+    ASTMap<FunctionDef*>& getFunctionDefs();
+    ASTMap<ASTPtr<Type>>& getTypes();
     llvm::LLVMContext& getLLVMContext();
+    llvm::IRBuilder<>& getIRBuilder();
     llvm::Module& getLLVMModule();
 
 }; // class AbstractSyntaxTree

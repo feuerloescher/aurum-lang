@@ -8,11 +8,11 @@
 
 using namespace AST;
 
-Type* Expression::getType() {
+ASTPtr<Type> Expression::getType() {
     return type;
 }
 
-void Expression::setType(Type* type) {
+void Expression::setType(ASTPtr<Type> type) {
     this->type = type;
 }
 
