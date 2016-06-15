@@ -6,11 +6,12 @@ dist: trusty
 sudo: required
 before_install:
   - gem install coveralls-lcov
+  - wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
+  - tar -xf clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
 addons:
  apt:
    packages:
    - lcov
-   - llvm-3.6-dev
  coverity_scan:
    project:
     name: "feuerloescher/aurum-lang"
