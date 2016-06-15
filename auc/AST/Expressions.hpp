@@ -20,14 +20,14 @@ class Expression : public Statement {
 
 protected:
     Type* type;
-    llvm::Value* value;
+    llvm::Value* llvmValue;
 
 public:
     virtual void runPass(ASTPass& pass) = 0;
     virtual Type* getType();
     virtual void setType(Type* type);
-    virtual llvm::Value* getValue();
-    virtual void setValue(llvm::Value* value);
+    virtual llvm::Value* getLLVMValue();
+    virtual void setLLVMValue(llvm::Value* llvmValue);
 
 }; // class Expression
 

@@ -14,6 +14,9 @@
 #include "Blocks.hpp"
 #include "Type.hpp"
 
+#include <llvm/IR/LLVMContext.h>
+#include <llvm/IR/Module.h>
+
 namespace AST {
 
 class AbstractSyntaxTree {
@@ -22,13 +25,18 @@ protected:
     DeclarationList declarations;
     ASTMap<FunctionDef> functionDecls;
     ASTMap<Type> types;
-    Block rootBlock;
+
+    llvm::LLVMContext llvmContext;
+    std::unique_ptr<llvm::Module> llvmModule;
 
 public:
+    AbstractSyntaxTree();
+
     DeclarationList& getDeclarations();
     ASTMap<FunctionDef>& getFunctionDefs();
     ASTMap<Type>& getTypes();
-    Block& getRootBlock();
+    llvm::LLVMContext& getLLVMContext();
+    llvm::Module& getLLVMModule();
 
 }; // class AbstractSyntaxTree
 

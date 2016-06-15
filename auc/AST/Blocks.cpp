@@ -35,6 +35,20 @@ void Block::setParentBlock(Block* block) {
     parentBlock = block;
 }
 
+llvm::BasicBlock* Block::getLLVMBlock() {
+    return llvmBlock;
+}
+
+void Block::setBasicBlock(llvm::BasicBlock* llvmBlock) {
+    this->llvmBlock = llvmBlock;
+    irBuilder.reset(new llvm::IRBuilder<>(llvmBlock, llvmBlock->begin()));
+}
+
+ASTPtr<llvm::IRBuilder<>> Block::getIRBuilder() {
+    return irBuilder;
+}
+
+
 ASTPtr<Expression> IfStmt::getCondition() {
     return condition;
 }

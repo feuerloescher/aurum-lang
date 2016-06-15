@@ -37,6 +37,14 @@ ASTPtr<TypeStmt> VariableDefStmt::getTypeStmt() {
     return typeStmt;
 }
 
+llvm::AllocaInst* VariableDefStmt::getAllocaInst() {
+    return allocaInst;
+}
+
+void VariableDefStmt::setAllocaInst(llvm::AllocaInst* allocaInst) {
+    this->allocaInst = allocaInst;
+}
+
 
 VariableDefAssignStmt::VariableDefAssignStmt(std::string name,
     ASTPtr<TypeStmt> type, ASTPtr<Expression> value)

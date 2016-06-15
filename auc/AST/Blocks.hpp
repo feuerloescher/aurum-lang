@@ -13,6 +13,9 @@
 #include "ASTPass.hpp"
 #include "ASTMap.hpp"
 
+#include <llvm/IR/BasicBlock.h>
+#include <llvm/IR/IRBuilder.h>
+
 namespace AST {
 
 class Block : public Statement {
@@ -21,6 +24,8 @@ protected:
     StatementList statements;
     ASTMap<VariableDefStmt> variables;
     Block* parentBlock;
+    llvm::BasicBlock* llvmBlock;
+    ASTPtr<llvm::IRBuilder<>> irBuilder;
 
 public:
     Block();
@@ -33,6 +38,9 @@ public:
     ASTMap<VariableDefStmt>& getVariables();
     Block* getParentBlock();
     void setParentBlock(Block* block);
+    llvm::BasicBlock* getLLVMBlock();
+    void setBasicBlock(llvm::BasicBlock* llvmBlock);
+    ASTPtr<llvm::IRBuilder<>> getIRBuilder();
 
 }; // class Block
 

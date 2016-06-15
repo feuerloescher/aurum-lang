@@ -18,12 +18,12 @@ using namespace AST;
 using namespace Passes;
 
 IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast)
-    : ASTPass(ast), currentBlock(&ast.getRootBlock()) {
+    : ASTPass(ast), currentBlock(nullptr) {
 }
 
 void IdentifierPass::run() {
     ast.getFunctionDefs().clear();
-    currentBlock = &ast.getRootBlock();
+    currentBlock = nullptr;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
@@ -34,11 +34,9 @@ void IdentifierPass::runOn(FunctionDef& func) {
         throw ExistingIdentifierError(func.getName());
     }
     func.getTypeStmt()->runPass(*this);
+    currentBlock = &func.getBody();
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
-        if (!func.getBody().getVariables().insert(*innerStmt)) {
-            throw ExistingIdentifierError(innerStmt->getName());
-        }
     }
     func.getBody().runPass(*this);
 }
@@ -63,8 +61,10 @@ void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void IdentifierPass::runOn(Block& stmt) {
-    stmt.setParentBlock(currentBlock);
-    currentBlock = &stmt;
+    if (currentBlock != &stmt) {
+        stmt.setParentBlock(currentBlock);
+        currentBlock = &stmt;
+    }
     for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }

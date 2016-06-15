@@ -8,6 +8,10 @@
 
 using namespace AST;
 
+AbstractSyntaxTree::AbstractSyntaxTree() {
+    llvmModule = llvm::make_unique<llvm::Module>("llvm module", llvmContext);
+}
+
 DeclarationList& AbstractSyntaxTree::getDeclarations() {
     return declarations;
 }
@@ -20,6 +24,10 @@ ASTMap<Type>& AbstractSyntaxTree::getTypes() {
     return types;
 }
 
-Block& AbstractSyntaxTree::getRootBlock() {
-    return rootBlock;
+llvm::LLVMContext& AbstractSyntaxTree::getLLVMContext() {
+    return llvmContext;
+}
+
+llvm::Module& AbstractSyntaxTree::getLLVMModule() {
+    return *llvmModule;
 }

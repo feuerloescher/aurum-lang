@@ -11,6 +11,7 @@
 #include "TypeStmt.hpp"
 #include "ASTPass.hpp"
 
+#include <llvm/IR/Instructions.h>
 #include <string>
 
 namespace AST {
@@ -44,6 +45,7 @@ class VariableDefStmt : public Statement {
 protected:
     std::string name;
     ASTPtr<TypeStmt> typeStmt;
+    llvm::AllocaInst* allocaInst;
 
 public:
     VariableDefStmt(std::string name, ASTPtr<TypeStmt> typeStmt);
@@ -51,6 +53,8 @@ public:
 
     std::string getName();
     ASTPtr<TypeStmt> getTypeStmt();
+    llvm::AllocaInst* getAllocaInst();
+    void setAllocaInst(llvm::AllocaInst* allocaInst);
 
 }; // class VariableDefStmt
 

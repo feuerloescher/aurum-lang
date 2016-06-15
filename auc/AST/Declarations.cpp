@@ -31,3 +31,11 @@ VariableDefStmtList& FunctionDef::getParameters() {
 Block& FunctionDef::getBody() {
     return body;
 }
+
+llvm::Function* FunctionDef::getLLVMFunction() {
+    return llvmFunction;
+}
+
+void FunctionDef::setLLVMFunction(llvm::Function* llvmFunction) {
+    this->llvmFunction = llvmFunction;
+}

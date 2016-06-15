@@ -11,6 +11,7 @@
 #include "Blocks.hpp"
 #include "ASTPass.hpp"
 
+#include <llvm/IR/Function.h>
 #include <string>
 
 namespace AST {
@@ -32,6 +33,7 @@ protected:
     ASTPtr<TypeStmt> type;
     ASTList<VariableDefStmt> parameters;
     Block body;
+    llvm::Function* llvmFunction;
 
 public:
     FunctionDef(std::string name, ASTPtr<TypeStmt> type);
@@ -42,6 +44,8 @@ public:
     ASTPtr<TypeStmt> getTypeStmt();
     VariableDefStmtList& getParameters();
     Block& getBody();
+    llvm::Function* getLLVMFunction();
+    void setLLVMFunction(llvm::Function* llvmFunction);
 
 }; // class FunctionDef
 

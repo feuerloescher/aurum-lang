@@ -16,12 +16,12 @@ void Expression::setType(Type* type) {
     this->type = type;
 }
 
-llvm::Value* Expression::getValue() {
-    return value;
+llvm::Value* Expression::getLLVMValue() {
+    return llvmValue;
 }
 
-void Expression::setValue(llvm::Value* value) {
-    this->value = value;
+void Expression::setLLVMValue(llvm::Value* llvmValue) {
+    this->llvmValue = llvmValue;
 }
 
 

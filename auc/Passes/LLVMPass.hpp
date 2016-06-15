@@ -18,7 +18,8 @@ namespace Passes {
 class LLVMPass : public AST::ASTPass {
 
 protected:
-    llvm::LLVMContext llvmContext;
+    llvm::LLVMContext& llvmContext;
+    AST::Block* currentBlock;
 
 public:
     LLVMPass(AST::AbstractSyntaxTree& ast);

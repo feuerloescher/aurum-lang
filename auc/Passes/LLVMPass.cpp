@@ -21,10 +21,11 @@ using namespace AST;
 using namespace Passes;
 
 LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
-    : ASTPass(ast) {
+    : ASTPass(ast), llvmContext(ast.getLLVMContext()), currentBlock(nullptr) {
 }
 
 void LLVMPass::run() {
+    currentBlock = nullptr;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
@@ -32,6 +33,7 @@ void LLVMPass::run() {
 
 void LLVMPass::runOn(FunctionDef& func) {
     func.getTypeStmt()->runPass(*this);
+    currentBlock = &func.getBody();
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
     }
@@ -52,9 +54,11 @@ void LLVMPass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void LLVMPass::runOn(Block& stmt) {
+    currentBlock = &stmt;
     for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }
+    currentBlock = stmt.getParentBlock();
 }
 
 void LLVMPass::runOn(IfStmt& stmt) {
@@ -77,8 +81,8 @@ void LLVMPass::runOn(FunctionCallExpr& stmt) {
 }
 
 void LLVMPass::runOn(ConstUInt32Expr& stmt) {
-    stmt.setValue(llvm::ConstantInt::get(llvmContext,
-        llvm::APInt(32, stmt.getNumValue(), false)));
+    stmt.setLLVMValue(llvm::ConstantInt::get(llvmContext,
+        llvm::APInt(32u, (uint64_t) stmt.getNumValue(), false)));
 }
 
 void LLVMPass::runOn(VariableExpr& stmt) {
