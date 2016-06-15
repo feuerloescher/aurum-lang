@@ -5,6 +5,8 @@ os: linux
 dist: trusty
 sudo: required
 before_install:
+  - wget -v -O /tmp/cov-analysis-Linux.tgz https://scan.coverity.com/download/Linux --post-data "project=feuerloescher/aurum-lang&token=$COVERITY_SCAN_TOKEN" --no-check-certificate
+  - mkdir -p /tmp/coverity-scan-analysis && pushd /tmp/coverity-scan-analysis && tar xzf /tmp/cov-analysis-Linux.tgz && popd
   - gem install coveralls-lcov
   - wget http://llvm.org/releases/3.8.0/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
   - tar -xf clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04.tar.xz
@@ -12,6 +14,7 @@ addons:
  apt:
    packages:
    - lcov
+   - ca-certificates
  coverity_scan:
    project:
     name: "feuerloescher/aurum-lang"
