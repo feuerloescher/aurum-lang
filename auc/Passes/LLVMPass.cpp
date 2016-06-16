@@ -21,7 +21,8 @@ using namespace AST;
 using namespace Passes;
 
 LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
-    : ASTPass(ast), llvmContext(ast.getLLVMContext()), currentBlock(nullptr) {
+    : ASTPass(ast), llvmContext(ast.getLLVMContext()),
+    irBuilder(ast.getIRBuilder()), currentBlock(nullptr) {
 }
 
 void LLVMPass::createLLVMTypes() {
@@ -40,40 +41,59 @@ void LLVMPass::run() {
 
 void LLVMPass::runOn(FunctionDef& func) {
     func.getTypeStmt()->runPass(*this);
+    /// Create function type and function
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        innerStmt->runPass(*this);
         func.getParameterLLVMTypes().push_back(
             innerStmt->getTypeStmt()->getType()->getLLVMType());
     }
-    func.setLLVMFunction(llvm::Function::Create(
+    llvm::Function* llvmFunction = llvm::Function::Create(
         llvm::FunctionType::get(func.getTypeStmt()->getType()->getLLVMType(),
         func.getParameterLLVMTypes(), false),
-        llvm::Function::ExternalLinkage, func.getName(), &ast.getLLVMModule()));
+        llvm::Function::ExternalLinkage, func.getName(), &ast.getLLVMModule());
+    func.setLLVMFunction(llvmFunction);
     currentBlock = &func.getBody();
-    currentBlock->setLLVMBlock(llvm::BasicBlock::Create(llvmContext, "entry",
-        func.getLLVMFunction()));
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        innerStmt->runPass(*this);
-        func.getParameterLLVMTypes().push_back(
-            innerStmt->getTypeStmt()->getType()->getLLVMType());
+    llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext, "entry",
+        llvmFunction);
+    currentBlock->setLLVMBlock(llvmBlock);
+    irBuilder.SetInsertPoint(llvmBlock);
+    /// Add alloca for each parameter
+    ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
+    for (llvm::Value& parameter : llvmFunction->args()) {
+        parameter.setName((*paramIter)->getName());
+        (*paramIter)->runPass(*this);
+
+        /// Store the initial value into the alloca
+        irBuilder.CreateStore(&parameter,
+            (*paramIter)->getAllocaInst());
+
+        /// \todo Add arguments to variable symbol table?
     }
     func.getBody().runPass(*this);
 }
 
 void LLVMPass::runOn(ReturnStmt& stmt) {
     stmt.getValue()->runPass(*this);
+    irBuilder.CreateRet(stmt.getValue()->getLLVMValue());
 }
 
 void LLVMPass::runOn(VariableDefStmt& stmt) {
+    /// Create an alloca for this variable
     stmt.getTypeStmt()->runPass(*this);
-    ast.getIRBuilder().CreateAlloca(
+    stmt.setAllocaInst(irBuilder.CreateAlloca(
         stmt.getTypeStmt()->getType()->getLLVMType(),
-        0, stmt.getName());
+        0, stmt.getName()));
 }
 
 void LLVMPass::runOn(VariableDefAssignStmt& stmt) {
     stmt.getTypeStmt()->runPass(*this);
+    llvm::AllocaInst* allocaInst = irBuilder.CreateAlloca(
+        stmt.getTypeStmt()->getType()->getLLVMType(),
+        0, stmt.getName());
+    stmt.setAllocaInst(allocaInst);
     stmt.getValue()->runPass(*this);
+    irBuilder.CreateStore(allocaInst,
+        stmt.getValue()->getLLVMValue());
+    /// \todo Merge getLLVMValue and getAllocaInst in Expression subclasses?
 }
 
 void LLVMPass::runOn(Block& stmt) {
@@ -98,9 +118,13 @@ void LLVMPass::runOn(TypeStmt& stmt) {
 }
 
 void LLVMPass::runOn(FunctionCallExpr& stmt) {
+    std::vector<llvm::Value*> parameters;
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         expr->runPass(*this);
+        parameters.push_back(expr->getLLVMValue());
     }
+    stmt.setLLVMValue(irBuilder.CreateCall(
+        stmt.getFunctionDef()->getLLVMFunction(), parameters));
 }
 
 void LLVMPass::runOn(ConstUInt32Expr& stmt) {
@@ -109,22 +133,54 @@ void LLVMPass::runOn(ConstUInt32Expr& stmt) {
 }
 
 void LLVMPass::runOn(VariableExpr& stmt) {
+    stmt.setLLVMValue(stmt.getVariableDefStmt()->getAllocaInst());
 }
 
 void LLVMPass::runOn(UnaryOpExpr& stmt) {
     stmt.getOperand()->runPass(*this);
+    /// \todo Add standard operators in StdLibPass
+    if (stmt.getName() == "-") {
+        stmt.setLLVMValue(
+            irBuilder.CreateNeg(stmt.getOperand()->getLLVMValue(),
+            "negtmp"));
+    }
 }
 
 void LLVMPass::runOn(BinaryOpExpr& stmt) {
     stmt.getOperand1()->runPass(*this);
     stmt.getOperand2()->runPass(*this);
+    /// \todo Add standard operators in StdLibPass
+    if (stmt.getName() == "+") {
+        stmt.setLLVMValue(
+            irBuilder.CreateAdd(stmt.getOperand1()->getLLVMValue(),
+            stmt.getOperand2()->getLLVMValue(), "addtmp"));
+    }
 }
 
 void LLVMPass::runOn(UnaryAssignOpExpr& stmt) {
     stmt.getVariable()->runPass(*this);
+    /// \todo Add standard operators in StdLibPass
+    if (stmt.getName() == "++") {
+        /// \todo Store LLVM value for '1' as a class member
+        llvm::Value* llvmValue = irBuilder.CreateAdd(
+            llvm::ConstantInt::get(llvmContext,
+            llvm::APInt(32u, (uint64_t) 1, false)),
+            stmt.getVariable()->getLLVMValue(),
+            "inctmp");
+        stmt.setLLVMValue(llvmValue);
+        stmt.setLLVMValue(irBuilder.CreateStore(
+            stmt.getVariable()->getVariableDefStmt()->getAllocaInst(),
+            llvmValue));
+    }
 }
 
 void LLVMPass::runOn(BinaryAssignOpExpr& stmt) {
     stmt.getVariable()->runPass(*this);
     stmt.getOperand()->runPass(*this);
+    /// \todo Add standard operators in StdLibPass
+    if (stmt.getName() == "=") {
+        stmt.setLLVMValue(irBuilder.CreateStore(
+            stmt.getVariable()->getVariableDefStmt()->getAllocaInst(),
+            stmt.getOperand()->getLLVMValue()));
+    }
 }

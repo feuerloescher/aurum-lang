@@ -9,7 +9,7 @@
 using namespace AST;
 
 FunctionDef::FunctionDef(std::string name, ASTPtr<TypeStmt> type)
-    : name(name), type(type) {
+    : name(name), type(type), llvmFunction(nullptr) {
 }
 
 void FunctionDef::runPass(ASTPass& pass) {

@@ -40,6 +40,14 @@ ASTList<Expression>& FunctionCallExpr::getParameters() {
     return parameters;
 }
 
+FunctionDef* FunctionCallExpr::getFunctionDef() {
+    return functionDef;
+}
+
+void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
+    this->functionDef = functionDef;
+}
+
 
 ConstUInt32Expr::ConstUInt32Expr(uint32_t numValue) : numValue(numValue) {
 }

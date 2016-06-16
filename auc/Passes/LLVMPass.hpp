@@ -10,6 +10,7 @@
 #include "AST/ASTPass.hpp"
 #include "AST/common.hpp"
 
+#include <llvm/IR/IRBuilder.h>
 #include <llvm/IR/LLVMContext.h>
 
 namespace Passes {
@@ -19,6 +20,7 @@ class LLVMPass : public AST::ASTPass {
 
 protected:
     llvm::LLVMContext& llvmContext;
+    llvm::IRBuilder<>& irBuilder;
     AST::Block* currentBlock;
 
 public:

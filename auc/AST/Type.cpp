@@ -9,7 +9,7 @@
 
 using namespace AST;
 
-Type::Type(std::string name) : name(name) {
+Type::Type(std::string name) : name(name), llvmType(nullptr) {
 }
 
 std::string Type::getName() {

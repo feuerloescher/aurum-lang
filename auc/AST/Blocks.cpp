@@ -8,7 +8,7 @@
 
 using namespace AST;
 
-Block::Block() : parentBlock(nullptr) {
+Block::Block() : parentBlock(nullptr), llvmBlock(nullptr) {
 }
 
 void Block::runPass(ASTPass& pass) {

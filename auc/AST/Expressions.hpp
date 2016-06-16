@@ -39,6 +39,7 @@ class FunctionCallExpr : public Expression {
 protected:
     std::string name;
     ASTList<Expression> parameters;
+    FunctionDef* functionDef;
 
 public:
     FunctionCallExpr(std::string name);
@@ -46,6 +47,8 @@ public:
     virtual void runPass(ASTPass& pass);
     std::string getName();
     ASTList<Expression>& getParameters();
+    FunctionDef* getFunctionDef();
+    void setFunctionDef(FunctionDef* functionDef);
 
 }; // class FunctionCallExpr
 

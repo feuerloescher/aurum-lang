@@ -46,6 +46,8 @@ public:
 
     virtual void run() = 0;
 
+    /// \todo Reorganize; multiple dispatch only for virtual base classes
+
     virtual void runOn(Declaration&);
     virtual void runOn(FunctionDef&);
 

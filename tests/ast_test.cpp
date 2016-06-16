@@ -16,6 +16,7 @@
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
 #include "Passes/LLVMPass.hpp"
+#include "Passes/IRExportPass.hpp"
 
 #include <iostream>
 
@@ -79,5 +80,8 @@ int main() {
 
     LLVMPass llvmPass(ast);
     llvmPass.run();
+
+    IRExportPass exportPass(ast);
+    exportPass.run();
     return 0;
 }

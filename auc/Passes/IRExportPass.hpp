@@ -4,28 +4,27 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_STDLIBPASS_HPP
-#define AUC_STDLIBPASS_HPP
+#ifndef AUC_IREXPORTPASS_HPP
+#define AUC_IREXPORTPASS_HPP
 
 #include "AST/common.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
 
 namespace Passes {
 
-/// Register builtin types and functions of the language
-class StdLibPass {
+/// Export the generated LLVM Intermediate Representation code
+class IRExportPass {
 
 protected:
     AST::AbstractSyntaxTree& ast;
 
 public:
-    StdLibPass(AST::AbstractSyntaxTree& ast);
+    IRExportPass(AST::AbstractSyntaxTree& ast);
 
     void run();
-    void addStdLibTypes();
 
-}; // class StdLibPass
+}; // class IRExportPass
 
 } // namespace Passes
 
-#endif // AUC_STDLIBPASS_HPP
+#endif // AUC_IREXPORTPASS_HPP

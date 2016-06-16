@@ -93,6 +93,12 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         expr->runPass(*this);
     }
+    FunctionDef* functionDef = ast.getFunctionDefs().find(
+        stmt.getName());
+    if (!functionDef) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
+    stmt.setFunctionDef(functionDef);
 }
 
 void IdentifierPass::runOn(ConstUInt32Expr& stmt) {

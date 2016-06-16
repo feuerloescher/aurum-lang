@@ -22,7 +22,7 @@ ASTPtr<Expression> ReturnStmt::getValue() {
 
 
 VariableDefStmt::VariableDefStmt(std::string name, ASTPtr<TypeStmt> typeStmt)
-    : name(name), typeStmt(typeStmt) {
+    : name(name), typeStmt(typeStmt), allocaInst(nullptr) {
 }
 
 void VariableDefStmt::runPass(ASTPass& pass) {
