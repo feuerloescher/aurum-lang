@@ -15,6 +15,7 @@
 
 namespace AST {
 
+/// \todo Implement reference types for function/method call-by-reference
 class Type {
 
 protected:

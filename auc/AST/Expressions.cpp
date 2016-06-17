@@ -6,6 +6,7 @@
 
 #include "Expressions.hpp"
 #include "ASTPass.hpp"
+#include "Type.hpp"
 
 using namespace AST;
 
@@ -51,7 +52,8 @@ void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
 
 
 MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr,
-    std::string name) : objectExpr(objectExpr), name(name) {
+    std::string name) : objectExpr(objectExpr), name(name), methodDef(nullptr) {
+    /// \todo Add 'this' pointer as first parameter
 }
 
 void MethodCallExpr::runPass(ASTPass& pass) {
@@ -63,7 +65,7 @@ ASTPtr<Expression> MethodCallExpr::getObjectExpr() {
 }
 
 std::string MethodCallExpr::getName() {
-    return name;
+    return objectExpr->getType()->getName() + '.' + name;
 }
 
 ASTList<Expression>& MethodCallExpr::getParameters() {
@@ -74,7 +76,7 @@ MethodDef* MethodCallExpr::getMethodDef() {
     return methodDef;
 }
 
-void MethodCallExpr::setMethodDef(MethodDef* functionDef) {
+void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
     this->methodDef = methodDef;
 }
 

@@ -69,9 +69,6 @@ int main() {
     auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
     mainDecl->getBody().push_back(ret2);
 
-    PrintPass printer(ast, std::cout);
-    printer.run();
-
     StdLibPass stdLibPass(ast);
     stdLibPass.run();
 
@@ -80,6 +77,9 @@ int main() {
 
     TypePass typePass(ast);
     typePass.run();
+
+    PrintPass printer(ast, std::cout);
+    printer.run();
 
     LLVMPass llvmPass(ast);
     llvmPass.run();

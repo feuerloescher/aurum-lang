@@ -66,8 +66,6 @@ void LLVMPass::runOn(FunctionDef& func) {
         /// Store the initial value into the alloca
         irBuilder.CreateStore(&parameter,
             (*paramIter)->getAllocaInst());
-
-        /// \todo Add arguments to variable symbol table?
     }
     func.getBody().runPass(*this);
 }
@@ -92,6 +90,7 @@ void LLVMPass::runOn(MethodDef& func) {
     currentBlock->setLLVMBlock(llvmBlock);
     irBuilder.SetInsertPoint(llvmBlock);
     /// Add alloca for each parameter
+    /// \todo Set pointer of first parameter 'this'
     ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
     for (llvm::Value& parameter : llvmFunction->args()) {
         parameter.setName((*paramIter)->getName());
@@ -100,8 +99,6 @@ void LLVMPass::runOn(MethodDef& func) {
         /// Store the initial value into the alloca
         irBuilder.CreateStore(&parameter,
             (*paramIter)->getAllocaInst());
-
-        /// \todo Add arguments to variable symbol table?
     }
     func.getBody().runPass(*this);
 }
