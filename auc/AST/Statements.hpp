@@ -8,8 +8,6 @@
 #define AUC_STATEMENTS_HPP
 
 #include "common.hpp"
-#include "TypeStmt.hpp"
-#include "ASTPass.hpp"
 
 #include <llvm/IR/Instructions.h>
 #include <string>

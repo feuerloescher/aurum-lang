@@ -6,6 +6,7 @@
 
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
+#include "Statements.hpp"
 #include "Type.hpp"
 
 using namespace AST;
@@ -40,5 +41,6 @@ typename InternalMapType<T>::iterator ASTMap<T>::end() {
 }
 
 template class AST::ASTMap<FunctionDef*>;
+template class AST::ASTMap<MethodDef*>;
 template class AST::ASTMap<VariableDefStmt*>;
 template class AST::ASTMap<ASTPtr<Type>>;

@@ -25,6 +25,7 @@ public:
     virtual void run();
 
     virtual void runOn(AST::FunctionDef&);
+    virtual void runOn(AST::MethodDef&);
 
     virtual void runOn(AST::ReturnStmt&);
     virtual void runOn(AST::VariableDefStmt&);
@@ -37,12 +38,9 @@ public:
     virtual void runOn(AST::TypeStmt&);
 
     virtual void runOn(AST::FunctionCallExpr&);
+    virtual void runOn(AST::MethodCallExpr&);
     virtual void runOn(AST::ConstUInt32Expr&);
     virtual void runOn(AST::VariableExpr&);
-    virtual void runOn(AST::UnaryOpExpr&);
-    virtual void runOn(AST::BinaryOpExpr&);
-    virtual void runOn(AST::UnaryAssignOpExpr&);
-    virtual void runOn(AST::BinaryAssignOpExpr&);
 
 }; // class IdentifierPass
 

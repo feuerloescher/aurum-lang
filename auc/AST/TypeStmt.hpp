@@ -8,8 +8,6 @@
 #define AUC_TYPESTMT_HPP
 
 #include "common.hpp"
-#include "ASTPass.hpp"
-#include "Type.hpp"
 
 #include <string>
 

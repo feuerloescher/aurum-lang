@@ -41,8 +41,8 @@ void PrintPass::run() {
 }
 
 void PrintPass::runOn(FunctionDef& func) {
-    stream << "FunctionDef(";
-    func.getTypeStmt()->runPass(*this);
+    stream << "FunctionDef[";
+    func.getReturnTypeStmt()->runPass(*this);
     stream << " " << func.getName() << "(";
     bool first = true;
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
@@ -52,28 +52,46 @@ void PrintPass::runOn(FunctionDef& func) {
         first = false;
         innerStmt->runPass(*this);
     }
-    stream << ")) ";
+    stream << ")] ";
+    func.getBody().runPass(*this);
+}
+
+void PrintPass::runOn(MethodDef& func) {
+    stream << "MethodDef[";
+    func.getReturnTypeStmt()->runPass(*this);
+    stream << " ";
+    func.getObjectTypeStmt()->runPass(*this);
+    stream << "::" << func.getName() << "(";
+    bool first = true;
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+        if (!first) {
+            stream << ", ";
+        }
+        first = false;
+        innerStmt->runPass(*this);
+    }
+    stream << ")] ";
     func.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(ReturnStmt& stmt) {
-    stream << "ReturnStmt(";
+    stream << "ReturnStmt[";
     stmt.getValue()->runPass(*this);
-    stream << ")";
+    stream << "]";
 }
 
 void PrintPass::runOn(VariableDefStmt& stmt) {
-    stream << "VariableDefStmt(";
+    stream << "VariableDefStmt[";
     stmt.getTypeStmt()->runPass(*this);
-    stream << " " << stmt.getName() << ")";
+    stream << " " << stmt.getName() << "]";
 }
 
 void PrintPass::runOn(VariableDefAssignStmt& stmt) {
-    stream << "VariableDefAssignStmt(";
+    stream << "VariableDefAssignStmt[";
     stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName() << " = ";
     stmt.getValue()->runPass(*this);
-    stream << ")";
+    stream << "]";
 }
 
 void PrintPass::runOn(Block& stmt) {
@@ -89,25 +107,25 @@ void PrintPass::runOn(Block& stmt) {
 }
 
 void PrintPass::runOn(IfStmt& stmt) {
-    stream << "IfStmt(";
+    stream << "IfStmt[";
     stmt.getCondition()->runPass(*this);
-    stream << ") ";
+    stream << "] ";
     stmt.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(WhileLoop& stmt) {
-    stream << "WhileLoop(";
+    stream << "WhileLoop[";
     stmt.getCondition()->runPass(*this);
-    stream << ") ";
+    stream << "] ";
     stmt.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(TypeStmt& stmt) {
-    stream << "TypeStmt(" << stmt.getName() << ")";
+    stream << "TypeStmt[" << stmt.getName() << "]";
 }
 
 void PrintPass::runOn(FunctionCallExpr& stmt) {
-    stream << "FunctionCallExpr(" << stmt.getName() << "(";
+    stream << "FunctionCallExpr[" << stmt.getName() << "(";
     bool first = true;
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         if (!first) {
@@ -116,41 +134,28 @@ void PrintPass::runOn(FunctionCallExpr& stmt) {
         first = false;
         expr->runPass(*this);
     }
-    stream << "))";
+    stream << ")]";
+}
+
+void PrintPass::runOn(MethodCallExpr& stmt) {
+    stream << "MethodCallExpr[";
+    stmt.getObjectExpr()->runPass(*this);
+    stream << "." << stmt.getName() << "(";
+    bool first = true;
+    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+        if (!first) {
+            stream << ", ";
+        }
+        first = false;
+        expr->runPass(*this);
+    }
+    stream << ")]";
 }
 
 void PrintPass::runOn(ConstUInt32Expr& stmt) {
-    stream << "ConstUInt32Expr(" << stmt.getNumValue() << ")";
+    stream << "ConstUInt32Expr[" << stmt.getNumValue() << "]";
 }
 
 void PrintPass::runOn(VariableExpr& stmt) {
-    stream << "VariableExpr(" << stmt.getName() << ")";
-}
-
-void PrintPass::runOn(UnaryOpExpr& stmt) {
-    stream << "UnaryOpExpr(" << stmt.getName();
-    stmt.getOperand()->runPass(*this);
-    stream << ")";
-}
-
-void PrintPass::runOn(BinaryOpExpr& stmt) {
-    stream << "BinaryOpExpr(";
-    stmt.getOperand1()->runPass(*this);
-    stream << " " << stmt.getName() << " ";
-    stmt.getOperand2()->runPass(*this);
-    stream << ")";
-}
-
-void PrintPass::runOn(UnaryAssignOpExpr& stmt) {
-    stream << "UnaryAssignOpExpr(" << stmt.getName();
-    stmt.getVariable()->runPass(*this);
-    stream << ")";
-}
-
-void PrintPass::runOn(BinaryAssignOpExpr& stmt) {
-    stream << "BinaryAssignOpExpr(";
-    stmt.getVariable()->runPass(*this);
-    stream << " " << stmt.getName() << " ";
-    stmt.getOperand()->runPass(*this);
-    stream << ")";
+    stream << "VariableExpr[" << stmt.getName() << "]";
 }

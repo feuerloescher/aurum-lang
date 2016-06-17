@@ -37,7 +37,7 @@ PRODUCTIONS
 Aurum = {DeclarativeExpression}.
 
 DeclarativeExpression =
-    FunctionDeclaration
+    FunctionDefaration
 |   FunctionDefinition
 |   ConstantDefinition.
 //|   ClassDefinition   TODO: Class definition
@@ -45,7 +45,7 @@ DeclarativeExpression =
 //|   TypeDefinition    TODO: Type definition
 //|   ExportBlock       TODO: Export definition
 
-FunctionDeclaration = FunctionHeader ["{" "}"] ";".
+FunctionDefaration = FunctionHeader ["{" "}"] ";".
 
 FunctionDefinition = FunctionHeader "{" {ImperativeExpression} "}".
 FunctionHeader = {FunctionModifier} Type [OperatorDeclaration] ident "(" [ParameterModifier] [ Type {"," Type}] ")".

@@ -9,7 +9,6 @@
 
 #include "common.hpp"
 #include "Blocks.hpp"
-#include "ASTPass.hpp"
 
 #include <llvm/IR/Function.h>
 #include <llvm/IR/Type.h>
@@ -32,19 +31,19 @@ class FunctionDef : public Declaration {
 
 protected:
     std::string name;
-    ASTPtr<TypeStmt> type;
+    ASTPtr<TypeStmt> returnTypeStmt;
     ASTList<VariableDefStmt> parameters;
     Block body;
     llvm::Function* llvmFunction;
     std::vector<llvm::Type*> parameterLLVMTypes;
 
 public:
-    FunctionDef(std::string name, ASTPtr<TypeStmt> type);
+    FunctionDef(std::string name, ASTPtr<TypeStmt> returnTypeStmt);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<TypeStmt> getTypeStmt();
+    ASTPtr<TypeStmt> getReturnTypeStmt();
     VariableDefStmtList& getParameters();
     Block& getBody();
     llvm::Function* getLLVMFunction();
@@ -52,6 +51,35 @@ public:
     std::vector<llvm::Type*>& getParameterLLVMTypes();
 
 }; // class FunctionDef
+
+
+class MethodDef : public Declaration {
+
+protected:
+    std::string name;
+    ASTPtr<TypeStmt> returnTypeStmt;
+    ASTPtr<TypeStmt> objectTypeStmt;
+    ASTList<VariableDefStmt> parameters;
+    Block body;
+    llvm::Function* llvmFunction;
+    std::vector<llvm::Type*> parameterLLVMTypes;
+
+public:
+    MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
+        ASTPtr<TypeStmt> objectTypeStmt);
+
+    virtual void runPass(ASTPass& pass);
+
+    std::string getName();
+    ASTPtr<TypeStmt> getReturnTypeStmt();
+    ASTPtr<TypeStmt> getObjectTypeStmt();
+    VariableDefStmtList& getParameters();
+    Block& getBody();
+    llvm::Function* getLLVMFunction();
+    void setLLVMFunction(llvm::Function* llvmFunction);
+    std::vector<llvm::Type*>& getParameterLLVMTypes();
+
+}; // class MethodDef
 
 } // namespace AST
 

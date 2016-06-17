@@ -5,6 +5,7 @@
  */
 
 #include "Blocks.hpp"
+#include "ASTPass.hpp"
 
 using namespace AST;
 

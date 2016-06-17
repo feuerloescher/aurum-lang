@@ -9,8 +9,6 @@
 
 #include "common.hpp"
 #include "Statements.hpp"
-#include "Expressions.hpp"
-#include "ASTPass.hpp"
 #include "ASTMap.hpp"
 
 #include <llvm/IR/BasicBlock.h>

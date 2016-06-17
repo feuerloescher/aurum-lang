@@ -17,7 +17,7 @@ DeclarationList& AbstractSyntaxTree::getDeclarations() {
 }
 
 ASTMap<FunctionDef*>& AbstractSyntaxTree::getFunctionDefs() {
-    return functionDecls;
+    return functionDefs;
 }
 
 ASTMap<ASTPtr<Type>>& AbstractSyntaxTree::getTypes() {

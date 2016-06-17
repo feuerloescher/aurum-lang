@@ -19,6 +19,9 @@ void ASTPass::runOn(Declaration& expr) {
 void ASTPass::runOn(FunctionDef& expr) {
     throw std::runtime_error("FunctionDef unhandled");
 }
+void ASTPass::runOn(MethodDef& expr) {
+    throw std::runtime_error("MethodDef unhandled");
+}
 
 void ASTPass::runOn(Statement& expr) {
     throw std::runtime_error("Statement unhandled");
@@ -53,21 +56,12 @@ void ASTPass::runOn(Expression& expr) {
 void ASTPass::runOn(FunctionCallExpr& expr) {
     throw std::runtime_error("FunctionCallExpr unhandled");
 }
+void ASTPass::runOn(MethodCallExpr& expr) {
+    throw std::runtime_error("MethodCallExpr unhandled");
+}
 void ASTPass::runOn(ConstUInt32Expr& expr) {
     throw std::runtime_error("ConstUInt32Expr unhandled");
 }
 void ASTPass::runOn(VariableExpr& expr) {
     throw std::runtime_error("VariableExpr unhandled");
-}
-void ASTPass::runOn(UnaryOpExpr& expr) {
-    throw std::runtime_error("UnaryOpExpr unhandled");
-}
-void ASTPass::runOn(BinaryOpExpr& expr) {
-    throw std::runtime_error("BinaryOpExpr unhandled");
-}
-void ASTPass::runOn(UnaryAssignOpExpr& expr) {
-    throw std::runtime_error("UnaryAssignOpExpr unhandled");
-}
-void ASTPass::runOn(BinaryAssignOpExpr& expr) {
-    throw std::runtime_error("BinaryAssignOpExpr unhandled");
 }

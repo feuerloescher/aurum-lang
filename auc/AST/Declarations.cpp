@@ -5,11 +5,14 @@
  */
 
 #include "Declarations.hpp"
+#include "ASTPass.hpp"
+#include "TypeStmt.hpp"
+#include "Type.hpp"
 
 using namespace AST;
 
-FunctionDef::FunctionDef(std::string name, ASTPtr<TypeStmt> type)
-    : name(name), type(type), llvmFunction(nullptr) {
+FunctionDef::FunctionDef(std::string name, ASTPtr<TypeStmt> returnTypeStmt)
+    : name(name), returnTypeStmt(returnTypeStmt), llvmFunction(nullptr) {
 }
 
 void FunctionDef::runPass(ASTPass& pass) {
@@ -20,8 +23,8 @@ std::string FunctionDef::getName() {
     return name;
 }
 
-ASTPtr<TypeStmt> FunctionDef::getTypeStmt() {
-    return type;
+ASTPtr<TypeStmt> FunctionDef::getReturnTypeStmt() {
+    return returnTypeStmt;
 }
 
 VariableDefStmtList& FunctionDef::getParameters() {
@@ -40,7 +43,55 @@ void FunctionDef::setLLVMFunction(llvm::Function* llvmFunction) {
     this->llvmFunction = llvmFunction;
 }
 
-
 std::vector<llvm::Type*>& FunctionDef::getParameterLLVMTypes() {
+    return parameterLLVMTypes;
+}
+
+
+MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
+        ASTPtr<TypeStmt> objectTypeStmt)
+    : returnTypeStmt(returnTypeStmt),
+    objectTypeStmt(objectTypeStmt), llvmFunction(nullptr) {
+    name = returnTypeStmt->getName() + '.' + name;
+    parameters.push_back(
+        std::make_shared<VariableDefStmt>("this", objectTypeStmt));
+}
+
+void MethodDef::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+std::string MethodDef::getName() {
+    return name;
+}
+
+ASTPtr<TypeStmt> MethodDef::getReturnTypeStmt() {
+    return returnTypeStmt;
+}
+
+ASTPtr<TypeStmt> MethodDef::getObjectTypeStmt() {
+    return objectTypeStmt;
+}
+
+VariableDefStmtList& MethodDef::getParameters() {
+    return parameters;
+}
+
+Block& MethodDef::getBody() {
+    return body;
+}
+
+llvm::Function* MethodDef::getLLVMFunction() {
+    return llvmFunction;
+}
+
+void MethodDef::setLLVMFunction(llvm::Function* llvmFunction) {
+    this->llvmFunction = llvmFunction;
+}
+
+std::vector<llvm::Type*>& MethodDef::getParameterLLVMTypes() {
+    if (parameterLLVMTypes.empty()) {
+        parameterLLVMTypes.push_back(returnTypeStmt->getType()->getLLVMType());
+    }
     return parameterLLVMTypes;
 }

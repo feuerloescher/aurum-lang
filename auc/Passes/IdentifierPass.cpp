@@ -33,7 +33,20 @@ void IdentifierPass::runOn(FunctionDef& func) {
     if (!ast.getFunctionDefs().insert(&func)) {
         throw ExistingIdentifierError(func.getName());
     }
-    func.getTypeStmt()->runPass(*this);
+    func.getReturnTypeStmt()->runPass(*this);
+    currentBlock = &func.getBody();
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+        innerStmt->runPass(*this);
+    }
+    func.getBody().runPass(*this);
+}
+
+void IdentifierPass::runOn(MethodDef& func) {
+    func.getReturnTypeStmt()->runPass(*this);
+    func.getObjectTypeStmt()->runPass(*this);
+    if (!func.getObjectTypeStmt()->getType()->getMethodDefs().insert(&func)) {
+        throw ExistingIdentifierError(func.getName());
+    }
     currentBlock = &func.getBody();
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
@@ -101,6 +114,13 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     stmt.setFunctionDef(functionDef);
 }
 
+void IdentifierPass::runOn(MethodCallExpr& stmt) {
+    stmt.getObjectExpr()->runPass(*this);
+    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+        expr->runPass(*this);
+    }
+}
+
 void IdentifierPass::runOn(ConstUInt32Expr& stmt) {
 }
 
@@ -113,22 +133,4 @@ void IdentifierPass::runOn(VariableExpr& stmt) {
         throw UnknownIdentifierError(stmt.getName());
     }
     stmt.setVariableDefStmt(variableDef);
-}
-
-void IdentifierPass::runOn(UnaryOpExpr& stmt) {
-    stmt.getOperand()->runPass(*this);
-}
-
-void IdentifierPass::runOn(BinaryOpExpr& stmt) {
-    stmt.getOperand1()->runPass(*this);
-    stmt.getOperand2()->runPass(*this);
-}
-
-void IdentifierPass::runOn(UnaryAssignOpExpr& stmt) {
-    stmt.getVariable()->runPass(*this);
-}
-
-void IdentifierPass::runOn(BinaryAssignOpExpr& stmt) {
-    stmt.getVariable()->runPass(*this);
-    stmt.getOperand()->runPass(*this);
 }

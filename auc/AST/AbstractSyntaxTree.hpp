@@ -10,9 +10,6 @@
 #include "common.hpp"
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
-#include "ASTPass.hpp"
-#include "Blocks.hpp"
-#include "Type.hpp"
 
 #include <llvm/IR/IRBuilder.h>
 #include <llvm/IR/LLVMContext.h>
@@ -24,7 +21,7 @@ class AbstractSyntaxTree {
 
 protected:
     DeclarationList declarations;
-    ASTMap<FunctionDef*> functionDecls;
+    ASTMap<FunctionDef*> functionDefs;
     ASTMap<ASTPtr<Type>> types;
 
     llvm::LLVMContext llvmContext;

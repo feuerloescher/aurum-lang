@@ -29,7 +29,16 @@ void TypePass::run() {
 }
 
 void TypePass::runOn(FunctionDef& func) {
-    func.getTypeStmt()->runPass(*this);
+    func.getReturnTypeStmt()->runPass(*this);
+    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+        innerStmt->runPass(*this);
+    }
+    func.getBody().runPass(*this);
+}
+
+void TypePass::runOn(MethodDef& func) {
+    func.getReturnTypeStmt()->runPass(*this);
+    func.getObjectTypeStmt()->runPass(*this);
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
     }
@@ -74,6 +83,20 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
     }
 }
 
+void TypePass::runOn(MethodCallExpr& stmt) {
+    stmt.getObjectExpr()->runPass(*this);
+    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+        expr->runPass(*this);
+    }
+    /// Resolve method identifier (type of stmt.getObjectExpr() is resolved now)
+    MethodDef* methodDef =
+        stmt.getObjectExpr()->getType()->getMethodDefs().find(stmt.getName());
+    if (!methodDef) {
+        throw UnknownIdentifierError(stmt.getName());
+    }
+    stmt.setMethodDef(methodDef);
+}
+
 void TypePass::runOn(ConstUInt32Expr& stmt) {
     /// \todo Find scalar types more elegantly, e.g. store them directly in AST
     ASTPtr<Type> type = ast.getTypes().find("uint32");
@@ -85,22 +108,4 @@ void TypePass::runOn(ConstUInt32Expr& stmt) {
 
 void TypePass::runOn(VariableExpr& stmt) {
     stmt.setType(stmt.getVariableDefStmt()->getTypeStmt()->getType());
-}
-
-void TypePass::runOn(UnaryOpExpr& stmt) {
-    stmt.getOperand()->runPass(*this);
-}
-
-void TypePass::runOn(BinaryOpExpr& stmt) {
-    stmt.getOperand1()->runPass(*this);
-    stmt.getOperand2()->runPass(*this);
-}
-
-void TypePass::runOn(UnaryAssignOpExpr& stmt) {
-    stmt.getVariable()->runPass(*this);
-}
-
-void TypePass::runOn(BinaryAssignOpExpr& stmt) {
-    stmt.getVariable()->runPass(*this);
-    stmt.getOperand()->runPass(*this);
 }

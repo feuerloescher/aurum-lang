@@ -11,31 +11,6 @@
 
 namespace AST {
 
-class AbstractSyntaxTree;
-
-class Declaration;
-class FunctionDef;
-
-class Statement;
-class ReturnStmt;
-class VariableDefStmt;
-class VariableDefAssignStmt;
-
-class Block;
-class IfStmt;
-class WhileLoop;
-
-class TypeStmt;
-
-class Expression;
-class FunctionCallExpr;
-class ConstUInt32Expr;
-class VariableExpr;
-class UnaryOpExpr;
-class BinaryOpExpr;
-class UnaryAssignOpExpr;
-class BinaryAssignOpExpr;
-
 class ASTPass {
 
 protected:
@@ -50,6 +25,7 @@ public:
 
     virtual void runOn(Declaration&);
     virtual void runOn(FunctionDef&);
+    virtual void runOn(MethodDef&);
 
     virtual void runOn(Statement&);
     virtual void runOn(ReturnStmt&);
@@ -64,12 +40,9 @@ public:
 
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);
+    virtual void runOn(MethodCallExpr&);
     virtual void runOn(ConstUInt32Expr&);
     virtual void runOn(VariableExpr&);
-    virtual void runOn(UnaryOpExpr&);
-    virtual void runOn(BinaryOpExpr&);
-    virtual void runOn(UnaryAssignOpExpr&);
-    virtual void runOn(BinaryAssignOpExpr&);
 
 }; // class ASTPass
 

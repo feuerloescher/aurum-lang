@@ -25,6 +25,33 @@ using ASTRef = std::reference_wrapper<T>;
 template <class T>
 using ASTList = std::vector<ASTPtr<T>>;
 
+/// Forward declarations:
+class AbstractSyntaxTree;
+
+class Declaration;
+class FunctionDef;
+class MethodDef;
+
+class Statement;
+class ReturnStmt;
+class VariableDefStmt;
+class VariableDefAssignStmt;
+
+class Block;
+class IfStmt;
+class WhileLoop;
+
+class TypeStmt;
+
+class Expression;
+class FunctionCallExpr;
+class MethodCallExpr;
+class ConstUInt32Expr;
+class VariableExpr;
+
+class Type;
+class ASTPass;
+
 } // namespace AST
 
 #endif // AUC_COMMON_HPP

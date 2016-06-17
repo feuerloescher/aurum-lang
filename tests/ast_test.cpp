@@ -34,9 +34,10 @@ int main() {
     funcDecl->getParameters().push_back(variable);
     ast.getDeclarations().push_back(funcDecl);
 
-    auto binaryOp = make_shared<BinaryOpExpr>("+",
-        make_shared<VariableExpr>("var"), make_shared<ConstUInt32Expr>(5));
-    auto ret = make_shared<ReturnStmt>(binaryOp);
+    auto addOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("var"), "+");
+    addOp->getParameters().push_back(make_shared<ConstUInt32Expr>(5));
+    auto ret = make_shared<ReturnStmt>(addOp);
     funcDecl->getBody().push_back(ret);
 
     auto mainDecl = make_shared<FunctionDef>("main",
@@ -49,17 +50,19 @@ int main() {
         make_shared<TypeStmt>("uint32"), funcCall);
     mainDecl->getBody().push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefStmt>("y", make_shared<TypeStmt>("uint32"));
+    auto defY = make_shared<VariableDefStmt>("y",
+        make_shared<TypeStmt>("uint32"));
     mainDecl->getBody().push_back(defY);
 
-    auto unaryOp = make_shared<UnaryOpExpr>("-",
-        make_shared<VariableExpr>("x"));
-    auto binaryAssignOp = make_shared<BinaryAssignOpExpr>("=",
-        make_shared<VariableExpr>("y"), unaryOp);
-    mainDecl->getBody().push_back(binaryAssignOp);
+    auto negateOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("x"), "-");
+    auto assignOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("y"), "=");
+    assignOp->getParameters().push_back(negateOp);
+    mainDecl->getBody().push_back(assignOp);
 
-    auto unaryAssignOp = make_shared<UnaryAssignOpExpr>("++",
-        make_shared<VariableExpr>("y"));
+    auto unaryAssignOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("y"), "++");
     mainDecl->getBody().push_back(unaryAssignOp);
 
     ASTPtr<VariableExpr> varY3{new VariableExpr("y")};

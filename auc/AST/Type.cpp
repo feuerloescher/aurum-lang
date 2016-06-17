@@ -4,8 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "Statements.hpp"
-#include "Expressions.hpp"
+#include "Type.hpp"
 
 using namespace AST;
 
@@ -14,6 +13,10 @@ Type::Type(std::string name) : name(name), llvmType(nullptr) {
 
 std::string Type::getName() {
     return name;
+}
+
+ASTMap<MethodDef*>& Type::getMethodDefs() {
+    return methodDefs;
 }
 
 llvm::Type* Type::getLLVMType() {
