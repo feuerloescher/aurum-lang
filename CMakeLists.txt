@@ -4,10 +4,8 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-find_program(CLANG "clang" HINTS "/tmp/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04/bin")
-find_program(CLANG_CPP "clang++" HINTS "/tmp/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04/bin")
-set(CMAKE_C_COMPILER "${CLANG}")
-set(CMAKE_CXX_COMPILER "${CLANG_CPP}")
+set(CMAKE_C_COMPILER clang)
+set(CMAKE_CXX_COMPILER clang++)
 
 project(aurum)
 
@@ -17,7 +15,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0 -Wall -Wextra")
 set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wno-unused-parameter")
 
-set(LLVM_DIR "/tmp/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04/share/llvm/cmake")
 find_package(LLVM REQUIRED CONFIG)
 message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION} in ${LLVM_DIR}")
 
