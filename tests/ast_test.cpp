@@ -16,6 +16,7 @@
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
 #include "Passes/LLVMPass.hpp"
+#include "Passes/VerifyOptimizePass.hpp"
 #include "Passes/IRExportPass.hpp"
 
 #include <fstream>
@@ -83,6 +84,9 @@ int main() {
 
     LLVMPass llvmPass(ast);
     llvmPass.run();
+
+    VerifyOptimizePass verOptPass(ast);
+    verOptPass.run();
 
     std::error_code ec;
     llvm::raw_fd_ostream out("ast_test.bc", ec, (llvm::sys::fs::OpenFlags) 0);
