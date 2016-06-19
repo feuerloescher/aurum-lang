@@ -36,7 +36,7 @@ int main() {
 
     auto addOp = make_shared<MethodCallExpr>(
         make_shared<VariableExpr>("var"), "+");
-    addOp->getParameters().push_back(make_shared<ConstUInt32Expr>(5));
+    addOp->getArgs().push_back(make_shared<ConstUInt32Expr>(5));
     auto ret = make_shared<ReturnStmt>(addOp);
     funcDecl->getBody().push_back(ret);
 
@@ -45,7 +45,7 @@ int main() {
     ast.getDeclarations().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo");
-    funcCall->getParameters().push_back(make_shared<ConstUInt32Expr>(5));
+    funcCall->getArgs().push_back(make_shared<ConstUInt32Expr>(5));
     auto defAssignX = make_shared<VariableDefAssignStmt>("x",
         make_shared<TypeStmt>("uint32"), funcCall);
     mainDecl->getBody().push_back(defAssignX);
@@ -56,7 +56,7 @@ int main() {
 
     auto assignOp = make_shared<MethodCallExpr>(
         make_shared<VariableExpr>("y"), "=");
-    assignOp->getParameters().push_back(make_shared<VariableExpr>("x"));
+    assignOp->getArgs().push_back(make_shared<VariableExpr>("x"));
     mainDecl->getBody().push_back(assignOp);
 
     auto unaryAssignOp = make_shared<MethodCallExpr>(

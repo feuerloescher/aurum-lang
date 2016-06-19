@@ -251,7 +251,7 @@ void LLVMPass::runOn(TypeStmt& stmt) {
 
 void LLVMPass::runOn(FunctionCallExpr& stmt) {
     std::vector<llvm::Value*> parameters;
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
         /// Parameters are call-by-value
         if (expr->getLLVMValue()->getType()->isPointerTy()) {
@@ -280,7 +280,7 @@ void LLVMPass::runOn(MethodCallExpr& stmt) {
         parameters.push_back(allocaInst);
     }
 
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
         /// Other parameters are call-by-value
         if (expr->getLLVMValue()->getType()->isPointerTy()) {

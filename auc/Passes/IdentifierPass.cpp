@@ -103,7 +103,7 @@ void IdentifierPass::runOn(TypeStmt& stmt) {
 }
 
 void IdentifierPass::runOn(FunctionCallExpr& stmt) {
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
     FunctionDef* functionDef = ast.getFunctionDefs().find(
@@ -111,16 +111,16 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     if (!functionDef) {
         throw UnknownIdentifierError(stmt.getName());
     }
-    if (stmt.getParameters().size() != functionDef->getParameters().size()) {
+    if (stmt.getArgs().size() != functionDef->getParameters().size()) {
         throw ParameterCountError(stmt.getName(),
-            functionDef->getParameters().size(), stmt.getParameters().size());
+            functionDef->getParameters().size(), stmt.getArgs().size());
     }
     stmt.setFunctionDef(functionDef);
 }
 
 void IdentifierPass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
     /// Method identifier is resolved in TypePass, as type of

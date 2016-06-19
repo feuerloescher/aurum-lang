@@ -127,7 +127,7 @@ void PrintPass::runOn(TypeStmt& stmt) {
 void PrintPass::runOn(FunctionCallExpr& stmt) {
     stream << "FunctionCallExpr[" << stmt.getName() << "(";
     bool first = true;
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         if (!first) {
             stream << ", ";
         }
@@ -142,7 +142,7 @@ void PrintPass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
     stream << "." << stmt.getName() << "(";
     bool first = true;
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         if (!first) {
             stream << ", ";
         }

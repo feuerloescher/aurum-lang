@@ -39,8 +39,8 @@ std::string FunctionCallExpr::getName() {
     return name;
 }
 
-ASTList<Expression>& FunctionCallExpr::getParameters() {
-    return parameters;
+ASTList<Expression>& FunctionCallExpr::getArgs() {
+    return args;
 }
 
 FunctionDef* FunctionCallExpr::getFunctionDef() {
@@ -72,8 +72,8 @@ std::string MethodCallExpr::getMangledName() {
     return objectExpr->getType()->getName() + '.' + name;
 }
 
-ASTList<Expression>& MethodCallExpr::getParameters() {
-    return parameters;
+ASTList<Expression>& MethodCallExpr::getArgs() {
+    return args;
 }
 
 MethodDef* MethodCallExpr::getMethodDef() {

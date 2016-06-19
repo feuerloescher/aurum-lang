@@ -37,7 +37,7 @@ class FunctionCallExpr : public Expression {
 
 protected:
     std::string name;
-    ASTList<Expression> parameters;
+    ASTList<Expression> args;
     FunctionDef* functionDef;
 
 public:
@@ -45,7 +45,7 @@ public:
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
-    ASTList<Expression>& getParameters();
+    ASTList<Expression>& getArgs();
     FunctionDef* getFunctionDef();
     void setFunctionDef(FunctionDef* functionDef);
 
@@ -57,7 +57,7 @@ class MethodCallExpr : public Expression {
 protected:
     ASTPtr<Expression> objectExpr;
     std::string name;
-    ASTList<Expression> parameters;
+    ASTList<Expression> args;
     MethodDef* methodDef;
 
 public:
@@ -67,7 +67,7 @@ public:
     ASTPtr<Expression> getObjectExpr();
     std::string getName();
     std::string getMangledName();
-    ASTList<Expression>& getParameters();
+    ASTList<Expression>& getArgs();
     MethodDef* getMethodDef();
     void setMethodDef(MethodDef* functionDef);
 

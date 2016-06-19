@@ -78,14 +78,14 @@ void TypePass::runOn(TypeStmt& stmt) {
 }
 
 void TypePass::runOn(FunctionCallExpr& stmt) {
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
 }
 
 void TypePass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
-    for (ASTPtr<Expression> expr : stmt.getParameters()) {
+    for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
     /// Resolve method identifier (type of stmt.getObjectExpr() is resolved now)
@@ -95,9 +95,9 @@ void TypePass::runOn(MethodCallExpr& stmt) {
     if (!methodDef) {
         throw UnknownIdentifierError(mangledName);
     }
-    if (stmt.getParameters().size() != methodDef->getParameters().size() - 1) {
+    if (stmt.getArgs().size() != methodDef->getParameters().size() - 1) {
         throw ParameterCountError(stmt.getMangledName(),
-            methodDef->getParameters().size() - 1, stmt.getParameters().size());
+            methodDef->getParameters().size() - 1, stmt.getArgs().size());
     }
     stmt.setMethodDef(methodDef);
 }
