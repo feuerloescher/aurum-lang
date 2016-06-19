@@ -10,6 +10,8 @@
 #include "AST/common.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
 
+#include <ostream>
+
 namespace Passes {
 
 /// Export the generated LLVM Intermediate Representation code
@@ -17,9 +19,10 @@ class IRExportPass {
 
 protected:
     AST::AbstractSyntaxTree& ast;
+    llvm::raw_ostream& out;
 
 public:
-    IRExportPass(AST::AbstractSyntaxTree& ast);
+    IRExportPass(AST::AbstractSyntaxTree& ast, llvm::raw_ostream& out);
 
     void run();
 

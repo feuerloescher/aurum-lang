@@ -1,0 +1,551 @@
+; ModuleID = 'llvm module'
+source_filename = "llvm module"
+
+define i8 @"uint8.+"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %addtmp = add i8 %thisval, %paramval
+  ret i8 %addtmp
+}
+
+define i8 @uint8.-(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %subtmp = sub i8 %thisval, %paramval
+  ret i8 %subtmp
+}
+
+define i8 @"uint8.*"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %multmp = mul i8 %thisval, %paramval
+  ret i8 %multmp
+}
+
+define i8 @"uint8./"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %divtmp = udiv i8 %thisval, %paramval
+  ret i8 %divtmp
+}
+
+define i8 @"uint8.="(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  store i8 %paramval, i8* %this
+  ret i8 %paramval
+}
+
+define i8 @"uint8.++"(i8* %this) {
+entry:
+  %thisval = load i8, i8* %this
+  %inctmp = add i8 %thisval, 1
+  store i8 %inctmp, i8* %this
+  ret i8 %inctmp
+}
+
+define i8 @uint8.--(i8* %this) {
+entry:
+  %thisval = load i8, i8* %this
+  %dectmp = sub i8 %thisval, 1
+  store i8 %dectmp, i8* %this
+  ret i8 %dectmp
+}
+
+define i16 @"uint16.+"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %addtmp = add i16 %thisval, %paramval
+  ret i16 %addtmp
+}
+
+define i16 @uint16.-(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %subtmp = sub i16 %thisval, %paramval
+  ret i16 %subtmp
+}
+
+define i16 @"uint16.*"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %multmp = mul i16 %thisval, %paramval
+  ret i16 %multmp
+}
+
+define i16 @"uint16./"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %divtmp = udiv i16 %thisval, %paramval
+  ret i16 %divtmp
+}
+
+define i16 @"uint16.="(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  store i16 %paramval, i16* %this
+  ret i16 %paramval
+}
+
+define i16 @"uint16.++"(i16* %this) {
+entry:
+  %thisval = load i16, i16* %this
+  %inctmp = add i16 %thisval, 1
+  store i16 %inctmp, i16* %this
+  ret i16 %inctmp
+}
+
+define i16 @uint16.--(i16* %this) {
+entry:
+  %thisval = load i16, i16* %this
+  %dectmp = sub i16 %thisval, 1
+  store i16 %dectmp, i16* %this
+  ret i16 %dectmp
+}
+
+define i32 @"uint32.+"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %addtmp = add i32 %thisval, %paramval
+  ret i32 %addtmp
+}
+
+define i32 @uint32.-(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %subtmp = sub i32 %thisval, %paramval
+  ret i32 %subtmp
+}
+
+define i32 @"uint32.*"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %multmp = mul i32 %thisval, %paramval
+  ret i32 %multmp
+}
+
+define i32 @"uint32./"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %divtmp = udiv i32 %thisval, %paramval
+  ret i32 %divtmp
+}
+
+define i32 @"uint32.="(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  store i32 %paramval, i32* %this
+  ret i32 %paramval
+}
+
+define i32 @"uint32.++"(i32* %this) {
+entry:
+  %thisval = load i32, i32* %this
+  %inctmp = add i32 %thisval, 1
+  store i32 %inctmp, i32* %this
+  ret i32 %inctmp
+}
+
+define i32 @uint32.--(i32* %this) {
+entry:
+  %thisval = load i32, i32* %this
+  %dectmp = sub i32 %thisval, 1
+  store i32 %dectmp, i32* %this
+  ret i32 %dectmp
+}
+
+define i64 @"uint64.+"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %addtmp = add i64 %thisval, %paramval
+  ret i64 %addtmp
+}
+
+define i64 @uint64.-(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %subtmp = sub i64 %thisval, %paramval
+  ret i64 %subtmp
+}
+
+define i64 @"uint64.*"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %multmp = mul i64 %thisval, %paramval
+  ret i64 %multmp
+}
+
+define i64 @"uint64./"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %divtmp = udiv i64 %thisval, %paramval
+  ret i64 %divtmp
+}
+
+define i64 @"uint64.="(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  store i64 %paramval, i64* %this
+  ret i64 %paramval
+}
+
+define i64 @"uint64.++"(i64* %this) {
+entry:
+  %thisval = load i64, i64* %this
+  %inctmp = add i64 %thisval, 1
+  store i64 %inctmp, i64* %this
+  ret i64 %inctmp
+}
+
+define i64 @uint64.--(i64* %this) {
+entry:
+  %thisval = load i64, i64* %this
+  %dectmp = sub i64 %thisval, 1
+  store i64 %dectmp, i64* %this
+  ret i64 %dectmp
+}
+
+define i8 @"int8.+"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %addtmp = add i8 %thisval, %paramval
+  ret i8 %addtmp
+}
+
+define i8 @int8.-(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %subtmp = sub i8 %thisval, %paramval
+  ret i8 %subtmp
+}
+
+define i8 @"int8.*"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %multmp = mul i8 %thisval, %paramval
+  ret i8 %multmp
+}
+
+define i8 @"int8./"(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  %divtmp = sdiv i8 %thisval, %paramval
+  ret i8 %divtmp
+}
+
+define i8 @"int8.="(i8* %this, i8 %param) {
+entry:
+  %param1 = alloca i8
+  store i8 %param, i8* %param1
+  %thisval = load i8, i8* %this
+  %paramval = load i8, i8* %param1
+  store i8 %paramval, i8* %this
+  ret i8 %paramval
+}
+
+define i8 @"int8.++"(i8* %this) {
+entry:
+  %thisval = load i8, i8* %this
+  %inctmp = add i8 %thisval, 1
+  store i8 %inctmp, i8* %this
+  ret i8 %inctmp
+}
+
+define i8 @int8.--(i8* %this) {
+entry:
+  %thisval = load i8, i8* %this
+  %dectmp = sub i8 %thisval, 1
+  store i8 %dectmp, i8* %this
+  ret i8 %dectmp
+}
+
+define i16 @"int16.+"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %addtmp = add i16 %thisval, %paramval
+  ret i16 %addtmp
+}
+
+define i16 @int16.-(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %subtmp = sub i16 %thisval, %paramval
+  ret i16 %subtmp
+}
+
+define i16 @"int16.*"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %multmp = mul i16 %thisval, %paramval
+  ret i16 %multmp
+}
+
+define i16 @"int16./"(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  %divtmp = sdiv i16 %thisval, %paramval
+  ret i16 %divtmp
+}
+
+define i16 @"int16.="(i16* %this, i16 %param) {
+entry:
+  %param1 = alloca i16
+  store i16 %param, i16* %param1
+  %thisval = load i16, i16* %this
+  %paramval = load i16, i16* %param1
+  store i16 %paramval, i16* %this
+  ret i16 %paramval
+}
+
+define i16 @"int16.++"(i16* %this) {
+entry:
+  %thisval = load i16, i16* %this
+  %inctmp = add i16 %thisval, 1
+  store i16 %inctmp, i16* %this
+  ret i16 %inctmp
+}
+
+define i16 @int16.--(i16* %this) {
+entry:
+  %thisval = load i16, i16* %this
+  %dectmp = sub i16 %thisval, 1
+  store i16 %dectmp, i16* %this
+  ret i16 %dectmp
+}
+
+define i32 @"int32.+"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %addtmp = add i32 %thisval, %paramval
+  ret i32 %addtmp
+}
+
+define i32 @int32.-(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %subtmp = sub i32 %thisval, %paramval
+  ret i32 %subtmp
+}
+
+define i32 @"int32.*"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %multmp = mul i32 %thisval, %paramval
+  ret i32 %multmp
+}
+
+define i32 @"int32./"(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  %divtmp = sdiv i32 %thisval, %paramval
+  ret i32 %divtmp
+}
+
+define i32 @"int32.="(i32* %this, i32 %param) {
+entry:
+  %param1 = alloca i32
+  store i32 %param, i32* %param1
+  %thisval = load i32, i32* %this
+  %paramval = load i32, i32* %param1
+  store i32 %paramval, i32* %this
+  ret i32 %paramval
+}
+
+define i32 @"int32.++"(i32* %this) {
+entry:
+  %thisval = load i32, i32* %this
+  %inctmp = add i32 %thisval, 1
+  store i32 %inctmp, i32* %this
+  ret i32 %inctmp
+}
+
+define i32 @int32.--(i32* %this) {
+entry:
+  %thisval = load i32, i32* %this
+  %dectmp = sub i32 %thisval, 1
+  store i32 %dectmp, i32* %this
+  ret i32 %dectmp
+}
+
+define i64 @"int64.+"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %addtmp = add i64 %thisval, %paramval
+  ret i64 %addtmp
+}
+
+define i64 @int64.-(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %subtmp = sub i64 %thisval, %paramval
+  ret i64 %subtmp
+}
+
+define i64 @"int64.*"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %multmp = mul i64 %thisval, %paramval
+  ret i64 %multmp
+}
+
+define i64 @"int64./"(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  %divtmp = sdiv i64 %thisval, %paramval
+  ret i64 %divtmp
+}
+
+define i64 @"int64.="(i64* %this, i64 %param) {
+entry:
+  %param1 = alloca i64
+  store i64 %param, i64* %param1
+  %thisval = load i64, i64* %this
+  %paramval = load i64, i64* %param1
+  store i64 %paramval, i64* %this
+  ret i64 %paramval
+}
+
+define i64 @"int64.++"(i64* %this) {
+entry:
+  %thisval = load i64, i64* %this
+  %inctmp = add i64 %thisval, 1
+  store i64 %inctmp, i64* %this
+  ret i64 %inctmp
+}
+
+define i64 @int64.--(i64* %this) {
+entry:
+  %thisval = load i64, i64* %this
+  %dectmp = sub i64 %thisval, 1
+  store i64 %dectmp, i64* %this
+  ret i64 %dectmp
+}
+
+define i32 @foo(i32 %var) {
+entry:
+  %var1 = alloca i32
+  store i32 %var, i32* %var1
+  %0 = call i32 @"uint32.+"(i32* %var1, i32 5)
+  ret i32 %0
+}
+
+define i32 @main() {
+entry:
+  %x = alloca i32
+  %0 = call i32 @foo(i32 5)
+  store i32 %0, i32* %x
+  %y = alloca i32
+  %x.val = load i32, i32* %x
+  %1 = call i32 @"uint32.="(i32* %y, i32 %x.val)
+  %2 = call i32 @"uint32.++"(i32* %y)
+  %y.val = load i32, i32* %y
+  ret i32 %y.val
+}

@@ -10,9 +10,10 @@
 using namespace AST;
 using namespace Passes;
 
-IRExportPass::IRExportPass(AST::AbstractSyntaxTree& ast) : ast(ast) {
+IRExportPass::IRExportPass(AST::AbstractSyntaxTree& ast, llvm::raw_ostream& out)
+    : ast(ast), out(out) {
 }
 
 void IRExportPass::run() {
-    ast.getLLVMModule().dump();
+    ast.getLLVMModule().print(out, nullptr);
 }

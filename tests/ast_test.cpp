@@ -18,7 +18,9 @@
 #include "Passes/LLVMPass.hpp"
 #include "Passes/IRExportPass.hpp"
 
+#include <fstream>
 #include <iostream>
+#include <llvm/Support/raw_ostream.h>
 
 using namespace AST;
 using namespace Passes;
@@ -67,7 +69,7 @@ int main() {
     auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
     mainDecl->getBody().push_back(ret2);
 
-    PrintPass printer(ast, std::cout);
+    PrintPass printer(ast, cout);
     printer.run();
 
     StdLibPass stdLibPass(ast);
@@ -82,7 +84,11 @@ int main() {
     LLVMPass llvmPass(ast);
     llvmPass.run();
 
-    IRExportPass exportPass(ast);
+    std::error_code ec;
+    llvm::raw_fd_ostream out("ast_test.bc", ec, (llvm::sys::fs::OpenFlags) 0);
+    IRExportPass exportPass(ast, out);
     exportPass.run();
+    out.close();
+
     return 0;
 }
