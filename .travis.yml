@@ -15,14 +15,8 @@ addons:
    packages:
    - lcov
    - ca-certificates
- coverity_scan:
-   project:
-    name: "feuerloescher/aurum-lang"
-    description: "Build submitted via Travis CI"
-   notification_email: max.mail@dameweb.de
-   build_command_prepend: "mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug"
-   build_command: "make -j2"
-   branch_pattern: master
+before_script:
+  - curl -s https://scan.coverity.com/scripts/travisci_build_coverity_scan.sh | COVERITY_SCAN_PROJECT_NAME="feuerloescher/aurum-lang" COVERITY_SCAN_NOTIFICATION_EMAIL="max.mail@dameweb.de" COVERITY_SCAN_BUILD_COMMAND="make -j2" COVERITY_SCAN_BUILD_COMMAND_PREPEND="mkdir build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug" COVERITY_SCAN_BRANCH_PATTERN=master bash || true
 script: mkdir -p build && cd build && cmake ../ -DCMAKE_BUILD_TYPE=Debug && make -j2 && make test && cd ..
 after_success:
   - cd build && make test_coverage && coveralls-lcov tests/coverage.info && cd ..
