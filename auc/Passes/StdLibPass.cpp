@@ -6,20 +6,57 @@
 
 #include "StdLibPass.hpp"
 #include "AST/ScalarTypes.hpp"
+#include "AST/TypeStmt.hpp"
 
 using namespace AST;
 using namespace Passes;
 
-StdLibPass::StdLibPass(AST::AbstractSyntaxTree& ast) : ast(ast) {
+StdLibPass::StdLibPass(AST::AbstractSyntaxTree& ast)
+    : ast(ast), types(ast.getTypes()) {
 }
 
 void StdLibPass::run() {
-    addStdLibTypes();
+    addScalarTypes();
     /// more to come...
 }
 
-void StdLibPass::addStdLibTypes() {
-    ast.getTypes().insert(std::make_shared<IntType>("uint32", 32, false));
+void StdLibPass::addScalarTypes() {
+    for (bool isSigned : {false, true}) {
+        for (unsigned int width : {8, 16, 32, 64}) {
+            std::string intTypeName =
+                (isSigned ? "int" : "uint") + std::to_string(width);
+            std::shared_ptr<IntType> intType = std::make_shared<IntType>(
+                intTypeName, width, isSigned);
+            types.insert(intType);
+
+            std::shared_ptr<TypeStmt> intTypeStmt = std::make_shared<TypeStmt>(
+                intTypeName);
+            intTypeStmt->setType(intType);
+
+            for (std::string op : {"+", "-", "*", "/", "="}) {
+                std::shared_ptr<MethodDef> intMethod =
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt);
+                intMethod->getParameters().push_back(
+                    std::make_shared<VariableDefStmt>("param", intTypeStmt));
+                ast.getStdLibMethodDefs().insert(intMethod);
+                intType->getMethodDefs().insert(intMethod.get());
+            }
+            for (std::string op : {"++", "--"}) {
+                std::shared_ptr<MethodDef> intMethod =
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt);
+                ast.getStdLibMethodDefs().insert(intMethod);
+                intType->getMethodDefs().insert(intMethod.get());
+            }
+        }
+    }
+    types.insert(types.find("int8"), "byte");
+    types.insert(types.find("uint8"), "char");
+    types.insert(types.find("int16"), "short");
+    types.insert(types.find("uint16"), "ushort");
+    types.insert(types.find("int32"), "int");
+    types.insert(types.find("uint32"), "uint");
+    types.insert(types.find("int64"), "long");
+    types.insert(types.find("uint64"), "ulong");
 }
 
 

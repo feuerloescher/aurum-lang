@@ -17,10 +17,6 @@ namespace AST {
 template <class T>
 using ASTPtr = std::shared_ptr<T>;
 
-/// Reference
-template <class T>
-using ASTRef = std::reference_wrapper<T>;
-
 /// Managed list
 template <class T>
 using ASTList = std::vector<ASTPtr<T>>;

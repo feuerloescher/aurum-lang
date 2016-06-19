@@ -27,6 +27,7 @@ protected:
 public:
     void clear();
     bool insert(T t);
+    bool insert(T t, std::string name);
     T find(std::string name);
     typename InternalMapType<T>::iterator begin();
     typename InternalMapType<T>::iterator end();

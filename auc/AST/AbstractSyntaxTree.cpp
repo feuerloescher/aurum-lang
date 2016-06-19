@@ -24,6 +24,10 @@ ASTMap<ASTPtr<Type>>& AbstractSyntaxTree::getTypes() {
     return types;
 }
 
+ASTMap<ASTPtr<MethodDef>>& AbstractSyntaxTree::getStdLibMethodDefs() {
+    return stdLibMethodDefs;
+}
+
 llvm::IRBuilder<>& AbstractSyntaxTree::getIRBuilder() {
     return irBuilder;
 }

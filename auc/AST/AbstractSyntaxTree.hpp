@@ -23,6 +23,7 @@ protected:
     DeclarationList declarations;
     ASTMap<FunctionDef*> functionDefs;
     ASTMap<ASTPtr<Type>> types;
+    ASTMap<ASTPtr<MethodDef>> stdLibMethodDefs;
 
     llvm::LLVMContext llvmContext;
     llvm::IRBuilder<> irBuilder;
@@ -35,6 +36,7 @@ public:
     DeclarationList& getDeclarations();
     ASTMap<FunctionDef*>& getFunctionDefs();
     ASTMap<ASTPtr<Type>>& getTypes();
+    ASTMap<ASTPtr<MethodDef>>& getStdLibMethodDefs();
     llvm::LLVMContext& getLLVMContext();
     llvm::IRBuilder<>& getIRBuilder();
     llvm::Module& getLLVMModule();

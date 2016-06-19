@@ -6,7 +6,7 @@ AbstractSyntaxTree {
   FunctionDef[TypeStmt[uint32] main()] {
     VariableDefAssignStmt[TypeStmt[uint32] x = FunctionCallExpr[foo(ConstUInt32Expr[5])]]
     VariableDefStmt[TypeStmt[uint32] y]
-    MethodCallExpr[VariableExpr[y].=(MethodCallExpr[VariableExpr[x].-()])]
+    MethodCallExpr[VariableExpr[y].=(VariableExpr[x])]
     MethodCallExpr[VariableExpr[y].++()]
     ReturnStmt[VariableExpr[y]]
   }

@@ -54,11 +54,9 @@ int main() {
         make_shared<TypeStmt>("uint32"));
     mainDecl->getBody().push_back(defY);
 
-    auto negateOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("x"), "-");
     auto assignOp = make_shared<MethodCallExpr>(
         make_shared<VariableExpr>("y"), "=");
-    assignOp->getParameters().push_back(negateOp);
+    assignOp->getParameters().push_back(make_shared<VariableExpr>("x"));
     mainDecl->getBody().push_back(assignOp);
 
     auto unaryAssignOp = make_shared<MethodCallExpr>(
@@ -69,6 +67,9 @@ int main() {
     auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
     mainDecl->getBody().push_back(ret2);
 
+    PrintPass printer(ast, std::cout);
+    printer.run();
+
     StdLibPass stdLibPass(ast);
     stdLibPass.run();
 
@@ -77,9 +78,6 @@ int main() {
 
     TypePass typePass(ast);
     typePass.run();
-
-    PrintPass printer(ast, std::cout);
-    printer.run();
 
     LLVMPass llvmPass(ast);
     llvmPass.run();

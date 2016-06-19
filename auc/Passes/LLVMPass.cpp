@@ -31,8 +31,83 @@ void LLVMPass::createLLVMTypes() {
     }
 }
 
+void LLVMPass::addScalarMethods() {
+    for (bool isSigned : {false, true}) {
+        for (unsigned int width : {8, 16, 32, 64}) {
+            std::string intTypeName =
+                (isSigned ? "int" : "uint") + std::to_string(width);
+            for (std::string op : {"+", "-", "*", "/", "="}) {
+                std::string methodName = intTypeName + '.' + op;
+                std::shared_ptr<MethodDef> intMethod =
+                    ast.getStdLibMethodDefs().find(methodName);
+                if (!intMethod) {
+                    throw UnknownIdentifierError(methodName);
+                }
+                intMethod->runPass(*this);
+                llvm::Value* thisPtr =
+                    intMethod->getParameters()[0]->getAllocaInst();
+                llvm::Value* paramPtr =
+                    intMethod->getParameters()[1]->getAllocaInst();
+                llvm::Value* thisValue = irBuilder.CreateLoad(
+                    thisPtr, "thisval");
+                llvm::Value* paramValue = irBuilder.CreateLoad(
+                    paramPtr, "paramval");
+                llvm::Value* retValue = nullptr;
+                if (op == "+") {
+                    retValue =
+                        irBuilder.CreateAdd(thisValue, paramValue, "addtmp");
+                } else if (op == "-") {
+                    retValue =
+                        irBuilder.CreateSub(thisValue, paramValue, "subtmp");
+                } else if (op == "*") {
+                    retValue =
+                        irBuilder.CreateMul(thisValue, paramValue, "multmp");
+                } else if (op == "/") {
+                    if (isSigned) {
+                        retValue = irBuilder.CreateSDiv(
+                            thisValue, paramValue, "divtmp");
+                    } else {
+                        retValue = irBuilder.CreateUDiv(
+                            thisValue, paramValue, "divtmp");
+                    }
+                } else if (op == "=") {
+                    irBuilder.CreateStore(paramValue, thisPtr);
+                    retValue = paramValue;
+                }
+                irBuilder.CreateRet(retValue);
+            }
+            llvm::Value* constantOne = llvm::ConstantInt::get(llvmContext,
+                llvm::APInt(width, (uint64_t) 1, isSigned));
+            for (std::string op : {"++", "--"}) {
+                std::string methodName = intTypeName + '.' + op;
+                std::shared_ptr<MethodDef> intMethod =
+                    ast.getStdLibMethodDefs().find(methodName);
+                if (!intMethod) {
+                    throw UnknownIdentifierError(methodName);
+                }
+                intMethod->runPass(*this);
+                llvm::Value* thisPtr =
+                    intMethod->getParameters()[0]->getAllocaInst();
+                llvm::Value* thisValue = irBuilder.CreateLoad(
+                    thisPtr, "thisval");
+                llvm::Value* retValue = nullptr;
+                if (op == "++") {
+                    retValue =
+                        irBuilder.CreateAdd(thisValue, constantOne, "inctmp");
+                } else if (op == "--") {
+                    retValue =
+                        irBuilder.CreateSub(thisValue, constantOne, "dectmp");
+                }
+                irBuilder.CreateStore(retValue, thisPtr);
+                irBuilder.CreateRet(retValue);
+            }
+        }
+    }
+}
+
 void LLVMPass::run() {
     createLLVMTypes();
+    addScalarMethods();
     currentBlock = nullptr;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
@@ -60,13 +135,17 @@ void LLVMPass::runOn(FunctionDef& func) {
     /// Add alloca for each parameter
     ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
     for (llvm::Value& parameter : llvmFunction->args()) {
+        assert(paramIter != func.getParameters().end());
         parameter.setName((*paramIter)->getName());
         (*paramIter)->runPass(*this);
 
         /// Store the initial value into the alloca
         irBuilder.CreateStore(&parameter,
             (*paramIter)->getAllocaInst());
+
+        ++paramIter;
     }
+    assert(paramIter == func.getParameters().end());
     func.getBody().runPass(*this);
 }
 
@@ -74,9 +153,14 @@ void LLVMPass::runOn(MethodDef& func) {
     func.getReturnTypeStmt()->runPass(*this);
     func.getObjectTypeStmt()->runPass(*this);
     /// Create function type and function
+    int i = 0;
     for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        func.getParameterLLVMTypes().push_back(
-            innerStmt->getTypeStmt()->getType()->getLLVMType());
+        llvm::Type* llvmType =
+            innerStmt->getTypeStmt()->getType()->getLLVMType();
+        if (i++ == 0) {
+            llvmType = llvmType->getPointerTo();
+        }
+        func.getParameterLLVMTypes().push_back(llvmType);
     }
     llvm::Function* llvmFunction = llvm::Function::Create(
         llvm::FunctionType::get(
@@ -92,20 +176,37 @@ void LLVMPass::runOn(MethodDef& func) {
     /// Add alloca for each parameter
     /// \todo Set pointer of first parameter 'this'
     ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
-    for (llvm::Value& parameter : llvmFunction->args()) {
-        parameter.setName((*paramIter)->getName());
-        (*paramIter)->runPass(*this);
+    for (llvm::Value& llvmParam : llvmFunction->args()) {
+        assert(paramIter != func.getParameters().end());
+        ASTPtr<VariableDefStmt> param = *paramIter;
+        llvmParam.setName(param->getName());
+        if (param->getName() == "this") {
+            /// Create no alloca for "this" pointer
+            param->getTypeStmt()->runPass(*this);
+            param->setAllocaInst((llvm::AllocaInst*) &llvmParam);
+        } else {
+            param->runPass(*this);
 
-        /// Store the initial value into the alloca
-        irBuilder.CreateStore(&parameter,
-            (*paramIter)->getAllocaInst());
+            /// Store the initial value into the alloca
+            irBuilder.CreateStore(&llvmParam, param->getAllocaInst());
+        }
+
+        ++paramIter;
     }
+    assert(paramIter == func.getParameters().end());
     func.getBody().runPass(*this);
 }
 
 void LLVMPass::runOn(ReturnStmt& stmt) {
     stmt.getValue()->runPass(*this);
-    irBuilder.CreateRet(stmt.getValue()->getLLVMValue());
+    ASTPtr<Expression> expr = stmt.getValue();
+    /// Return by-value
+    if (expr->getLLVMValue()->getType()->isPointerTy()) {
+        irBuilder.CreateRet(irBuilder.CreateLoad(expr->getLLVMValue(),
+            expr->getLLVMValue()->getName() + ".val"));
+    } else {
+        irBuilder.CreateRet(expr->getLLVMValue());
+    }
 }
 
 void LLVMPass::runOn(VariableDefStmt& stmt) {
@@ -123,8 +224,7 @@ void LLVMPass::runOn(VariableDefAssignStmt& stmt) {
         0, stmt.getName());
     stmt.setAllocaInst(allocaInst);
     stmt.getValue()->runPass(*this);
-    irBuilder.CreateStore(allocaInst,
-        stmt.getValue()->getLLVMValue());
+    irBuilder.CreateStore(stmt.getValue()->getLLVMValue(), allocaInst);
     /// \todo Merge getLLVMValue and getAllocaInst in Expression subclasses?
 }
 
@@ -153,7 +253,13 @@ void LLVMPass::runOn(FunctionCallExpr& stmt) {
     std::vector<llvm::Value*> parameters;
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         expr->runPass(*this);
-        parameters.push_back(expr->getLLVMValue());
+        /// Parameters are call-by-value
+        if (expr->getLLVMValue()->getType()->isPointerTy()) {
+            parameters.push_back(irBuilder.CreateLoad(expr->getLLVMValue(),
+                expr->getLLVMValue()->getName() + ".val"));
+        } else {
+            parameters.push_back(expr->getLLVMValue());
+        }
     }
     stmt.setLLVMValue(irBuilder.CreateCall(
         stmt.getFunctionDef()->getLLVMFunction(), parameters));
@@ -162,9 +268,27 @@ void LLVMPass::runOn(FunctionCallExpr& stmt) {
 void LLVMPass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
     std::vector<llvm::Value*> parameters;
+
+    /// First parameter is call-by-reference
+    if (stmt.getObjectExpr()->getLLVMValue()->getType()->isPointerTy()) {
+        parameters.push_back(stmt.getObjectExpr()->getLLVMValue());
+    } else {
+        llvm::AllocaInst* allocaInst = irBuilder.CreateAlloca(
+            stmt.getObjectExpr()->getType()->getLLVMType(),
+            0, "thistmp");
+        irBuilder.CreateStore(stmt.getObjectExpr()->getLLVMValue(), allocaInst);
+        parameters.push_back(allocaInst);
+    }
+
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         expr->runPass(*this);
-        parameters.push_back(expr->getLLVMValue());
+        /// Other parameters are call-by-value
+        if (expr->getLLVMValue()->getType()->isPointerTy()) {
+            parameters.push_back(irBuilder.CreateLoad(expr->getLLVMValue(),
+                expr->getLLVMValue()->getName() + ".val"));
+        } else {
+            parameters.push_back(expr->getLLVMValue());
+        }
     }
     stmt.setLLVMValue(irBuilder.CreateCall(
         stmt.getMethodDef()->getLLVMFunction(), parameters));

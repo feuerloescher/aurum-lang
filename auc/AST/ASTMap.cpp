@@ -22,6 +22,11 @@ bool ASTMap<T>::insert(T t) {
 }
 
 template <class T>
+bool ASTMap<T>::insert(T t, std::string name) {
+    return internalMap.insert(std::make_pair(name, t)).second;
+}
+
+template <class T>
 T ASTMap<T>::find(std::string name) {
     auto element = internalMap.find(name);
     if (element != internalMap.end()) {
@@ -42,5 +47,6 @@ typename InternalMapType<T>::iterator ASTMap<T>::end() {
 
 template class AST::ASTMap<FunctionDef*>;
 template class AST::ASTMap<MethodDef*>;
+template class AST::ASTMap<ASTPtr<MethodDef>>;
 template class AST::ASTMap<VariableDefStmt*>;
 template class AST::ASTMap<ASTPtr<Type>>;

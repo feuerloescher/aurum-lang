@@ -23,10 +23,11 @@ protected:
     llvm::IRBuilder<>& irBuilder;
     AST::Block* currentBlock;
 
+    void createLLVMTypes();
+    void addScalarMethods();
+
 public:
     LLVMPass(AST::AbstractSyntaxTree& ast);
-
-    void createLLVMTypes();
 
     virtual void run();
 

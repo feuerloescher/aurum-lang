@@ -9,6 +9,7 @@
 
 #include "AST/common.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
+#include "AST/ASTMap.hpp"
 
 namespace Passes {
 
@@ -17,12 +18,14 @@ class StdLibPass {
 
 protected:
     AST::AbstractSyntaxTree& ast;
+    AST::ASTMap<AST::ASTPtr<AST::Type>>& types;
+
+    void addScalarTypes();
 
 public:
     StdLibPass(AST::AbstractSyntaxTree& ast);
 
     void run();
-    void addStdLibTypes();
 
 }; // class StdLibPass
 

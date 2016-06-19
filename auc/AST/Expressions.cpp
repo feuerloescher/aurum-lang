@@ -51,9 +51,8 @@ void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
 }
 
 
-MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr,
-    std::string name) : objectExpr(objectExpr), name(name), methodDef(nullptr) {
-    /// \todo Add 'this' pointer as first parameter
+MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr, std::string name)
+    : objectExpr(objectExpr), name(name), methodDef(nullptr) {
 }
 
 void MethodCallExpr::runPass(ASTPass& pass) {
@@ -65,6 +64,10 @@ ASTPtr<Expression> MethodCallExpr::getObjectExpr() {
 }
 
 std::string MethodCallExpr::getName() {
+    return name;
+}
+
+std::string MethodCallExpr::getMangledName() {
     return objectExpr->getType()->getName() + '.' + name;
 }
 

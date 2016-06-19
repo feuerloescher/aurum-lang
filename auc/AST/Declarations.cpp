@@ -52,7 +52,7 @@ MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
         ASTPtr<TypeStmt> objectTypeStmt)
     : returnTypeStmt(returnTypeStmt),
     objectTypeStmt(objectTypeStmt), llvmFunction(nullptr) {
-    name = returnTypeStmt->getName() + '.' + name;
+    this->name = returnTypeStmt->getName() + '.' + name;
     parameters.push_back(
         std::make_shared<VariableDefStmt>("this", objectTypeStmt));
 }
@@ -90,8 +90,5 @@ void MethodDef::setLLVMFunction(llvm::Function* llvmFunction) {
 }
 
 std::vector<llvm::Type*>& MethodDef::getParameterLLVMTypes() {
-    if (parameterLLVMTypes.empty()) {
-        parameterLLVMTypes.push_back(returnTypeStmt->getType()->getLLVMType());
-    }
     return parameterLLVMTypes;
 }

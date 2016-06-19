@@ -60,14 +60,14 @@ void IdentifierPass::runOn(ReturnStmt& stmt) {
 
 void IdentifierPass::runOn(VariableDefStmt& stmt) {
     if (!currentBlock->getVariables().insert(&stmt)) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw ExistingIdentifierError(stmt.getName());
     }
     stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
     if (!currentBlock->getVariables().insert(&stmt)) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw ExistingIdentifierError(stmt.getName());
     }
     stmt.getTypeStmt()->runPass(*this);
     stmt.getValue()->runPass(*this);
@@ -111,6 +111,10 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     if (!functionDef) {
         throw UnknownIdentifierError(stmt.getName());
     }
+    if (stmt.getParameters().size() != functionDef->getParameters().size()) {
+        throw ParameterCountError(stmt.getName(),
+            functionDef->getParameters().size(), stmt.getParameters().size());
+    }
     stmt.setFunctionDef(functionDef);
 }
 
@@ -119,6 +123,8 @@ void IdentifierPass::runOn(MethodCallExpr& stmt) {
     for (ASTPtr<Expression> expr : stmt.getParameters()) {
         expr->runPass(*this);
     }
+    /// Method identifier is resolved in TypePass, as type of
+    /// stmt.getObjectExpr() is not resolved yet
 }
 
 void IdentifierPass::runOn(ConstUInt32Expr& stmt) {

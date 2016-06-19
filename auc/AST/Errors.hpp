@@ -27,6 +27,17 @@ public:
     }
 };
 
+class ParameterCountError : public std::runtime_error {
+public:
+    ParameterCountError(std::string functionName,
+        unsigned int expectedParameters, unsigned int providedParameters)
+        : std::runtime_error("The function '" + functionName
+        + "' expects " + std::to_string(expectedParameters)
+        + " parameters, but is provided " + std::to_string(providedParameters)
+        + ".") {
+    }
+};
+
 } // namespace AST
 
 #endif // AUC_ERRORS_HPP

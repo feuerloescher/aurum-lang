@@ -5,6 +5,7 @@
  */
 
 #include "ScalarTypes.hpp"
+#include <llvm/IR/DerivedTypes.h>
 
 using namespace AST;
 
@@ -17,5 +18,5 @@ IntType::IntType(std::string name, unsigned int width, bool isSigned)
 }
 
 void IntType::createLLVMType(llvm::LLVMContext& llvmContext) {
-    llvmType = (llvm::Type*) llvm::Type::getInt64Ty(llvmContext);
+    llvmType = llvm::IntegerType::get(llvmContext, width);
 }

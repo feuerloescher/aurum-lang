@@ -61,11 +61,12 @@ protected:
     MethodDef* methodDef;
 
 public:
-    MethodCallExpr(ASTPtr<Expression> objectExpr, std::string name);
+    MethodCallExpr(ASTPtr<Expression> tmpObjectExpr, std::string name);
 
     virtual void runPass(ASTPass& pass);
     ASTPtr<Expression> getObjectExpr();
     std::string getName();
+    std::string getMangledName();
     ASTList<Expression>& getParameters();
     MethodDef* getMethodDef();
     void setMethodDef(MethodDef* functionDef);

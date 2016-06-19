@@ -89,10 +89,15 @@ void TypePass::runOn(MethodCallExpr& stmt) {
         expr->runPass(*this);
     }
     /// Resolve method identifier (type of stmt.getObjectExpr() is resolved now)
+    std::string mangledName = stmt.getMangledName();
     MethodDef* methodDef =
-        stmt.getObjectExpr()->getType()->getMethodDefs().find(stmt.getName());
+        stmt.getObjectExpr()->getType()->getMethodDefs().find(mangledName);
     if (!methodDef) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw UnknownIdentifierError(mangledName);
+    }
+    if (stmt.getParameters().size() != methodDef->getParameters().size() - 1) {
+        throw ParameterCountError(stmt.getMangledName(),
+            methodDef->getParameters().size() - 1, stmt.getParameters().size());
     }
     stmt.setMethodDef(methodDef);
 }
