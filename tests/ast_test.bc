@@ -1,5 +1,4 @@
 ; ModuleID = 'llvm module'
-source_filename = "llvm module"
 
 define i8 @"uint8.+"(i8* %this, i8 %param) {
 entry:

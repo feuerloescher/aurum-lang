@@ -16,7 +16,11 @@
 
 #include <llvm/IR/Verifier.h>
 #include <llvm/Transforms/Scalar.h>
-#include <llvm/Transforms/Scalar/GVN.h>
+
+#include <clang/Basic/Version.h>
+#if CLANG_VERSION_MINOR >= 9
+    #include <llvm/Transforms/Scalar/GVN.h>
+#endif
 
 using namespace AST;
 using namespace Passes;

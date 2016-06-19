@@ -3,6 +3,12 @@
 # Distributed under the GNU GPL v3. For full terms see the file LICENSE.
 
 cmake_minimum_required(VERSION 2.8)
+
+find_program(CLANG "clang" HINTS "/tmp/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04/bin")
+find_program(CLANG_CPP "clang++" HINTS "/tmp/clang+llvm-3.8.0-x86_64-linux-gnu-ubuntu-14.04/bin")
+set(CMAKE_C_COMPILER "${CLANG}")
+set(CMAKE_CXX_COMPILER "${CLANG_CPP}")
+
 project(aurum)
 
 enable_testing()
