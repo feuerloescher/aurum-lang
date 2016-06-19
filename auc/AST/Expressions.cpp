@@ -27,7 +27,8 @@ void Expression::setLLVMValue(llvm::Value* llvmValue) {
 }
 
 
-FunctionCallExpr::FunctionCallExpr(std::string name) : name(name) {
+FunctionCallExpr::FunctionCallExpr(std::string name)
+    : name(name), functionDef(nullptr) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
