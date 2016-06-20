@@ -19,6 +19,7 @@ class VerifyOptimizePass : public AST::ASTPass {
 
 protected:
     std::unique_ptr<llvm::legacy::FunctionPassManager> functionPassMgr;
+    std::unique_ptr<llvm::legacy::PassManager> modulePassMgr;
 
 public:
     VerifyOptimizePass(AST::AbstractSyntaxTree& ast);
