@@ -4,8 +4,12 @@
 
 cmake_minimum_required(VERSION 2.8)
 
-set(CMAKE_C_COMPILER clang)
-set(CMAKE_CXX_COMPILER clang++)
+option(BUILD_WITH_CLANG "Build using the Clang compiler" OFF)
+
+if(BUILD_WITH_CLANG)
+    set(CMAKE_C_COMPILER clang)
+    set(CMAKE_CXX_COMPILER clang++)
+endif()
 
 project(aurum)
 

@@ -18,6 +18,12 @@ foreach(src_file ${SOURCE_FILES})
     add_test(${test_name} "${PROJECT_SOURCE_DIR}/test.sh" "${test_name}")
 endforeach()
 
+if(BUILD_WITH_CLANG)
+    set(GCOV_TOOL "${PROJECT_SOURCE_DIR}/llvm-gcov.sh")
+else()
+    set(GCOV_TOOL "gcov")
+endif()
+
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_custom_command(OUTPUT CMakeFiles/ast_test.dir/ast_test.cpp.gcda
         COMMAND make test
@@ -27,7 +33,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 
     add_custom_command(OUTPUT coverage.info
         COMMAND rm -f coverage.info
-        COMMAND lcov --directory .. --capture --output-file coverage.info --gcov-tool "${PROJECT_SOURCE_DIR}/llvm-gcov.sh"
+        COMMAND lcov --directory .. --capture --output-file coverage.info --gcov-tool "${GCOV_TOOL}"
         COMMAND lcov --remove coverage.info 'tests/*' '/usr/*' '/tmp/*' --output-file coverage.info
         COMMAND lcov --list coverage.info
         DEPENDS CMakeFiles/ast_test.dir/ast_test.cpp.gcda)
