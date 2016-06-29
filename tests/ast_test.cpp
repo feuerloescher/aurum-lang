@@ -30,44 +30,55 @@ using namespace std;
 int main() {
     AbstractSyntaxTree ast;
 
-    auto variable = make_shared<VariableDefStmt>("var",
-        make_shared<TypeStmt>("uint32"));
-    auto funcDecl = make_shared<FunctionDef>("foo",
-        make_shared<TypeStmt>("uint32"));
+    auto variable = make_shared<VariableDefStmt>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "var", CodeLocation::none);
+    auto funcDecl = make_shared<FunctionDef>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "foo", CodeLocation::none);
     funcDecl->getParameters().push_back(variable);
     ast.getDeclarations().push_back(funcDecl);
 
     auto addOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("var"), "+");
-    addOp->getArgs().push_back(make_shared<ConstUInt32Expr>(5));
-    auto ret = make_shared<ReturnStmt>(addOp);
+        make_shared<VariableExpr>("var", CodeLocation::none),
+        "+", CodeLocation::none);
+    addOp->getArgs().push_back(
+        make_shared<ConstUInt32Expr>(5, CodeLocation::none));
+    auto ret = make_shared<ReturnStmt>(addOp, CodeLocation::none);
     funcDecl->getBody().push_back(ret);
 
-    auto mainDecl = make_shared<FunctionDef>("main",
-        make_shared<TypeStmt>("uint32"));
+    auto mainDecl = make_shared<FunctionDef>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "main", CodeLocation::none);
     ast.getDeclarations().push_back(mainDecl);
 
-    auto funcCall = make_shared<FunctionCallExpr>("foo");
-    funcCall->getArgs().push_back(make_shared<ConstUInt32Expr>(5));
-    auto defAssignX = make_shared<VariableDefAssignStmt>("x",
-        make_shared<TypeStmt>("uint32"), funcCall);
+    auto funcCall = make_shared<FunctionCallExpr>("foo", CodeLocation::none);
+    funcCall->getArgs().push_back(
+        make_shared<ConstUInt32Expr>(5, CodeLocation::none));
+    auto defAssignX = make_shared<VariableDefAssignStmt>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "x", funcCall, CodeLocation::none);
     mainDecl->getBody().push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefStmt>("y",
-        make_shared<TypeStmt>("uint32"));
+    auto defY = make_shared<VariableDefStmt>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "y", CodeLocation::none);
     mainDecl->getBody().push_back(defY);
 
     auto assignOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("y"), "=");
-    assignOp->getArgs().push_back(make_shared<VariableExpr>("x"));
+        make_shared<VariableExpr>("y", CodeLocation::none),
+        "=", CodeLocation::none);
+    assignOp->getArgs().push_back(
+        make_shared<VariableExpr>("x", CodeLocation::none));
     mainDecl->getBody().push_back(assignOp);
 
     auto unaryAssignOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("y"), "++");
+        make_shared<VariableExpr>("y", CodeLocation::none),
+        "++", CodeLocation::none);
     mainDecl->getBody().push_back(unaryAssignOp);
 
-    ASTPtr<VariableExpr> varY3{new VariableExpr("y")};
-    auto ret2 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y"));
+    auto ret2 = make_shared<ReturnStmt>(
+        make_shared<VariableExpr>("y", CodeLocation::none), CodeLocation::none);
     mainDecl->getBody().push_back(ret2);
 
     PrintPass printer(ast, cout);

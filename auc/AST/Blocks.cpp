@@ -9,7 +9,8 @@
 
 using namespace AST;
 
-Block::Block() : parentBlock(nullptr), llvmBlock(nullptr) {
+Block::Block(CodeLocation codeLocation)
+    : Statement(codeLocation), parentBlock(nullptr), llvmBlock(nullptr) {
 }
 
 void Block::runPass(ASTPass& pass) {

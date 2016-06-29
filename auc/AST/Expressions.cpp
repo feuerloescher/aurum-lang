@@ -10,6 +10,9 @@
 
 using namespace AST;
 
+Expression::Expression(CodeLocation codeLocation) : Statement(codeLocation) {
+}
+
 ASTPtr<Type> Expression::getType() {
     return type;
 }
@@ -27,8 +30,8 @@ void Expression::setLLVMValue(llvm::Value* llvmValue) {
 }
 
 
-FunctionCallExpr::FunctionCallExpr(std::string name)
-    : name(name), functionDef(nullptr) {
+FunctionCallExpr::FunctionCallExpr(std::string name, CodeLocation codeLocation)
+    : Expression(codeLocation), name(name), functionDef(nullptr) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
@@ -52,8 +55,9 @@ void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
 }
 
 
-MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr, std::string name)
-    : objectExpr(objectExpr), name(name), methodDef(nullptr) {
+MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr, std::string name,
+    CodeLocation codeLocation)
+    : Expression(codeLocation), objectExpr(objectExpr), name(name), methodDef(nullptr) {
 }
 
 void MethodCallExpr::runPass(ASTPass& pass) {
@@ -85,7 +89,8 @@ void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
 }
 
 
-ConstUInt32Expr::ConstUInt32Expr(uint32_t numValue) : numValue(numValue) {
+ConstUInt32Expr::ConstUInt32Expr(uint32_t numValue, CodeLocation codeLocation)
+    : Expression(codeLocation), numValue(numValue) {
 }
 
 void ConstUInt32Expr::runPass(ASTPass& pass) {
@@ -97,8 +102,8 @@ uint32_t ConstUInt32Expr::getNumValue() {
 }
 
 
-VariableExpr::VariableExpr(std::string name)
-    : name(name), variableDefStmt(nullptr) {
+VariableExpr::VariableExpr(std::string name, CodeLocation codeLocation)
+    : Expression(codeLocation), name(name), variableDefStmt(nullptr) {
 }
 
 void VariableExpr::runPass(ASTPass& pass) {

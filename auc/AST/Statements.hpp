@@ -8,6 +8,7 @@
 #define AUC_STATEMENTS_HPP
 
 #include "common.hpp"
+#include "CodeLocation.hpp"
 
 #include <llvm/IR/Instructions.h>
 #include <string>
@@ -16,8 +17,14 @@ namespace AST {
 
 class Statement {
 
+protected:
+    CodeLocation codeLocation;
+
 public:
+    Statement(CodeLocation codeLocation);
+
     virtual void runPass(ASTPass& pass) = 0;
+    CodeLocation getCodeLocation();
 
 }; // class Statement
 
@@ -30,7 +37,7 @@ protected:
     ASTPtr<Expression> value;
 
 public:
-    ReturnStmt(ASTPtr<Expression> value);
+    ReturnStmt(ASTPtr<Expression> value, CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getValue();
@@ -41,12 +48,13 @@ public:
 class VariableDefStmt : public Statement {
 
 protected:
-    std::string name;
     ASTPtr<TypeStmt> typeStmt;
+    std::string name;
     llvm::AllocaInst* allocaInst;
 
 public:
-    VariableDefStmt(std::string name, ASTPtr<TypeStmt> typeStmt);
+    VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
+        CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
@@ -65,8 +73,8 @@ protected:
     ASTPtr<Expression> value;
 
 public:
-    VariableDefAssignStmt(std::string name, ASTPtr<TypeStmt> type,
-        ASTPtr<Expression> value);
+    VariableDefAssignStmt(ASTPtr<TypeStmt> type, std::string name,
+        ASTPtr<Expression> value, CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getValue();

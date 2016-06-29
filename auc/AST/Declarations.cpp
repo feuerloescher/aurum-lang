@@ -11,84 +11,69 @@
 
 using namespace AST;
 
-FunctionDef::FunctionDef(std::string name, ASTPtr<TypeStmt> returnTypeStmt)
-    : name(name), returnTypeStmt(returnTypeStmt), llvmFunction(nullptr) {
+Declaration::Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
+    CodeLocation codeLocation)
+    : name(name), returnTypeStmt(returnTypeStmt),
+    codeLocation(codeLocation), body(codeLocation), llvmFunction(nullptr) {
+}
+
+std::string Declaration::getName() {
+    return name;
+}
+
+ASTPtr<TypeStmt> Declaration::getReturnTypeStmt() {
+    return returnTypeStmt;
+}
+
+VariableDefStmtList& Declaration::getParameters() {
+    return parameters;
+}
+
+Block& Declaration::getBody() {
+    return body;
+}
+
+llvm::Function* Declaration::getLLVMFunction() {
+    return llvmFunction;
+}
+
+void Declaration::setLLVMFunction(llvm::Function* llvmFunction) {
+    this->llvmFunction = llvmFunction;
+}
+
+std::vector<llvm::Type*>& Declaration::getParameterLLVMTypes() {
+    return parameterLLVMTypes;
+}
+
+CodeLocation Declaration::getCodeLocation() {
+    return codeLocation;
+}
+
+
+FunctionDef::FunctionDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
+    CodeLocation codeLocation)
+    : Declaration(returnTypeStmt, name, codeLocation) {
 }
 
 void FunctionDef::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-std::string FunctionDef::getName() {
-    return name;
-}
-
-ASTPtr<TypeStmt> FunctionDef::getReturnTypeStmt() {
-    return returnTypeStmt;
-}
-
-VariableDefStmtList& FunctionDef::getParameters() {
-    return parameters;
-}
-
-Block& FunctionDef::getBody() {
-    return body;
-}
-
-llvm::Function* FunctionDef::getLLVMFunction() {
-    return llvmFunction;
-}
-
-void FunctionDef::setLLVMFunction(llvm::Function* llvmFunction) {
-    this->llvmFunction = llvmFunction;
-}
-
-std::vector<llvm::Type*>& FunctionDef::getParameterLLVMTypes() {
-    return parameterLLVMTypes;
-}
-
 
 MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-        ASTPtr<TypeStmt> objectTypeStmt)
-    : returnTypeStmt(returnTypeStmt),
-    objectTypeStmt(objectTypeStmt), llvmFunction(nullptr) {
+        ASTPtr<TypeStmt> objectTypeStmt, CodeLocation codeLocation)
+    : Declaration(returnTypeStmt, name, codeLocation),
+    objectTypeStmt(objectTypeStmt) {
     this->name = returnTypeStmt->getName() + '.' + name;
     parameters.push_back(
-        std::make_shared<VariableDefStmt>("this", objectTypeStmt));
+        std::make_shared<VariableDefStmt>(objectTypeStmt, "this",
+        CodeLocation::none));
 }
 
 void MethodDef::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-std::string MethodDef::getName() {
-    return name;
-}
-
-ASTPtr<TypeStmt> MethodDef::getReturnTypeStmt() {
-    return returnTypeStmt;
-}
-
 ASTPtr<TypeStmt> MethodDef::getObjectTypeStmt() {
     return objectTypeStmt;
-}
-
-VariableDefStmtList& MethodDef::getParameters() {
-    return parameters;
-}
-
-Block& MethodDef::getBody() {
-    return body;
-}
-
-llvm::Function* MethodDef::getLLVMFunction() {
-    return llvmFunction;
-}
-
-void MethodDef::setLLVMFunction(llvm::Function* llvmFunction) {
-    this->llvmFunction = llvmFunction;
-}
-
-std::vector<llvm::Type*>& MethodDef::getParameterLLVMTypes() {
-    return parameterLLVMTypes;
 }

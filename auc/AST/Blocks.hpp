@@ -10,6 +10,7 @@
 #include "common.hpp"
 #include "Statements.hpp"
 #include "ASTMap.hpp"
+#include "CodeLocation.hpp"
 
 #include <llvm/IR/BasicBlock.h>
 
@@ -24,7 +25,7 @@ protected:
     llvm::BasicBlock* llvmBlock;
 
 public:
-    Block();
+    Block(CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
@@ -47,7 +48,7 @@ protected:
     Block body;
 
 public:
-    IfStmt(ASTPtr<Expression> condition);
+    IfStmt(ASTPtr<Expression> condition, CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getCondition();
@@ -63,7 +64,7 @@ protected:
     Block body;
 
 public:
-    WhileLoop(ASTPtr<Expression> condition);
+    WhileLoop(ASTPtr<Expression> condition, CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getCondition();

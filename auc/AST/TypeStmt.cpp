@@ -9,7 +9,8 @@
 
 using namespace AST;
 
-TypeStmt::TypeStmt(std::string name) : name(name), type(nullptr) {
+TypeStmt::TypeStmt(std::string name, CodeLocation codeLocation)
+    : name(name), type(nullptr), codeLocation(codeLocation) {
 }
 
 void TypeStmt::runPass(ASTPass& pass) {
@@ -26,4 +27,8 @@ ASTPtr<Type> TypeStmt::getType() {
 
 void TypeStmt::setType(ASTPtr<Type> type) {
     this->type = type;
+}
+
+CodeLocation TypeStmt::getCodeLocation() {
+    return codeLocation;
 }

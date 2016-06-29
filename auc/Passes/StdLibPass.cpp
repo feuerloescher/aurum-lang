@@ -30,20 +30,23 @@ void StdLibPass::addScalarTypes() {
             types.insert(intType);
 
             std::shared_ptr<TypeStmt> intTypeStmt = std::make_shared<TypeStmt>(
-                intTypeName);
+                intTypeName, CodeLocation::none);
             intTypeStmt->setType(intType);
 
             for (std::string op : {"+", "-", "*", "/", "="}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt);
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
+                    CodeLocation::none);
                 intMethod->getParameters().push_back(
-                    std::make_shared<VariableDefStmt>("param", intTypeStmt));
+                    std::make_shared<VariableDefStmt>(intTypeStmt, "param",
+                    CodeLocation::none));
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }
             for (std::string op : {"++", "--"}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt);
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
+                    CodeLocation::none);
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }
@@ -58,54 +61,3 @@ void StdLibPass::addScalarTypes() {
     types.insert(types.find("int64"), "long");
     types.insert(types.find("uint64"), "ulong");
 }
-
-
-
-//~ void LLVMPass::runOn(UnaryOpExpr& stmt) {
-    //~ stmt.getOperand()->runPass(*this);
-    //~ /// \todo Add standard operators in StdLibPass
-    //~ if (stmt.getName() == "-") {
-        //~ stmt.setLLVMValue(
-            //~ irBuilder.CreateNeg(stmt.getOperand()->getLLVMValue(),
-            //~ "negtmp"));
-    //~ }
-//~ }
-
-//~ void LLVMPass::runOn(BinaryOpExpr& stmt) {
-    //~ stmt.getOperand1()->runPass(*this);
-    //~ stmt.getOperand2()->runPass(*this);
-    //~ /// \todo Add standard operators in StdLibPass
-    //~ if (stmt.getName() == "+") {
-        //~ stmt.setLLVMValue(
-            //~ irBuilder.CreateAdd(stmt.getOperand1()->getLLVMValue(),
-            //~ stmt.getOperand2()->getLLVMValue(), "addtmp"));
-    //~ }
-//~ }
-
-//~ void LLVMPass::runOn(UnaryAssignOpExpr& stmt) {
-    //~ stmt.getVariable()->runPass(*this);
-    //~ /// \todo Add standard operators in StdLibPass
-    //~ if (stmt.getName() == "++") {
-        //~ /// \todo Store LLVM value for '1' as a class member
-        //~ llvm::Value* llvmValue = irBuilder.CreateAdd(
-            //~ llvm::ConstantInt::get(llvmContext,
-            //~ llvm::APInt(32u, (uint64_t) 1, false)),
-            //~ stmt.getVariable()->getLLVMValue(),
-            //~ "inctmp");
-        //~ stmt.setLLVMValue(llvmValue);
-        //~ stmt.setLLVMValue(irBuilder.CreateStore(
-            //~ stmt.getVariable()->getVariableDefStmt()->getAllocaInst(),
-            //~ llvmValue));
-    //~ }
-//~ }
-
-//~ void LLVMPass::runOn(BinaryAssignOpExpr& stmt) {
-    //~ stmt.getVariable()->runPass(*this);
-    //~ stmt.getOperand()->runPass(*this);
-    //~ /// \todo Add standard operators in StdLibPass
-    //~ if (stmt.getName() == "=") {
-        //~ stmt.setLLVMValue(irBuilder.CreateStore(
-            //~ stmt.getVariable()->getVariableDefStmt()->getAllocaInst(),
-            //~ stmt.getOperand()->getLLVMValue()));
-    //~ }
-//~ }

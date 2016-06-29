@@ -8,6 +8,7 @@
 #define AUC_TYPESTMT_HPP
 
 #include "common.hpp"
+#include "CodeLocation.hpp"
 
 #include <string>
 
@@ -18,15 +19,17 @@ class TypeStmt {
 protected:
     std::string name;
     ASTPtr<Type> type;
+    CodeLocation codeLocation;
 
 public:
-    TypeStmt(std::string name);
+    TypeStmt(std::string name, CodeLocation codeLocation);
 
     void runPass(ASTPass& pass);
 
     std::string getName();
     ASTPtr<Type> getType();
     void setType(ASTPtr<Type> type);
+    CodeLocation getCodeLocation();
 
 }; // class TypeStmt
 

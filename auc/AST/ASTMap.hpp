@@ -32,7 +32,7 @@ public:
     typename InternalMapType<T>::iterator begin();
     typename InternalMapType<T>::iterator end();
 
-}; // class TypeStmt
+}; // class ASTMap
 
 } // namespace AST
 

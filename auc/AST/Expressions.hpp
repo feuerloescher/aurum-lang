@@ -9,6 +9,7 @@
 
 #include "common.hpp"
 #include "Statements.hpp"
+#include "CodeLocation.hpp"
 
 #include <llvm/IR/Value.h>
 #include <string>
@@ -22,11 +23,13 @@ protected:
     llvm::Value* llvmValue;
 
 public:
+    Expression(CodeLocation codeLocation);
+
     virtual void runPass(ASTPass& pass) = 0;
-    virtual ASTPtr<Type> getType();
-    virtual void setType(ASTPtr<Type> type);
-    virtual llvm::Value* getLLVMValue();
-    virtual void setLLVMValue(llvm::Value* llvmValue);
+    ASTPtr<Type> getType();
+    void setType(ASTPtr<Type> type);
+    llvm::Value* getLLVMValue();
+    void setLLVMValue(llvm::Value* llvmValue);
 
 }; // class Expression
 
@@ -41,7 +44,7 @@ protected:
     FunctionDef* functionDef;
 
 public:
-    FunctionCallExpr(std::string name);
+    FunctionCallExpr(std::string name, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
@@ -61,7 +64,8 @@ protected:
     MethodDef* methodDef;
 
 public:
-    MethodCallExpr(ASTPtr<Expression> tmpObjectExpr, std::string name);
+    MethodCallExpr(ASTPtr<Expression> tmpObjectExpr, std::string name,
+        CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
     ASTPtr<Expression> getObjectExpr();
@@ -80,7 +84,7 @@ protected:
     uint32_t numValue;
 
 public:
-    ConstUInt32Expr(uint32_t numValue);
+    ConstUInt32Expr(uint32_t numValue, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
@@ -96,7 +100,7 @@ protected:
     VariableDefStmt* variableDefStmt;
 
 public:
-    VariableExpr(std::string name);
+    VariableExpr(std::string name, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
