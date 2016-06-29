@@ -127,7 +127,8 @@ void IdentifierPass::runOn(MethodCallExpr& stmt) {
     /// stmt.getObjectExpr() is not resolved yet
 }
 
-void IdentifierPass::runOn(ConstUInt32Expr& stmt) {
+void IdentifierPass::runOn(ConstIntExpr& stmt) {
+    stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableExpr& stmt) {

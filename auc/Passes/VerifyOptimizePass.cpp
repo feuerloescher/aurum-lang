@@ -120,7 +120,7 @@ void VerifyOptimizePass::runOn(MethodCallExpr& stmt) {
     }
 }
 
-void VerifyOptimizePass::runOn(ConstUInt32Expr& stmt) {
+void VerifyOptimizePass::runOn(ConstIntExpr& stmt) {
 }
 
 void VerifyOptimizePass::runOn(VariableExpr& stmt) {

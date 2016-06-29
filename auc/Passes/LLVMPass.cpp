@@ -13,6 +13,7 @@
 #include "AST/Expressions.hpp"
 #include "AST/Errors.hpp"
 #include "AST/Type.hpp"
+#include "AST/ScalarTypes.hpp"
 
 #include <llvm/ADT/APInt.h>
 #include <llvm/IR/Constants.h>
@@ -294,9 +295,12 @@ void LLVMPass::runOn(MethodCallExpr& stmt) {
         stmt.getMethodDef()->getLLVMFunction(), parameters));
 }
 
-void LLVMPass::runOn(ConstUInt32Expr& stmt) {
-    stmt.setLLVMValue(llvm::ConstantInt::get(llvmContext,
-        llvm::APInt(32u, (uint64_t) stmt.getNumValue(), false)));
+void LLVMPass::runOn(ConstIntExpr& stmt) {
+    stmt.setLLVMValue(llvm::ConstantInt::get(
+        stmt.getTypeStmt()->getType()->getLLVMType(),
+        stmt.getNumValue(),
+        std::static_pointer_cast<IntType>(
+            stmt.getTypeStmt()->getType())->getSigned()));
 }
 
 void LLVMPass::runOn(VariableExpr& stmt) {

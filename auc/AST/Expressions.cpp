@@ -7,6 +7,7 @@
 #include "Expressions.hpp"
 #include "ASTPass.hpp"
 #include "Type.hpp"
+#include "TypeStmt.hpp"
 
 using namespace AST;
 
@@ -89,16 +90,61 @@ void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
 }
 
 
-ConstUInt32Expr::ConstUInt32Expr(uint32_t numValue, CodeLocation codeLocation)
-    : Expression(codeLocation), numValue(numValue) {
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint8_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("uint8", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, int8_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("int8", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint16_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("uint16", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, int16_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("int16", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint32_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("uint32", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, int32_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("int32", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint64_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("uint64", CodeLocation::none)) {
+}
+ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue,
+    CodeLocation codeLocation) : Expression(codeLocation),
+    valueStr(valueStr), numValue((uint64_t) numValue),
+    typeStmt(std::make_shared<TypeStmt>("int64", CodeLocation::none)) {
 }
 
-void ConstUInt32Expr::runPass(ASTPass& pass) {
+std::string ConstIntExpr::getValueStr() {
+    return valueStr;
+}
+
+void ConstIntExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-uint32_t ConstUInt32Expr::getNumValue() {
+uint64_t ConstIntExpr::getNumValue() {
     return numValue;
+}
+
+ASTPtr<TypeStmt> ConstIntExpr::getTypeStmt() {
+    return typeStmt;
 }
 
 

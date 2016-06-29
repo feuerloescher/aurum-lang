@@ -43,7 +43,7 @@ int main() {
         make_shared<VariableExpr>("var", CodeLocation::none),
         "+", CodeLocation::none);
     addOp->getArgs().push_back(
-        make_shared<ConstUInt32Expr>(5, CodeLocation::none));
+        make_shared<ConstIntExpr>("-5", -5, CodeLocation::none));
     auto ret = make_shared<ReturnStmt>(addOp, CodeLocation::none);
     funcDecl->getBody().push_back(ret);
 
@@ -54,7 +54,7 @@ int main() {
 
     auto funcCall = make_shared<FunctionCallExpr>("foo", CodeLocation::none);
     funcCall->getArgs().push_back(
-        make_shared<ConstUInt32Expr>(5, CodeLocation::none));
+        make_shared<ConstIntExpr>("-5", -5, CodeLocation::none));
     auto defAssignX = make_shared<VariableDefAssignStmt>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "x", funcCall, CodeLocation::none);

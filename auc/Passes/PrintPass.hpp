@@ -43,7 +43,7 @@ public:
 
     virtual void runOn(AST::FunctionCallExpr&);
     virtual void runOn(AST::MethodCallExpr&);
-    virtual void runOn(AST::ConstUInt32Expr&);
+    virtual void runOn(AST::ConstIntExpr&);
     virtual void runOn(AST::VariableExpr&);
 
 }; // class PrintPass

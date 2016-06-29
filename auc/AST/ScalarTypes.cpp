@@ -20,3 +20,7 @@ IntType::IntType(std::string name, unsigned int width, bool isSigned)
 void IntType::createLLVMType(llvm::LLVMContext& llvmContext) {
     llvmType = llvm::IntegerType::get(llvmContext, width);
 }
+
+bool IntType::getSigned() {
+    return isSigned;
+}

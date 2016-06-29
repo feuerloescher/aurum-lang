@@ -102,13 +102,9 @@ void TypePass::runOn(MethodCallExpr& stmt) {
     stmt.setMethodDef(methodDef);
 }
 
-void TypePass::runOn(ConstUInt32Expr& stmt) {
-    /// \todo Find scalar types more elegantly, e.g. store them directly in AST
-    ASTPtr<Type> type = ast.getTypes().find("uint32");
-    if (!type) {
-        throw UnknownIdentifierError("uint32");
-    }
-    stmt.setType(type);
+void TypePass::runOn(ConstIntExpr& stmt) {
+    stmt.getTypeStmt()->runPass(*this);
+    stmt.setType(stmt.getTypeStmt()->getType());
 }
 
 void TypePass::runOn(VariableExpr& stmt) {

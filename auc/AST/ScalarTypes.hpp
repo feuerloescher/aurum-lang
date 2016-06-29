@@ -33,6 +33,7 @@ public:
     IntType(std::string name, unsigned int width, bool isSigned);
 
     virtual void createLLVMType(llvm::LLVMContext& llvmContext);
+    bool getSigned();
 
 }; // class IntType
 

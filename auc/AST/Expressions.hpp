@@ -78,19 +78,38 @@ public:
 }; // class MethodCallExpr
 
 
-class ConstUInt32Expr : public Expression {
+class ConstIntExpr : public Expression {
 
 protected:
-    uint32_t numValue;
+    std::string valueStr;
+    uint64_t numValue;
+    ASTPtr<TypeStmt> typeStmt;
 
 public:
-    ConstUInt32Expr(uint32_t numValue, CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, uint8_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, int8_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, uint16_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, int16_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, uint32_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, int32_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, uint64_t numValue,
+        CodeLocation codeLocation);
+    ConstIntExpr(std::string valueStr, int64_t numValue,
+        CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
-    uint32_t getNumValue();
+    std::string getValueStr();
+    uint64_t getNumValue();
+    ASTPtr<TypeStmt> getTypeStmt();
 
-}; // class ConstNumberExpr
+}; // class ConstIntExpr
 
 
 class VariableExpr : public Expression {

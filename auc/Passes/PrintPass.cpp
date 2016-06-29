@@ -152,8 +152,8 @@ void PrintPass::runOn(MethodCallExpr& stmt) {
     stream << ")]";
 }
 
-void PrintPass::runOn(ConstUInt32Expr& stmt) {
-    stream << "ConstUInt32Expr[" << stmt.getNumValue() << "]";
+void PrintPass::runOn(ConstIntExpr& stmt) {
+    stream << "ConstIntExpr[" << stmt.getValueStr() << "]";
 }
 
 void PrintPass::runOn(VariableExpr& stmt) {

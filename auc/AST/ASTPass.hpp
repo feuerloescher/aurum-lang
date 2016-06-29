@@ -41,7 +41,7 @@ public:
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);
     virtual void runOn(MethodCallExpr&);
-    virtual void runOn(ConstUInt32Expr&);
+    virtual void runOn(ConstIntExpr&);
     virtual void runOn(VariableExpr&);
 
 }; // class ASTPass

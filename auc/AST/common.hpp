@@ -42,7 +42,7 @@ class TypeStmt;
 class Expression;
 class FunctionCallExpr;
 class MethodCallExpr;
-class ConstUInt32Expr;
+class ConstIntExpr;
 class VariableExpr;
 
 class Type;
