@@ -112,7 +112,7 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
         throw UnknownIdentifierError(stmt.getName());
     }
     if (stmt.getArgs().size() != functionDef->getParameters().size()) {
-        throw ParameterCountError(stmt.getName(),
+        throw ArgumentCountError(stmt.getName(),
             functionDef->getParameters().size(), stmt.getArgs().size());
     }
     stmt.setFunctionDef(functionDef);

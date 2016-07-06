@@ -81,6 +81,19 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
     for (ASTPtr<Expression> expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
+
+    /// Check argument types
+    auto paramIter = stmt.getFunctionDef()->getParameters().begin();
+    unsigned int argCounter = 0;
+    for (ASTPtr<Expression> arg : stmt.getArgs()) {
+        argCounter++;
+        if ((*paramIter)->getTypeStmt()->getType() != arg->getType()) {
+            /// \todo Add search for implicit cast method
+            throw ArgumentTypeError(stmt.getName(), argCounter,
+                (*paramIter)->getTypeStmt()->getType(), arg->getType());
+        }
+    }
+    /// \todo Merge common code of FunctionCallExpr and MethodCallExpr handling
 }
 
 void TypePass::runOn(MethodCallExpr& stmt) {
@@ -96,10 +109,22 @@ void TypePass::runOn(MethodCallExpr& stmt) {
         throw UnknownIdentifierError(mangledName);
     }
     if (stmt.getArgs().size() != methodDef->getParameters().size() - 1) {
-        throw ParameterCountError(stmt.getMangledName(),
+        throw ArgumentCountError(stmt.getMangledName(),
             methodDef->getParameters().size() - 1, stmt.getArgs().size());
     }
     stmt.setMethodDef(methodDef);
+
+    /// Check argument types
+    auto paramIter = stmt.getMethodDef()->getParameters().begin();
+    unsigned int argCounter = 0;
+    for (ASTPtr<Expression> arg : stmt.getArgs()) {
+        argCounter++;
+        if ((*paramIter)->getTypeStmt()->getType() != arg->getType()) {
+            /// \todo Add search for implicit cast method
+            throw ArgumentTypeError(stmt.getMangledName(), argCounter,
+                (*paramIter)->getTypeStmt()->getType(), arg->getType());
+        }
+    }
 }
 
 void TypePass::runOn(ConstIntExpr& stmt) {

@@ -7,6 +7,9 @@
 #ifndef AUC_ERRORS_HPP
 #define AUC_ERRORS_HPP
 
+#include "common.hpp"
+#include "Type.hpp"
+
 #include <exception>
 
 namespace AST {
@@ -27,14 +30,25 @@ public:
     }
 };
 
-class ParameterCountError : public std::runtime_error {
+class ArgumentCountError : public std::runtime_error {
 public:
-    ParameterCountError(std::string functionName,
+    ArgumentCountError(std::string functionName,
         unsigned int expectedParameters, unsigned int providedParameters)
         : std::runtime_error("The function '" + functionName
         + "' expects " + std::to_string(expectedParameters)
         + " parameters, but is provided " + std::to_string(providedParameters)
         + ".") {
+    }
+};
+
+class ArgumentTypeError : public std::runtime_error {
+public:
+    ArgumentTypeError(std::string functionName, unsigned int argumentIndex,
+        ASTPtr<Type> expectedType, ASTPtr<Type> providedType)
+        : std::runtime_error("The function '" + functionName
+        + "' expects argument " + std::to_string(argumentIndex)
+        + " to be of type " + expectedType->getName() + ", but is provided "
+        + providedType->getName() + ".") {
     }
 };
 
