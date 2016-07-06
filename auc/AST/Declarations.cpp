@@ -13,8 +13,8 @@ using namespace AST;
 
 Declaration::Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
     CodeLocation codeLocation)
-    : name(name), returnTypeStmt(returnTypeStmt),
-    codeLocation(codeLocation), body(codeLocation), llvmFunction(nullptr) {
+    : name(name), returnTypeStmt(returnTypeStmt), codeLocation(codeLocation),
+    body(codeLocation), llvmFunction(nullptr), exported(false) {
 }
 
 std::string Declaration::getName() {
@@ -47,6 +47,14 @@ std::vector<llvm::Type*>& Declaration::getParameterLLVMTypes() {
 
 CodeLocation Declaration::getCodeLocation() {
     return codeLocation;
+}
+
+bool Declaration::getExported() {
+    return exported;
+}
+
+void Declaration::setExported(bool exported) {
+    this->exported = exported;
 }
 
 

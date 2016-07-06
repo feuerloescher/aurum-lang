@@ -11,7 +11,8 @@
 
 using namespace AST;
 
-Expression::Expression(CodeLocation codeLocation) : Statement(codeLocation) {
+Expression::Expression(CodeLocation codeLocation)
+    : Statement(codeLocation), llvmValue(nullptr) {
 }
 
 ASTPtr<Type> Expression::getType() {

@@ -28,6 +28,7 @@ protected:
     Block body;
     llvm::Function* llvmFunction;
     std::vector<llvm::Type*> parameterLLVMTypes;
+    bool exported;
 
 public:
     Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
@@ -43,6 +44,8 @@ public:
     void setLLVMFunction(llvm::Function* llvmFunction);
     std::vector<llvm::Type*>& getParameterLLVMTypes();
     CodeLocation getCodeLocation();
+    bool getExported();
+    void setExported(bool exported);
 
 }; // class Declaration
 

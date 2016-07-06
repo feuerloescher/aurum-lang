@@ -50,6 +50,7 @@ int main() {
     auto mainDecl = make_shared<FunctionDef>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "main", CodeLocation::none);
+    mainDecl->setExported(true);
     ast.getDeclarations().push_back(mainDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo", CodeLocation::none);

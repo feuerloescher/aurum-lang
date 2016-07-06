@@ -126,7 +126,9 @@ void LLVMPass::runOn(FunctionDef& func) {
         llvm::FunctionType::get(
         func.getReturnTypeStmt()->getType()->getLLVMType(),
         func.getParameterLLVMTypes(), false),
-        llvm::Function::ExternalLinkage, func.getName(), &ast.getLLVMModule());
+        func.getExported() ? llvm::Function::ExternalLinkage
+            : llvm::Function::PrivateLinkage,
+        func.getName(), &ast.getLLVMModule());
     func.setLLVMFunction(llvmFunction);
     currentBlock = &func.getBody();
     llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext, "entry",
@@ -167,7 +169,9 @@ void LLVMPass::runOn(MethodDef& func) {
         llvm::FunctionType::get(
         func.getReturnTypeStmt()->getType()->getLLVMType(),
         func.getParameterLLVMTypes(), false),
-        llvm::Function::ExternalLinkage, func.getName(), &ast.getLLVMModule());
+        func.getExported() ? llvm::Function::ExternalLinkage
+            : llvm::Function::PrivateLinkage,
+        func.getName(), &ast.getLLVMModule());
     func.setLLVMFunction(llvmFunction);
     currentBlock = &func.getBody();
     llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext, "entry",
