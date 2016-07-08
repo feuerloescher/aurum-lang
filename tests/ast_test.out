@@ -1,13 +1,13 @@
 AbstractSyntaxTree {
-  FunctionDef[TypeStmt[uint32] foo(VariableDefStmt[TypeStmt[uint32] var])] {
-    ReturnStmt[MethodCallExpr[VariableExpr[var].+(ConstIntExpr[5])]]
-  }
-
   FunctionDef[TypeStmt[uint32] main()] {
     VariableDefAssignStmt[TypeStmt[uint32] x = FunctionCallExpr[foo(ConstIntExpr[5])]]
     VariableDefStmt[TypeStmt[uint32] y]
     MethodCallExpr[VariableExpr[y].=(VariableExpr[x])]
     MethodCallExpr[VariableExpr[y].++()]
     ReturnStmt[VariableExpr[y]]
+  }
+
+  FunctionDef[TypeStmt[uint32] foo(VariableDefStmt[TypeStmt[uint32] var])] {
+    ReturnStmt[MethodCallExpr[VariableExpr[var].+(ConstIntExpr[5])]]
   }
 }

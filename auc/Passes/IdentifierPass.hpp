@@ -18,6 +18,7 @@ class IdentifierPass : public AST::ASTPass {
 
 protected:
     AST::Block* currentBlock;
+    bool onlyInsertDeclarations;
 
 public:
     IdentifierPass(AST::AbstractSyntaxTree& ast);

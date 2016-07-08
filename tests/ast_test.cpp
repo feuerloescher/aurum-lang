@@ -37,7 +37,6 @@ int main() {
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "foo", CodeLocation::none);
     funcDecl->getParameters().push_back(variable);
-    ast.getDeclarations().push_back(funcDecl);
 
     auto addOp = make_shared<MethodCallExpr>(
         make_shared<VariableExpr>("var", CodeLocation::none),
@@ -52,6 +51,7 @@ int main() {
         "main", CodeLocation::none);
     mainDecl->setExported(true);
     ast.getDeclarations().push_back(mainDecl);
+    ast.getDeclarations().push_back(funcDecl);
 
     auto funcCall = make_shared<FunctionCallExpr>("foo", CodeLocation::none);
     funcCall->getArgs().push_back(

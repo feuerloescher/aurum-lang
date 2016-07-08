@@ -18,40 +18,55 @@ using namespace AST;
 using namespace Passes;
 
 IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast)
-    : ASTPass(ast), currentBlock(nullptr) {
+    : ASTPass(ast), currentBlock(nullptr), onlyInsertDeclarations(true) {
 }
 
 void IdentifierPass::run() {
     ast.getFunctionDefs().clear();
     currentBlock = nullptr;
+    onlyInsertDeclarations = true;
+    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
+        decl->runPass(*this);
+    }
+    currentBlock = nullptr;
+    onlyInsertDeclarations = false;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
 }
 
 void IdentifierPass::runOn(FunctionDef& func) {
-    if (!ast.getFunctionDefs().insert(&func)) {
-        throw ExistingIdentifierError(func.getName());
+    if (onlyInsertDeclarations) {
+        if (!ast.getFunctionDefs().insert(&func)) {
+            throw ExistingIdentifierError(func.getName());
+        }
+        func.getReturnTypeStmt()->runPass(*this);
+        currentBlock = &func.getBody();
+        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+            innerStmt->runPass(*this);
+        }
+        /// \todo Reset currentBlock
+    } else {
+        func.getBody().runPass(*this);
     }
-    func.getReturnTypeStmt()->runPass(*this);
-    currentBlock = &func.getBody();
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        innerStmt->runPass(*this);
-    }
-    func.getBody().runPass(*this);
 }
 
 void IdentifierPass::runOn(MethodDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
-    func.getObjectTypeStmt()->runPass(*this);
-    if (!func.getObjectTypeStmt()->getType()->getMethodDefs().insert(&func)) {
-        throw ExistingIdentifierError(func.getName());
+    if (onlyInsertDeclarations) {
+        func.getReturnTypeStmt()->runPass(*this);
+        func.getObjectTypeStmt()->runPass(*this);
+        if (!func.getObjectTypeStmt()->getType()->getMethodDefs()
+            .insert(&func)) {
+            throw ExistingIdentifierError(func.getName());
+        }
+        currentBlock = &func.getBody();
+        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+            innerStmt->runPass(*this);
+        }
+        /// \todo Reset currentBlock
+    } else {
+        func.getBody().runPass(*this);
     }
-    currentBlock = &func.getBody();
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        innerStmt->runPass(*this);
-    }
-    func.getBody().runPass(*this);
 }
 
 void IdentifierPass::runOn(ReturnStmt& stmt) {

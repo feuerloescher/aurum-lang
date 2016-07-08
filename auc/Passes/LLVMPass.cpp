@@ -23,7 +23,8 @@ using namespace Passes;
 
 LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
     : ASTPass(ast), llvmContext(ast.getLLVMContext()),
-    irBuilder(ast.getIRBuilder()), currentBlock(nullptr) {
+    irBuilder(ast.getIRBuilder()), currentBlock(nullptr),
+    onlyInsertDeclarations(true) {
 }
 
 void LLVMPass::createLLVMTypes() {
@@ -44,6 +45,9 @@ void LLVMPass::addScalarMethods() {
                 if (!intMethod) {
                     throw UnknownIdentifierError(methodName);
                 }
+                onlyInsertDeclarations = true;
+                intMethod->runPass(*this);
+                onlyInsertDeclarations = false;
                 intMethod->runPass(*this);
                 llvm::Value* thisPtr =
                     intMethod->getParameters()[0]->getAllocaInst();
@@ -86,6 +90,9 @@ void LLVMPass::addScalarMethods() {
                 if (!intMethod) {
                     throw UnknownIdentifierError(methodName);
                 }
+                onlyInsertDeclarations = true;
+                intMethod->runPass(*this);
+                onlyInsertDeclarations = false;
                 intMethod->runPass(*this);
                 llvm::Value* thisPtr =
                     intMethod->getParameters()[0]->getAllocaInst();
@@ -110,96 +117,113 @@ void LLVMPass::run() {
     createLLVMTypes();
     addScalarMethods();
     currentBlock = nullptr;
+    onlyInsertDeclarations = true;
+    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
+        decl->runPass(*this);
+    }
+    currentBlock = nullptr;
+    onlyInsertDeclarations = false;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
 }
 
 void LLVMPass::runOn(FunctionDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
-    /// Create function type and function
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        func.getParameterLLVMTypes().push_back(
-            innerStmt->getTypeStmt()->getType()->getLLVMType());
-    }
-    llvm::Function* llvmFunction = llvm::Function::Create(
-        llvm::FunctionType::get(
-        func.getReturnTypeStmt()->getType()->getLLVMType(),
-        func.getParameterLLVMTypes(), false),
-        func.getExported() ? llvm::Function::ExternalLinkage
-            : llvm::Function::PrivateLinkage,
-        func.getName(), &ast.getLLVMModule());
-    func.setLLVMFunction(llvmFunction);
-    currentBlock = &func.getBody();
-    llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext, "entry",
-        llvmFunction);
-    currentBlock->setLLVMBlock(llvmBlock);
-    irBuilder.SetInsertPoint(llvmBlock);
-    /// Add alloca for each parameter
-    ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
-    for (llvm::Value& parameter : llvmFunction->args()) {
-        assert(paramIter != func.getParameters().end());
-        parameter.setName((*paramIter)->getName());
-        (*paramIter)->runPass(*this);
+    if (onlyInsertDeclarations) {
+        func.getReturnTypeStmt()->runPass(*this);
+        /// Create function type and function
+        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+            func.getParameterLLVMTypes().push_back(
+                innerStmt->getTypeStmt()->getType()->getLLVMType());
+        }
+        llvm::Function* llvmFunction = llvm::Function::Create(
+            llvm::FunctionType::get(
+            func.getReturnTypeStmt()->getType()->getLLVMType(),
+            func.getParameterLLVMTypes(), false),
+            func.getExported() ? llvm::Function::ExternalLinkage
+                : llvm::Function::PrivateLinkage,
+            func.getName(), &ast.getLLVMModule());
+        func.setLLVMFunction(llvmFunction);
+    } else {
+        llvm::Function* llvmFunction = func.getLLVMFunction();
+        currentBlock = &func.getBody();
+        llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext,
+            "entry", llvmFunction);
+        currentBlock->setLLVMBlock(llvmBlock);
+        irBuilder.SetInsertPoint(llvmBlock);
+        /// Add alloca for each parameter
+        ASTList<VariableDefStmt>::iterator paramIter =
+            func.getParameters().begin();
+        for (llvm::Value& parameter : llvmFunction->args()) {
+            assert(paramIter != func.getParameters().end());
+            parameter.setName((*paramIter)->getName());
+            (*paramIter)->runPass(*this);
 
-        /// Store the initial value into the alloca
-        irBuilder.CreateStore(&parameter,
-            (*paramIter)->getAllocaInst());
+            /// Store the initial value into the alloca
+            irBuilder.CreateStore(&parameter,
+                (*paramIter)->getAllocaInst());
 
-        ++paramIter;
+            ++paramIter;
+        }
+        assert(paramIter == func.getParameters().end());
+        func.getBody().runPass(*this);
+        /// \todo Reset currentBlock
     }
-    assert(paramIter == func.getParameters().end());
-    func.getBody().runPass(*this);
 }
 
 void LLVMPass::runOn(MethodDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
-    func.getObjectTypeStmt()->runPass(*this);
-    /// Create function type and function
-    int i = 0;
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-        llvm::Type* llvmType =
-            innerStmt->getTypeStmt()->getType()->getLLVMType();
-        if (i++ == 0) {
-            llvmType = llvmType->getPointerTo();
+    if (onlyInsertDeclarations) {
+        func.getReturnTypeStmt()->runPass(*this);
+        func.getObjectTypeStmt()->runPass(*this);
+        /// Create function type and function
+        int i = 0;
+        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+            llvm::Type* llvmType =
+                innerStmt->getTypeStmt()->getType()->getLLVMType();
+            if (i++ == 0) {
+                llvmType = llvmType->getPointerTo();
+            }
+            func.getParameterLLVMTypes().push_back(llvmType);
         }
-        func.getParameterLLVMTypes().push_back(llvmType);
-    }
-    llvm::Function* llvmFunction = llvm::Function::Create(
-        llvm::FunctionType::get(
-        func.getReturnTypeStmt()->getType()->getLLVMType(),
-        func.getParameterLLVMTypes(), false),
-        func.getExported() ? llvm::Function::ExternalLinkage
-            : llvm::Function::PrivateLinkage,
-        func.getName(), &ast.getLLVMModule());
-    func.setLLVMFunction(llvmFunction);
-    currentBlock = &func.getBody();
-    llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext, "entry",
-        llvmFunction);
-    currentBlock->setLLVMBlock(llvmBlock);
-    irBuilder.SetInsertPoint(llvmBlock);
-    /// Add alloca for each parameter
-    /// \todo Set pointer of first parameter 'this'
-    ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
-    for (llvm::Value& llvmParam : llvmFunction->args()) {
-        assert(paramIter != func.getParameters().end());
-        ASTPtr<VariableDefStmt> param = *paramIter;
-        llvmParam.setName(param->getName());
-        if (param->getName() == "this") {
-            /// Create no alloca for "this" pointer
-            param->getTypeStmt()->runPass(*this);
-            param->setAllocaInst((llvm::AllocaInst*) &llvmParam);
-        } else {
-            param->runPass(*this);
+        llvm::Function* llvmFunction = llvm::Function::Create(
+            llvm::FunctionType::get(
+            func.getReturnTypeStmt()->getType()->getLLVMType(),
+            func.getParameterLLVMTypes(), false),
+            func.getExported() ? llvm::Function::ExternalLinkage
+                : llvm::Function::PrivateLinkage,
+            func.getName(), &ast.getLLVMModule());
+        func.setLLVMFunction(llvmFunction);
+    } else {
+        llvm::Function* llvmFunction = func.getLLVMFunction();
+        currentBlock = &func.getBody();
+        llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext,
+            "entry", llvmFunction);
+        currentBlock->setLLVMBlock(llvmBlock);
+        irBuilder.SetInsertPoint(llvmBlock);
+        /// Add alloca for each parameter
+        /// \todo Set pointer of first parameter 'this'
+        ASTList<VariableDefStmt>::iterator paramIter = func.getParameters().begin();
+        for (llvm::Value& llvmParam : llvmFunction->args()) {
+            assert(paramIter != func.getParameters().end());
+            ASTPtr<VariableDefStmt> param = *paramIter;
+            llvmParam.setName(param->getName());
+            if (param->getName() == "this") {
+                /// Create no alloca for "this" pointer
+                param->getTypeStmt()->runPass(*this);
+                param->setAllocaInst((llvm::AllocaInst*) &llvmParam);
+            } else {
+                param->runPass(*this);
 
-            /// Store the initial value into the alloca
-            irBuilder.CreateStore(&llvmParam, param->getAllocaInst());
+                /// Store the initial value into the alloca
+                irBuilder.CreateStore(&llvmParam, param->getAllocaInst());
+            }
+
+            ++paramIter;
         }
-
-        ++paramIter;
+        assert(paramIter == func.getParameters().end());
+        func.getBody().runPass(*this);
+        /// \todo Reset currentBlock
     }
-    assert(paramIter == func.getParameters().end());
-    func.getBody().runPass(*this);
 }
 
 void LLVMPass::runOn(ReturnStmt& stmt) {
