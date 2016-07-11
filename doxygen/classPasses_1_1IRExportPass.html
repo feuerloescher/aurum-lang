@@ -104,8 +104,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aaff4bc4882467f6e81fce21c4d061946"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1IRExportPass.html#aaff4bc4882467f6e81fce21c4d061946">IRExportPass</a> (<a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;<a class="el" href="classPasses_1_1IRExportPass.html#aa908419d5d2ea9c654ddaf68b60f446d">ast</a>)</td></tr>
-<tr class="separator:aaff4bc4882467f6e81fce21c4d061946"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9630a8ba507204733004fd1c2971208"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1IRExportPass.html#ac9630a8ba507204733004fd1c2971208">IRExportPass</a> (<a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;<a class="el" href="classPasses_1_1IRExportPass.html#aa908419d5d2ea9c654ddaf68b60f446d">ast</a>, llvm::raw_ostream &amp;<a class="el" href="classPasses_1_1IRExportPass.html#addd1d2c848f1a20fbb2cca2725c31a6c">out</a>)</td></tr>
+<tr class="separator:ac9630a8ba507204733004fd1c2971208"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae81392e796c3b76e54a46780d6edb87c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1IRExportPass.html#ae81392e796c3b76e54a46780d6edb87c">run</a> ()</td></tr>
 <tr class="separator:ae81392e796c3b76e54a46780d6edb87c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -113,11 +113,13 @@ Public Member Functions</h2></td></tr>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aa908419d5d2ea9c654ddaf68b60f446d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1IRExportPass.html#aa908419d5d2ea9c654ddaf68b60f446d">ast</a></td></tr>
 <tr class="separator:aa908419d5d2ea9c654ddaf68b60f446d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addd1d2c848f1a20fbb2cca2725c31a6c"><td class="memItemLeft" align="right" valign="top">llvm::raw_ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1IRExportPass.html#addd1d2c848f1a20fbb2cca2725c31a6c">out</a></td></tr>
+<tr class="separator:addd1d2c848f1a20fbb2cca2725c31a6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Export the generated LLVM Intermediate Representation code. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aaff4bc4882467f6e81fce21c4d061946"></a>
+<a class="anchor" id="ac9630a8ba507204733004fd1c2971208"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -125,8 +127,18 @@ Protected Attributes</h2></td></tr>
           <td class="memname">IRExportPass::IRExportPass </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;&#160;</td>
-          <td class="paramname"><em>ast</em></td><td>)</td>
+          <td class="paramname"><em>ast</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">llvm::raw_ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -159,6 +171,26 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a>&amp; Passes::IRExportPass::ast</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="addd1d2c848f1a20fbb2cca2725c31a6c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">llvm::raw_ostream&amp; Passes::IRExportPass::out</td>
         </tr>
       </table>
   </td>

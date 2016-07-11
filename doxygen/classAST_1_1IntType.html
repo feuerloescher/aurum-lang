@@ -115,6 +115,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ad87c699739690feb1979b02e1b644af4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a86aa24c9148e769727f356d399c5bacd"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1IntType.html#a86aa24c9148e769727f356d399c5bacd">createLLVMType</a> (llvm::LLVMContext &amp;llvmContext)</td></tr>
 <tr class="separator:a86aa24c9148e769727f356d399c5bacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad3cadc6877d4ef26eea02cd02484fd62"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1IntType.html#ad3cadc6877d4ef26eea02cd02484fd62">getSigned</a> ()</td></tr>
+<tr class="separator:ad3cadc6877d4ef26eea02cd02484fd62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classAST_1_1ScalarType"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classAST_1_1ScalarType')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classAST_1_1ScalarType.html">AST::ScalarType</a></td></tr>
 <tr class="memitem:abe8837f631f2b3fd19f30af6510bf867 inherit pub_methods_classAST_1_1ScalarType"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ScalarType.html#abe8837f631f2b3fd19f30af6510bf867">ScalarType</a> (std::string <a class="el" href="classAST_1_1Type.html#a13b52014ce5b39ab6d87c9c9b5b2a2a2">name</a>)</td></tr>
 <tr class="separator:abe8837f631f2b3fd19f30af6510bf867 inherit pub_methods_classAST_1_1ScalarType"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -123,6 +125,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a31ec691e43ba275d4d117fe9bb46c8c1 inherit pub_methods_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad59f2e420bbd8a13b3759530939f6bc2 inherit pub_methods_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#ad59f2e420bbd8a13b3759530939f6bc2">getName</a> ()</td></tr>
 <tr class="separator:ad59f2e420bbd8a13b3759530939f6bc2 inherit pub_methods_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97a357dddbad0735c57515743062742b inherit pub_methods_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1MethodDef.html">MethodDef</a> * &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#a97a357dddbad0735c57515743062742b">getMethodDefs</a> ()</td></tr>
+<tr class="separator:a97a357dddbad0735c57515743062742b inherit pub_methods_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebefc6cf11723a6cdef7a4b3ba2c84fc inherit pub_methods_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#aebefc6cf11723a6cdef7a4b3ba2c84fc">getLLVMType</a> ()</td></tr>
 <tr class="separator:aebefc6cf11723a6cdef7a4b3ba2c84fc inherit pub_methods_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -135,6 +139,8 @@ Protected Attributes</h2></td></tr>
 <tr class="inherit_header pro_attribs_classAST_1_1Type"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classAST_1_1Type')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classAST_1_1Type.html">AST::Type</a></td></tr>
 <tr class="memitem:a13b52014ce5b39ab6d87c9c9b5b2a2a2 inherit pro_attribs_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#a13b52014ce5b39ab6d87c9c9b5b2a2a2">name</a></td></tr>
 <tr class="separator:a13b52014ce5b39ab6d87c9c9b5b2a2a2 inherit pro_attribs_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac556e418fc8760606179beebe90a4f06 inherit pro_attribs_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">ASTMap</a>&lt; <a class="el" href="classAST_1_1MethodDef.html">MethodDef</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#ac556e418fc8760606179beebe90a4f06">methodDefs</a></td></tr>
+<tr class="separator:ac556e418fc8760606179beebe90a4f06 inherit pro_attribs_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad9444f6f03eca0cf0e6c448fc764adf1 inherit pro_attribs_classAST_1_1Type"><td class="memItemLeft" align="right" valign="top">llvm::Type *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1Type.html#ad9444f6f03eca0cf0e6c448fc764adf1">llvmType</a></td></tr>
 <tr class="separator:ad9444f6f03eca0cf0e6c448fc764adf1 inherit pro_attribs_classAST_1_1Type"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -195,6 +201,21 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classAST_1_1Type.html#a8541d53d1c71c81d54b9b60bf058e253">AST::Type</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="ad3cadc6877d4ef26eea02cd02484fd62"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool IntType::getSigned </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
 
 </div>
 </div>

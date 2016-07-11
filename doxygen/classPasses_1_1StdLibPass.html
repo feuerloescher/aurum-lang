@@ -90,6 +90,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classPasses_1_1StdLibPass-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -108,13 +109,18 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a97f91805b3b530bbd319b7a0045c4e8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ffb2e26ba4b83f64bfb9231ec50d99"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1StdLibPass.html#a63ffb2e26ba4b83f64bfb9231ec50d99">run</a> ()</td></tr>
 <tr class="separator:a63ffb2e26ba4b83f64bfb9231ec50d99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7436464afd14fd0cbafba3980bd9e133"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1StdLibPass.html#a7436464afd14fd0cbafba3980bd9e133">addStdLibTypes</a> ()</td></tr>
-<tr class="separator:a7436464afd14fd0cbafba3980bd9e133"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:ac13e2ae13e6fe6ae024a06a37b3280e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1StdLibPass.html#ac13e2ae13e6fe6ae024a06a37b3280e3">addScalarTypes</a> ()</td></tr>
+<tr class="separator:ac13e2ae13e6fe6ae024a06a37b3280e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:aeaa9111b6cd3bee9425c0420f289e6fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1StdLibPass.html#aeaa9111b6cd3bee9425c0420f289e6fc">ast</a></td></tr>
 <tr class="separator:aeaa9111b6cd3bee9425c0420f289e6fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdf3acc56ffcd36c1aa8c8ece3f0f3a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1ASTMap.html">AST::ASTMap</a>&lt; <a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">AST::ASTPtr</a>&lt; <a class="el" href="classAST_1_1Type.html">AST::Type</a> &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPasses_1_1StdLibPass.html#afdf3acc56ffcd36c1aa8c8ece3f0f3a5">types</a></td></tr>
+<tr class="separator:afdf3acc56ffcd36c1aa8c8ece3f0f3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Register builtin types and functions of the language. </p>
@@ -136,17 +142,25 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a7436464afd14fd0cbafba3980bd9e133"></a>
+<a class="anchor" id="ac13e2ae13e6fe6ae024a06a37b3280e3"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void StdLibPass::addStdLibTypes </td>
+          <td class="memname">void StdLibPass::addScalarTypes </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 </div>
@@ -177,6 +191,26 @@ Protected Attributes</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a>&amp; Passes::StdLibPass::ast</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="afdf3acc56ffcd36c1aa8c8ece3f0f3a5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classAST_1_1ASTMap.html">AST::ASTMap</a>&lt;<a class="el" href="namespaceAST.html#a8084def84e959df91f661c0083e5bcf0">AST::ASTPtr</a>&lt;<a class="el" href="classAST_1_1Type.html">AST::Type</a>&gt; &gt;&amp; Passes::StdLibPass::types</td>
         </tr>
       </table>
   </td>

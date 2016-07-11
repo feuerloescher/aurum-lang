@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['type',['type',['../classAST_1_1FunctionDef.html#a405505e98b2b9a0bfc1f084193f34b39',1,'AST::FunctionDef::type()'],['../classAST_1_1Expression.html#aae1f1a73605bc2b1251da48d0b0c68b6',1,'AST::Expression::type()'],['../classAST_1_1TypeStmt.html#a36f82c2294871473243769440dd276d8',1,'AST::TypeStmt::type()']]],
-  ['types',['types',['../classAST_1_1AbstractSyntaxTree.html#a3eee296d8135ec6556b30c2f3f5c390f',1,'AST::AbstractSyntaxTree']]],
-  ['typestmt',['typeStmt',['../classAST_1_1VariableDefStmt.html#ae44a4b9b3810c7b7da15ea12ae566c47',1,'AST::VariableDefStmt']]]
+  ['parameterllvmtypes',['parameterLLVMTypes',['../classAST_1_1Declaration.html#a578c07cf6f35f8e978e45edd879c12ac',1,'AST::Declaration']]],
+  ['parameters',['parameters',['../classAST_1_1Declaration.html#a278f5d7340372609d6efa27937236c13',1,'AST::Declaration']]],
+  ['parentblock',['parentBlock',['../classAST_1_1Statement.html#aa96ca4828c4554ee48b2a0210bae3b0b',1,'AST::Statement']]]
 ];

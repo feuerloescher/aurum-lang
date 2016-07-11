@@ -104,10 +104,11 @@ Inheritance diagram for AST::ASTPass:</div>
  <div class="center">
   <img src="classAST_1_1ASTPass.png" usemap="#AST::ASTPass_map" alt=""/>
   <map id="AST::ASTPass_map" name="AST::ASTPass_map">
-<area href="classPasses_1_1IdentifierPass.html" title="Resolve string identifiers of variables and functions. " alt="Passes::IdentifierPass" shape="rect" coords="0,56,134,80"/>
-<area href="classPasses_1_1LLVMPass.html" title="Generate LLVM Intermediate Representation. " alt="Passes::LLVMPass" shape="rect" coords="144,56,278,80"/>
-<area href="classPasses_1_1PrintPass.html" title="Print an AST with type information and indentation to an output stream. " alt="Passes::PrintPass" shape="rect" coords="288,56,422,80"/>
-<area href="classPasses_1_1TypePass.html" title="Resolve and check types of expressions. " alt="Passes::TypePass" shape="rect" coords="432,56,566,80"/>
+<area href="classPasses_1_1IdentifierPass.html" title="Resolve string identifiers of variables and functions. " alt="Passes::IdentifierPass" shape="rect" coords="0,56,168,80"/>
+<area href="classPasses_1_1LLVMPass.html" title="Generate LLVM Intermediate Representation. " alt="Passes::LLVMPass" shape="rect" coords="178,56,346,80"/>
+<area href="classPasses_1_1PrintPass.html" title="Print an AST with type information and indentation to an output stream. " alt="Passes::PrintPass" shape="rect" coords="356,56,524,80"/>
+<area href="classPasses_1_1TypePass.html" title="Resolve and check types of expressions. " alt="Passes::TypePass" shape="rect" coords="534,56,702,80"/>
+<area href="classPasses_1_1VerifyOptimizePass.html" title="Verify and optimize LLVM IR. " alt="Passes::VerifyOptimizePass" shape="rect" coords="712,56,880,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -121,6 +122,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0e318cba88fc52a94c297cab2e3234f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac533704a697186d74a76dbd6d7a7cafe"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#ac533704a697186d74a76dbd6d7a7cafe">runOn</a> (<a class="el" href="classAST_1_1FunctionDef.html">FunctionDef</a> &amp;)</td></tr>
 <tr class="separator:ac533704a697186d74a76dbd6d7a7cafe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acda5f83f6e518cdd2267e6e44e16cf42"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#acda5f83f6e518cdd2267e6e44e16cf42">runOn</a> (<a class="el" href="classAST_1_1MethodDef.html">MethodDef</a> &amp;)</td></tr>
+<tr class="separator:acda5f83f6e518cdd2267e6e44e16cf42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10b5c8c20449e3172bbb31f34c26f7f2"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a10b5c8c20449e3172bbb31f34c26f7f2">runOn</a> (<a class="el" href="classAST_1_1Statement.html">Statement</a> &amp;)</td></tr>
 <tr class="separator:a10b5c8c20449e3172bbb31f34c26f7f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a88af1b24cdbcdcd16458fb337e510bdb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a88af1b24cdbcdcd16458fb337e510bdb">runOn</a> (<a class="el" href="classAST_1_1ReturnStmt.html">ReturnStmt</a> &amp;)</td></tr>
@@ -141,18 +144,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a255b7f6c5b20226d0bb8232118f780fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afc43cecc69c8c7cc6264429fa3f9e840"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#afc43cecc69c8c7cc6264429fa3f9e840">runOn</a> (<a class="el" href="classAST_1_1FunctionCallExpr.html">FunctionCallExpr</a> &amp;)</td></tr>
 <tr class="separator:afc43cecc69c8c7cc6264429fa3f9e840"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a124273a539fa49329e29b268a982bb69"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a124273a539fa49329e29b268a982bb69">runOn</a> (<a class="el" href="classAST_1_1ConstUInt32Expr.html">ConstUInt32Expr</a> &amp;)</td></tr>
-<tr class="separator:a124273a539fa49329e29b268a982bb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bd6448ae03c82eb14ca8ea545a1fe0e"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a3bd6448ae03c82eb14ca8ea545a1fe0e">runOn</a> (<a class="el" href="classAST_1_1MethodCallExpr.html">MethodCallExpr</a> &amp;)</td></tr>
+<tr class="separator:a3bd6448ae03c82eb14ca8ea545a1fe0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a2a41b1c10cb3a1a900c35d42eca6b7"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a2a2a41b1c10cb3a1a900c35d42eca6b7">runOn</a> (<a class="el" href="classAST_1_1ConstIntExpr.html">ConstIntExpr</a> &amp;)</td></tr>
+<tr class="separator:a2a2a41b1c10cb3a1a900c35d42eca6b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c40d06700f93e198a7714cae0c8eabb"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a4c40d06700f93e198a7714cae0c8eabb">runOn</a> (<a class="el" href="classAST_1_1VariableExpr.html">VariableExpr</a> &amp;)</td></tr>
 <tr class="separator:a4c40d06700f93e198a7714cae0c8eabb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaff3d32afddc146477eeeb173afb8c94"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#aaff3d32afddc146477eeeb173afb8c94">runOn</a> (<a class="el" href="classAST_1_1UnaryOpExpr.html">UnaryOpExpr</a> &amp;)</td></tr>
-<tr class="separator:aaff3d32afddc146477eeeb173afb8c94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9374891077dcbe2c63c36d9f028a9284"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#a9374891077dcbe2c63c36d9f028a9284">runOn</a> (<a class="el" href="classAST_1_1BinaryOpExpr.html">BinaryOpExpr</a> &amp;)</td></tr>
-<tr class="separator:a9374891077dcbe2c63c36d9f028a9284"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace797a6b7f00f811a4aa83f2fa004622"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#ace797a6b7f00f811a4aa83f2fa004622">runOn</a> (<a class="el" href="classAST_1_1UnaryAssignOpExpr.html">UnaryAssignOpExpr</a> &amp;)</td></tr>
-<tr class="separator:ace797a6b7f00f811a4aa83f2fa004622"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af859adbfeb62c984e941f76bb5721051"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#af859adbfeb62c984e941f76bb5721051">runOn</a> (<a class="el" href="classAST_1_1BinaryAssignOpExpr.html">BinaryAssignOpExpr</a> &amp;)</td></tr>
-<tr class="separator:af859adbfeb62c984e941f76bb5721051"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -198,7 +195,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a456117c70140ed3b7c035f8107c6c3c2">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad329669f7a8ce35c41b2deece00432c2">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a470104468e94656130371c18522ee5fe">Passes::TypePass</a>.</p>
+<p>Implemented in <a class="el" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a456117c70140ed3b7c035f8107c6c3c2">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#aae6be718a6e30d2852033bb2b2de4178">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad329669f7a8ce35c41b2deece00432c2">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a470104468e94656130371c18522ee5fe">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -249,7 +246,33 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a25834d7e1c01eaaafa5bab5ee27c4f20">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ab824b87f639b880218b40f1ae17a89ac">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a25834d7e1c01eaaafa5bab5ee27c4f20">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#ad9dc5b4c442c92c9a033d119c580f97e">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ab824b87f639b880218b40f1ae17a89ac">Passes::TypePass</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="acda5f83f6e518cdd2267e6e44e16cf42"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ASTPass::runOn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAST_1_1MethodDef.html">MethodDef</a> &amp;&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ae7e34f083531e95a3b15b2289bc6a1e5">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a75355c237abdbe69891151fa2f650554">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a4d9e6059d7a45040f857356ff2235601">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7897aa71ba754f4a0249fe96d98fa1aa">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3b2464df3e5ca129a7bc505a5994bf99">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -299,7 +322,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a4d61ffc2a6dba27c73b6ee3e5ce1282a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#ae78857cc6526eca8157744e34c66caf1">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a21f627316665d5ccb94cbbf2f14b470a">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3046ef0513bd55e31199fb0c75f3294a">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a4d61ffc2a6dba27c73b6ee3e5ce1282a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#ae78857cc6526eca8157744e34c66caf1">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a41448232c584152130f53d3221d984d3">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a21f627316665d5ccb94cbbf2f14b470a">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3046ef0513bd55e31199fb0c75f3294a">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -325,7 +348,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ab6f8c2f1c83d3b110ef1bfdd4abd6895">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a979ae47978076b556115e0b923963f28">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a5dc2f8d3b55392e833f2aa58d523c8b2">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ab6f8c2f1c83d3b110ef1bfdd4abd6895">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a979ae47978076b556115e0b923963f28">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a8ee46e765b42959e27de8d921a66cadb">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a5dc2f8d3b55392e833f2aa58d523c8b2">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -351,7 +374,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af09f18e1625f13fb3cbed20a7e684e8a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#acfe30b2f4574a0d1c84979b7d0f90401">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad18559434daaa4d3f28d3e57b036cafe">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac6107fdfd964a3d833470ec3b94b4453">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af09f18e1625f13fb3cbed20a7e684e8a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#acfe30b2f4574a0d1c84979b7d0f90401">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#ab9973ff8bfe139bf525f2888242fa5d8">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad18559434daaa4d3f28d3e57b036cafe">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac6107fdfd964a3d833470ec3b94b4453">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -377,7 +400,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abcdd3e482bf1c4e87031f1a6b487f5f7">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2dd117b722c0015938831d851378bb65">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a9cd86d1a70154b10412919d7023da25b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#aedaf93210809adede0d0f59e41507589">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abcdd3e482bf1c4e87031f1a6b487f5f7">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2dd117b722c0015938831d851378bb65">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a32a60e39e4ffb0b5ebae970afba8f2fe">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a9cd86d1a70154b10412919d7023da25b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#aedaf93210809adede0d0f59e41507589">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -403,7 +426,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a9588e7692349c51be39040e74daee8d4">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2ae608c071e5cfdeb46d51b5749d268d">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a075a568652d2f75cca8796a0913054dc">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac5221c0be5344e0b385f8eb44b871c37">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a9588e7692349c51be39040e74daee8d4">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2ae608c071e5cfdeb46d51b5749d268d">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a844ca66101560a8a1b5419fb21fade8c">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a075a568652d2f75cca8796a0913054dc">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac5221c0be5344e0b385f8eb44b871c37">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -429,7 +452,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#aa6095e1e5257ec63c038101043087a24">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a4622adc53855789d9a74a94e30621e79">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a06c83c5625a47696ccde0a229a625bc5">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a95df069dd327876187006e95618821de">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#aa6095e1e5257ec63c038101043087a24">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a4622adc53855789d9a74a94e30621e79">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#af4ff00c67382761413772f1a26250e39">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a06c83c5625a47696ccde0a229a625bc5">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a95df069dd327876187006e95618821de">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -455,7 +478,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a2864e922f74259cd3955ef31cc156b3c">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a6909e3d63274820ba043d51b694576ce">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a5cc91576ef7cca8aacbee6da835ef202">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a88da5b9b90c07fc14a0e17e9bd482795">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a2864e922f74259cd3955ef31cc156b3c">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a6909e3d63274820ba043d51b694576ce">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a863433181e8a2c8386c6a3d933f7a6c8">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a5cc91576ef7cca8aacbee6da835ef202">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a88da5b9b90c07fc14a0e17e9bd482795">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -505,11 +528,11 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af7ff3266064c45125c6cae3cf2114ae9">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a333291d4a65ff122addf11757e24ea60">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ae1be186a1ac4905d7a339250b209e098">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a60a56ca3c5f2ae5345e1e63578655ed9">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af7ff3266064c45125c6cae3cf2114ae9">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a333291d4a65ff122addf11757e24ea60">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a9697d933ac185d8502a484bf8660a016">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ae1be186a1ac4905d7a339250b209e098">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a60a56ca3c5f2ae5345e1e63578655ed9">Passes::TypePass</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a124273a539fa49329e29b268a982bb69"></a>
+<a class="anchor" id="a3bd6448ae03c82eb14ca8ea545a1fe0e"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -519,7 +542,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void ASTPass::runOn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1ConstUInt32Expr.html">ConstUInt32Expr</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classAST_1_1MethodCallExpr.html">MethodCallExpr</a> &amp;&#160;</td>
           <td class="paramname"><em>expr</em></td><td>)</td>
           <td></td>
         </tr>
@@ -531,7 +554,33 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a967e396165d458b9a037e94bb2694fa9">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a155e4835ffb70220a327cd466716cf06">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#adaa198582106f4d6f27ae928fed0ef99">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a931e9eafbdd749e28c6fc328145e3ea0">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a5cf5638488f76a72f20d1327640febbb">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2edd029327e4aeeb1ab2cab1ccaa1ee1">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a0d8c3478447e5ac13e8e306f62ce3436">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a5b79430874095ac64781f1f896e3cfa5">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3e65f49e105b9286424a45e8cfc10b2b">Passes::TypePass</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="a2a2a41b1c10cb3a1a900c35d42eca6b7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ASTPass::runOn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classAST_1_1ConstIntExpr.html">ConstIntExpr</a> &amp;&#160;</td>
+          <td class="paramname"><em>expr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a80dd4bba1101e63bfdbd6aeded6fbd91">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a654c0103fa5d7e8e0d28b1ba9f2eee4e">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#af0b1d541cfc3449d6395b24314dd2039">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7ec0f8030f069418ead50a331edd2dc0">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a0e6adf5ee592ff14407befe71b03e33b">Passes::TypePass</a>.</p>
 
 </div>
 </div>
@@ -557,111 +606,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a52ca115b29ed000eaa872860b288852e">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#abda4eefca1842efd9e7a7973f731ae26">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#adf4f0986ae86e49df4f93bec80e7900d">Passes::TypePass</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aaff3d32afddc146477eeeb173afb8c94"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ASTPass::runOn </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1UnaryOpExpr.html">UnaryOpExpr</a> &amp;&#160;</td>
-          <td class="paramname"><em>expr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a1fa62dd2160a8aaacad113c9db60998b">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a0a88232efdd1c27b5bc55f01e00f2aaf">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a4a734d7f58bcbb2d8510f5f2655ebc42">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a19cbd18c9f88e29622c613fe34e15b49">Passes::TypePass</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a9374891077dcbe2c63c36d9f028a9284"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ASTPass::runOn </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1BinaryOpExpr.html">BinaryOpExpr</a> &amp;&#160;</td>
-          <td class="paramname"><em>expr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ae11a785eae38e8b8a1ebce15f3d7a0f4">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a3d8e8ccd49ba58c71fcbcedc66f4b9e6">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad2818fd35363a4290a4077b62afa2510">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ae642a8d6e166f81a06705f47da262db3">Passes::TypePass</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ace797a6b7f00f811a4aa83f2fa004622"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ASTPass::runOn </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1UnaryAssignOpExpr.html">UnaryAssignOpExpr</a> &amp;&#160;</td>
-          <td class="paramname"><em>expr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abe1510243c9b8a9f9725c285eba16de8">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a9bf3fc2f2507587dd1d297c6c1092d95">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a9bf12211f19fe6817be35bb67b0a6085">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#aec4cc884daedf746d1228f4b8b848264">Passes::TypePass</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="af859adbfeb62c984e941f76bb5721051"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ASTPass::runOn </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classAST_1_1BinaryAssignOpExpr.html">BinaryAssignOpExpr</a> &amp;&#160;</td>
-          <td class="paramname"><em>expr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a94fe9e93867445c9af90d542d038b0a7">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a6011f00ac56de98deb256a00cf1a0009">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a680b7628c61095e53d809d27379549b8">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#af42075f05a88d7cbb13834365372a8dc">Passes::TypePass</a>.</p>
+<p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a52ca115b29ed000eaa872860b288852e">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#abda4eefca1842efd9e7a7973f731ae26">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a5a9270f524c8260e13488e267f44b4d4">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#adf4f0986ae86e49df4f93bec80e7900d">Passes::TypePass</a>.</p>
 
 </div>
 </div>

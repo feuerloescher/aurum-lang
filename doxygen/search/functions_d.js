@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['unaryassignopexpr',['UnaryAssignOpExpr',['../classAST_1_1UnaryAssignOpExpr.html#af26ff7e6e56b88530e9a18b7a1a9e15f',1,'AST::UnaryAssignOpExpr']]],
-  ['unaryopexpr',['UnaryOpExpr',['../classAST_1_1UnaryOpExpr.html#a6c643b0ada2724dd2c6596bfa4a783e5',1,'AST::UnaryOpExpr']]],
-  ['unknownidentifiererror',['UnknownIdentifierError',['../classAST_1_1UnknownIdentifierError.html#ac02fd516e455988efa4878b02ebac782',1,'AST::UnknownIdentifierError']]]
+  ['type',['Type',['../classAST_1_1Type.html#a31ec691e43ba275d4d117fe9bb46c8c1',1,'AST::Type']]],
+  ['typepass',['TypePass',['../classPasses_1_1TypePass.html#a393339fef69cead7ce939a02e0f8e045',1,'Passes::TypePass']]],
+  ['typestmt',['TypeStmt',['../classAST_1_1TypeStmt.html#a38f4dbd83c8e8e4c21d756cc3870bd8d',1,'AST::TypeStmt']]]
 ];

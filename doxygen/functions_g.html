@@ -86,6 +86,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="functions_g.html#index_g"><span>g</span></a></li>
       <li><a href="functions_i.html#index_i"><span>i</span></a></li>
       <li><a href="functions_l.html#index_l"><span>l</span></a></li>
+      <li><a href="functions_m.html#index_m"><span>m</span></a></li>
       <li><a href="functions_n.html#index_n"><span>n</span></a></li>
       <li><a href="functions_o.html#index_o"><span>o</span></a></li>
       <li><a href="functions_p.html#index_p"><span>p</span></a></li>
@@ -119,10 +120,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getAllocaInst()
 : <a class="el" href="classAST_1_1VariableDefStmt.html#a9378b39b10565aeb59007694c709ddc8">AST::VariableDefStmt</a>
 </li>
+<li>getArgs()
+: <a class="el" href="classAST_1_1FunctionCallExpr.html#a059975fac6adb4c9fe3a8389ae1025af">AST::FunctionCallExpr</a>
+, <a class="el" href="classAST_1_1MethodCallExpr.html#a5e54384bc466e4774165923a84ce8706">AST::MethodCallExpr</a>
+</li>
+<li>getBeginChar()
+: <a class="el" href="classAST_1_1CodeLocation.html#ad42d342c9d74d7ec4c2c802a971574c0">AST::CodeLocation</a>
+</li>
 <li>getBody()
-: <a class="el" href="classAST_1_1FunctionDef.html#a3ee74f5ced7bb560f236cbd68d760cfb">AST::FunctionDef</a>
+: <a class="el" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d">AST::Declaration</a>
 , <a class="el" href="classAST_1_1IfStmt.html#adb35201ee81baea27c717759fc18be77">AST::IfStmt</a>
 , <a class="el" href="classAST_1_1WhileLoop.html#ac671323fac73d8722ae0b0329668820b">AST::WhileLoop</a>
+</li>
+<li>getCodeLocation()
+: <a class="el" href="classAST_1_1ASTElement.html#ac407357f83ae6ff2401e6d8aed49cce0">AST::ASTElement</a>
 </li>
 <li>getCondition()
 : <a class="el" href="classAST_1_1IfStmt.html#ab0b56fb9d0675447f5fc75afdc4cd079">AST::IfStmt</a>
@@ -131,20 +142,33 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getDeclarations()
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a">AST::AbstractSyntaxTree</a>
 </li>
+<li>getEndChar()
+: <a class="el" href="classAST_1_1CodeLocation.html#a4ba331284bcaacc7f36d8080ff89c92d">AST::CodeLocation</a>
+</li>
+<li>getExported()
+: <a class="el" href="classAST_1_1ASTElement.html#ad16e36978bb2089d311d3102fdac8173">AST::ASTElement</a>
+, <a class="el" href="classAST_1_1Declaration.html#a09aab698f7819c7792dd6f0caf51372b">AST::Declaration</a>
+</li>
+<li>getFilename()
+: <a class="el" href="classAST_1_1CodeLocation.html#a455edacec021bd8982349bc382d71e38">AST::CodeLocation</a>
+</li>
+<li>getFunctionDef()
+: <a class="el" href="classAST_1_1FunctionCallExpr.html#a083314ca1636a6855a274a97b65d23f8">AST::FunctionCallExpr</a>
+</li>
 <li>getFunctionDefs()
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a2ff15a8d0d99cecf071a362ecb33fe0d">AST::AbstractSyntaxTree</a>
 </li>
 <li>getIRBuilder()
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#ac0d6069c844cd38a3aaeb979b3de63cd">AST::AbstractSyntaxTree</a>
 </li>
-<li>getLLVMBlock()
-: <a class="el" href="classAST_1_1Block.html#aed59509e5f9cb365008c62033b66e003">AST::Block</a>
+<li>getLine()
+: <a class="el" href="classAST_1_1CodeLocation.html#a2eaddea8600349401355c50c2c08236d">AST::CodeLocation</a>
 </li>
 <li>getLLVMContext()
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a6593745b708ce16ca058c8f81dfe8e66">AST::AbstractSyntaxTree</a>
 </li>
 <li>getLLVMFunction()
-: <a class="el" href="classAST_1_1FunctionDef.html#a4abf225c822f244a5fbd8189537a9d85">AST::FunctionDef</a>
+: <a class="el" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a">AST::Declaration</a>
 </li>
 <li>getLLVMModule()
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a17e82a8722f8da8da4fd76605cde3ed5">AST::AbstractSyntaxTree</a>
@@ -155,43 +179,53 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>getLLVMValue()
 : <a class="el" href="classAST_1_1Expression.html#a5aba4603ddbc8c1c894dd32f344d19b8">AST::Expression</a>
 </li>
+<li>getMangledName()
+: <a class="el" href="classAST_1_1MethodCallExpr.html#ae114e2da449458e56b405bbeaa2dfdca">AST::MethodCallExpr</a>
+</li>
+<li>getMethodDef()
+: <a class="el" href="classAST_1_1MethodCallExpr.html#a30af411402b9d46ca2b02d750831a138">AST::MethodCallExpr</a>
+</li>
+<li>getMethodDefs()
+: <a class="el" href="classAST_1_1Type.html#a97a357dddbad0735c57515743062742b">AST::Type</a>
+</li>
 <li>getName()
-: <a class="el" href="classAST_1_1BinaryAssignOpExpr.html#a9cb88dd53552ea267792d3f94458d2e2">AST::BinaryAssignOpExpr</a>
-, <a class="el" href="classAST_1_1BinaryOpExpr.html#af2df3635f4249d4930b3a1c0a1cba8b4">AST::BinaryOpExpr</a>
+: <a class="el" href="classAST_1_1Declaration.html#a7c423a251eeda40271dba6598599d9f5">AST::Declaration</a>
 , <a class="el" href="classAST_1_1FunctionCallExpr.html#a9ff8db2213a4396de3e29024ff373893">AST::FunctionCallExpr</a>
-, <a class="el" href="classAST_1_1FunctionDef.html#af10ce80d7e2ba91ef5622cca65a3bf8a">AST::FunctionDef</a>
+, <a class="el" href="classAST_1_1MethodCallExpr.html#ad16dfb97325516a65232052e65adac16">AST::MethodCallExpr</a>
 , <a class="el" href="classAST_1_1Type.html#ad59f2e420bbd8a13b3759530939f6bc2">AST::Type</a>
 , <a class="el" href="classAST_1_1TypeStmt.html#ad993d368ad96d6b822fe20e683378d56">AST::TypeStmt</a>
-, <a class="el" href="classAST_1_1UnaryAssignOpExpr.html#a6bb2d7dbc86b1a6a5f0e90e3d003871e">AST::UnaryAssignOpExpr</a>
-, <a class="el" href="classAST_1_1UnaryOpExpr.html#a75d05be82a0de1cb12bfcd1c0a8e3b6d">AST::UnaryOpExpr</a>
 , <a class="el" href="classAST_1_1VariableDefStmt.html#a028a1c21b1409732d7e09d1a9ffd4210">AST::VariableDefStmt</a>
 , <a class="el" href="classAST_1_1VariableExpr.html#aaa1f51dd338f6fcec11436af39f2b0a3">AST::VariableExpr</a>
 </li>
 <li>getNumValue()
-: <a class="el" href="classAST_1_1ConstUInt32Expr.html#ab55a7269f9760af2adb79616d9754085">AST::ConstUInt32Expr</a>
+: <a class="el" href="classAST_1_1ConstIntExpr.html#a2f9fbce2a6f212738c13f77d6890357d">AST::ConstIntExpr</a>
 </li>
-<li>getOperand()
-: <a class="el" href="classAST_1_1BinaryAssignOpExpr.html#a19f0d4504c1fb474d3de8373af20457a">AST::BinaryAssignOpExpr</a>
-, <a class="el" href="classAST_1_1UnaryOpExpr.html#a291f4ceaf8ceaa70253064fa089542a4">AST::UnaryOpExpr</a>
+<li>getObjectExpr()
+: <a class="el" href="classAST_1_1MethodCallExpr.html#aed7c1c396c682f1c2e247edc9766cdae">AST::MethodCallExpr</a>
 </li>
-<li>getOperand1()
-: <a class="el" href="classAST_1_1BinaryOpExpr.html#a2dbe6493972437c0fa63119222e922b5">AST::BinaryOpExpr</a>
-</li>
-<li>getOperand2()
-: <a class="el" href="classAST_1_1BinaryOpExpr.html#afd5464629835be8cc6c6ba5c93d9dc96">AST::BinaryOpExpr</a>
+<li>getObjectTypeStmt()
+: <a class="el" href="classAST_1_1MethodDef.html#ad935966ccd804d2a274077215a1b2adb">AST::MethodDef</a>
 </li>
 <li>getParameterLLVMTypes()
-: <a class="el" href="classAST_1_1FunctionDef.html#acc06e8cfedcec210352f4aad6061fbb7">AST::FunctionDef</a>
+: <a class="el" href="classAST_1_1Declaration.html#a892656f048f7ab27449dd89ff3fdcc87">AST::Declaration</a>
 </li>
 <li>getParameters()
-: <a class="el" href="classAST_1_1FunctionCallExpr.html#ad6afcad86fea9af3b7bfdbe315c0b740">AST::FunctionCallExpr</a>
-, <a class="el" href="classAST_1_1FunctionDef.html#a4587c589fcb08ec09a8142c8bc5725a9">AST::FunctionDef</a>
+: <a class="el" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c">AST::Declaration</a>
 </li>
 <li>getParentBlock()
-: <a class="el" href="classAST_1_1Block.html#acd2a808c03cd4ec71c32a0681f711e88">AST::Block</a>
+: <a class="el" href="classAST_1_1Statement.html#ac808e143418221450675e0ef6e251d30">AST::Statement</a>
+</li>
+<li>getReturnTypeStmt()
+: <a class="el" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7">AST::Declaration</a>
+</li>
+<li>getSigned()
+: <a class="el" href="classAST_1_1IntType.html#ad3cadc6877d4ef26eea02cd02484fd62">AST::IntType</a>
 </li>
 <li>getStatements()
 : <a class="el" href="classAST_1_1Block.html#ab0a461d2187e21e9d18dcb1365e7953c">AST::Block</a>
+</li>
+<li>getStdLibMethodDefs()
+: <a class="el" href="classAST_1_1AbstractSyntaxTree.html#a1bc8f0029ee090958ccee50bda1e42c9">AST::AbstractSyntaxTree</a>
 </li>
 <li>getType()
 : <a class="el" href="classAST_1_1Expression.html#af9782faebf06cc93d103af2d09eaed47">AST::Expression</a>
@@ -201,16 +235,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="classAST_1_1AbstractSyntaxTree.html#ac4a6c6dc56755abb2dcd9a297a96a975">AST::AbstractSyntaxTree</a>
 </li>
 <li>getTypeStmt()
-: <a class="el" href="classAST_1_1FunctionDef.html#abbc1190adadd2f4314de598b668e2a3a">AST::FunctionDef</a>
+: <a class="el" href="classAST_1_1ConstIntExpr.html#a2e486b0531770c78336543c9b388be36">AST::ConstIntExpr</a>
 , <a class="el" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf">AST::VariableDefStmt</a>
 </li>
 <li>getValue()
 : <a class="el" href="classAST_1_1ReturnStmt.html#aeaa774f7707f0087e2a3679b7d158384">AST::ReturnStmt</a>
 , <a class="el" href="classAST_1_1VariableDefAssignStmt.html#a532cc5dc83eb3720457684484b6fc48d">AST::VariableDefAssignStmt</a>
 </li>
-<li>getVariable()
-: <a class="el" href="classAST_1_1BinaryAssignOpExpr.html#ae87d680928c366330806d391f54f0114">AST::BinaryAssignOpExpr</a>
-, <a class="el" href="classAST_1_1UnaryAssignOpExpr.html#a50ac92bc15a2311489705076eba055fc">AST::UnaryAssignOpExpr</a>
+<li>getValueStr()
+: <a class="el" href="classAST_1_1ConstIntExpr.html#a6ad93215c6f041c8c2391ca9d16ec886">AST::ConstIntExpr</a>
 </li>
 <li>getVariableDefStmt()
 : <a class="el" href="classAST_1_1VariableExpr.html#aa9bc0d5b2ceafd8c38dbba7948697e32">AST::VariableExpr</a>

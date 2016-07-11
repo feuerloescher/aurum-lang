@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['operand',['operand',['../classAST_1_1UnaryOpExpr.html#af0cd0bb6df783ffe6db1708c5f4ac913',1,'AST::UnaryOpExpr::operand()'],['../classAST_1_1BinaryAssignOpExpr.html#a2847b92954b6f243dcbde18749846397',1,'AST::BinaryAssignOpExpr::operand()']]],
-  ['operand1',['operand1',['../classAST_1_1BinaryOpExpr.html#a30293ce55ead2ed066da67671b0a8989',1,'AST::BinaryOpExpr']]],
-  ['operand2',['operand2',['../classAST_1_1BinaryOpExpr.html#ab004e1424f151060023d359cf4224c7b',1,'AST::BinaryOpExpr']]]
+  ['methoddef',['methodDef',['../classAST_1_1MethodCallExpr.html#afb53c66bdca3cb682db0813d4fe2ad67',1,'AST::MethodCallExpr']]],
+  ['methoddefs',['methodDefs',['../classAST_1_1Type.html#ac556e418fc8760606179beebe90a4f06',1,'AST::Type']]],
+  ['modulepassmgr',['modulePassMgr',['../classPasses_1_1VerifyOptimizePass.html#aa9935b36eee4800663938d372bec3913',1,'Passes::VerifyOptimizePass']]]
 ];

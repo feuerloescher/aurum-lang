@@ -83,12 +83,28 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><dl class="reflist">
 <dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7">AST::ASTPass::runOn</a>  (<a class="el" href="classAST_1_1Declaration.html">Declaration</a> &amp;)</dt>
 <dd>Reorganize; multiple dispatch only for virtual base classes  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b">Passes::IdentifierPass::runOn</a>  (<a class="el" href="classAST_1_1VariableExpr.html">AST::VariableExpr</a> &amp;)</dt>
+<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="classAST_1_1Block.html#a6fcf58a96cd8aa89f61817cb12106b23">AST::Block::Block</a>  (<a class="el" href="classAST_1_1Block.html">Block</a> *parentBlock, <a class="el" href="classAST_1_1CodeLocation.html">CodeLocation</a> codeLocation)</dt>
+<dd>Add a getName() method to Blocks, for context in error messages  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Class <a class="el" href="classAST_1_1Type.html">AST::Type</a>  </dt>
+<dd>Implement reference types for function/method call-by-reference  </dd>
+<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="classPasses_1_1IdentifierPass.html#a7897aa71ba754f4a0249fe96d98fa1aa">Passes::IdentifierPass::runOn</a>  (<a class="el" href="classAST_1_1MethodDef.html">AST::MethodDef</a> &amp;)</dt>
+<dd>Reset currentBlock  </dd>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b">Passes::IdentifierPass::runOn</a>  (<a class="el" href="classAST_1_1VariableExpr.html">AST::VariableExpr</a> &amp;)</dt>
 <dd>Copy variables from parent blocks in runOn(Block), or search through parent blocks here  </dd>
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77">Passes::LLVMPass::runOn</a>  (<a class="el" href="classAST_1_1FunctionDef.html">AST::FunctionDef</a> &amp;)</dt>
-<dd></dd>
-<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="classPasses_1_1TypePass.html#a931e9eafbdd749e28c6fc328145e3ea0">Passes::TypePass::runOn</a>  (<a class="el" href="classAST_1_1ConstUInt32Expr.html">AST::ConstUInt32Expr</a> &amp;)</dt>
-<dd>Find scalar types more elegantly, e.g. store them directly in <a class="el" href="namespaceAST.html">AST</a> </dd>
+<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658">Passes::IdentifierPass::runOn</a>  (<a class="el" href="classAST_1_1FunctionDef.html">AST::FunctionDef</a> &amp;)</dt>
+<dd>Reset currentBlock  </dd>
+<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="classPasses_1_1LLVMPass.html#ae7e34f083531e95a3b15b2289bc6a1e5">Passes::LLVMPass::runOn</a>  (<a class="el" href="classAST_1_1MethodDef.html">AST::MethodDef</a> &amp;)</dt>
+<dd>Set pointer of first parameter 'this'  </dd>
+<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="classPasses_1_1LLVMPass.html#af09f18e1625f13fb3cbed20a7e684e8a">Passes::LLVMPass::runOn</a>  (<a class="el" href="classAST_1_1VariableDefAssignStmt.html">AST::VariableDefAssignStmt</a> &amp;)</dt>
+<dd>Merge getLLVMValue and getAllocaInst in Expression subclasses?  </dd>
+<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="classPasses_1_1TypePass.html#a3e65f49e105b9286424a45e8cfc10b2b">Passes::TypePass::runOn</a>  (<a class="el" href="classAST_1_1MethodCallExpr.html">AST::MethodCallExpr</a> &amp;)</dt>
+<dd>Add search for implicit cast method  </dd>
+<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="classPasses_1_1TypePass.html#a60a56ca3c5f2ae5345e1e63578655ed9">Passes::TypePass::runOn</a>  (<a class="el" href="classAST_1_1FunctionCallExpr.html">AST::FunctionCallExpr</a> &amp;)</dt>
+<dd><p class="startdd">Add search for implicit cast method </p>
+<p class="enddd">Merge common code of FunctionCallExpr and MethodCallExpr handling  </p>
+</dd>
+<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a1bda36752b0da6235c8eac1f6a360dc2">Passes::VerifyOptimizePass::VerifyOptimizePass</a>  (<a class="el" href="classAST_1_1AbstractSyntaxTree.html">AST::AbstractSyntaxTree</a> &amp;ast)</dt>
+<dd>Add other pass managers: loop, basic block, call graph ? </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->

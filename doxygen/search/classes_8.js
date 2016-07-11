@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['printpass',['PrintPass',['../classPasses_1_1PrintPass.html',1,'Passes']]]
+  ['methodcallexpr',['MethodCallExpr',['../classAST_1_1MethodCallExpr.html',1,'AST']]],
+  ['methoddef',['MethodDef',['../classAST_1_1MethodDef.html',1,'AST']]]
 ];
