@@ -23,7 +23,7 @@ protected:
     llvm::Value* llvmValue;
 
 public:
-    Expression(CodeLocation codeLocation);
+    Expression(Block* parentBlock, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass) = 0;
     ASTPtr<Type> getType();
@@ -44,7 +44,8 @@ protected:
     FunctionDef* functionDef;
 
 public:
-    FunctionCallExpr(std::string name, CodeLocation codeLocation);
+    FunctionCallExpr(std::string name, Block* parentBlock,
+        CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
@@ -65,7 +66,7 @@ protected:
 
 public:
     MethodCallExpr(ASTPtr<Expression> tmpObjectExpr, std::string name,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
     ASTPtr<Expression> getObjectExpr();
@@ -87,21 +88,21 @@ protected:
 
 public:
     ConstIntExpr(std::string valueStr, uint8_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int8_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint16_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int16_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint32_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int32_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint64_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int64_t numValue,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
@@ -119,7 +120,8 @@ protected:
     VariableDefStmt* variableDefStmt;
 
 public:
-    VariableExpr(std::string name, CodeLocation codeLocation);
+    VariableExpr(std::string name, Block* parentBlock,
+        CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 

@@ -89,10 +89,8 @@ void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void IdentifierPass::runOn(Block& stmt) {
-    if (currentBlock != &stmt) {
-        stmt.setParentBlock(currentBlock);
-        currentBlock = &stmt;
-    }
+    assert(currentBlock == stmt.getParentBlock());
+    currentBlock = &stmt;
     for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }

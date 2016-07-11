@@ -13,8 +13,8 @@ using namespace AST;
 
 Declaration::Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
     CodeLocation codeLocation)
-    : name(name), returnTypeStmt(returnTypeStmt), codeLocation(codeLocation),
-    body(codeLocation), llvmFunction(nullptr), exported(false) {
+    : ASTElement(codeLocation), name(name), returnTypeStmt(returnTypeStmt),
+    body(nullptr, codeLocation), llvmFunction(nullptr), exported(false) {
 }
 
 std::string Declaration::getName() {
@@ -45,10 +45,6 @@ std::vector<llvm::Type*>& Declaration::getParameterLLVMTypes() {
     return parameterLLVMTypes;
 }
 
-CodeLocation Declaration::getCodeLocation() {
-    return codeLocation;
-}
-
 bool Declaration::getExported() {
     return exported;
 }
@@ -75,7 +71,7 @@ MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
     this->name = returnTypeStmt->getName() + '.' + name;
     parameters.push_back(
         std::make_shared<VariableDefStmt>(objectTypeStmt, "this",
-        CodeLocation::none));
+        &body, CodeLocation::none));
 }
 
 void MethodDef::runPass(ASTPass& pass) {

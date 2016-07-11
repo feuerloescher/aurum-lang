@@ -8,18 +8,17 @@
 #define AUC_TYPESTMT_HPP
 
 #include "common.hpp"
-#include "CodeLocation.hpp"
+#include "ASTElement.hpp"
 
 #include <string>
 
 namespace AST {
 
-class TypeStmt {
+class TypeStmt : public ASTElement {
 
 protected:
     std::string name;
     ASTPtr<Type> type;
-    CodeLocation codeLocation;
 
 public:
     TypeStmt(std::string name, CodeLocation codeLocation);
@@ -29,7 +28,6 @@ public:
     std::string getName();
     ASTPtr<Type> getType();
     void setType(ASTPtr<Type> type);
-    CodeLocation getCodeLocation();
 
 }; // class TypeStmt
 

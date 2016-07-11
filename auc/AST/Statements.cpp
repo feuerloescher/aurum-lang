@@ -9,12 +9,18 @@
 
 using namespace AST;
 
-Statement::Statement(CodeLocation codeLocation) : codeLocation(codeLocation) {
+Statement::Statement(Block* parentBlock, CodeLocation codeLocation)
+    : ASTElement(codeLocation), parentBlock(parentBlock) {
+}
+
+Block* Statement::getParentBlock() {
+    return parentBlock;
 }
 
 
-ReturnStmt::ReturnStmt(ASTPtr<Expression> value, CodeLocation codeLocation)
-    : Statement(codeLocation), value(value) {
+ReturnStmt::ReturnStmt(ASTPtr<Expression> value, Block* parentBlock,
+    CodeLocation codeLocation)
+    : Statement(parentBlock, codeLocation), value(value) {
 }
 
 void ReturnStmt::runPass(ASTPass& pass) {
@@ -27,8 +33,8 @@ ASTPtr<Expression> ReturnStmt::getValue() {
 
 
 VariableDefStmt::VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
-    CodeLocation codeLocation)
-    : Statement(codeLocation), typeStmt(typeStmt), name(name),
+    Block* parentBlock, CodeLocation codeLocation)
+    : Statement(parentBlock, codeLocation), typeStmt(typeStmt), name(name),
     allocaInst(nullptr) {
 }
 
@@ -54,8 +60,9 @@ void VariableDefStmt::setAllocaInst(llvm::AllocaInst* allocaInst) {
 
 
 VariableDefAssignStmt::VariableDefAssignStmt(ASTPtr<TypeStmt> type,
-    std::string name, ASTPtr<Expression> value, CodeLocation codeLocation)
-    : VariableDefStmt(type, name, codeLocation), value(value) {
+    std::string name, ASTPtr<Expression> value, Block* parentBlock,
+    CodeLocation codeLocation)
+    : VariableDefStmt(type, name, parentBlock, codeLocation), value(value) {
 }
 
 void VariableDefAssignStmt::runPass(ASTPass& pass) {

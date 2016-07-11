@@ -39,7 +39,7 @@ void StdLibPass::addScalarTypes() {
                     CodeLocation::none);
                 intMethod->getParameters().push_back(
                     std::make_shared<VariableDefStmt>(intTypeStmt, "param",
-                    CodeLocation::none));
+                    &intMethod->getBody(), CodeLocation::none));
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }

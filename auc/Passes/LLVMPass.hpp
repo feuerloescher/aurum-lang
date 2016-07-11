@@ -21,7 +21,6 @@ class LLVMPass : public AST::ASTPass {
 protected:
     llvm::LLVMContext& llvmContext;
     llvm::IRBuilder<>& irBuilder;
-    AST::Block* currentBlock;
     bool onlyInsertDeclarations;
 
     void createLLVMTypes();

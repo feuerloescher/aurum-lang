@@ -9,8 +9,10 @@
 
 using namespace AST;
 
-Block::Block(CodeLocation codeLocation)
-    : Statement(codeLocation), parentBlock(nullptr), llvmBlock(nullptr) {
+Block::Block(Block* parentBlock, CodeLocation codeLocation)
+    : Statement(parentBlock, codeLocation) {
+    /// \todo Add a getName() method to Blocks,
+    /// for context in error messages
 }
 
 void Block::runPass(ASTPass& pass) {
@@ -27,22 +29,6 @@ void Block::push_back(ASTPtr<Statement> statement) {
 
 ASTMap<VariableDefStmt*>& Block::getVariables() {
     return variables;
-}
-
-Block* Block::getParentBlock() {
-    return parentBlock;
-}
-
-void Block::setParentBlock(Block* block) {
-    parentBlock = block;
-}
-
-llvm::BasicBlock* Block::getLLVMBlock() {
-    return llvmBlock;
-}
-
-void Block::setLLVMBlock(llvm::BasicBlock* llvmBlock) {
-    this->llvmBlock = llvmBlock;
 }
 
 

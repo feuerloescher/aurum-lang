@@ -8,23 +8,22 @@
 #define AUC_STATEMENTS_HPP
 
 #include "common.hpp"
-#include "CodeLocation.hpp"
+#include "ASTElement.hpp"
 
 #include <llvm/IR/Instructions.h>
 #include <string>
 
 namespace AST {
 
-class Statement {
+class Statement : public ASTElement {
 
 protected:
-    CodeLocation codeLocation;
+    Block* parentBlock;
 
 public:
-    Statement(CodeLocation codeLocation);
+    Statement(Block* parentBlock, CodeLocation codeLocation);
 
-    virtual void runPass(ASTPass& pass) = 0;
-    CodeLocation getCodeLocation();
+    Block* getParentBlock();
 
 }; // class Statement
 
@@ -37,7 +36,8 @@ protected:
     ASTPtr<Expression> value;
 
 public:
-    ReturnStmt(ASTPtr<Expression> value, CodeLocation codeLocation);
+    ReturnStmt(ASTPtr<Expression> value, Block* parentBlock,
+        CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getValue();
@@ -54,7 +54,7 @@ protected:
 
 public:
     VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
-        CodeLocation codeLocation);
+        Block* parentBlock, CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
@@ -74,7 +74,8 @@ protected:
 
 public:
     VariableDefAssignStmt(ASTPtr<TypeStmt> type, std::string name,
-        ASTPtr<Expression> value, CodeLocation codeLocation);
+        ASTPtr<Expression> value, Block* parentBlock,
+        CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getValue();

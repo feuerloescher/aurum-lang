@@ -9,7 +9,7 @@
 
 #include "common.hpp"
 #include "Blocks.hpp"
-#include "CodeLocation.hpp"
+#include "ASTElement.hpp"
 
 #include <llvm/IR/Function.h>
 #include <llvm/IR/Type.h>
@@ -18,13 +18,12 @@
 
 namespace AST {
 
-class Declaration {
+class Declaration : public ASTElement {
 
 protected:
     std::string name;
     ASTPtr<TypeStmt> returnTypeStmt;
     ASTList<VariableDefStmt> parameters;
-    CodeLocation codeLocation;
     Block body;
     llvm::Function* llvmFunction;
     std::vector<llvm::Type*> parameterLLVMTypes;
@@ -43,7 +42,6 @@ public:
     llvm::Function* getLLVMFunction();
     void setLLVMFunction(llvm::Function* llvmFunction);
     std::vector<llvm::Type*>& getParameterLLVMTypes();
-    CodeLocation getCodeLocation();
     bool getExported();
     void setExported(bool exported);
 

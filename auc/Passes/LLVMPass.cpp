@@ -23,8 +23,7 @@ using namespace Passes;
 
 LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
     : ASTPass(ast), llvmContext(ast.getLLVMContext()),
-    irBuilder(ast.getIRBuilder()), currentBlock(nullptr),
-    onlyInsertDeclarations(true) {
+    irBuilder(ast.getIRBuilder()), onlyInsertDeclarations(true) {
 }
 
 void LLVMPass::createLLVMTypes() {
@@ -116,12 +115,10 @@ void LLVMPass::addScalarMethods() {
 void LLVMPass::run() {
     createLLVMTypes();
     addScalarMethods();
-    currentBlock = nullptr;
     onlyInsertDeclarations = true;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
-    currentBlock = nullptr;
     onlyInsertDeclarations = false;
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         decl->runPass(*this);
@@ -146,10 +143,8 @@ void LLVMPass::runOn(FunctionDef& func) {
         func.setLLVMFunction(llvmFunction);
     } else {
         llvm::Function* llvmFunction = func.getLLVMFunction();
-        currentBlock = &func.getBody();
         llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext,
             "entry", llvmFunction);
-        currentBlock->setLLVMBlock(llvmBlock);
         irBuilder.SetInsertPoint(llvmBlock);
         /// Add alloca for each parameter
         ASTList<VariableDefStmt>::iterator paramIter =
@@ -167,7 +162,6 @@ void LLVMPass::runOn(FunctionDef& func) {
         }
         assert(paramIter == func.getParameters().end());
         func.getBody().runPass(*this);
-        /// \todo Reset currentBlock
     }
 }
 
@@ -195,10 +189,8 @@ void LLVMPass::runOn(MethodDef& func) {
         func.setLLVMFunction(llvmFunction);
     } else {
         llvm::Function* llvmFunction = func.getLLVMFunction();
-        currentBlock = &func.getBody();
         llvm::BasicBlock* llvmBlock = llvm::BasicBlock::Create(llvmContext,
             "entry", llvmFunction);
-        currentBlock->setLLVMBlock(llvmBlock);
         irBuilder.SetInsertPoint(llvmBlock);
         /// Add alloca for each parameter
         /// \todo Set pointer of first parameter 'this'
@@ -222,7 +214,6 @@ void LLVMPass::runOn(MethodDef& func) {
         }
         assert(paramIter == func.getParameters().end());
         func.getBody().runPass(*this);
-        /// \todo Reset currentBlock
     }
 }
 
@@ -258,11 +249,9 @@ void LLVMPass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void LLVMPass::runOn(Block& stmt) {
-    currentBlock = &stmt;
     for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }
-    currentBlock = stmt.getParentBlock();
 }
 
 void LLVMPass::runOn(IfStmt& stmt) {

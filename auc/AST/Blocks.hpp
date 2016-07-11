@@ -21,11 +21,9 @@ class Block : public Statement {
 protected:
     StatementList statements;
     ASTMap<VariableDefStmt*> variables;
-    Block* parentBlock;
-    llvm::BasicBlock* llvmBlock;
 
 public:
-    Block(CodeLocation codeLocation);
+    Block(Block* parentBlock, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
@@ -33,10 +31,6 @@ public:
     void push_back(ASTPtr<Statement> statement);
 
     ASTMap<VariableDefStmt*>& getVariables();
-    Block* getParentBlock();
-    void setParentBlock(Block* block);
-    llvm::BasicBlock* getLLVMBlock();
-    void setLLVMBlock(llvm::BasicBlock* llvmBlock);
 
 }; // class Block
 
