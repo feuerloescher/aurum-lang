@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -101,13 +101,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for AST::Type:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classAST_1_1Type.png" usemap="#AST::Type_map" alt=""/>
-  <map id="AST::Type_map" name="AST::Type_map">
-<area href="classAST_1_1ScalarType.html" alt="AST::ScalarType" shape="rect" coords="0,56,107,80"/>
-<area href="classAST_1_1IntType.html" alt="AST::IntType" shape="rect" coords="0,112,107,136"/>
+<div class="center"><img src="classAST_1_1Type__inherit__graph.png" border="0" usemap="#AST_1_1Type_inherit__map" alt="Inheritance graph"/></div>
+<map name="AST_1_1Type_inherit__map" id="AST_1_1Type_inherit__map">
+<area shape="rect" id="node2" href="classAST_1_1ScalarType.html" title="AST::ScalarType" alt="" coords="5,80,128,107"/>
+<area shape="rect" id="node3" href="classAST_1_1IntType.html" title="AST::IntType" alt="" coords="17,155,117,181"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for AST::Type:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Type__coll__graph.png" border="0" usemap="#AST_1_1Type_coll__map" alt="Collaboration graph"/></div>
+<map name="AST_1_1Type_coll__map" id="AST_1_1Type_coll__map">
+<area shape="rect" id="node2" title="STL class. " alt="" coords="29,103,109,130"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,5,132,47"/>
+<area shape="rect" id="node4" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Method\lDef * \&gt;" alt="" coords="133,96,329,137"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -133,6 +142,8 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Implement reference types for function/method call-by-reference </dd></dl>
+
+<p>Definition at line <a class="el" href="Type_8hpp_source.html#l00019">19</a> of file <a class="el" href="Type_8hpp_source.html">Type.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a31ec691e43ba275d4d117fe9bb46c8c1"></a>
 <div class="memitem">
@@ -147,6 +158,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Type_8cpp_source.html#l00011">11</a> of file <a class="el" href="Type_8cpp_source.html">Type.cpp</a>.</p>
 
 </div>
 </div>
@@ -190,6 +203,10 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Type_8cpp_source.html#l00022">22</a> of file <a class="el" href="Type_8cpp_source.html">Type.cpp</a>.</p>
+
+<p>References <a class="el" href="Type_8hpp_source.html#l00024">llvmType</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a97a357dddbad0735c57515743062742b"></a>
@@ -205,6 +222,10 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Type_8cpp_source.html#l00018">18</a> of file <a class="el" href="Type_8cpp_source.html">Type.cpp</a>.</p>
+
+<p>References <a class="el" href="Type_8hpp_source.html#l00023">methodDefs</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ad59f2e420bbd8a13b3759530939f6bc2"></a>
@@ -219,6 +240,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Type_8cpp_source.html#l00014">14</a> of file <a class="el" href="Type_8cpp_source.html">Type.cpp</a>.</p>
+
+<p>References <a class="el" href="Type_8hpp_source.html#l00022">name</a>.</p>
 
 </div>
 </div>
@@ -241,6 +266,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Type_8hpp_source.html#l00024">24</a> of file <a class="el" href="Type_8hpp_source.html">Type.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="ScalarTypes_8cpp_source.html#l00020">AST::IntType::createLLVMType()</a>, and <a class="el" href="Type_8cpp_source.html#l00022">getLLVMType()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ac556e418fc8760606179beebe90a4f06"></a>
@@ -260,6 +289,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Type_8hpp_source.html#l00023">23</a> of file <a class="el" href="Type_8hpp_source.html">Type.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="Type_8cpp_source.html#l00018">getMethodDefs()</a>.</p>
 
 </div>
 </div>
@@ -281,11 +314,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Type_8hpp_source.html#l00022">22</a> of file <a class="el" href="Type_8hpp_source.html">Type.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="Type_8cpp_source.html#l00014">getName()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Type_8hpp_source.html">Type.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Type_8cpp.html">Type.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Type_8cpp_source.html">Type.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

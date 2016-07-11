@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -102,6 +102,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
  <a href="classPasses_1_1StdLibPass.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="StdLibPass_8hpp_source.html">StdLibPass.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for Passes::StdLibPass:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1StdLibPass__coll__graph.png" border="0" usemap="#Passes_1_1StdLibPass_coll__map" alt="Collaboration graph"/></div>
+<map name="Passes_1_1StdLibPass_coll__map" id="Passes_1_1StdLibPass_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="367,45,563,87"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="379,111,551,138"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -124,6 +136,8 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Register builtin types and functions of the language. </p>
+
+<p>Definition at line <a class="el" href="StdLibPass_8hpp_source.html#l00017">17</a> of file <a class="el" href="StdLibPass_8hpp_source.html">StdLibPass.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a97f91805b3b530bbd319b7a0045c4e8d"></a>
 <div class="memitem">
@@ -138,6 +152,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="StdLibPass_8cpp_source.html#l00014">14</a> of file <a class="el" href="StdLibPass_8cpp_source.html">StdLibPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -163,6 +179,34 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="StdLibPass_8cpp_source.html#l00023">23</a> of file <a class="el" href="StdLibPass_8cpp_source.html">StdLibPass.cpp</a>.</p>
+
+<p>References <a class="el" href="StdLibPass_8hpp_source.html#l00020">ast</a>, <a class="el" href="ASTMap_8cpp_source.html#l00030">AST::ASTMap&lt; T &gt;::find()</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00027">AST::AbstractSyntaxTree::getStdLibMethodDefs()</a>, <a class="el" href="ASTMap_8cpp_source.html#l00020">AST::ASTMap&lt; T &gt;::insert()</a>, and <a class="el" href="StdLibPass_8hpp_source.html#l00021">types</a>.</p>
+
+<p>Referenced by <a class="el" href="StdLibPass_8cpp_source.html#l00018">run()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_cgraph.png" border="0" usemap="#classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_cgraph" alt=""/></div>
+<map name="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_cgraph" id="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ASTMap.html#ad5e69e2b4da03d50ccf535b80421d85b" title="AST::ASTMap::find" alt="" coords="213,5,349,32"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html#a1bc8f0029ee090958ccee50bda1e42c9" title="AST::AbstractSyntaxTree\l::getStdLibMethodDefs" alt="" coords="195,57,367,98"/>
+<area shape="rect" id="node4" href="classAST_1_1ASTMap.html#a0062bc0077df2d04800d4c90af8fb6c5" title="AST::ASTMap::insert" alt="" coords="207,123,354,149"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_icgraph.png" border="0" usemap="#classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_icgraph" alt=""/></div>
+<map name="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_icgraph" id="classPasses_1_1StdLibPass_ac13e2ae13e6fe6ae024a06a37b3280e3_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1StdLibPass.html#a63ffb2e26ba4b83f64bfb9231ec50d99" title="Passes::StdLibPass::run" alt="" coords="195,13,361,39"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a63ffb2e26ba4b83f64bfb9231ec50d99"></a>
@@ -178,6 +222,23 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>more to come... </p>
+
+<p>Definition at line <a class="el" href="StdLibPass_8cpp_source.html#l00018">18</a> of file <a class="el" href="StdLibPass_8cpp_source.html">StdLibPass.cpp</a>.</p>
+
+<p>References <a class="el" href="StdLibPass_8cpp_source.html#l00023">addScalarTypes()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1StdLibPass_a63ffb2e26ba4b83f64bfb9231ec50d99_cgraph.png" border="0" usemap="#classPasses_1_1StdLibPass_a63ffb2e26ba4b83f64bfb9231ec50d99_cgraph" alt=""/></div>
+<map name="classPasses_1_1StdLibPass_a63ffb2e26ba4b83f64bfb9231ec50d99_cgraph" id="classPasses_1_1StdLibPass_a63ffb2e26ba4b83f64bfb9231ec50d99_cgraph">
+<area shape="rect" id="node2" href="classPasses_1_1StdLibPass.html#ac13e2ae13e6fe6ae024a06a37b3280e3" title="Passes::StdLibPass\l::addScalarTypes" alt="" coords="220,57,361,98"/>
+<area shape="rect" id="node3" href="classAST_1_1ASTMap.html#ad5e69e2b4da03d50ccf535b80421d85b" title="AST::ASTMap::find" alt="" coords="427,5,563,32"/>
+<area shape="rect" id="node4" href="classAST_1_1AbstractSyntaxTree.html#a1bc8f0029ee090958ccee50bda1e42c9" title="AST::AbstractSyntaxTree\l::getStdLibMethodDefs" alt="" coords="409,57,581,98"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html#a0062bc0077df2d04800d4c90af8fb6c5" title="AST::ASTMap::insert" alt="" coords="422,123,569,149"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -200,6 +261,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="StdLibPass_8hpp_source.html#l00020">20</a> of file <a class="el" href="StdLibPass_8hpp_source.html">StdLibPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="StdLibPass_8cpp_source.html#l00023">addScalarTypes()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="afdf3acc56ffcd36c1aa8c8ece3f0f3a5"></a>
@@ -220,11 +285,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="StdLibPass_8hpp_source.html#l00021">21</a> of file <a class="el" href="StdLibPass_8hpp_source.html">StdLibPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="StdLibPass_8cpp_source.html#l00023">addScalarTypes()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="StdLibPass_8hpp_source.html">StdLibPass.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="StdLibPass_8cpp.html">StdLibPass.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="StdLibPass_8cpp_source.html">StdLibPass.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

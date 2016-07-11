@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -101,13 +101,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for AST::Block:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classAST_1_1Block.png" usemap="#AST::Block_map" alt=""/>
-  <map id="AST::Block_map" name="AST::Block_map">
-<area href="classAST_1_1Statement.html" alt="AST::Statement" shape="rect" coords="0,56,110,80"/>
-<area href="classAST_1_1ASTElement.html" alt="AST::ASTElement" shape="rect" coords="0,0,110,24"/>
+<div class="center"><img src="classAST_1_1Block__inherit__graph.png" border="0" usemap="#AST_1_1Block_inherit__map" alt="Inheritance graph"/></div>
+<map name="AST_1_1Block_inherit__map" id="AST_1_1Block_inherit__map">
+<area shape="rect" id="node2" href="classAST_1_1Statement.html" title="AST::Statement" alt="" coords="13,80,129,107"/>
+<area shape="rect" id="node3" href="classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="5,5,136,32"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for AST::Block:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Block__coll__graph.png" border="0" usemap="#AST_1_1Block_coll__map" alt="Collaboration graph"/></div>
+<map name="AST_1_1Block_coll__map" id="AST_1_1Block_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1Statement.html" title="AST::Statement" alt="" coords="165,379,281,405"/>
+<area shape="rect" id="node3" href="classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="29,289,160,316"/>
+<area shape="rect" id="node4" href="classAST_1_1CodeLocation.html" title="AST::CodeLocation" alt="" coords="5,193,141,219"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="33,96,113,123"/>
+<area shape="rect" id="node6" title="STL class. " alt="" coords="10,5,137,47"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Variable\lDefStmt * \&gt;" alt="" coords="223,185,423,227"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -149,7 +161,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:af56a5fa56ae01320c6f063d39750cf66 inherit pro_attribs_classAST_1_1ASTElement"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1CodeLocation.html">CodeLocation</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTElement.html#af56a5fa56ae01320c6f063d39750cf66">codeLocation</a></td></tr>
 <tr class="separator:af56a5fa56ae01320c6f063d39750cf66 inherit pro_attribs_classAST_1_1ASTElement"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="Blocks_8hpp_source.html#l00019">19</a> of file <a class="el" href="Blocks_8hpp_source.html">Blocks.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a6fcf58a96cd8aa89f61817cb12106b23"></a>
 <div class="memitem">
 <div class="memproto">
@@ -175,6 +190,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Add a getName() method to Blocks, for context in error messages </dd></dl>
 
+<p>Definition at line <a class="el" href="Blocks_8cpp_source.html#l00012">12</a> of file <a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -191,6 +208,26 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Blocks_8cpp_source.html#l00022">22</a> of file <a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8hpp_source.html#l00022">statements</a>.</p>
+
+<p>Referenced by <a class="el" href="TypePass_8cpp_source.html#l00061">Passes::TypePass::runOn()</a>, <a class="el" href="IdentifierPass_8cpp_source.html#l00091">Passes::IdentifierPass::runOn()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00091">Passes::VerifyOptimizePass::runOn()</a>, <a class="el" href="PrintPass_8cpp_source.html#l00097">Passes::PrintPass::runOn()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00251">Passes::LLVMPass::runOn()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Block_ab0a461d2187e21e9d18dcb1365e7953c_icgraph.png" border="0" usemap="#classAST_1_1Block_ab0a461d2187e21e9d18dcb1365e7953c_icgraph" alt=""/></div>
+<map name="classAST_1_1Block_ab0a461d2187e21e9d18dcb1365e7953c_icgraph" id="classAST_1_1Block_ab0a461d2187e21e9d18dcb1365e7953c_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1TypePass.html#aedaf93210809adede0d0f59e41507589" title="Passes::TypePass::runOn" alt="" coords="243,5,419,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1IdentifierPass.html#a9cd86d1a70154b10412919d7023da25b" title="Passes::IdentifierPass\l::runOn" alt="" coords="254,57,409,98"/>
+<area shape="rect" id="node4" href="classPasses_1_1VerifyOptimizePass.html#a32a60e39e4ffb0b5ebae970afba8f2fe" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="236,122,427,163"/>
+<area shape="rect" id="node5" href="classPasses_1_1PrintPass.html#a2dd117b722c0015938831d851378bb65" title="Passes::PrintPass::\lrunOn" alt="" coords="262,187,401,229"/>
+<area shape="rect" id="node6" href="classPasses_1_1LLVMPass.html#abcdd3e482bf1c4e87031f1a6b487f5f7" title="Passes::LLVMPass::runOn" alt="" coords="241,253,422,280"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a746073544796a0d7888560a14f2ab5e2"></a>
@@ -205,6 +242,22 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Blocks_8cpp_source.html#l00030">30</a> of file <a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8hpp_source.html#l00023">variables</a>.</p>
+
+<p>Referenced by <a class="el" href="IdentifierPass_8cpp_source.html#l00076">Passes::IdentifierPass::runOn()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Block_a746073544796a0d7888560a14f2ab5e2_icgraph.png" border="0" usemap="#classAST_1_1Block_a746073544796a0d7888560a14f2ab5e2_icgraph" alt=""/></div>
+<map name="classAST_1_1Block_a746073544796a0d7888560a14f2ab5e2_icgraph" id="classAST_1_1Block_a746073544796a0d7888560a14f2ab5e2_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae" title="Passes::IdentifierPass\l::runOn" alt="" coords="223,5,377,47"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -221,6 +274,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="Blocks_8cpp_source.html#l00026">26</a> of file <a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8hpp_source.html#l00022">statements</a>.</p>
 
 </div>
 </div>
@@ -248,6 +305,36 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classAST_1_1ASTElement.html#a4b64c75850d145453524fa6b98c26ca8">AST::ASTElement</a>.</p>
 
+<p>Definition at line <a class="el" href="Blocks_8cpp_source.html#l00018">18</a> of file <a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8cpp_source.html#l00016">AST::ASTPass::runOn()</a>.</p>
+
+<p>Referenced by <a class="el" href="TypePass_8cpp_source.html#l00031">Passes::TypePass::runOn()</a>, <a class="el" href="IdentifierPass_8cpp_source.html#l00038">Passes::IdentifierPass::runOn()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00059">Passes::VerifyOptimizePass::runOn()</a>, <a class="el" href="PrintPass_8cpp_source.html#l00043">Passes::PrintPass::runOn()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00128">Passes::LLVMPass::runOn()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_cgraph.png" border="0" usemap="#classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_cgraph" alt=""/></div>
+<map name="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_cgraph" id="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="199,5,353,32"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_icgraph.png" border="0" usemap="#classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_icgraph" alt=""/></div>
+<map name="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_icgraph" id="classAST_1_1Block_ae3598cf642a27f1ca88cb8fcb78e714c_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1TypePass.html#ab824b87f639b880218b40f1ae17a89ac" title="Passes::TypePass::runOn" alt="" coords="206,5,382,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658" title="Passes::IdentifierPass\l::runOn" alt="" coords="217,57,371,98"/>
+<area shape="rect" id="node4" href="classPasses_1_1VerifyOptimizePass.html#ad9dc5b4c442c92c9a033d119c580f97e" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="199,122,389,163"/>
+<area shape="rect" id="node5" href="classPasses_1_1PrintPass.html#a25834d7e1c01eaaafa5bab5ee27c4f20" title="Passes::PrintPass::\lrunOn" alt="" coords="225,187,363,229"/>
+<area shape="rect" id="node6" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77" title="Passes::LLVMPass::runOn" alt="" coords="203,253,385,280"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -269,6 +356,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Blocks_8hpp_source.html#l00022">22</a> of file <a class="el" href="Blocks_8hpp_source.html">Blocks.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="Blocks_8cpp_source.html#l00022">getStatements()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00026">push_back()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ae1076f4d983284bd5117fe6f53e9ece3"></a>
@@ -289,11 +380,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="Blocks_8hpp_source.html#l00023">23</a> of file <a class="el" href="Blocks_8hpp_source.html">Blocks.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="Blocks_8cpp_source.html#l00030">getVariables()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Blocks_8hpp_source.html">Blocks.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Blocks_8cpp.html">Blocks.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="Blocks_8cpp_source.html">Blocks.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -105,12 +105,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Passes::LLVMPass:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classPasses_1_1LLVMPass.png" usemap="#Passes::LLVMPass_map" alt=""/>
-  <map id="Passes::LLVMPass_map" name="Passes::LLVMPass_map">
-<area href="classAST_1_1ASTPass.html" alt="AST::ASTPass" shape="rect" coords="0,0,119,24"/>
+<div class="center"><img src="classPasses_1_1LLVMPass__inherit__graph.png" border="0" usemap="#Passes_1_1LLVMPass_inherit__map" alt="Inheritance graph"/></div>
+<map name="Passes_1_1LLVMPass_inherit__map" id="Passes_1_1LLVMPass_inherit__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="19,5,131,32"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Passes::LLVMPass:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass__coll__graph.png" border="0" usemap="#Passes_1_1LLVMPass_coll__map" alt="Collaboration graph"/></div>
+<map name="Passes_1_1LLVMPass_coll__map" id="Passes_1_1LLVMPass_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="609,111,721,138"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="367,111,539,138"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -175,6 +186,8 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Generate LLVM Intermediate Representation. </p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8hpp_source.html#l00019">19</a> of file <a class="el" href="LLVMPass_8hpp_source.html">LLVMPass.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="ad6bd689145e9cfd6d667be89e038fd54"></a>
 <div class="memitem">
@@ -189,6 +202,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00024">24</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -214,6 +229,32 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00035">35</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00027">AST::AbstractSyntaxTree::getStdLibMethodDefs()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00022">llvmContext</a>, and <a class="el" href="LLVMPass_8hpp_source.html#l00024">onlyInsertDeclarations</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00115">run()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_cgraph" id="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html#a1bc8f0029ee090958ccee50bda1e42c9" title="AST::AbstractSyntaxTree\l::getStdLibMethodDefs" alt="" coords="257,5,429,47"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_icgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_icgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_icgraph" id="classPasses_1_1LLVMPass_a8e101f6424f62fd74f185dbfba82d39c_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="257,13,421,39"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a7815c96cba4cab739384b51f24016f28"></a>
@@ -236,6 +277,32 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00029">29</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00023">AST::AbstractSyntaxTree::getTypes()</a>, and <a class="el" href="LLVMPass_8hpp_source.html#l00022">llvmContext</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00115">run()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_cgraph" id="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html#ac4a6c6dc56755abb2dcd9a297a96a975" title="AST::AbstractSyntaxTree\l::getTypes" alt="" coords="236,5,408,47"/>
+</map>
+</div>
+</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_icgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_icgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_icgraph" id="classPasses_1_1LLVMPass_a7815c96cba4cab739384b51f24016f28_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="236,13,400,39"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -261,6 +328,24 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="classAST_1_1ASTPass.html#aff9d58057669e52e4431322cd40bf94c">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00115">115</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="LLVMPass_8cpp_source.html#l00035">addScalarMethods()</a>, <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00029">createLLVMTypes()</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00015">AST::AbstractSyntaxTree::getDeclarations()</a>, and <a class="el" href="LLVMPass_8hpp_source.html#l00024">onlyInsertDeclarations</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a1faeede5a7256fc23b9c1eb0cb99b626_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a1faeede5a7256fc23b9c1eb0cb99b626_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a1faeede5a7256fc23b9c1eb0cb99b626_cgraph" id="classPasses_1_1LLVMPass_a1faeede5a7256fc23b9c1eb0cb99b626_cgraph">
+<area shape="rect" id="node2" href="classPasses_1_1LLVMPass.html#a8e101f6424f62fd74f185dbfba82d39c" title="Passes::LLVMPass::addScalar\lMethods" alt="" coords="217,5,421,47"/>
+<area shape="rect" id="node4" href="classPasses_1_1LLVMPass.html#a7815c96cba4cab739384b51f24016f28" title="Passes::LLVMPass::create\lLLVMTypes" alt="" coords="228,71,411,112"/>
+<area shape="rect" id="node6" href="classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a" title="AST::AbstractSyntaxTree\l::getDeclarations" alt="" coords="233,136,405,177"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html#a1bc8f0029ee090958ccee50bda1e42c9" title="AST::AbstractSyntaxTree\l::getStdLibMethodDefs" alt="" coords="469,5,641,47"/>
+<area shape="rect" id="node5" href="classAST_1_1AbstractSyntaxTree.html#ac4a6c6dc56755abb2dcd9a297a96a975" title="AST::AbstractSyntaxTree\l::getTypes" alt="" coords="469,71,641,112"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -290,6 +375,30 @@ Protected Attributes</h2></td></tr>
 <p>Store the initial value into the alloca </p>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#ac533704a697186d74a76dbd6d7a7cafe">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00128">128</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00048">AST::Declaration::getExported()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">AST::AbstractSyntaxTree::getLLVMModule()</a>, <a class="el" href="Declarations_8cpp_source.html#l00020">AST::Declaration::getName()</a>, <a class="el" href="Declarations_8cpp_source.html#l00044">AST::Declaration::getParameterLLVMTypes()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00022">llvmContext</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00024">onlyInsertDeclarations</a>, <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>, and <a class="el" href="Declarations_8cpp_source.html#l00040">AST::Declaration::setLLVMFunction()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_abd282b8e9a1fe1ab348931d17655ac77_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_abd282b8e9a1fe1ab348931d17655ac77_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_abd282b8e9a1fe1ab348931d17655ac77_cgraph" id="classPasses_1_1LLVMPass_abd282b8e9a1fe1ab348931d17655ac77_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="261,5,440,32"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a09aab698f7819c7792dd6f0caf51372b" title="AST::Declaration::getExported" alt="" coords="251,56,451,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="235,107,467,133"/>
+<area shape="rect" id="node5" href="classAST_1_1AbstractSyntaxTree.html#a17e82a8722f8da8da4fd76605cde3ed5" title="AST::AbstractSyntaxTree\l::getLLVMModule" alt="" coords="265,158,437,199"/>
+<area shape="rect" id="node6" href="classAST_1_1Declaration.html#a7c423a251eeda40271dba6598599d9f5" title="AST::Declaration::getName" alt="" coords="259,224,442,251"/>
+<area shape="rect" id="node7" href="classAST_1_1Declaration.html#a892656f048f7ab27449dd89ff3fdcc87" title="AST::Declaration::getParameter\lLLVMTypes" alt="" coords="247,275,455,317"/>
+<area shape="rect" id="node8" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="243,341,458,368"/>
+<area shape="rect" id="node9" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="257,393,444,434"/>
+<area shape="rect" id="node10" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="278,459,423,485"/>
+<area shape="rect" id="node12" href="classAST_1_1Declaration.html#ab61b14402d30ef439857af155c4cd19d" title="AST::Declaration::setLLVMFunction" alt="" coords="235,509,467,536"/>
+<area shape="rect" id="node11" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="515,459,669,485"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -321,6 +430,31 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#acda5f83f6e518cdd2267e6e44e16cf42">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00168">168</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00048">AST::Declaration::getExported()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">AST::AbstractSyntaxTree::getLLVMModule()</a>, <a class="el" href="Declarations_8cpp_source.html#l00020">AST::Declaration::getName()</a>, <a class="el" href="Declarations_8cpp_source.html#l00081">AST::MethodDef::getObjectTypeStmt()</a>, <a class="el" href="Declarations_8cpp_source.html#l00044">AST::Declaration::getParameterLLVMTypes()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00022">llvmContext</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00024">onlyInsertDeclarations</a>, <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>, and <a class="el" href="Declarations_8cpp_source.html#l00040">AST::Declaration::setLLVMFunction()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_ae7e34f083531e95a3b15b2289bc6a1e5_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_ae7e34f083531e95a3b15b2289bc6a1e5_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_ae7e34f083531e95a3b15b2289bc6a1e5_cgraph" id="classPasses_1_1LLVMPass_ae7e34f083531e95a3b15b2289bc6a1e5_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="261,5,440,32"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a09aab698f7819c7792dd6f0caf51372b" title="AST::Declaration::getExported" alt="" coords="251,56,451,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="235,107,467,133"/>
+<area shape="rect" id="node5" href="classAST_1_1AbstractSyntaxTree.html#a17e82a8722f8da8da4fd76605cde3ed5" title="AST::AbstractSyntaxTree\l::getLLVMModule" alt="" coords="265,158,437,199"/>
+<area shape="rect" id="node6" href="classAST_1_1Declaration.html#a7c423a251eeda40271dba6598599d9f5" title="AST::Declaration::getName" alt="" coords="259,224,442,251"/>
+<area shape="rect" id="node7" href="classAST_1_1MethodDef.html#ad935966ccd804d2a274077215a1b2adb" title="AST::MethodDef::getObject\lTypeStmt" alt="" coords="259,275,443,317"/>
+<area shape="rect" id="node8" href="classAST_1_1Declaration.html#a892656f048f7ab27449dd89ff3fdcc87" title="AST::Declaration::getParameter\lLLVMTypes" alt="" coords="247,341,455,382"/>
+<area shape="rect" id="node9" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="243,407,458,433"/>
+<area shape="rect" id="node10" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="257,458,444,499"/>
+<area shape="rect" id="node11" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="278,524,423,551"/>
+<area shape="rect" id="node13" href="classAST_1_1Declaration.html#ab61b14402d30ef439857af155c4cd19d" title="AST::Declaration::setLLVMFunction" alt="" coords="235,575,467,601"/>
+<area shape="rect" id="node12" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="515,524,669,551"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a4d61ffc2a6dba27c73b6ee3e5ce1282a"></a>
@@ -347,6 +481,20 @@ Protected Attributes</h2></td></tr>
 <p>Return by-value </p>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a88af1b24cdbcdcd16458fb337e510bdb">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00220">220</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00030">AST::ReturnStmt::getValue()</a>, and <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a4d61ffc2a6dba27c73b6ee3e5ce1282a_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a4d61ffc2a6dba27c73b6ee3e5ce1282a_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a4d61ffc2a6dba27c73b6ee3e5ce1282a_cgraph" id="classPasses_1_1LLVMPass_a4d61ffc2a6dba27c73b6ee3e5ce1282a_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ReturnStmt.html#aeaa774f7707f0087e2a3679b7d158384" title="AST::ReturnStmt::getValue" alt="" coords="235,5,417,32"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -375,6 +523,22 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a5b1a75c9b1d0170f6f6008cc67739dc7">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00232">232</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00045">AST::VariableDefStmt::getName()</a>, <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, and <a class="el" href="Statements_8cpp_source.html#l00057">AST::VariableDefStmt::setAllocaInst()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_ab6f8c2f1c83d3b110ef1bfdd4abd6895_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_ab6f8c2f1c83d3b110ef1bfdd4abd6895_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_ab6f8c2f1c83d3b110ef1bfdd4abd6895_cgraph" id="classPasses_1_1LLVMPass_ab6f8c2f1c83d3b110ef1bfdd4abd6895_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#a028a1c21b1409732d7e09d1a9ffd4210" title="AST::VariableDefStmt\l::getName" alt="" coords="235,5,387,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="235,71,387,112"/>
+<area shape="rect" id="node4" href="classAST_1_1VariableDefStmt.html#a21740ea26ac35ec8693d169658a37a84" title="AST::VariableDefStmt\l::setAllocaInst" alt="" coords="235,136,387,177"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="af09f18e1625f13fb3cbed20a7e684e8a"></a>
@@ -402,6 +566,23 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a68210a2f052663e26cbafac64be97d58">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00240">240</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00045">AST::VariableDefStmt::getName()</a>, <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>, <a class="el" href="Statements_8cpp_source.html#l00072">AST::VariableDefAssignStmt::getValue()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, and <a class="el" href="Statements_8cpp_source.html#l00057">AST::VariableDefStmt::setAllocaInst()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_af09f18e1625f13fb3cbed20a7e684e8a_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_af09f18e1625f13fb3cbed20a7e684e8a_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_af09f18e1625f13fb3cbed20a7e684e8a_cgraph" id="classPasses_1_1LLVMPass_af09f18e1625f13fb3cbed20a7e684e8a_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#a028a1c21b1409732d7e09d1a9ffd4210" title="AST::VariableDefStmt\l::getName" alt="" coords="255,5,407,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="255,71,407,112"/>
+<area shape="rect" id="node4" href="classAST_1_1VariableDefAssignStmt.html#a532cc5dc83eb3720457684484b6fc48d" title="AST::VariableDefAssignStmt\l::getValue" alt="" coords="235,136,427,177"/>
+<area shape="rect" id="node5" href="classAST_1_1VariableDefStmt.html#a21740ea26ac35ec8693d169658a37a84" title="AST::VariableDefStmt\l::setAllocaInst" alt="" coords="255,201,407,243"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="abcdd3e482bf1c4e87031f1a6b487f5f7"></a>
@@ -427,6 +608,20 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a4e022355c956310c4844f4192528fb">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00251">251</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00022">AST::Block::getStatements()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_abcdd3e482bf1c4e87031f1a6b487f5f7_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_abcdd3e482bf1c4e87031f1a6b487f5f7_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_abcdd3e482bf1c4e87031f1a6b487f5f7_cgraph" id="classPasses_1_1LLVMPass_abcdd3e482bf1c4e87031f1a6b487f5f7_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Block.html#ab0a461d2187e21e9d18dcb1365e7953c" title="AST::Block::getStatements" alt="" coords="235,5,417,32"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -454,6 +649,23 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a7381556c8a0cdab243de2b9898a6adb9">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00257">257</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00039">AST::IfStmt::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00035">AST::IfStmt::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a9588e7692349c51be39040e74daee8d4_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a9588e7692349c51be39040e74daee8d4_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a9588e7692349c51be39040e74daee8d4_cgraph" id="classPasses_1_1LLVMPass_a9588e7692349c51be39040e74daee8d4_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1IfStmt.html#adb35201ee81baea27c717759fc18be77" title="AST::IfStmt::getBody" alt="" coords="247,5,395,32"/>
+<area shape="rect" id="node3" href="classAST_1_1IfStmt.html#ab0b56fb9d0675447f5fc75afdc4cd079" title="AST::IfStmt::getCondition" alt="" coords="235,56,408,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="249,107,394,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="456,107,611,133"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="aa6095e1e5257ec63c038101043087a24"></a>
@@ -479,6 +691,23 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#af512082a6ba29335c41ec7abeefd9026">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00262">262</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00051">AST::WhileLoop::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00047">AST::WhileLoop::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_aa6095e1e5257ec63c038101043087a24_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_aa6095e1e5257ec63c038101043087a24_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_aa6095e1e5257ec63c038101043087a24_cgraph" id="classPasses_1_1LLVMPass_aa6095e1e5257ec63c038101043087a24_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1WhileLoop.html#ac671323fac73d8722ae0b0329668820b" title="AST::WhileLoop::getBody" alt="" coords="247,5,421,32"/>
+<area shape="rect" id="node3" href="classAST_1_1WhileLoop.html#a15c311222ef725a7d2148da83597f69d" title="AST::WhileLoop::getCondition" alt="" coords="235,56,433,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="261,107,407,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="481,107,636,133"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -506,6 +735,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3f088a192f46916550d831bbcce65c2e">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00267">267</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="af7ff3266064c45125c6cae3cf2114ae9"></a>
@@ -532,6 +763,23 @@ Protected Attributes</h2></td></tr>
 <p>Parameters are call-by-value </p>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#afc43cecc69c8c7cc6264429fa3f9e840">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00270">270</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00048">AST::FunctionCallExpr::getArgs()</a>, <a class="el" href="Expressions_8cpp_source.html#l00052">AST::FunctionCallExpr::getFunctionDef()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, and <a class="el" href="Expressions_8cpp_source.html#l00030">AST::Expression::setLLVMValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_af7ff3266064c45125c6cae3cf2114ae9_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_af7ff3266064c45125c6cae3cf2114ae9_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_af7ff3266064c45125c6cae3cf2114ae9_cgraph" id="classPasses_1_1LLVMPass_af7ff3266064c45125c6cae3cf2114ae9_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1FunctionCallExpr.html#a059975fac6adb4c9fe3a8389ae1025af" title="AST::FunctionCallExpr\l::getArgs" alt="" coords="273,5,429,47"/>
+<area shape="rect" id="node3" href="classAST_1_1FunctionCallExpr.html#a083314ca1636a6855a274a97b65d23f8" title="AST::FunctionCallExpr\l::getFunctionDef" alt="" coords="273,71,429,112"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="235,137,467,163"/>
+<area shape="rect" id="node5" href="classAST_1_1Expression.html#a3e97ec92bf0d5339ee41c3129c94143f" title="AST::Expression::setLLVMValue" alt="" coords="243,187,458,214"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -561,6 +809,24 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3bd6448ae03c82eb14ca8ea545a1fe0e">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00286">286</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00083">AST::MethodCallExpr::getArgs()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="Expressions_8cpp_source.html#l00087">AST::MethodCallExpr::getMethodDef()</a>, <a class="el" href="Expressions_8cpp_source.html#l00071">AST::MethodCallExpr::getObjectExpr()</a>, <a class="el" href="LLVMPass_8hpp_source.html#l00023">irBuilder</a>, and <a class="el" href="Expressions_8cpp_source.html#l00030">AST::Expression::setLLVMValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a5cf5638488f76a72f20d1327640febbb_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a5cf5638488f76a72f20d1327640febbb_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a5cf5638488f76a72f20d1327640febbb_cgraph" id="classPasses_1_1LLVMPass_a5cf5638488f76a72f20d1327640febbb_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1MethodCallExpr.html#a5e54384bc466e4774165923a84ce8706" title="AST::MethodCallExpr\l::getArgs" alt="" coords="276,5,425,47"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="235,71,467,98"/>
+<area shape="rect" id="node4" href="classAST_1_1MethodCallExpr.html#a30af411402b9d46ca2b02d750831a138" title="AST::MethodCallExpr\l::getMethodDef" alt="" coords="276,123,425,164"/>
+<area shape="rect" id="node5" href="classAST_1_1MethodCallExpr.html#aed7c1c396c682f1c2e247edc9766cdae" title="AST::MethodCallExpr\l::getObjectExpr" alt="" coords="276,188,425,229"/>
+<area shape="rect" id="node6" href="classAST_1_1Expression.html#a3e97ec92bf0d5339ee41c3129c94143f" title="AST::Expression::setLLVMValue" alt="" coords="243,254,458,281"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a80dd4bba1101e63bfdbd6aeded6fbd91"></a>
@@ -586,6 +852,22 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a2a41b1c10cb3a1a900c35d42eca6b7">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00315">315</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00153">AST::ConstIntExpr::getNumValue()</a>, <a class="el" href="Expressions_8cpp_source.html#l00157">AST::ConstIntExpr::getTypeStmt()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00030">AST::Expression::setLLVMValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a80dd4bba1101e63bfdbd6aeded6fbd91_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a80dd4bba1101e63bfdbd6aeded6fbd91_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a80dd4bba1101e63bfdbd6aeded6fbd91_cgraph" id="classPasses_1_1LLVMPass_a80dd4bba1101e63bfdbd6aeded6fbd91_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ConstIntExpr.html#a2f9fbce2a6f212738c13f77d6890357d" title="AST::ConstIntExpr::\lgetNumValue" alt="" coords="271,5,413,47"/>
+<area shape="rect" id="node3" href="classAST_1_1ConstIntExpr.html#a2e486b0531770c78336543c9b388be36" title="AST::ConstIntExpr::\lgetTypeStmt" alt="" coords="271,71,413,112"/>
+<area shape="rect" id="node4" href="classAST_1_1Expression.html#a3e97ec92bf0d5339ee41c3129c94143f" title="AST::Expression::setLLVMValue" alt="" coords="235,137,449,163"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -613,6 +895,22 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a4c40d06700f93e198a7714cae0c8eabb">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="LLVMPass_8cpp_source.html#l00323">323</a> of file <a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00053">AST::VariableDefStmt::getAllocaInst()</a>, <a class="el" href="Expressions_8cpp_source.html#l00175">AST::VariableExpr::getVariableDefStmt()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00030">AST::Expression::setLLVMValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1LLVMPass_a52ca115b29ed000eaa872860b288852e_cgraph.png" border="0" usemap="#classPasses_1_1LLVMPass_a52ca115b29ed000eaa872860b288852e_cgraph" alt=""/></div>
+<map name="classPasses_1_1LLVMPass_a52ca115b29ed000eaa872860b288852e_cgraph" id="classPasses_1_1LLVMPass_a52ca115b29ed000eaa872860b288852e_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#a9378b39b10565aeb59007694c709ddc8" title="AST::VariableDefStmt\l::getAllocaInst" alt="" coords="266,5,418,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableExpr.html#aa9bc0d5b2ceafd8c38dbba7948697e32" title="AST::VariableExpr::\lgetVariableDefStmt" alt="" coords="273,71,411,112"/>
+<area shape="rect" id="node4" href="classAST_1_1Expression.html#a3e97ec92bf0d5339ee41c3129c94143f" title="AST::Expression::setLLVMValue" alt="" coords="235,137,449,163"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -634,6 +932,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="LLVMPass_8hpp_source.html#l00023">23</a> of file <a class="el" href="LLVMPass_8hpp_source.html">LLVMPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00035">addScalarMethods()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00128">runOn()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ad14b80e02a52a303ce45036023ac45b0"></a>
@@ -653,6 +955,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="LLVMPass_8hpp_source.html#l00022">22</a> of file <a class="el" href="LLVMPass_8hpp_source.html">LLVMPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00035">addScalarMethods()</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00029">createLLVMTypes()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00128">runOn()</a>.</p>
 
 </div>
 </div>
@@ -674,11 +980,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="LLVMPass_8hpp_source.html#l00024">24</a> of file <a class="el" href="LLVMPass_8hpp_source.html">LLVMPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00035">addScalarMethods()</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00115">run()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00128">runOn()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="LLVMPass_8hpp_source.html">LLVMPass.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="LLVMPass_8cpp.html">LLVMPass.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="LLVMPass_8cpp_source.html">LLVMPass.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

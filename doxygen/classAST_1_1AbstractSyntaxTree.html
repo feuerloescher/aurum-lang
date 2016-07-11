@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -98,6 +98,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 
 <p><code>#include &lt;<a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Collaboration diagram for AST::AbstractSyntaxTree:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree__coll__graph.png" border="0" usemap="#AST_1_1AbstractSyntaxTree_coll__map" alt="Collaboration graph"/></div>
+<map name="AST_1_1AbstractSyntaxTree_coll__map" id="AST_1_1AbstractSyntaxTree_coll__map">
+<area shape="rect" id="node3" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node4" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -135,7 +145,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:ad83fc2d535267208c23d3458267a9d35"><td class="memItemLeft" align="right" valign="top">std::unique_ptr&lt; llvm::Module &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1AbstractSyntaxTree.html#ad83fc2d535267208c23d3458267a9d35">llvmModule</a></td></tr>
 <tr class="separator:ad83fc2d535267208c23d3458267a9d35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00020">20</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aaa773a72ffb1cc50d5baca48a0c0f261"></a>
 <div class="memitem">
 <div class="memproto">
@@ -148,6 +161,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00011">11</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00028">llvmContext</a>, and <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00030">llvmModule</a>.</p>
 
 </div>
 </div>
@@ -165,6 +182,26 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00015">15</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00023">declarations</a>.</p>
+
+<p>Referenced by <a class="el" href="TypePass_8cpp_source.html#l00025">Passes::TypePass::run()</a>, <a class="el" href="IdentifierPass_8cpp_source.html#l00024">Passes::IdentifierPass::run()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">Passes::VerifyOptimizePass::run()</a>, <a class="el" href="PrintPass_8cpp_source.html#l00030">Passes::PrintPass::run()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00115">Passes::LLVMPass::run()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree_af93ead0a5261387ce51fdfc828a7ca0a_icgraph.png" border="0" usemap="#classAST_1_1AbstractSyntaxTree_af93ead0a5261387ce51fdfc828a7ca0a_icgraph" alt=""/></div>
+<map name="classAST_1_1AbstractSyntaxTree_af93ead0a5261387ce51fdfc828a7ca0a_icgraph" id="classAST_1_1AbstractSyntaxTree_af93ead0a5261387ce51fdfc828a7ca0a_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1TypePass.html#a470104468e94656130371c18522ee5fe" title="Passes::TypePass::run" alt="" coords="254,5,413,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1IdentifierPass.html#ad329669f7a8ce35c41b2deece00432c2" title="Passes::IdentifierPass::run" alt="" coords="243,56,423,83"/>
+<area shape="rect" id="node4" href="classPasses_1_1VerifyOptimizePass.html#aae6be718a6e30d2852033bb2b2de4178" title="Passes::VerifyOptimizePass::run" alt="" coords="225,107,441,133"/>
+<area shape="rect" id="node5" href="classPasses_1_1PrintPass.html#a456117c70140ed3b7c035f8107c6c3c2" title="Passes::PrintPass::run" alt="" coords="255,157,412,184"/>
+<area shape="rect" id="node6" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="251,208,415,235"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a2ff15a8d0d99cecf071a362ecb33fe0d"></a>
@@ -179,6 +216,23 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00019">19</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00024">functionDefs</a>.</p>
+
+<p>Referenced by <a class="el" href="IdentifierPass_8cpp_source.html#l00024">Passes::IdentifierPass::run()</a>, and <a class="el" href="IdentifierPass_8cpp_source.html#l00038">Passes::IdentifierPass::runOn()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree_a2ff15a8d0d99cecf071a362ecb33fe0d_icgraph.png" border="0" usemap="#classAST_1_1AbstractSyntaxTree_a2ff15a8d0d99cecf071a362ecb33fe0d_icgraph" alt=""/></div>
+<map name="classAST_1_1AbstractSyntaxTree_a2ff15a8d0d99cecf071a362ecb33fe0d_icgraph" id="classAST_1_1AbstractSyntaxTree_a2ff15a8d0d99cecf071a362ecb33fe0d_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1IdentifierPass.html#ad329669f7a8ce35c41b2deece00432c2" title="Passes::IdentifierPass::run" alt="" coords="225,5,405,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658" title="Passes::IdentifierPass\l::runOn" alt="" coords="238,57,393,98"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -195,6 +249,10 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00031">31</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00029">irBuilder</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a6593745b708ce16ca058c8f81dfe8e66"></a>
@@ -209,6 +267,10 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00035">35</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00028">llvmContext</a>.</p>
 
 </div>
 </div>
@@ -225,6 +287,25 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">39</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00030">llvmModule</a>.</p>
+
+<p>Referenced by <a class="el" href="IRExportPass_8cpp_source.html#l00017">Passes::IRExportPass::run()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">Passes::VerifyOptimizePass::run()</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00128">Passes::LLVMPass::runOn()</a>, and <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00025">Passes::VerifyOptimizePass::VerifyOptimizePass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree_a17e82a8722f8da8da4fd76605cde3ed5_icgraph.png" border="0" usemap="#classAST_1_1AbstractSyntaxTree_a17e82a8722f8da8da4fd76605cde3ed5_icgraph" alt=""/></div>
+<map name="classAST_1_1AbstractSyntaxTree_a17e82a8722f8da8da4fd76605cde3ed5_icgraph" id="classAST_1_1AbstractSyntaxTree_a17e82a8722f8da8da4fd76605cde3ed5_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1IRExportPass.html#ae81392e796c3b76e54a46780d6edb87c" title="Passes::IRExportPass::run" alt="" coords="242,5,425,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1VerifyOptimizePass.html#aae6be718a6e30d2852033bb2b2de4178" title="Passes::VerifyOptimizePass::run" alt="" coords="225,56,441,83"/>
+<area shape="rect" id="node4" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77" title="Passes::LLVMPass::runOn" alt="" coords="243,107,424,133"/>
+<area shape="rect" id="node5" href="classPasses_1_1VerifyOptimizePass.html#a1bda36752b0da6235c8eac1f6a360dc2" title="Passes::VerifyOptimizePass\l::VerifyOptimizePass" alt="" coords="238,158,429,199"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a1bc8f0029ee090958ccee50bda1e42c9"></a>
@@ -240,6 +321,25 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00027">27</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00026">stdLibMethodDefs</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00035">Passes::LLVMPass::addScalarMethods()</a>, and <a class="el" href="StdLibPass_8cpp_source.html#l00023">Passes::StdLibPass::addScalarTypes()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree_a1bc8f0029ee090958ccee50bda1e42c9_icgraph.png" border="0" usemap="#classAST_1_1AbstractSyntaxTree_a1bc8f0029ee090958ccee50bda1e42c9_icgraph" alt=""/></div>
+<map name="classAST_1_1AbstractSyntaxTree_a1bc8f0029ee090958ccee50bda1e42c9_icgraph" id="classAST_1_1AbstractSyntaxTree_a1bc8f0029ee090958ccee50bda1e42c9_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1LLVMPass.html#a8e101f6424f62fd74f185dbfba82d39c" title="Passes::LLVMPass::addScalar\lMethods" alt="" coords="225,5,429,47"/>
+<area shape="rect" id="node4" href="classPasses_1_1StdLibPass.html#ac13e2ae13e6fe6ae024a06a37b3280e3" title="Passes::StdLibPass\l::addScalarTypes" alt="" coords="257,71,398,112"/>
+<area shape="rect" id="node3" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="479,13,643,39"/>
+<area shape="rect" id="node5" href="classPasses_1_1StdLibPass.html#a63ffb2e26ba4b83f64bfb9231ec50d99" title="Passes::StdLibPass::run" alt="" coords="477,78,644,105"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ac4a6c6dc56755abb2dcd9a297a96a975"></a>
@@ -254,6 +354,24 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00023">23</a> of file <a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a>.</p>
+
+<p>References <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00025">types</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00029">Passes::LLVMPass::createLLVMTypes()</a>, and <a class="el" href="IdentifierPass_8cpp_source.html#l00110">Passes::IdentifierPass::runOn()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1AbstractSyntaxTree_ac4a6c6dc56755abb2dcd9a297a96a975_icgraph.png" border="0" usemap="#classAST_1_1AbstractSyntaxTree_ac4a6c6dc56755abb2dcd9a297a96a975_icgraph" alt=""/></div>
+<map name="classAST_1_1AbstractSyntaxTree_ac4a6c6dc56755abb2dcd9a297a96a975_icgraph" id="classAST_1_1AbstractSyntaxTree_ac4a6c6dc56755abb2dcd9a297a96a975_icgraph">
+<area shape="rect" id="node2" href="classPasses_1_1LLVMPass.html#a7815c96cba4cab739384b51f24016f28" title="Passes::LLVMPass::create\lLLVMTypes" alt="" coords="225,5,408,47"/>
+<area shape="rect" id="node4" href="classPasses_1_1IdentifierPass.html#a5cc91576ef7cca8aacbee6da835ef202" title="Passes::IdentifierPass\l::runOn" alt="" coords="239,71,394,112"/>
+<area shape="rect" id="node3" href="classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="456,13,620,39"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -276,6 +394,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00023">23</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00015">getDeclarations()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a6840c3710fc666eb6173832d94366277"></a>
@@ -295,6 +417,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00024">24</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00019">getFunctionDefs()</a>.</p>
 
 </div>
 </div>
@@ -316,6 +442,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00029">29</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00031">getIRBuilder()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="ab6a57652e86a63192ae2bcba7a09ff92"></a>
@@ -335,6 +465,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00028">28</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00011">AbstractSyntaxTree()</a>, and <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00035">getLLVMContext()</a>.</p>
 
 </div>
 </div>
@@ -356,6 +490,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00030">30</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00011">AbstractSyntaxTree()</a>, and <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">getLLVMModule()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a58c5011876ab6b97421c16eb1ea884be"></a>
@@ -375,6 +513,10 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00026">26</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00027">getStdLibMethodDefs()</a>.</p>
 
 </div>
 </div>
@@ -396,11 +538,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="AbstractSyntaxTree_8hpp_source.html#l00025">25</a> of file <a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00023">getTypes()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="AbstractSyntaxTree_8hpp_source.html">AbstractSyntaxTree.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="AbstractSyntaxTree_8cpp.html">AbstractSyntaxTree.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="AbstractSyntaxTree_8cpp_source.html">AbstractSyntaxTree.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

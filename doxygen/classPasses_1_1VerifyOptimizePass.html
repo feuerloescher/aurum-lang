@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -104,12 +104,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Passes::VerifyOptimizePass:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classPasses_1_1VerifyOptimizePass.png" usemap="#Passes::VerifyOptimizePass_map" alt=""/>
-  <map id="Passes::VerifyOptimizePass_map" name="Passes::VerifyOptimizePass_map">
-<area href="classAST_1_1ASTPass.html" alt="AST::ASTPass" shape="rect" coords="0,0,168,24"/>
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass__inherit__graph.png" border="0" usemap="#Passes_1_1VerifyOptimizePass_inherit__map" alt="Inheritance graph"/></div>
+<map name="Passes_1_1VerifyOptimizePass_inherit__map" id="Passes_1_1VerifyOptimizePass_inherit__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="45,5,157,32"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Passes::VerifyOptimizePass:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass__coll__graph.png" border="0" usemap="#Passes_1_1VerifyOptimizePass_coll__map" alt="Collaboration graph"/></div>
+<map name="Passes_1_1VerifyOptimizePass_coll__map" id="Passes_1_1VerifyOptimizePass_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="663,111,775,138"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="367,111,539,138"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -165,6 +176,8 @@ Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Verify and optimize LLVM IR. </p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00018">18</a> of file <a class="el" href="VerifyOptimizePass_8hpp_source.html">VerifyOptimizePass.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a1bda36752b0da6235c8eac1f6a360dc2"></a>
 <div class="memitem">
@@ -180,6 +193,20 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Add other pass managers: loop, basic block, call graph ? </dd></dl>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00025">25</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00021">functionPassMgr</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">AST::AbstractSyntaxTree::getLLVMModule()</a>, and <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00022">modulePassMgr</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a1bda36752b0da6235c8eac1f6a360dc2_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a1bda36752b0da6235c8eac1f6a360dc2_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a1bda36752b0da6235c8eac1f6a360dc2_cgraph" id="classPasses_1_1VerifyOptimizePass_a1bda36752b0da6235c8eac1f6a360dc2_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html#a17e82a8722f8da8da4fd76605cde3ed5" title="AST::AbstractSyntaxTree\l::getLLVMModule" alt="" coords="244,5,416,47"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -207,6 +234,21 @@ Protected Attributes</h2></td></tr>
 
 <p>Implements <a class="el" href="classAST_1_1ASTPass.html#aff9d58057669e52e4431322cd40bf94c">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">49</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00021">functionPassMgr</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00015">AST::AbstractSyntaxTree::getDeclarations()</a>, <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00039">AST::AbstractSyntaxTree::getLLVMModule()</a>, and <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00022">modulePassMgr</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_aae6be718a6e30d2852033bb2b2de4178_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_aae6be718a6e30d2852033bb2b2de4178_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_aae6be718a6e30d2852033bb2b2de4178_cgraph" id="classPasses_1_1VerifyOptimizePass_aae6be718a6e30d2852033bb2b2de4178_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a" title="AST::AbstractSyntaxTree\l::getDeclarations" alt="" coords="269,5,441,47"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html#a17e82a8722f8da8da4fd76605cde3ed5" title="AST::AbstractSyntaxTree\l::getLLVMModule" alt="" coords="269,71,441,112"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ad9dc5b4c442c92c9a033d119c580f97e"></a>
@@ -232,6 +274,25 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#ac533704a697186d74a76dbd6d7a7cafe">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00059">59</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00021">functionPassMgr</a>, <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_ad9dc5b4c442c92c9a033d119c580f97e_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_ad9dc5b4c442c92c9a033d119c580f97e_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_ad9dc5b4c442c92c9a033d119c580f97e_cgraph" id="classPasses_1_1VerifyOptimizePass_ad9dc5b4c442c92c9a033d119c580f97e_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="271,5,449,32"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="244,56,476,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="253,107,467,133"/>
+<area shape="rect" id="node5" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="267,158,453,199"/>
+<area shape="rect" id="node6" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="287,224,433,251"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="524,224,679,251"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -259,6 +320,26 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#acda5f83f6e518cdd2267e6e44e16cf42">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00068">68</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00021">functionPassMgr</a>, <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00036">AST::Declaration::getLLVMFunction()</a>, <a class="el" href="Declarations_8cpp_source.html#l00081">AST::MethodDef::getObjectTypeStmt()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a4d9e6059d7a45040f857356ff2235601_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a4d9e6059d7a45040f857356ff2235601_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a4d9e6059d7a45040f857356ff2235601_cgraph" id="classPasses_1_1VerifyOptimizePass_a4d9e6059d7a45040f857356ff2235601_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="271,5,449,32"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a4d34fa6f66d8e3053d0586601f3b462a" title="AST::Declaration::getLLVMFunction" alt="" coords="244,56,476,83"/>
+<area shape="rect" id="node4" href="classAST_1_1MethodDef.html#ad935966ccd804d2a274077215a1b2adb" title="AST::MethodDef::getObject\lTypeStmt" alt="" coords="268,107,452,149"/>
+<area shape="rect" id="node5" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="253,173,467,200"/>
+<area shape="rect" id="node6" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="267,225,453,266"/>
+<area shape="rect" id="node7" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="287,291,433,317"/>
+<area shape="rect" id="node8" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="524,291,679,317"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a41448232c584152130f53d3221d984d3"></a>
@@ -284,6 +365,20 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a88af1b24cdbcdcd16458fb337e510bdb">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00078">78</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00030">AST::ReturnStmt::getValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a41448232c584152130f53d3221d984d3_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a41448232c584152130f53d3221d984d3_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a41448232c584152130f53d3221d984d3_cgraph" id="classPasses_1_1VerifyOptimizePass_a41448232c584152130f53d3221d984d3_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ReturnStmt.html#aeaa774f7707f0087e2a3679b7d158384" title="AST::ReturnStmt::getValue" alt="" coords="244,13,427,39"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -311,6 +406,20 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a5b1a75c9b1d0170f6f6008cc67739dc7">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00082">82</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a8ee46e765b42959e27de8d921a66cadb_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a8ee46e765b42959e27de8d921a66cadb_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a8ee46e765b42959e27de8d921a66cadb_cgraph" id="classPasses_1_1VerifyOptimizePass_a8ee46e765b42959e27de8d921a66cadb_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="244,5,396,47"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ab9973ff8bfe139bf525f2888242fa5d8"></a>
@@ -336,6 +445,21 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a68210a2f052663e26cbafac64be97d58">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00086">86</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>, and <a class="el" href="Statements_8cpp_source.html#l00072">AST::VariableDefAssignStmt::getValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_ab9973ff8bfe139bf525f2888242fa5d8_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_ab9973ff8bfe139bf525f2888242fa5d8_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_ab9973ff8bfe139bf525f2888242fa5d8_cgraph" id="classPasses_1_1VerifyOptimizePass_ab9973ff8bfe139bf525f2888242fa5d8_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="264,5,416,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableDefAssignStmt.html#a532cc5dc83eb3720457684484b6fc48d" title="AST::VariableDefAssignStmt\l::getValue" alt="" coords="244,71,436,112"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -363,6 +487,20 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a4e022355c956310c4844f4192528fb">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00091">91</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00022">AST::Block::getStatements()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a32a60e39e4ffb0b5ebae970afba8f2fe_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a32a60e39e4ffb0b5ebae970afba8f2fe_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a32a60e39e4ffb0b5ebae970afba8f2fe_cgraph" id="classPasses_1_1VerifyOptimizePass_a32a60e39e4ffb0b5ebae970afba8f2fe_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Block.html#ab0a461d2187e21e9d18dcb1365e7953c" title="AST::Block::getStatements" alt="" coords="244,13,427,39"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a844ca66101560a8a1b5419fb21fade8c"></a>
@@ -388,6 +526,23 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a7381556c8a0cdab243de2b9898a6adb9">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00097">97</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00039">AST::IfStmt::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00035">AST::IfStmt::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a844ca66101560a8a1b5419fb21fade8c_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a844ca66101560a8a1b5419fb21fade8c_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a844ca66101560a8a1b5419fb21fade8c_cgraph" id="classPasses_1_1VerifyOptimizePass_a844ca66101560a8a1b5419fb21fade8c_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1IfStmt.html#adb35201ee81baea27c717759fc18be77" title="AST::IfStmt::getBody" alt="" coords="257,5,405,32"/>
+<area shape="rect" id="node3" href="classAST_1_1IfStmt.html#ab0b56fb9d0675447f5fc75afdc4cd079" title="AST::IfStmt::getCondition" alt="" coords="244,56,417,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="258,107,403,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="465,107,620,133"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -415,6 +570,23 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#af512082a6ba29335c41ec7abeefd9026">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00102">102</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00051">AST::WhileLoop::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00047">AST::WhileLoop::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_af4ff00c67382761413772f1a26250e39_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_af4ff00c67382761413772f1a26250e39_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_af4ff00c67382761413772f1a26250e39_cgraph" id="classPasses_1_1VerifyOptimizePass_af4ff00c67382761413772f1a26250e39_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1WhileLoop.html#ac671323fac73d8722ae0b0329668820b" title="AST::WhileLoop::getBody" alt="" coords="257,5,430,32"/>
+<area shape="rect" id="node3" href="classAST_1_1WhileLoop.html#a15c311222ef725a7d2148da83597f69d" title="AST::WhileLoop::getCondition" alt="" coords="244,56,443,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="271,107,416,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="491,107,645,133"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a863433181e8a2c8386c6a3d933f7a6c8"></a>
@@ -440,6 +612,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3f088a192f46916550d831bbcce65c2e">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00107">107</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
 
 </div>
 </div>
@@ -467,6 +641,20 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#afc43cecc69c8c7cc6264429fa3f9e840">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00110">110</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00048">AST::FunctionCallExpr::getArgs()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a9697d933ac185d8502a484bf8660a016_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a9697d933ac185d8502a484bf8660a016_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a9697d933ac185d8502a484bf8660a016_cgraph" id="classPasses_1_1VerifyOptimizePass_a9697d933ac185d8502a484bf8660a016_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1FunctionCallExpr.html#a059975fac6adb4c9fe3a8389ae1025af" title="AST::FunctionCallExpr\l::getArgs" alt="" coords="244,5,400,47"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a0d8c3478447e5ac13e8e306f62ce3436"></a>
@@ -492,6 +680,21 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3bd6448ae03c82eb14ca8ea545a1fe0e">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00116">116</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00083">AST::MethodCallExpr::getArgs()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00071">AST::MethodCallExpr::getObjectExpr()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1VerifyOptimizePass_a0d8c3478447e5ac13e8e306f62ce3436_cgraph.png" border="0" usemap="#classPasses_1_1VerifyOptimizePass_a0d8c3478447e5ac13e8e306f62ce3436_cgraph" alt=""/></div>
+<map name="classPasses_1_1VerifyOptimizePass_a0d8c3478447e5ac13e8e306f62ce3436_cgraph" id="classPasses_1_1VerifyOptimizePass_a0d8c3478447e5ac13e8e306f62ce3436_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1MethodCallExpr.html#a5e54384bc466e4774165923a84ce8706" title="AST::MethodCallExpr\l::getArgs" alt="" coords="244,5,393,47"/>
+<area shape="rect" id="node3" href="classAST_1_1MethodCallExpr.html#aed7c1c396c682f1c2e247edc9766cdae" title="AST::MethodCallExpr\l::getObjectExpr" alt="" coords="244,71,393,112"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -519,6 +722,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a2a41b1c10cb3a1a900c35d42eca6b7">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00123">123</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a5a9270f524c8260e13488e267f44b4d4"></a>
@@ -545,6 +750,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a4c40d06700f93e198a7714cae0c8eabb">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00126">126</a> of file <a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -566,6 +773,10 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00021">21</a> of file <a class="el" href="VerifyOptimizePass_8hpp_source.html">VerifyOptimizePass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">run()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00059">runOn()</a>, and <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00025">VerifyOptimizePass()</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="aa9935b36eee4800663938d372bec3913"></a>
@@ -586,11 +797,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="VerifyOptimizePass_8hpp_source.html#l00022">22</a> of file <a class="el" href="VerifyOptimizePass_8hpp_source.html">VerifyOptimizePass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">run()</a>, and <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00025">VerifyOptimizePass()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="VerifyOptimizePass_8hpp_source.html">VerifyOptimizePass.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="VerifyOptimizePass_8cpp.html">VerifyOptimizePass.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="VerifyOptimizePass_8cpp_source.html">VerifyOptimizePass.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

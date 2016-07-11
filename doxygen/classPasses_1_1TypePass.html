@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -103,12 +103,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for Passes::TypePass:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classPasses_1_1TypePass.png" usemap="#Passes::TypePass_map" alt=""/>
-  <map id="Passes::TypePass_map" name="Passes::TypePass_map">
-<area href="classAST_1_1ASTPass.html" alt="AST::ASTPass" shape="rect" coords="0,0,113,24"/>
+<div class="center"><img src="classPasses_1_1TypePass__inherit__graph.png" border="0" usemap="#Passes_1_1TypePass_inherit__map" alt="Inheritance graph"/></div>
+<map name="Passes_1_1TypePass_inherit__map" id="Passes_1_1TypePass_inherit__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="16,5,128,32"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for Passes::TypePass:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass__coll__graph.png" border="0" usemap="#Passes_1_1TypePass_coll__map" alt="Collaboration graph"/></div>
+<map name="Passes_1_1TypePass_coll__map" id="Passes_1_1TypePass_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="609,111,721,138"/>
+<area shape="rect" id="node3" href="classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="367,111,539,138"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -160,6 +171,8 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Resolve and check types of expressions. </p>
+
+<p>Definition at line <a class="el" href="TypePass_8hpp_source.html#l00016">16</a> of file <a class="el" href="TypePass_8hpp_source.html">TypePass.hpp</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a393339fef69cead7ce939a02e0f8e045"></a>
 <div class="memitem">
@@ -174,6 +187,8 @@ Additional Inherited Members</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00021">21</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
 
 </div>
 </div>
@@ -201,6 +216,20 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="classAST_1_1ASTPass.html#aff9d58057669e52e4431322cd40bf94c">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00025">25</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="ASTPass_8hpp_source.html#l00017">AST::ASTPass::ast</a>, and <a class="el" href="AbstractSyntaxTree_8cpp_source.html#l00015">AST::AbstractSyntaxTree::getDeclarations()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a470104468e94656130371c18522ee5fe_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a470104468e94656130371c18522ee5fe_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a470104468e94656130371c18522ee5fe_cgraph" id="classPasses_1_1TypePass_a470104468e94656130371c18522ee5fe_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a" title="AST::AbstractSyntaxTree\l::getDeclarations" alt="" coords="212,5,384,47"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ab824b87f639b880218b40f1ae17a89ac"></a>
@@ -226,6 +255,24 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#ac533704a697186d74a76dbd6d7a7cafe">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00031">31</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_ab824b87f639b880218b40f1ae17a89ac_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_ab824b87f639b880218b40f1ae17a89ac_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_ab824b87f639b880218b40f1ae17a89ac_cgraph" id="classPasses_1_1TypePass_ab824b87f639b880218b40f1ae17a89ac_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="247,5,426,32"/>
+<area shape="rect" id="node3" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="229,56,444,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="243,107,430,149"/>
+<area shape="rect" id="node5" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="264,173,409,200"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="492,173,647,200"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -253,6 +300,25 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#acda5f83f6e518cdd2267e6e44e16cf42">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00039">39</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Declarations_8cpp_source.html#l00032">AST::Declaration::getBody()</a>, <a class="el" href="Declarations_8cpp_source.html#l00081">AST::MethodDef::getObjectTypeStmt()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, <a class="el" href="Declarations_8cpp_source.html#l00024">AST::Declaration::getReturnTypeStmt()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a3b2464df3e5ca129a7bc505a5994bf99_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a3b2464df3e5ca129a7bc505a5994bf99_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a3b2464df3e5ca129a7bc505a5994bf99_cgraph" id="classPasses_1_1TypePass_a3b2464df3e5ca129a7bc505a5994bf99_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="247,5,426,32"/>
+<area shape="rect" id="node3" href="classAST_1_1MethodDef.html#ad935966ccd804d2a274077215a1b2adb" title="AST::MethodDef::getObject\lTypeStmt" alt="" coords="245,57,429,98"/>
+<area shape="rect" id="node4" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="229,123,444,149"/>
+<area shape="rect" id="node5" href="classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="243,174,430,215"/>
+<area shape="rect" id="node6" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="264,240,409,267"/>
+<area shape="rect" id="node7" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="492,240,647,267"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a3046ef0513bd55e31199fb0c75f3294a"></a>
@@ -278,6 +344,20 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a88af1b24cdbcdcd16458fb337e510bdb">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00048">48</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00030">AST::ReturnStmt::getValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a3046ef0513bd55e31199fb0c75f3294a_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a3046ef0513bd55e31199fb0c75f3294a_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a3046ef0513bd55e31199fb0c75f3294a_cgraph" id="classPasses_1_1TypePass_a3046ef0513bd55e31199fb0c75f3294a_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ReturnStmt.html#aeaa774f7707f0087e2a3679b7d158384" title="AST::ReturnStmt::getValue" alt="" coords="229,5,412,32"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -305,6 +385,20 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a5b1a75c9b1d0170f6f6008cc67739dc7">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00052">52</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a5dc2f8d3b55392e833f2aa58d523c8b2_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a5dc2f8d3b55392e833f2aa58d523c8b2_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a5dc2f8d3b55392e833f2aa58d523c8b2_cgraph" id="classPasses_1_1TypePass_a5dc2f8d3b55392e833f2aa58d523c8b2_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="229,5,381,47"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ac6107fdfd964a3d833470ec3b94b4453"></a>
@@ -330,6 +424,21 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a68210a2f052663e26cbafac64be97d58">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00056">56</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>, and <a class="el" href="Statements_8cpp_source.html#l00072">AST::VariableDefAssignStmt::getValue()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_ac6107fdfd964a3d833470ec3b94b4453_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_ac6107fdfd964a3d833470ec3b94b4453_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_ac6107fdfd964a3d833470ec3b94b4453_cgraph" id="classPasses_1_1TypePass_ac6107fdfd964a3d833470ec3b94b4453_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="249,5,401,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableDefAssignStmt.html#a532cc5dc83eb3720457684484b6fc48d" title="AST::VariableDefAssignStmt\l::getValue" alt="" coords="229,71,421,112"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -357,6 +466,20 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a4e022355c956310c4844f4192528fb">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00061">61</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00022">AST::Block::getStatements()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_aedaf93210809adede0d0f59e41507589_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_aedaf93210809adede0d0f59e41507589_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_aedaf93210809adede0d0f59e41507589_cgraph" id="classPasses_1_1TypePass_aedaf93210809adede0d0f59e41507589_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1Block.html#ab0a461d2187e21e9d18dcb1365e7953c" title="AST::Block::getStatements" alt="" coords="229,5,412,32"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ac5221c0be5344e0b385f8eb44b871c37"></a>
@@ -382,6 +505,23 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a7381556c8a0cdab243de2b9898a6adb9">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00067">67</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00039">AST::IfStmt::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00035">AST::IfStmt::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_ac5221c0be5344e0b385f8eb44b871c37_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_ac5221c0be5344e0b385f8eb44b871c37_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_ac5221c0be5344e0b385f8eb44b871c37_cgraph" id="classPasses_1_1TypePass_ac5221c0be5344e0b385f8eb44b871c37_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1IfStmt.html#adb35201ee81baea27c717759fc18be77" title="AST::IfStmt::getBody" alt="" coords="242,5,390,32"/>
+<area shape="rect" id="node3" href="classAST_1_1IfStmt.html#ab0b56fb9d0675447f5fc75afdc4cd079" title="AST::IfStmt::getCondition" alt="" coords="229,56,403,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="243,107,389,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="451,107,605,133"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -409,6 +549,23 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#af512082a6ba29335c41ec7abeefd9026">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00072">72</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Blocks_8cpp_source.html#l00051">AST::WhileLoop::getBody()</a>, <a class="el" href="Blocks_8cpp_source.html#l00047">AST::WhileLoop::getCondition()</a>, and <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a95df069dd327876187006e95618821de_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a95df069dd327876187006e95618821de_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a95df069dd327876187006e95618821de_cgraph" id="classPasses_1_1TypePass_a95df069dd327876187006e95618821de_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1WhileLoop.html#ac671323fac73d8722ae0b0329668820b" title="AST::WhileLoop::getBody" alt="" coords="242,5,415,32"/>
+<area shape="rect" id="node3" href="classAST_1_1WhileLoop.html#a15c311222ef725a7d2148da83597f69d" title="AST::WhileLoop::getCondition" alt="" coords="229,56,428,83"/>
+<area shape="rect" id="node4" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="256,107,401,133"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="476,107,631,133"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a88da5b9b90c07fc14a0e17e9bd482795"></a>
@@ -434,6 +591,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3f088a192f46916550d831bbcce65c2e">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00077">77</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
 
 </div>
 </div>
@@ -464,6 +623,23 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#afc43cecc69c8c7cc6264429fa3f9e840">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00080">80</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00048">AST::FunctionCallExpr::getArgs()</a>, <a class="el" href="Expressions_8cpp_source.html#l00052">AST::FunctionCallExpr::getFunctionDef()</a>, <a class="el" href="Expressions_8cpp_source.html#l00044">AST::FunctionCallExpr::getName()</a>, and <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a60a56ca3c5f2ae5345e1e63578655ed9_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a60a56ca3c5f2ae5345e1e63578655ed9_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a60a56ca3c5f2ae5345e1e63578655ed9_cgraph" id="classPasses_1_1TypePass_a60a56ca3c5f2ae5345e1e63578655ed9_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1FunctionCallExpr.html#a059975fac6adb4c9fe3a8389ae1025af" title="AST::FunctionCallExpr\l::getArgs" alt="" coords="259,5,415,47"/>
+<area shape="rect" id="node3" href="classAST_1_1FunctionCallExpr.html#a083314ca1636a6855a274a97b65d23f8" title="AST::FunctionCallExpr\l::getFunctionDef" alt="" coords="259,71,415,112"/>
+<area shape="rect" id="node4" href="classAST_1_1FunctionCallExpr.html#a9ff8db2213a4396de3e29024ff373893" title="AST::FunctionCallExpr\l::getName" alt="" coords="259,136,415,177"/>
+<area shape="rect" id="node5" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="229,202,444,229"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a3e65f49e105b9286424a45e8cfc10b2b"></a>
@@ -493,6 +669,25 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a3bd6448ae03c82eb14ca8ea545a1fe0e">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00099">99</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00083">AST::MethodCallExpr::getArgs()</a>, <a class="el" href="Expressions_8cpp_source.html#l00079">AST::MethodCallExpr::getMangledName()</a>, <a class="el" href="Expressions_8cpp_source.html#l00087">AST::MethodCallExpr::getMethodDef()</a>, <a class="el" href="Expressions_8cpp_source.html#l00071">AST::MethodCallExpr::getObjectExpr()</a>, <a class="el" href="Declarations_8cpp_source.html#l00028">AST::Declaration::getParameters()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00091">AST::MethodCallExpr::setMethodDef()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a3e65f49e105b9286424a45e8cfc10b2b_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a3e65f49e105b9286424a45e8cfc10b2b_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a3e65f49e105b9286424a45e8cfc10b2b_cgraph" id="classPasses_1_1TypePass_a3e65f49e105b9286424a45e8cfc10b2b_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1MethodCallExpr.html#a5e54384bc466e4774165923a84ce8706" title="AST::MethodCallExpr\l::getArgs" alt="" coords="262,5,411,47"/>
+<area shape="rect" id="node3" href="classAST_1_1MethodCallExpr.html#ae114e2da449458e56b405bbeaa2dfdca" title="AST::MethodCallExpr\l::getMangledName" alt="" coords="262,71,411,112"/>
+<area shape="rect" id="node4" href="classAST_1_1MethodCallExpr.html#a30af411402b9d46ca2b02d750831a138" title="AST::MethodCallExpr\l::getMethodDef" alt="" coords="262,136,411,177"/>
+<area shape="rect" id="node5" href="classAST_1_1MethodCallExpr.html#aed7c1c396c682f1c2e247edc9766cdae" title="AST::MethodCallExpr\l::getObjectExpr" alt="" coords="262,201,411,243"/>
+<area shape="rect" id="node6" href="classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="229,267,444,294"/>
+<area shape="rect" id="node7" href="classAST_1_1MethodCallExpr.html#a515d0952e9f33e3cfdd2115c2f3f58cf" title="AST::MethodCallExpr\l::setMethodDef" alt="" coords="262,319,411,360"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="a0e6adf5ee592ff14407befe71b03e33b"></a>
@@ -518,6 +713,21 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a2a2a41b1c10cb3a1a900c35d42eca6b7">AST::ASTPass</a>.</p>
+
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00130">130</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Expressions_8cpp_source.html#l00157">AST::ConstIntExpr::getTypeStmt()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00022">AST::Expression::setType()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_a0e6adf5ee592ff14407befe71b03e33b_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_a0e6adf5ee592ff14407befe71b03e33b_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_a0e6adf5ee592ff14407befe71b03e33b_cgraph" id="classPasses_1_1TypePass_a0e6adf5ee592ff14407befe71b03e33b_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1ConstIntExpr.html#a2e486b0531770c78336543c9b388be36" title="AST::ConstIntExpr::\lgetTypeStmt" alt="" coords="247,5,388,47"/>
+<area shape="rect" id="node3" href="classAST_1_1Expression.html#a8b2990b2a0c03339f132c1621408a9e3" title="AST::Expression::setType" alt="" coords="229,71,405,98"/>
+</map>
+</div>
+</p>
 
 </div>
 </div>
@@ -545,11 +755,27 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classAST_1_1ASTPass.html#a4c40d06700f93e198a7714cae0c8eabb">AST::ASTPass</a>.</p>
 
+<p>Definition at line <a class="el" href="TypePass_8cpp_source.html#l00135">135</a> of file <a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a>.</p>
+
+<p>References <a class="el" href="Statements_8cpp_source.html#l00049">AST::VariableDefStmt::getTypeStmt()</a>, <a class="el" href="Expressions_8cpp_source.html#l00175">AST::VariableExpr::getVariableDefStmt()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00022">AST::Expression::setType()</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classPasses_1_1TypePass_adf4f0986ae86e49df4f93bec80e7900d_cgraph.png" border="0" usemap="#classPasses_1_1TypePass_adf4f0986ae86e49df4f93bec80e7900d_cgraph" alt=""/></div>
+<map name="classPasses_1_1TypePass_adf4f0986ae86e49df4f93bec80e7900d_cgraph" id="classPasses_1_1TypePass_adf4f0986ae86e49df4f93bec80e7900d_cgraph">
+<area shape="rect" id="node2" href="classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="241,5,393,47"/>
+<area shape="rect" id="node3" href="classAST_1_1VariableExpr.html#aa9bc0d5b2ceafd8c38dbba7948697e32" title="AST::VariableExpr::\lgetVariableDefStmt" alt="" coords="248,71,387,112"/>
+<area shape="rect" id="node4" href="classAST_1_1Expression.html#a8b2990b2a0c03339f132c1621408a9e3" title="AST::Expression::setType" alt="" coords="229,137,405,163"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="TypePass_8hpp_source.html">TypePass.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="TypePass_8cpp.html">TypePass.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/Passes/<a class="el" href="TypePass_8cpp_source.html">TypePass.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

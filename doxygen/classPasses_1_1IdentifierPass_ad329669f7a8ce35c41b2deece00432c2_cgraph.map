@@ -1,0 +1,4 @@
+<map id="Passes::IdentifierPass::run" name="Passes::IdentifierPass::run">
+<area shape="rect" id="node2" href="$classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a" title="AST::AbstractSyntaxTree\l::getDeclarations" alt="" coords="233,5,405,47"/>
+<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html#a2ff15a8d0d99cecf071a362ecb33fe0d" title="AST::AbstractSyntaxTree\l::getFunctionDefs" alt="" coords="233,71,405,112"/>
+</map>

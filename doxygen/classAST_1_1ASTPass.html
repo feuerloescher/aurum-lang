@@ -64,7 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="inherits.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -101,16 +101,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="dynheader">
 Inheritance diagram for AST::ASTPass:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="classAST_1_1ASTPass.png" usemap="#AST::ASTPass_map" alt=""/>
-  <map id="AST::ASTPass_map" name="AST::ASTPass_map">
-<area href="classPasses_1_1IdentifierPass.html" title="Resolve string identifiers of variables and functions. " alt="Passes::IdentifierPass" shape="rect" coords="0,56,168,80"/>
-<area href="classPasses_1_1LLVMPass.html" title="Generate LLVM Intermediate Representation. " alt="Passes::LLVMPass" shape="rect" coords="178,56,346,80"/>
-<area href="classPasses_1_1PrintPass.html" title="Print an AST with type information and indentation to an output stream. " alt="Passes::PrintPass" shape="rect" coords="356,56,524,80"/>
-<area href="classPasses_1_1TypePass.html" title="Resolve and check types of expressions. " alt="Passes::TypePass" shape="rect" coords="534,56,702,80"/>
-<area href="classPasses_1_1VerifyOptimizePass.html" title="Verify and optimize LLVM IR. " alt="Passes::VerifyOptimizePass" shape="rect" coords="712,56,880,80"/>
+<div class="center"><img src="classAST_1_1ASTPass__inherit__graph.png" border="0" usemap="#AST_1_1ASTPass_inherit__map" alt="Inheritance graph"/></div>
+<map name="AST_1_1ASTPass_inherit__map" id="AST_1_1ASTPass_inherit__map">
+<area shape="rect" id="node2" href="classPasses_1_1IdentifierPass.html" title="Resolve string identifiers of variables and functions. " alt="" coords="183,5,338,32"/>
+<area shape="rect" id="node3" href="classPasses_1_1LLVMPass.html" title="Generate LLVM Intermediate Representation. " alt="" coords="191,56,330,83"/>
+<area shape="rect" id="node4" href="classPasses_1_1PrintPass.html" title="Print an AST with type information and indentation to an output stream. " alt="" coords="195,107,326,133"/>
+<area shape="rect" id="node5" href="classPasses_1_1TypePass.html" title="Resolve and check types of expressions. " alt="" coords="194,157,327,184"/>
+<area shape="rect" id="node6" href="classPasses_1_1VerifyOptimizePass.html" title="Verify and optimize LLVM IR. " alt="" coords="165,208,356,235"/>
 </map>
- </div></div>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
+<div class="dynheader">
+Collaboration diagram for AST::ASTPass:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1ASTPass__coll__graph.png" border="0" usemap="#AST_1_1ASTPass_coll__map" alt="Collaboration graph"/></div>
+<map name="AST_1_1ASTPass_coll__map" id="AST_1_1ASTPass_coll__map">
+<area shape="rect" id="node2" href="classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="367,111,539,138"/>
+<area shape="rect" id="node4" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
+<area shape="rect" id="node5" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
+<area shape="rect" id="node6" href="classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -156,7 +166,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:aa560aef92001c855939117afa84e26e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classAST_1_1AbstractSyntaxTree.html">AbstractSyntaxTree</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAST_1_1ASTPass.html#aa560aef92001c855939117afa84e26e4">ast</a></td></tr>
 <tr class="separator:aa560aef92001c855939117afa84e26e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock">
+<p>Definition at line <a class="el" href="ASTPass_8hpp_source.html#l00014">14</a> of file <a class="el" href="ASTPass_8hpp_source.html">ASTPass.hpp</a>.</p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0c9fd48ee112a40cffea03215be368aa"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,6 +183,8 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00013">13</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -222,6 +237,37 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">Todo:</a></b></dt><dd>Reorganize; multiple dispatch only for virtual base classes </dd></dl>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00016">16</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
+<p>Referenced by <a class="el" href="TypeStmt_8cpp_source.html#l00016">AST::TypeStmt::runPass()</a>, <a class="el" href="Blocks_8cpp_source.html#l00018">AST::Block::runPass()</a>, <a class="el" href="Statements_8cpp_source.html#l00026">AST::ReturnStmt::runPass()</a>, <a class="el" href="Blocks_8cpp_source.html#l00043">AST::IfStmt::runPass()</a>, <a class="el" href="Expressions_8cpp_source.html#l00040">AST::FunctionCallExpr::runPass()</a>, <a class="el" href="Statements_8cpp_source.html#l00041">AST::VariableDefStmt::runPass()</a>, <a class="el" href="Declarations_8cpp_source.html#l00062">AST::FunctionDef::runPass()</a>, <a class="el" href="Blocks_8cpp_source.html#l00055">AST::WhileLoop::runPass()</a>, <a class="el" href="Expressions_8cpp_source.html#l00067">AST::MethodCallExpr::runPass()</a>, <a class="el" href="Declarations_8cpp_source.html#l00077">AST::MethodDef::runPass()</a>, <a class="el" href="Statements_8cpp_source.html#l00068">AST::VariableDefAssignStmt::runPass()</a>, <a class="el" href="Expressions_8cpp_source.html#l00149">AST::ConstIntExpr::runPass()</a>, and <a class="el" href="Expressions_8cpp_source.html#l00167">AST::VariableExpr::runPass()</a>.</p>
+
+<p><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classAST_1_1ASTPass_a0e318cba88fc52a94c297cab2e3234f7_icgraph.png" border="0" usemap="#classAST_1_1ASTPass_a0e318cba88fc52a94c297cab2e3234f7_icgraph" alt=""/></div>
+<map name="classAST_1_1ASTPass_a0e318cba88fc52a94c297cab2e3234f7_icgraph" id="classAST_1_1ASTPass_a0e318cba88fc52a94c297cab2e3234f7_icgraph">
+<area shape="rect" id="node2" href="classAST_1_1TypeStmt.html#aed76aee364de91c55ef24326a4b8969d" title="AST::TypeStmt::runPass" alt="" coords="219,79,389,106"/>
+<area shape="rect" id="node3" href="classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="231,130,377,157"/>
+<area shape="rect" id="node9" href="classAST_1_1ReturnStmt.html#acc77983f4264e31baef620d78996bbe2" title="AST::ReturnStmt::runPass" alt="" coords="215,181,393,207"/>
+<area shape="rect" id="node10" href="classAST_1_1IfStmt.html#aec3f557932cc6283888348ee2c05fa7e" title="AST::IfStmt::runPass" alt="" coords="230,231,378,258"/>
+<area shape="rect" id="node11" href="classAST_1_1FunctionCallExpr.html#aa6ac70bfad64912acaa8ec3445cc085f" title="AST::FunctionCallExpr\l::runPass" alt="" coords="226,283,382,324"/>
+<area shape="rect" id="node12" href="classAST_1_1VariableDefStmt.html#a50afec7826d73a1de1a260641da41bbd" title="AST::VariableDefStmt\l::runPass" alt="" coords="228,348,380,389"/>
+<area shape="rect" id="node13" href="classAST_1_1FunctionDef.html#aa9178291631a77c8159b6fd9eb626f37" title="AST::FunctionDef::runPass" alt="" coords="213,414,395,441"/>
+<area shape="rect" id="node14" href="classAST_1_1WhileLoop.html#abea43e875bec3af854321c6d3c70284e" title="AST::WhileLoop::runPass" alt="" coords="217,465,391,491"/>
+<area shape="rect" id="node15" href="classAST_1_1MethodCallExpr.html#a5c185af42710b893e05f00ab9f765192" title="AST::MethodCallExpr\l::runPass" alt="" coords="229,516,379,557"/>
+<area shape="rect" id="node16" href="classAST_1_1MethodDef.html#a332f4ae25f66fc3c00b0fc666da2fe6b" title="AST::MethodDef::runPass" alt="" coords="216,582,392,609"/>
+<area shape="rect" id="node17" href="classAST_1_1VariableDefAssignStmt.html#a212313ac4ad2c714253fea3719a42155" title="AST::VariableDefAssignStmt\l::runPass" alt="" coords="208,633,400,675"/>
+<area shape="rect" id="node18" href="classAST_1_1ConstIntExpr.html#a323cb561bb50075adb3ecd60890c057c" title="AST::ConstIntExpr::\lrunPass" alt="" coords="233,699,375,740"/>
+<area shape="rect" id="node19" href="classAST_1_1VariableExpr.html#ac53ea8008e8444815f81a83cb9e970a9" title="AST::VariableExpr::\lrunPass" alt="" coords="235,764,373,805"/>
+<area shape="rect" id="node4" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658" title="Passes::IdentifierPass\l::runOn" alt="" coords="466,5,621,47"/>
+<area shape="rect" id="node5" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77" title="Passes::LLVMPass::runOn" alt="" coords="453,71,634,98"/>
+<area shape="rect" id="node6" href="classPasses_1_1PrintPass.html#a25834d7e1c01eaaafa5bab5ee27c4f20" title="Passes::PrintPass::\lrunOn" alt="" coords="474,123,613,164"/>
+<area shape="rect" id="node7" href="classPasses_1_1TypePass.html#ab824b87f639b880218b40f1ae17a89ac" title="Passes::TypePass::runOn" alt="" coords="455,189,631,215"/>
+<area shape="rect" id="node8" href="classPasses_1_1VerifyOptimizePass.html#ad9dc5b4c442c92c9a033d119c580f97e" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="448,240,639,281"/>
+</map>
+</div>
+</p>
+
 </div>
 </div>
 <a class="anchor" id="ac533704a697186d74a76dbd6d7a7cafe"></a>
@@ -247,6 +293,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abd282b8e9a1fe1ab348931d17655ac77">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a25834d7e1c01eaaafa5bab5ee27c4f20">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#ad9dc5b4c442c92c9a033d119c580f97e">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7040d6f6590d7d7bb5f21d041e65c658">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ab824b87f639b880218b40f1ae17a89ac">Passes::TypePass</a>.</p>
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00019">19</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -274,6 +322,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ae7e34f083531e95a3b15b2289bc6a1e5">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a75355c237abdbe69891151fa2f650554">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a4d9e6059d7a45040f857356ff2235601">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7897aa71ba754f4a0249fe96d98fa1aa">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3b2464df3e5ca129a7bc505a5994bf99">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00022">22</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a10b5c8c20449e3172bbb31f34c26f7f2"></a>
@@ -297,6 +347,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00026">26</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -324,6 +376,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a4d61ffc2a6dba27c73b6ee3e5ce1282a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#ae78857cc6526eca8157744e34c66caf1">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a41448232c584152130f53d3221d984d3">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a21f627316665d5ccb94cbbf2f14b470a">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3046ef0513bd55e31199fb0c75f3294a">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00029">29</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a5b1a75c9b1d0170f6f6008cc67739dc7"></a>
@@ -349,6 +403,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#ab6f8c2f1c83d3b110ef1bfdd4abd6895">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a979ae47978076b556115e0b923963f28">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a8ee46e765b42959e27de8d921a66cadb">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a5dc2f8d3b55392e833f2aa58d523c8b2">Passes::TypePass</a>.</p>
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00032">32</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -376,6 +432,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af09f18e1625f13fb3cbed20a7e684e8a">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#acfe30b2f4574a0d1c84979b7d0f90401">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#ab9973ff8bfe139bf525f2888242fa5d8">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ad18559434daaa4d3f28d3e57b036cafe">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac6107fdfd964a3d833470ec3b94b4453">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00035">35</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a2a4e022355c956310c4844f4192528fb"></a>
@@ -401,6 +459,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#abcdd3e482bf1c4e87031f1a6b487f5f7">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2dd117b722c0015938831d851378bb65">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a32a60e39e4ffb0b5ebae970afba8f2fe">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a9cd86d1a70154b10412919d7023da25b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#aedaf93210809adede0d0f59e41507589">Passes::TypePass</a>.</p>
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00039">39</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -428,6 +488,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a9588e7692349c51be39040e74daee8d4">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2ae608c071e5cfdeb46d51b5749d268d">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a844ca66101560a8a1b5419fb21fade8c">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a075a568652d2f75cca8796a0913054dc">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#ac5221c0be5344e0b385f8eb44b871c37">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00042">42</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="af512082a6ba29335c41ec7abeefd9026"></a>
@@ -453,6 +515,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#aa6095e1e5257ec63c038101043087a24">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a4622adc53855789d9a74a94e30621e79">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#af4ff00c67382761413772f1a26250e39">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a06c83c5625a47696ccde0a229a625bc5">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a95df069dd327876187006e95618821de">Passes::TypePass</a>.</p>
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00045">45</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -480,6 +544,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a2864e922f74259cd3955ef31cc156b3c">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a6909e3d63274820ba043d51b694576ce">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a863433181e8a2c8386c6a3d933f7a6c8">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a5cc91576ef7cca8aacbee6da835ef202">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a88da5b9b90c07fc14a0e17e9bd482795">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00049">49</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a255b7f6c5b20226d0bb8232118f780fd"></a>
@@ -503,6 +569,8 @@ Protected Attributes</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00053">53</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -530,6 +598,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#af7ff3266064c45125c6cae3cf2114ae9">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a333291d4a65ff122addf11757e24ea60">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a9697d933ac185d8502a484bf8660a016">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#ae1be186a1ac4905d7a339250b209e098">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a60a56ca3c5f2ae5345e1e63578655ed9">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00056">56</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a3bd6448ae03c82eb14ca8ea545a1fe0e"></a>
@@ -555,6 +625,8 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a5cf5638488f76a72f20d1327640febbb">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a2edd029327e4aeeb1ab2cab1ccaa1ee1">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a0d8c3478447e5ac13e8e306f62ce3436">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a5b79430874095ac64781f1f896e3cfa5">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a3e65f49e105b9286424a45e8cfc10b2b">Passes::TypePass</a>.</p>
+
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00059">59</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
 
 </div>
 </div>
@@ -582,6 +654,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a80dd4bba1101e63bfdbd6aeded6fbd91">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#a654c0103fa5d7e8e0d28b1ba9f2eee4e">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#af0b1d541cfc3449d6395b24314dd2039">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a7ec0f8030f069418ead50a331edd2dc0">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#a0e6adf5ee592ff14407befe71b03e33b">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00062">62</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <a class="anchor" id="a4c40d06700f93e198a7714cae0c8eabb"></a>
@@ -608,6 +682,8 @@ Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="classPasses_1_1LLVMPass.html#a52ca115b29ed000eaa872860b288852e">Passes::LLVMPass</a>, <a class="el" href="classPasses_1_1PrintPass.html#abda4eefca1842efd9e7a7973f731ae26">Passes::PrintPass</a>, <a class="el" href="classPasses_1_1VerifyOptimizePass.html#a5a9270f524c8260e13488e267f44b4d4">Passes::VerifyOptimizePass</a>, <a class="el" href="classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b">Passes::IdentifierPass</a>, and <a class="el" href="classPasses_1_1TypePass.html#adf4f0986ae86e49df4f93bec80e7900d">Passes::TypePass</a>.</p>
 
+<p>Definition at line <a class="el" href="ASTPass_8cpp_source.html#l00065">65</a> of file <a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a>.</p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
@@ -629,11 +705,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Definition at line <a class="el" href="ASTPass_8hpp_source.html#l00017">17</a> of file <a class="el" href="ASTPass_8hpp_source.html">ASTPass.hpp</a>.</p>
+
+<p>Referenced by <a class="el" href="LLVMPass_8cpp_source.html#l00035">Passes::LLVMPass::addScalarMethods()</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00029">Passes::LLVMPass::createLLVMTypes()</a>, <a class="el" href="TypePass_8cpp_source.html#l00025">Passes::TypePass::run()</a>, <a class="el" href="IdentifierPass_8cpp_source.html#l00024">Passes::IdentifierPass::run()</a>, <a class="el" href="VerifyOptimizePass_8cpp_source.html#l00049">Passes::VerifyOptimizePass::run()</a>, <a class="el" href="PrintPass_8cpp_source.html#l00030">Passes::PrintPass::run()</a>, <a class="el" href="LLVMPass_8cpp_source.html#l00115">Passes::LLVMPass::run()</a>, <a class="el" href="IdentifierPass_8cpp_source.html#l00038">Passes::IdentifierPass::runOn()</a>, and <a class="el" href="LLVMPass_8cpp_source.html#l00128">Passes::LLVMPass::runOn()</a>.</p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="ASTPass_8hpp_source.html">ASTPass.hpp</a></li>
-<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="ASTPass_8cpp.html">ASTPass.cpp</a></li>
+<li>/home/ladmin/SafeBox/Software/aurum-lang/src/auc/AST/<a class="el" href="ASTPass_8cpp_source.html">ASTPass.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

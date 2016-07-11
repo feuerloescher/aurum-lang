@@ -1,0 +1,7 @@
+<map id="AST::AbstractSyntaxTree::getDeclarations" name="AST::AbstractSyntaxTree::getDeclarations">
+<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a470104468e94656130371c18522ee5fe" title="Passes::TypePass::run" alt="" coords="254,5,413,32"/>
+<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#ad329669f7a8ce35c41b2deece00432c2" title="Passes::IdentifierPass::run" alt="" coords="243,56,423,83"/>
+<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#aae6be718a6e30d2852033bb2b2de4178" title="Passes::VerifyOptimizePass::run" alt="" coords="225,107,441,133"/>
+<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#a456117c70140ed3b7c035f8107c6c3c2" title="Passes::PrintPass::run" alt="" coords="255,157,412,184"/>
+<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="251,208,415,235"/>
+</map>
