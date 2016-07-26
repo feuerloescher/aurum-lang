@@ -12,8 +12,6 @@
 #include "ASTMap.hpp"
 #include "CodeLocation.hpp"
 
-#include <llvm/IR/BasicBlock.h>
-
 namespace AST {
 
 class Block : public Statement {
@@ -42,7 +40,8 @@ protected:
     Block body;
 
 public:
-    IfStmt(ASTPtr<Expression> condition, CodeLocation codeLocation);
+    IfStmt(ASTPtr<Expression> condition, Block* parentBlock,
+        CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getCondition();
@@ -58,7 +57,8 @@ protected:
     Block body;
 
 public:
-    WhileLoop(ASTPtr<Expression> condition, CodeLocation codeLocation);
+    WhileLoop(ASTPtr<Expression> condition, Block* parentBlock,
+        CodeLocation codeLocation);
     virtual void runPass(ASTPass& pass);
 
     ASTPtr<Expression> getCondition();

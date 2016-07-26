@@ -22,6 +22,7 @@ protected:
     llvm::LLVMContext& llvmContext;
     llvm::IRBuilder<>& irBuilder;
     bool onlyInsertDeclarations;
+    llvm::Function* currentFunction;
 
     void createLLVMTypes();
     void addScalarMethods();

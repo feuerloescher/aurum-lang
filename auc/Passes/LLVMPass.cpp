@@ -23,7 +23,8 @@ using namespace Passes;
 
 LLVMPass::LLVMPass(AbstractSyntaxTree& ast)
     : ASTPass(ast), llvmContext(ast.getLLVMContext()),
-    irBuilder(ast.getIRBuilder()), onlyInsertDeclarations(true) {
+    irBuilder(ast.getIRBuilder()), onlyInsertDeclarations(true),
+    currentFunction(nullptr) {
 }
 
 void LLVMPass::createLLVMTypes() {
@@ -37,7 +38,9 @@ void LLVMPass::addScalarMethods() {
         for (unsigned int width : {8, 16, 32, 64}) {
             std::string intTypeName =
                 (isSigned ? "int" : "uint") + std::to_string(width);
-            for (std::string op : {"+", "-", "*", "/", "="}) {
+            for (std::string op : {"+", "-", "*", "/", "=",
+                "==", "!=", ">", "<", ">=", "<="}) {
+
                 std::string methodName = intTypeName + '.' + op;
                 std::shared_ptr<MethodDef> intMethod =
                     ast.getStdLibMethodDefs().find(methodName);
@@ -77,6 +80,40 @@ void LLVMPass::addScalarMethods() {
                 } else if (op == "=") {
                     irBuilder.CreateStore(paramValue, thisPtr);
                     retValue = paramValue;
+                } else if (op == "==") {
+                    retValue =
+                        irBuilder.CreateICmpEQ(thisValue, paramValue, "cmptmp");
+                } else if (op == "!=") {
+                    retValue =
+                        irBuilder.CreateICmpNE(thisValue, paramValue, "cmptmp");
+                } else if (isSigned) {
+                    if (op == ">") {
+                        retValue = irBuilder.CreateICmpUGT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<") {
+                        retValue = irBuilder.CreateICmpULT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == ">=") {
+                        retValue = irBuilder.CreateICmpUGE(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<=") {
+                        retValue = irBuilder.CreateICmpULE(
+                            thisValue, paramValue, "cmptmp");
+                    }
+                } else {
+                    if (op == ">") {
+                        retValue = irBuilder.CreateICmpSGT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<") {
+                        retValue = irBuilder.CreateICmpSLT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == ">=") {
+                        retValue = irBuilder.CreateICmpSGE(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<=") {
+                        retValue = irBuilder.CreateICmpSLE(
+                            thisValue, paramValue, "cmptmp");
+                    }
                 }
                 irBuilder.CreateRet(retValue);
             }
@@ -161,7 +198,9 @@ void LLVMPass::runOn(FunctionDef& func) {
             ++paramIter;
         }
         assert(paramIter == func.getParameters().end());
+        currentFunction = llvmFunction;
         func.getBody().runPass(*this);
+        currentFunction = nullptr;
     }
 }
 
@@ -213,7 +252,9 @@ void LLVMPass::runOn(MethodDef& func) {
             ++paramIter;
         }
         assert(paramIter == func.getParameters().end());
+        currentFunction = llvmFunction;
         func.getBody().runPass(*this);
+        currentFunction = nullptr;
     }
 }
 
@@ -256,11 +297,27 @@ void LLVMPass::runOn(Block& stmt) {
 
 void LLVMPass::runOn(IfStmt& stmt) {
     stmt.getCondition()->runPass(*this);
+    llvm::BasicBlock* thenBlock = llvm::BasicBlock::Create(llvmContext,
+        "then", currentFunction);
+    llvm::BasicBlock* ifcontBlock = llvm::BasicBlock::Create(llvmContext,
+        "ifcont");
+    irBuilder.CreateCondBr(stmt.getCondition()->getLLVMValue(), thenBlock,
+        ifcontBlock);
+    /// 'then' block:
+    irBuilder.SetInsertPoint(thenBlock);
     stmt.getBody().runPass(*this);
+    thenBlock = irBuilder.GetInsertBlock();
+    if (thenBlock->getTerminator() == nullptr) {
+        irBuilder.CreateBr(ifcontBlock);
+    }
+    /// 'ifcont' block:
+    currentFunction->getBasicBlockList().push_back(ifcontBlock);
+    irBuilder.SetInsertPoint(ifcontBlock);
 }
 
 void LLVMPass::runOn(WhileLoop& stmt) {
     stmt.getCondition()->runPass(*this);
+    /// \todo Insert 'while' logic
     stmt.getBody().runPass(*this);
 }
 

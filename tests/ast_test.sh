@@ -1,4 +1,4 @@
 #!/bin/sh -x
 
-./ast_test.bin
-[ "$?" -eq "11" ]
+./ast_test.bin a a a a
+[ "$?" -eq "121" ]

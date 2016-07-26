@@ -32,6 +32,11 @@ ASTMap<VariableDefStmt*>& Block::getVariables() {
 }
 
 
+IfStmt::IfStmt(ASTPtr<Expression> condition, Block* parentBlock,
+    CodeLocation codeLocation) : Statement(parentBlock, codeLocation),
+    condition(condition), body(parentBlock, codeLocation) {
+}
+
 ASTPtr<Expression> IfStmt::getCondition() {
     return condition;
 }

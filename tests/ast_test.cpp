@@ -28,38 +28,66 @@ using namespace Passes;
 using namespace std;
 
 int main() {
+    /// This program returns 'argc! + 1', where argc is the number of arguments
+    /// and n! is the factorial of n.
+
     AbstractSyntaxTree ast;
 
     auto funcDecl = make_shared<FunctionDef>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "foo", CodeLocation::none);
+        "factorial", CodeLocation::none);
     auto variable = make_shared<VariableDefStmt>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "var", &funcDecl->getBody(), CodeLocation::none);
     funcDecl->getParameters().push_back(variable);
 
-    auto addOp = make_shared<MethodCallExpr>(
+    auto cmpOp = make_shared<MethodCallExpr>(
         make_shared<VariableExpr>("var", &funcDecl->getBody(),
-        CodeLocation::none), "+", &funcDecl->getBody(), CodeLocation::none);
-    addOp->getArgs().push_back(
-        make_shared<ConstIntExpr>("5", 5u, &funcDecl->getBody(),
+        CodeLocation::none), "==", &funcDecl->getBody(), CodeLocation::none);
+    cmpOp->getArgs().push_back(
+        make_shared<ConstIntExpr>("0", 0u, &funcDecl->getBody(),
         CodeLocation::none));
-    auto ret = make_shared<ReturnStmt>(addOp, &funcDecl->getBody(),
+    auto ifBlock = make_shared<IfStmt>(cmpOp, &funcDecl->getBody(),
         CodeLocation::none);
-    funcDecl->getBody().push_back(ret);
+    auto ret = make_shared<ReturnStmt>(make_shared<ConstIntExpr>("1", 1u,
+        &ifBlock->getBody(), CodeLocation::none), &ifBlock->getBody(),
+        CodeLocation::none);
+    ifBlock->getBody().push_back(ret);
+    funcDecl->getBody().push_back(ifBlock);
+
+    auto subOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("var", &funcDecl->getBody(),
+        CodeLocation::none), "-", &funcDecl->getBody(), CodeLocation::none);
+    subOp->getArgs().push_back(
+        make_shared<ConstIntExpr>("1", 1u, &funcDecl->getBody(),
+        CodeLocation::none));
+    auto recurseOp = make_shared<FunctionCallExpr>(
+        "factorial", &funcDecl->getBody(), CodeLocation::none);
+    recurseOp->getArgs().push_back(subOp);
+    auto mulOp = make_shared<MethodCallExpr>(
+        make_shared<VariableExpr>("var", &funcDecl->getBody(),
+        CodeLocation::none), "*", &funcDecl->getBody(), CodeLocation::none);
+    mulOp->getArgs().push_back(recurseOp);
+    auto ret2 = make_shared<ReturnStmt>(mulOp, &funcDecl->getBody(),
+        CodeLocation::none);
+    funcDecl->getBody().push_back(ret2);
 
     auto mainDecl = make_shared<FunctionDef>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "main", CodeLocation::none);
     mainDecl->setExported(true);
+    auto argcDef = make_shared<VariableDefStmt>(
+        make_shared<TypeStmt>("uint32", CodeLocation::none),
+        "argc", &mainDecl->getBody(), CodeLocation::none);
+    mainDecl->getParameters().push_back(argcDef);
     ast.getDeclarations().push_back(mainDecl);
+    /// factorial() is forward referenced
     ast.getDeclarations().push_back(funcDecl);
 
-    auto funcCall = make_shared<FunctionCallExpr>("foo", &mainDecl->getBody(),
-        CodeLocation::none);
-    funcCall->getArgs().push_back(
-        make_shared<ConstIntExpr>("5", 5u, &mainDecl->getBody(),
-        CodeLocation::none));
+    auto funcCall = make_shared<FunctionCallExpr>("factorial",
+        &mainDecl->getBody(), CodeLocation::none);
+    funcCall->getArgs().push_back(make_shared<VariableExpr>("argc",
+        &mainDecl->getBody(), CodeLocation::none));
     auto defAssignX = make_shared<VariableDefAssignStmt>(
         make_shared<TypeStmt>("uint32", CodeLocation::none),
         "x", funcCall, &mainDecl->getBody(), CodeLocation::none);
@@ -83,10 +111,10 @@ int main() {
         CodeLocation::none), "++", &mainDecl->getBody(), CodeLocation::none);
     mainDecl->getBody().push_back(unaryAssignOp);
 
-    auto ret2 = make_shared<ReturnStmt>(
+    auto ret3 = make_shared<ReturnStmt>(
         make_shared<VariableExpr>("y", &mainDecl->getBody(),
         CodeLocation::none), &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getBody().push_back(ret2);
+    mainDecl->getBody().push_back(ret3);
 
     PrintPass printer(ast, cout);
     printer.run();

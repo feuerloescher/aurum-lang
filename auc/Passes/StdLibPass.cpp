@@ -21,6 +21,13 @@ void StdLibPass::run() {
 }
 
 void StdLibPass::addScalarTypes() {
+    std::shared_ptr<IntType> boolType = std::make_shared<IntType>(
+        "bool", 1, false);
+    types.insert(boolType);
+    std::shared_ptr<TypeStmt> boolTypeStmt = std::make_shared<TypeStmt>(
+        "bool", CodeLocation::none);
+    boolTypeStmt->setType(boolType);
+
     for (bool isSigned : {false, true}) {
         for (unsigned int width : {8, 16, 32, 64}) {
             std::string intTypeName =
@@ -47,6 +54,16 @@ void StdLibPass::addScalarTypes() {
                 std::shared_ptr<MethodDef> intMethod =
                     std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
                     CodeLocation::none);
+                ast.getStdLibMethodDefs().insert(intMethod);
+                intType->getMethodDefs().insert(intMethod.get());
+            }
+            for (std::string op : {"==", "!=", ">", "<", ">=", "<="}) {
+                std::shared_ptr<MethodDef> intMethod =
+                    std::make_shared<MethodDef>(boolTypeStmt, op, intTypeStmt,
+                    CodeLocation::none);
+                intMethod->getParameters().push_back(
+                    std::make_shared<VariableDefStmt>(intTypeStmt, "param",
+                    &intMethod->getBody(), CodeLocation::none));
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }

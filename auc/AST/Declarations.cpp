@@ -68,7 +68,7 @@ MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
         ASTPtr<TypeStmt> objectTypeStmt, CodeLocation codeLocation)
     : Declaration(returnTypeStmt, name, codeLocation),
     objectTypeStmt(objectTypeStmt) {
-    this->name = returnTypeStmt->getName() + '.' + name;
+    this->name = objectTypeStmt->getName() + '.' + name;
     parameters.push_back(
         std::make_shared<VariableDefStmt>(objectTypeStmt, "this",
         &body, CodeLocation::none));

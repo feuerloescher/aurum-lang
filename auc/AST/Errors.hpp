@@ -52,6 +52,14 @@ public:
     }
 };
 
+class ConditionTypeError : public std::runtime_error {
+public:
+    ConditionTypeError(ASTPtr<Type> providedType)
+        : std::runtime_error("The condition has to be of type bool, "
+        "but is of type " + providedType->getName() + ".") {
+    }
+};
+
 } // namespace AST
 
 #endif // AUC_ERRORS_HPP

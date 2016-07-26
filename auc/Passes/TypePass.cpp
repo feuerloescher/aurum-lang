@@ -66,6 +66,10 @@ void TypePass::runOn(Block& stmt) {
 
 void TypePass::runOn(IfStmt& stmt) {
     stmt.getCondition()->runPass(*this);
+    if (stmt.getCondition()->getType() != ast.getTypes().find("bool")) {
+        /// \todo Add search for implicit cast method
+        throw ConditionTypeError(stmt.getCondition()->getType());
+    }
     stmt.getBody().runPass(*this);
 }
 
@@ -93,6 +97,7 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
                 (*paramIter)->getTypeStmt()->getType(), arg->getType());
         }
     }
+    stmt.setType(stmt.getFunctionDef()->getReturnTypeStmt()->getType());
     /// \todo Merge common code of FunctionCallExpr and MethodCallExpr handling
 }
 
@@ -125,6 +130,7 @@ void TypePass::runOn(MethodCallExpr& stmt) {
                 (*paramIter)->getTypeStmt()->getType(), arg->getType());
         }
     }
+    stmt.setType(stmt.getMethodDef()->getReturnTypeStmt()->getType());
 }
 
 void TypePass::runOn(ConstIntExpr& stmt) {

@@ -34,6 +34,48 @@ entry:
   ret i8 %param
 }
 
+define private i1 @"uint8.=="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp eq i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint8.!="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp ne i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint8.>"(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp sgt i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint8.<"(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp slt i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint8.>="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp sge i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint8.<="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp sle i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
 define private i8 @"uint8.++"(i8* %this) {
 entry:
   %thisval = load i8, i8* %this, align 1
@@ -82,6 +124,48 @@ define private i16 @"uint16.="(i16* %this, i16 %param) {
 entry:
   store i16 %param, i16* %this, align 2
   ret i16 %param
+}
+
+define private i1 @"uint16.=="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp eq i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint16.!="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp ne i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint16.>"(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp sgt i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint16.<"(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp slt i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint16.>="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp sge i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint16.<="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp sle i16 %thisval, %param
+  ret i1 %cmptmp
 }
 
 define private i16 @"uint16.++"(i16* %this) {
@@ -134,6 +218,48 @@ entry:
   ret i32 %param
 }
 
+define private i1 @"uint32.=="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp eq i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint32.!="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp ne i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint32.>"(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp sgt i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint32.<"(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp slt i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint32.>="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp sge i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint32.<="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp sle i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
 define private i32 @"uint32.++"(i32* %this) {
 entry:
   %thisval = load i32, i32* %this, align 4
@@ -182,6 +308,48 @@ define private i64 @"uint64.="(i64* %this, i64 %param) {
 entry:
   store i64 %param, i64* %this, align 4
   ret i64 %param
+}
+
+define private i1 @"uint64.=="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp eq i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint64.!="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp ne i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint64.>"(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp sgt i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint64.<"(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp slt i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint64.>="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp sge i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"uint64.<="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp sle i64 %thisval, %param
+  ret i1 %cmptmp
 }
 
 define private i64 @"uint64.++"(i64* %this) {
@@ -234,6 +402,48 @@ entry:
   ret i8 %param
 }
 
+define private i1 @"int8.=="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp eq i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int8.!="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp ne i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int8.>"(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp ugt i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int8.<"(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp ult i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int8.>="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp uge i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int8.<="(i8* %this, i8 %param) {
+entry:
+  %thisval = load i8, i8* %this, align 1
+  %cmptmp = icmp ule i8 %thisval, %param
+  ret i1 %cmptmp
+}
+
 define private i8 @"int8.++"(i8* %this) {
 entry:
   %thisval = load i8, i8* %this, align 1
@@ -282,6 +492,48 @@ define private i16 @"int16.="(i16* %this, i16 %param) {
 entry:
   store i16 %param, i16* %this, align 2
   ret i16 %param
+}
+
+define private i1 @"int16.=="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp eq i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int16.!="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp ne i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int16.>"(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp ugt i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int16.<"(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp ult i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int16.>="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp uge i16 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int16.<="(i16* %this, i16 %param) {
+entry:
+  %thisval = load i16, i16* %this, align 2
+  %cmptmp = icmp ule i16 %thisval, %param
+  ret i1 %cmptmp
 }
 
 define private i16 @"int16.++"(i16* %this) {
@@ -334,6 +586,48 @@ entry:
   ret i32 %param
 }
 
+define private i1 @"int32.=="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp eq i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int32.!="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp ne i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int32.>"(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp ugt i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int32.<"(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp ult i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int32.>="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp uge i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int32.<="(i32* %this, i32 %param) {
+entry:
+  %thisval = load i32, i32* %this, align 4
+  %cmptmp = icmp ule i32 %thisval, %param
+  ret i1 %cmptmp
+}
+
 define private i32 @"int32.++"(i32* %this) {
 entry:
   %thisval = load i32, i32* %this, align 4
@@ -384,6 +678,48 @@ entry:
   ret i64 %param
 }
 
+define private i1 @"int64.=="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp eq i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int64.!="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp ne i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int64.>"(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp ugt i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int64.<"(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp ult i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int64.>="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp uge i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
+define private i1 @"int64.<="(i64* %this, i64 %param) {
+entry:
+  %thisval = load i64, i64* %this, align 4
+  %cmptmp = icmp ule i64 %thisval, %param
+  ret i1 %cmptmp
+}
+
 define private i64 @"int64.++"(i64* %this) {
 entry:
   %thisval = load i64, i64* %this, align 4
@@ -400,9 +736,9 @@ entry:
   ret i64 %dectmp
 }
 
-define i32 @main() {
+define i32 @main(i32 %argc) {
 entry:
-  %0 = call i32 @foo(i32 5)
+  %0 = call i32 @factorial(i32 %argc)
   %y = alloca i32, align 4
   %1 = call i32 @"uint32.="(i32* nonnull %y, i32 %0)
   %2 = call i32 @"uint32.++"(i32* nonnull %y)
@@ -410,10 +746,19 @@ entry:
   ret i32 %y.val
 }
 
-define private i32 @foo(i32 %var) {
+define private i32 @factorial(i32 %var) {
 entry:
   %var1 = alloca i32, align 4
   store i32 %var, i32* %var1, align 4
-  %0 = call i32 @"uint32.+"(i32* nonnull %var1, i32 5)
-  ret i32 %0
+  %0 = call i1 @"uint32.=="(i32* nonnull %var1, i32 0)
+  br i1 %0, label %then, label %ifcont
+
+then:                                             ; preds = %entry
+  ret i32 1
+
+ifcont:                                           ; preds = %entry
+  %1 = call i32 @uint32.-(i32* nonnull %var1, i32 1)
+  %2 = call i32 @factorial(i32 %1)
+  %3 = call i32 @"uint32.*"(i32* nonnull %var1, i32 %2)
+  ret i32 %3
 }
