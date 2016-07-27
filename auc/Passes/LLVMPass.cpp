@@ -51,6 +51,8 @@ void LLVMPass::addScalarMethods() {
                 intMethod->runPass(*this);
                 onlyInsertDeclarations = false;
                 intMethod->runPass(*this);
+                intMethod->getLLVMFunction()->addFnAttr(
+                    llvm::Attribute::AlwaysInline);
                 llvm::Value* thisPtr =
                     intMethod->getParameters()[0]->getAllocaInst();
                 llvm::Value* paramPtr =
@@ -130,6 +132,8 @@ void LLVMPass::addScalarMethods() {
                 intMethod->runPass(*this);
                 onlyInsertDeclarations = false;
                 intMethod->runPass(*this);
+                intMethod->getLLVMFunction()->addFnAttr(
+                    llvm::Attribute::AlwaysInline);
                 llvm::Value* thisPtr =
                     intMethod->getParameters()[0]->getAllocaInst();
                 llvm::Value* thisValue = irBuilder.CreateLoad(

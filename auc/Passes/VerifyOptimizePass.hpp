@@ -18,7 +18,6 @@ namespace Passes {
 class VerifyOptimizePass : public AST::ASTPass {
 
 protected:
-    std::unique_ptr<llvm::legacy::FunctionPassManager> functionPassMgr;
     std::unique_ptr<llvm::legacy::PassManager> modulePassMgr;
 
 public:

@@ -16,6 +16,8 @@
 
 #include <llvm/IR/Verifier.h>
 #include <llvm/Transforms/Scalar.h>
+#include <llvm/Transforms/IPO.h>
+#include <llvm/Transforms/IPO/PassManagerBuilder.h>
 
 #include <clang/Basic/Version.h>
 
@@ -24,35 +26,18 @@ using namespace Passes;
 
 VerifyOptimizePass::VerifyOptimizePass(AbstractSyntaxTree& ast)
     : ASTPass(ast) {
-    functionPassMgr = llvm::make_unique<llvm::legacy::FunctionPassManager>(
-        &ast.getLLVMModule());
     modulePassMgr = llvm::make_unique<llvm::legacy::PassManager>();
     /// \todo Add other pass managers: loop, basic block, call graph ?
 
-    for (llvm::legacy::PassManagerBase* passMgr
-        : {(llvm::legacy::PassManagerBase*) functionPassMgr.get(),
-        (llvm::legacy::PassManagerBase*) modulePassMgr.get()}) {
-
-        passMgr->add(llvm::createVerifierPass());
-
-        // Do simple "peephole" optimizations and bit-twiddling optzns.
-        passMgr->add(llvm::createInstructionCombiningPass());
-        // Reassociate expressions.
-        passMgr->add(llvm::createReassociatePass());
-        // Eliminate Common SubExpressions.
-        passMgr->add(llvm::createGVNPass());
-        // Simplify the control flow graph (deleting unreachable blocks, etc).
-        passMgr->add(llvm::createCFGSimplificationPass());
-    }
+    llvm::PassManagerBuilder passMgrBuilder;
+    passMgrBuilder.OptLevel = 3;
+    passMgrBuilder.Inliner = llvm::createFunctionInliningPass();
+    passMgrBuilder.populateModulePassManager(*modulePassMgr);
+    /// \todo Per-function optimization.
+    /// See http://lists.llvm.org/pipermail/llvm-dev/2013-April/061496.html
 }
 
 void VerifyOptimizePass::run() {
-    functionPassMgr->doInitialization();
-    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
-        decl->runPass(*this);
-    }
-    functionPassMgr->doFinalization();
-
     modulePassMgr->run(ast.getLLVMModule());
 }
 
@@ -62,7 +47,6 @@ void VerifyOptimizePass::runOn(FunctionDef& func) {
         parameter->runPass(*this);
     }
     func.getBody().runPass(*this);
-    functionPassMgr->run(*func.getLLVMFunction());
 }
 
 void VerifyOptimizePass::runOn(MethodDef& func) {
@@ -72,7 +56,6 @@ void VerifyOptimizePass::runOn(MethodDef& func) {
         parameter->runPass(*this);
     }
     func.getBody().runPass(*this);
-    functionPassMgr->run(*func.getLLVMFunction());
 }
 
 void VerifyOptimizePass::runOn(ReturnStmt& stmt) {
