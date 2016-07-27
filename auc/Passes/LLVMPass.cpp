@@ -88,20 +88,6 @@ void LLVMPass::addScalarMethods() {
                         irBuilder.CreateICmpNE(thisValue, paramValue, "cmptmp");
                 } else if (isSigned) {
                     if (op == ">") {
-                        retValue = irBuilder.CreateICmpUGT(
-                            thisValue, paramValue, "cmptmp");
-                    } else if (op == "<") {
-                        retValue = irBuilder.CreateICmpULT(
-                            thisValue, paramValue, "cmptmp");
-                    } else if (op == ">=") {
-                        retValue = irBuilder.CreateICmpUGE(
-                            thisValue, paramValue, "cmptmp");
-                    } else if (op == "<=") {
-                        retValue = irBuilder.CreateICmpULE(
-                            thisValue, paramValue, "cmptmp");
-                    }
-                } else {
-                    if (op == ">") {
                         retValue = irBuilder.CreateICmpSGT(
                             thisValue, paramValue, "cmptmp");
                     } else if (op == "<") {
@@ -112,6 +98,20 @@ void LLVMPass::addScalarMethods() {
                             thisValue, paramValue, "cmptmp");
                     } else if (op == "<=") {
                         retValue = irBuilder.CreateICmpSLE(
+                            thisValue, paramValue, "cmptmp");
+                    }
+                } else {
+                    if (op == ">") {
+                        retValue = irBuilder.CreateICmpUGT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<") {
+                        retValue = irBuilder.CreateICmpULT(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == ">=") {
+                        retValue = irBuilder.CreateICmpUGE(
+                            thisValue, paramValue, "cmptmp");
+                    } else if (op == "<=") {
+                        retValue = irBuilder.CreateICmpULE(
                             thisValue, paramValue, "cmptmp");
                     }
                 }
