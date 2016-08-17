@@ -75,6 +75,7 @@ public:
     ASTList<Expression>& getArgs();
     MethodDef* getMethodDef();
     void setMethodDef(MethodDef* functionDef);
+    bool isOperator();
 
 }; // class MethodCallExpr
 

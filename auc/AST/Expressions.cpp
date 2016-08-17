@@ -92,6 +92,13 @@ void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
     this->methodDef = methodDef;
 }
 
+bool MethodCallExpr::isOperator() {
+    char first = this->name.at(0);
+    return (this->args.size() > 1) ||
+        ! (first == '_' || (first >= 'A' && first <= 'Z')
+        || (first >= 'a' && first <= 'z'));
+}
+
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, uint8_t numValue,
     Block* parentBlock, CodeLocation codeLocation)

@@ -28,20 +28,17 @@ std::ostream& PrintPass::indent() {
 }
 
 void PrintPass::run() {
-    stream << "AbstractSyntaxTree {";
-    indentWidth++;
+    stream << "// Aurum to C transpiled code\n#define uint32 int\n";
     for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
         stream << "\n";
         indent();
         decl->runPass(*this);
         stream << "\n";
     }
-    indentWidth--;
-    indent() << "}\n";
+    indent() << "\n// End of C code\n";
 }
 
 void PrintPass::runOn(FunctionDef& func) {
-    stream << "FunctionDef[";
     func.getReturnTypeStmt()->runPass(*this);
     stream << " " << func.getName() << "(";
     bool first = true;
@@ -52,12 +49,11 @@ void PrintPass::runOn(FunctionDef& func) {
         first = false;
         innerStmt->runPass(*this);
     }
-    stream << ")] ";
+    stream << ") ";
     func.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(MethodDef& func) {
-    stream << "MethodDef[";
     func.getReturnTypeStmt()->runPass(*this);
     stream << " ";
     func.getObjectTypeStmt()->runPass(*this);
@@ -70,28 +66,24 @@ void PrintPass::runOn(MethodDef& func) {
         first = false;
         innerStmt->runPass(*this);
     }
-    stream << ")] ";
+    stream << ") ";
     func.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(ReturnStmt& stmt) {
-    stream << "ReturnStmt[";
+    stream << "return ";
     stmt.getValue()->runPass(*this);
-    stream << "]";
 }
 
 void PrintPass::runOn(VariableDefStmt& stmt) {
-    stream << "VariableDefStmt[";
     stmt.getTypeStmt()->runPass(*this);
-    stream << " " << stmt.getName() << "]";
+    stream << " " << stmt.getName();
 }
 
 void PrintPass::runOn(VariableDefAssignStmt& stmt) {
-    stream << "VariableDefAssignStmt[";
     stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName() << " = ";
     stmt.getValue()->runPass(*this);
-    stream << "]";
 }
 
 void PrintPass::runOn(Block& stmt) {
@@ -100,32 +92,32 @@ void PrintPass::runOn(Block& stmt) {
     for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
         indent();
         innerStmt->runPass(*this);
-        stream << "\n";
+        stream << ";\n";
     }
     indentWidth--;
     indent() << "}";
 }
 
 void PrintPass::runOn(IfStmt& stmt) {
-    stream << "IfStmt[";
+    stream << "if (";
     stmt.getCondition()->runPass(*this);
-    stream << "] ";
+    stream << ") ";
     stmt.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(WhileLoop& stmt) {
-    stream << "WhileLoop[";
+    stream << "while (";
     stmt.getCondition()->runPass(*this);
-    stream << "] ";
+    stream << ") ";
     stmt.getBody().runPass(*this);
 }
 
 void PrintPass::runOn(TypeStmt& stmt) {
-    stream << "TypeStmt[" << stmt.getName() << "]";
+    stream << stmt.getName();
 }
 
 void PrintPass::runOn(FunctionCallExpr& stmt) {
-    stream << "FunctionCallExpr[" << stmt.getName() << "(";
+    stream << stmt.getName() << "(";
     bool first = true;
     for (ASTPtr<Expression> expr : stmt.getArgs()) {
         if (!first) {
@@ -134,13 +126,23 @@ void PrintPass::runOn(FunctionCallExpr& stmt) {
         first = false;
         expr->runPass(*this);
     }
-    stream << ")]";
+    stream << ")";
 }
 
 void PrintPass::runOn(MethodCallExpr& stmt) {
-    stream << "MethodCallExpr[";
-    stmt.getObjectExpr()->runPass(*this);
-    stream << "." << stmt.getName() << "(";
+    if (stmt.isOperator()) {
+        if (stmt.getArgs().size() == 1) {
+            stream << "(";
+            stmt.getObjectExpr()->runPass(*this);
+            stream << " " << stmt.getName() << " ";
+        } else {
+            stmt.getObjectExpr()->runPass(*this);
+            stream << stmt.getName();
+        }
+    } else {
+        stmt.getObjectExpr()->runPass(*this);
+        stream << "." << stmt.getName() << "(";
+    }
     bool first = true;
     for (ASTPtr<Expression> expr : stmt.getArgs()) {
         if (!first) {
@@ -149,13 +151,15 @@ void PrintPass::runOn(MethodCallExpr& stmt) {
         first = false;
         expr->runPass(*this);
     }
-    stream << ")]";
+    if (!stmt.isOperator() || stmt.getArgs().size() == 1) {
+        stream << ")";
+    }
 }
 
 void PrintPass::runOn(ConstIntExpr& stmt) {
-    stream << "ConstIntExpr[" << stmt.getValueStr() << "]";
+    stream << stmt.getValueStr();
 }
 
 void PrintPass::runOn(VariableExpr& stmt) {
-    stream << "VariableExpr[" << stmt.getName() << "]";
+    stream << stmt.getName();
 }

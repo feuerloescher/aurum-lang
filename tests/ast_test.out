@@ -1,16 +1,19 @@
-AbstractSyntaxTree {
-  FunctionDef[TypeStmt[uint32] main(VariableDefStmt[TypeStmt[uint32] argc])] {
-    VariableDefAssignStmt[TypeStmt[uint32] x = FunctionCallExpr[factorial(VariableExpr[argc])]]
-    VariableDefStmt[TypeStmt[uint32] y]
-    MethodCallExpr[VariableExpr[y].=(VariableExpr[x])]
-    MethodCallExpr[VariableExpr[y].++()]
-    ReturnStmt[VariableExpr[y]]
-  }
+// Aurum to C transpiled code
+#define uint32 int
 
-  FunctionDef[TypeStmt[uint32] factorial(VariableDefStmt[TypeStmt[uint32] var])] {
-    IfStmt[MethodCallExpr[VariableExpr[var].==(ConstIntExpr[0])]] {
-      ReturnStmt[ConstIntExpr[1]]
-    }
-    ReturnStmt[MethodCallExpr[VariableExpr[var].*(FunctionCallExpr[factorial(MethodCallExpr[VariableExpr[var].-(ConstIntExpr[1])])])]]
-  }
+uint32 main(uint32 argc) {
+  uint32 x = factorial(argc);
+  uint32 y;
+  (y = x);
+  y++;
+  return y;
 }
+
+uint32 factorial(uint32 var) {
+  if ((var == 0)) {
+    return 1;
+  };
+  return (var * factorial((var - 1)));
+}
+
+// End of C code
