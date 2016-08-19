@@ -4,7 +4,14 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
- #include <string>
+#include <string>
+#include "AST/AbstractSyntaxTree.hpp"
+#include "AST/ScalarTypes.hpp"
+#include "AST/Declarations.hpp"
+#include "AST/Statements.hpp"
+#include "AST/Blocks.hpp"
+#include "AST/TypeStmt.hpp"
+#include "AST/Expressions.hpp"
 
 //TODO: Resolve LL(1) conflicts
 COMPILER Aurum
@@ -32,7 +39,7 @@ TOKENS
     |           "0b" bindigit {bindigit}
     |           "0" octdigit {octdigit}
     |           ["+" | "-"] digit {digit} ["l" | "L"].
-    float ["+" | "-"] digit {digit} ["." digit {digit}] [("e" | "E") ["+" | "-"] digit {digit}] ["f" | "F" | "d" | "D"].
+    //float = ["+" | "-"] digit {digit} ["." digit {digit}] [("e" | "E") ["+" | "-"] digit {digit}] ["f" | "F" | "d" | "D"].
     string = strdelim {char} strdelim.
     //genericspec = letter | "?".
     //funcident = functionchar {functionchar}.
@@ -42,67 +49,137 @@ COMMENTS FROM "/*" TO "*/"
 
 IGNORE '\t' + '\r' + '\n' + '\f'
 
+/*------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------*/
+/*------------------------------------------------------------------------*/
+
 PRODUCTIONS
 
-Aurum   (. ast = new AST(); ASTElement elem; .)
-=   { DeclarativeExpression<elem> (. ast->getDeclarations().push_back(expr); .)
+Aurum   (. ast = new AST(); Declaration decl; .)
+=   { DeclarativeExpression<decl> (. ast->getDeclarations().push_back(decl); .)
     }.
 
-DeclarativeExpression<Expression &expr> = (. Fun .)
-    FunctionDeclaration<funcDecl>
-|   FunctionDefinition<funcDef>
-|   ConstantDefinition<constDed>.
+/*------------------------------------------------------------------------*/
+
+DeclarativeExpression<Declaration &decl> = (. FunctionDef funcDecl, funcDef; .)
+    FunctionDeclaration<funcDecl> (. decl = funcDecl; .)
+|   FunctionDefinition<funcDef> (. decl = funcDef; .).
+//|   ConstantDefinition<constDef>
 //|   ClassDefinition   TODO: Class definition
 //|   ImportDefinition  TODO: Import definition
 //|   TypeDefinition    TODO: Type definition
 //|   ExportBlock       TODO: Export definition
 
-FunctionDeclaration = FunctionHeader ["{" "}"] ";".
+/*------------------------------------------------------------------------*/
 
-FunctionDefinition = FunctionHeader "{" {ImperativeExpression} "}".
-FunctionHeader = {FunctionModifier} Type [OperatorDeclaration] ident "(" [ParameterModifier] [ Type {"," Type}] ")".
+FunctionDeclaration<FunctionDef &func> = (. FunctionDef func1; .)
+FunctionHeader<func1> (. func = func1; .)
+["{" "}"] ";".
 
-FunctionModifier =
-    "export"
-|   "const"
-|   "hidden".
+/*------------------------------------------------------------------------*/
+
+FunctionDefinition<FunctionDef &func> = (. FunctionDef func1; Statement stmt; Block block;.)
+FunctionHeader<func1> (. func = func1; block = &func->getBody(); .)
+"{"
+{ImperativeExpression<block, stmt>} (. &func->getBody().push_back(stmt); .)
+"}".
+
+/*------------------------------------------------------------------------*/
+
+FunctionHeader<FunctionDef &func> = (. wchar_t* id, name1, name2, name3; .)
+//{FunctionModifier}
+Type<name1> (. if(name1 != "int") { SemError("Only integers are supported"); } .)
+//[OperatorDeclaration]
+ident (. id = t.val; .)
+"("
+//[ParameterModifier]
+[ Type<name2> (. if(name2 != "int") { SemError("Only integers are supported"); } .)
+ident (.    func = make_shared<FunctionDef>(make_shared<TypeStmt>("uint32", CodeLocation::none), id, CodeLocation::none);
+            auto variable = make_shared<VariableDefStmt>(make_shared<TypeStmt>("uint32", CodeLocation::none), t.val, &func->getBody(), CodeLocation::none);
+            func->getParameters().push_back(variable); .)
+{","
+Type<name3> (. if(name3 != "int") { SemError("Only integers are supported"); } .)
+ident (.    auto variable2 = make_shared<VariableDefStmt>(make_shared<TypeStmt>("uint32", CodeLocation::none), t.val, &func->getBody(), CodeLocation::none);
+            func->getParameters().push_back(variable2); .)
+}] ")".
+
+/*------------------------------------------------------------------------*/
+
+//FunctionModifier =
+//    "export"
+//|   "const"
+//|   "hidden".
+
+/*------------------------------------------------------------------------*/
 
 //TODO: Array support
-Type = ident ["[" GenericType "]"].
+Type<wchar_t* &id> = ident (. id = t.val; .).
+//["[" GenericType "]"]
 
-GenericType = GenericTypeSpecifier {"," GenericTypeSpecifier}.
+/*------------------------------------------------------------------------*/
 
-GenericTypeSpecifier = ident  [GenericModifier Type].
+//GenericType = GenericTypeSpecifier {"," GenericTypeSpecifier}. //TODO: generics code generation
 
-GenericModifier =
-    "is"
-|   "has".
+//GenericTypeSpecifier = ident  [GenericModifier Type].
 
-OperatorDeclaration = "operator" "(" integer ")" .
+//GenericModifier =
+//    "is"
+//|   "has".
 
-ParameterModifier = "\\". //TODO: Parameter Modifier Definition
+/*------------------------------------------------------------------------*/
 
-ImperativeExpression =
-    Block
-|   Return
-|   VariableDefinition
-|   VariableDefinitionAssignment
-|   FunctionCall
-|   AssignOperator
-|   UnaryOperator.
+//OperatorDeclaration = "operator" "(" integer ")" . //TODO: operator code generation
 
-Block =
-    IfCondition
-|   WhileLoop.
+/*------------------------------------------------------------------------*/
+
+//ParameterModifier = "\\". //TODO: Parameter Modifier Definition
+
+/*------------------------------------------------------------------------*/
+
+ImperativeExpression<Block block, Statement &stmt> = (. Statement stmt1, stmt2, stmt3, stmt4, stmt5, stmt6, stmt7; .)
+    Block<block, stmt1> (. stmt = stmt1; .)
+|   Return<block, stmt2> (. stmt = stmt2; .)
+|   VariableDefinition<block, stmt3> (. stmt = stmt3; .)
+|   VariableDefinitionAssignment<block, stmt4> (. stmt = stmt4; .)
+|   FunctionCall<block, stmt5> (. stmt = stmt5; .)
+|   AssignOperator<block, stmt6> (. stmt = stmt6; .)
+|   UnaryOperator<block, stmt7> (. stmt = stmt7; .).
+
+/*------------------------------------------------------------------------*/
+
+Block<Block block, Statement &stmt> =
+    IfCondition<block, stmt1> (. stmt = stmt1; .).
+//|   WhileLoop    TODO: While loop code generation
 //|   ForLoop       TODO: For loop definition
 //|   SimpleBlock   TODO: Simple block definition
 //|   UnsafeBlock   TODO: Unsafe block definition
 
-IfCondition =   "if" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}")
-                ["else" "if" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}")]
-                ["else" (ImperativeExpression | "{" {ImperativeExpression} "}")].
+/*------------------------------------------------------------------------*/
 
-WhileLoop = "while" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}").
+IfCondition<Block block, IfStmt &stmt> = (. Statement expr1, expr2, expr3, expr4, expr5, expr6, expr7, expr8; .)
+"if" "("
+ValueExpression<block, expr1> (. stmt = make_shared<IfStmt>(expr1, block, CodeLocation::none); .)
+")"
+(ImperativeExpression<block, expr2> (. stmt->getBody().push_back(expr2); .)
+| "{"
+{ImperativeExpression<block, expr3>} (. stmt->getBody().push_back(expr3); .)
+"}").
+//["else" "if" "(" //TODO: Add else code generation
+//ValueExpression<block, expr4>
+//")" (
+//ImperativeExpression<block, expr5>
+//| "{" {
+//ImperativeExpression<block, expr6>
+//} "}")]
+//["else" (
+//ImperativeExpression<block, expr7>
+//| "{" {
+//ImperativeExpression<block, expr8>
+//} "}")]
+
+/*------------------------------------------------------------------------*/
+
+//WhileLoop = "while" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}").
 
 /*------------------------------------------------------------------------*/
 
@@ -132,7 +209,7 @@ ValueExpression<block, expr1> (.    expr = make_shared<MethodCallExpr>(make_shar
 /*------------------------------------------------------------------------*/
 
 FunctionCall<Block block, Expression &expr> = (. Expression expr1; .)
-InlineFunctionCall (. expr = expr1.)
+InlineFunctionCall<block, expr1> (. expr = expr1.)
 ";".
 
 /*------------------------------------------------------------------------*/
@@ -166,7 +243,7 @@ ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, id, b
 ValueExpression<Block block, Expression &expr> = (. Expression expr1; Expression expr2; .)
 ident (. id = t.val; .)
 | integer (. expr = make_shared<ConstIntExpr>(id, stoi(t.val), block, CodeLocation::none); .)
-| float (. SemErr("Only integer types are implemented"); .)
+//| float (. SemErr("Only integer types are implemented"); .)
 | string (. SemErr("Only integer types are implemented"); .)
 | InlineFunctionCall<block, expr1> (. expr = expr1; .)
 | "("
@@ -176,19 +253,19 @@ ident (. id = t.val; .)
   ")"
 | ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
   ident
-  ValueExpression<block, expr2>. (. expr->getArgs().push_back(expr2); .)
+  ValueExpression<block, expr2> (. expr->getArgs().push_back(expr2); .).
 
 /*------------------------------------------------------------------------*/
 
 //TODO: Implement const, float, string
-ConstantDefinition<Block block, VariableDefAssignStmt &stmt> =
-"const"
- ident (. if(t.val != "int") { SemErr("Only integer types are implemented"); } .)
- ident (. stmt = make_shared<MethodCallExpr>(make_shared<VariableExpr>(t.val, &block, CodeLocation::none), "=", &block, CodeLocation::none);.)
- "="
- integer (. stmt->getArgs().push_back(make_shared<ConstIntExpr>(t.val, stoi(t.val), block, CodeLocation::none)); .)
- | float (. SemErr("Only integer types are implemented"); .)
- | string (. SemErr("Only integer types are implemented"); .)
- ";".
+//ConstantDefinition<Block block, VariableDefAssignStmt &stmt> =
+//"const"
+// ident (. if(t.val != "int") { SemErr("Only integer types are implemented"); } .)
+// ident (. stmt = make_shared<MethodCallExpr>(make_shared<VariableExpr>(t.val, &block, CodeLocation::none), "=", &block, CodeLocation::none);.)
+// "="
+// integer (. stmt->getArgs().push_back(make_shared<ConstIntExpr>(t.val, stoi(t.val), block, CodeLocation::none)); .)
+// //| float (. SemErr("Only integer types are implemented"); .)
+// | string (. SemErr("Only integer types are implemented"); .)
+// ";".
 
 END Aurum.
