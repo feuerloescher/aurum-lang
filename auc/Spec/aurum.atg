@@ -28,13 +28,15 @@ CHARACTERS
     bindigit = '0'..'1'.
     idstart = letter + '_'.
     opstart = '#'.
+    opletter = ANY - letter - digit - '(' - ')' - opstart - idstart - '"' - '\''.
     char = ANY.
     strdelim = '"'.
 
 //TODO: Float and String support
 TOKENS
     ident = idstart {letter}.
-    opfunc = opstart {char}.
+    operator = opstart {char}
+    | opletter { opletter }.
     integer =   "0x" hexdigit {hexdigit}
     |           "0b" bindigit {bindigit}
     |           "0" octdigit {octdigit}
@@ -247,13 +249,11 @@ ident (. id = t.val; .)
 | string (. SemErr("Only integer types are implemented"); .)
 | InlineFunctionCall<block, expr1> (. expr = expr1; .)
 | "("
-    ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
-    ident
-    ValueExpression<block, expr2> (. expr->getArgs().push_back(expr2); .)
-  ")"
-| ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
-  ident
-  ValueExpression<block, expr2> (. expr->getArgs().push_back(expr2); .).
+    ValueExpression<block, expr1> (. expr = expr1; .)
+  ")".
+/*| ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
+  operator
+  ValueExpression<block, expr2> (. expr->getArgs().push_back(expr2); .).*/
 
 /*------------------------------------------------------------------------*/
 
