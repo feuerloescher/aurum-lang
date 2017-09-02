@@ -1,1 +1,6 @@
-build/
+build
+cmake-build-debug
+cmake-build-release
+*.png
+*.old
+.idea
