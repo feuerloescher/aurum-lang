@@ -29,10 +29,8 @@ add_definitions(${LLVM_DEFINITIONS})
 # that we wish to use
 llvm_map_components_to_libnames(llvm_libs core passes)
 
-add_subdirectory(coco-r-cpp)
-add_subdirectory(examples)
-
+add_subdirectory(src)
 set(CMAKE_CXX_FLAGS_DEBUG
     "${CMAKE_CXX_FLAGS_DEBUG} -fprofile-arcs -ftest-coverage")
-add_subdirectory(src)
 add_subdirectory(tests)
+add_subdirectory(examples)
