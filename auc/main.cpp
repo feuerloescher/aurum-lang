@@ -6,6 +6,7 @@
 
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/Expressions.hpp"
+#include "Parser/Parser.hpp"
 
 #include <iostream>
 

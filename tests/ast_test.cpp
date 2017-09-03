@@ -15,13 +15,10 @@
 #include "Passes/StdLibPass.hpp"
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
-#include "Passes/LLVMPass.hpp"
 #include "Passes/VerifyOptimizePass.hpp"
-#include "Passes/IRExportPass.hpp"
 
 #include <fstream>
 #include <iostream>
-#include <llvm/Support/raw_ostream.h>
 
 using namespace AST;
 using namespace Passes;
@@ -127,18 +124,6 @@ int main() {
 
     TypePass typePass(ast);
     typePass.run();
-
-    LLVMPass llvmPass(ast);
-    llvmPass.run();
-
-    VerifyOptimizePass verOptPass(ast);
-    verOptPass.run();
-
-    std::error_code ec;
-    llvm::raw_fd_ostream out("ast_test.bc", ec, (llvm::sys::fs::OpenFlags) 0);
-    IRExportPass exportPass(ast, out);
-    exportPass.run();
-    out.close();
 
     return 0;
 }

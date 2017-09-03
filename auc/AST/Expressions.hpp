@@ -11,7 +11,6 @@
 #include "Statements.hpp"
 #include "CodeLocation.hpp"
 
-#include <llvm/IR/Value.h>
 #include <string>
 
 namespace AST {
@@ -20,7 +19,6 @@ class Expression : public Statement {
 
 protected:
     ASTPtr<Type> type;
-    llvm::Value* llvmValue;
 
 public:
     Expression(Block* parentBlock, CodeLocation codeLocation);
@@ -28,8 +26,6 @@ public:
     virtual void runPass(ASTPass& pass) = 0;
     ASTPtr<Type> getType();
     void setType(ASTPtr<Type> type);
-    llvm::Value* getLLVMValue();
-    void setLLVMValue(llvm::Value* llvmValue);
 
 }; // class Expression
 

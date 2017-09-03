@@ -8,7 +8,7 @@
 
 using namespace AST;
 
-Type::Type(std::string name) : name(name), llvmType(nullptr) {
+Type::Type(std::string name) : name(name) {
 }
 
 std::string Type::getName() {
@@ -17,8 +17,4 @@ std::string Type::getName() {
 
 ASTMap<MethodDef*>& Type::getMethodDefs() {
     return methodDefs;
-}
-
-llvm::Type* Type::getLLVMType() {
-    return llvmType;
 }

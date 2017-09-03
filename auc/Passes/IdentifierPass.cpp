@@ -4,6 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
+#include <cassert>
 #include "IdentifierPass.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/Declarations.hpp"

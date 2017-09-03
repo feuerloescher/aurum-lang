@@ -6,35 +6,33 @@ cmake_minimum_required(VERSION 2.8)
 project(auc)
 
 add_subdirectory(coco-r-cpp)
-set(GENERATED_FILES
+set(GENERATED_SOURCES
     "${PROJECT_SOURCE_DIR}/Parser/Parser.hpp"
     "${PROJECT_SOURCE_DIR}/Parser/Parser.cpp"
     "${PROJECT_SOURCE_DIR}/Parser/Scanner.hpp"
     "${PROJECT_SOURCE_DIR}/Parser/Scanner.cpp"
     )
-add_custom_command(OUTPUT ${GENERATED_FILES}
+add_custom_command(OUTPUT ${GENERATED_SOURCES}
     COMMAND coco-cpp -frames ${PROJECT_SOURCE_DIR}/coco-r-cpp -o ${PROJECT_SOURCE_DIR}/Parser/ -lines ${PROJECT_SOURCE_DIR}/Parser/aurum.atg
-    COMMAND mv ${PROJECT_SOURCE_DIR}/Parser/Parser.{h,hpp}
-    COMMAND mv ${PROJECT_SOURCE_DIR}/Parser/Scanner.{h,hpp}
     DEPENDS coco-cpp
     )
 
 include_directories("${PROJECT_SOURCE_DIR}")
 
-file(GLOB_RECURSE SOURCE_FILES
-    "${PROJECT_SOURCE_DIR}/*.hpp"
-    "${PROJECT_SOURCE_DIR}/*.cpp"
+file(GLOB_RECURSE LIB_SOURCES
+    "${PROJECT_SOURCE_DIR}/AST/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Parser/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Passes/*.cpp"
     )
 
 set(MAIN_SRC "${PROJECT_SOURCE_DIR}/main.cpp")
 
-list(REMOVE_ITEM SOURCE_FILES ${MAIN_SRC})
-list(APPEND SOURCE_FILES ${GENERATED_FILES})
+list(APPEND LIB_SOURCES ${GENERATED_SOURCES})
 
-add_library(auc_lib STATIC ${SOURCE_FILES})
+add_library(auc_lib STATIC ${LIB_SOURCES})
 
 add_executable(auc ${MAIN_SRC})
-target_link_libraries(auc auc_lib ${llvm_libs})
+target_link_libraries(auc auc_lib)
 
 find_package(Doxygen)
 if (DOXYGEN_FOUND)

@@ -10,7 +10,6 @@
 #include "common.hpp"
 #include "ASTMap.hpp"
 
-#include <llvm/IR/Type.h>
 #include <string>
 
 namespace AST {
@@ -21,15 +20,12 @@ class Type {
 protected:
     std::string name;
     ASTMap<MethodDef*> methodDefs;
-    llvm::Type* llvmType;
 
 public:
     Type(std::string name);
 
     std::string getName();
     ASTMap<MethodDef*>& getMethodDefs();
-    llvm::Type* getLLVMType();
-    virtual void createLLVMType(llvm::LLVMContext& llvmContext) = 0;
 
 }; // class Type
 

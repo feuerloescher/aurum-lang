@@ -12,7 +12,7 @@
 using namespace AST;
 
 Expression::Expression(Block* parentBlock, CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation), llvmValue(nullptr) {
+    : Statement(parentBlock, codeLocation) {
 }
 
 ASTPtr<Type> Expression::getType() {
@@ -21,14 +21,6 @@ ASTPtr<Type> Expression::getType() {
 
 void Expression::setType(ASTPtr<Type> type) {
     this->type = type;
-}
-
-llvm::Value* Expression::getLLVMValue() {
-    return llvmValue;
-}
-
-void Expression::setLLVMValue(llvm::Value* llvmValue) {
-    this->llvmValue = llvmValue;
 }
 
 

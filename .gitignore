@@ -4,3 +4,7 @@ cmake-build-release
 *.png
 *.old
 .idea
+src/auc/Parser/Parser.hpp
+src/auc/Parser/Parser.cpp
+src/auc/Parser/Scanner.hpp
+src/auc/Parser/Scanner.cpp

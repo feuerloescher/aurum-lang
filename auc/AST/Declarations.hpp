@@ -11,8 +11,6 @@
 #include "Blocks.hpp"
 #include "ASTElement.hpp"
 
-#include <llvm/IR/Function.h>
-#include <llvm/IR/Type.h>
 #include <string>
 #include <vector>
 
@@ -25,8 +23,6 @@ protected:
     ASTPtr<TypeStmt> returnTypeStmt;
     ASTList<VariableDefStmt> parameters;
     Block body;
-    llvm::Function* llvmFunction;
-    std::vector<llvm::Type*> parameterLLVMTypes;
     bool exported;
 
 public:
@@ -39,9 +35,6 @@ public:
     ASTPtr<TypeStmt> getReturnTypeStmt();
     VariableDefStmtList& getParameters();
     Block& getBody();
-    llvm::Function* getLLVMFunction();
-    void setLLVMFunction(llvm::Function* llvmFunction);
-    std::vector<llvm::Type*>& getParameterLLVMTypes();
     bool getExported();
     void setExported(bool exported);
 

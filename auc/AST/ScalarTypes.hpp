@@ -10,7 +10,6 @@
 #include "common.hpp"
 #include "Type.hpp"
 
-#include <llvm/IR/LLVMContext.h>
 #include <string>
 
 namespace AST {
@@ -32,7 +31,6 @@ protected:
 public:
     IntType(std::string name, unsigned int width, bool isSigned);
 
-    virtual void createLLVMType(llvm::LLVMContext& llvmContext);
     bool getSigned();
 
 }; // class IntType

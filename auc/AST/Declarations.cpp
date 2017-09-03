@@ -14,7 +14,7 @@ using namespace AST;
 Declaration::Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
     CodeLocation codeLocation)
     : ASTElement(codeLocation), name(name), returnTypeStmt(returnTypeStmt),
-    body(nullptr, codeLocation), llvmFunction(nullptr), exported(false) {
+    body(nullptr, codeLocation), exported(false) {
 }
 
 std::string Declaration::getName() {
@@ -31,18 +31,6 @@ VariableDefStmtList& Declaration::getParameters() {
 
 Block& Declaration::getBody() {
     return body;
-}
-
-llvm::Function* Declaration::getLLVMFunction() {
-    return llvmFunction;
-}
-
-void Declaration::setLLVMFunction(llvm::Function* llvmFunction) {
-    this->llvmFunction = llvmFunction;
-}
-
-std::vector<llvm::Type*>& Declaration::getParameterLLVMTypes() {
-    return parameterLLVMTypes;
 }
 
 bool Declaration::getExported() {

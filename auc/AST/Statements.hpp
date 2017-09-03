@@ -10,7 +10,6 @@
 #include "common.hpp"
 #include "ASTElement.hpp"
 
-#include <llvm/IR/Instructions.h>
 #include <string>
 
 namespace AST {
@@ -50,7 +49,6 @@ class VariableDefStmt : public Statement {
 protected:
     ASTPtr<TypeStmt> typeStmt;
     std::string name;
-    llvm::AllocaInst* allocaInst;
 
 public:
     VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
@@ -59,8 +57,6 @@ public:
 
     std::string getName();
     ASTPtr<TypeStmt> getTypeStmt();
-    llvm::AllocaInst* getAllocaInst();
-    void setAllocaInst(llvm::AllocaInst* allocaInst);
 
 }; // class VariableDefStmt
 

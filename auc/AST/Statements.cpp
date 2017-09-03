@@ -34,8 +34,7 @@ ASTPtr<Expression> ReturnStmt::getValue() {
 
 VariableDefStmt::VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
     Block* parentBlock, CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation), typeStmt(typeStmt), name(name),
-    allocaInst(nullptr) {
+    : Statement(parentBlock, codeLocation), typeStmt(typeStmt), name(name) {
 }
 
 void VariableDefStmt::runPass(ASTPass& pass) {
@@ -48,14 +47,6 @@ std::string VariableDefStmt::getName() {
 
 ASTPtr<TypeStmt> VariableDefStmt::getTypeStmt() {
     return typeStmt;
-}
-
-llvm::AllocaInst* VariableDefStmt::getAllocaInst() {
-    return allocaInst;
-}
-
-void VariableDefStmt::setAllocaInst(llvm::AllocaInst* allocaInst) {
-    this->allocaInst = allocaInst;
 }
 
 

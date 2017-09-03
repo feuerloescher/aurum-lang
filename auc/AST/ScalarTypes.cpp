@@ -5,7 +5,6 @@
  */
 
 #include "ScalarTypes.hpp"
-#include <llvm/IR/DerivedTypes.h>
 
 using namespace AST;
 
@@ -15,10 +14,6 @@ ScalarType::ScalarType(std::string name)
 
 IntType::IntType(std::string name, unsigned int width, bool isSigned)
     : ScalarType(name), width(width), isSigned(isSigned) {
-}
-
-void IntType::createLLVMType(llvm::LLVMContext& llvmContext) {
-    llvmType = llvm::IntegerType::get(llvmContext, width);
 }
 
 bool IntType::getSigned() {

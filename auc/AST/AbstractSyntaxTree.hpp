@@ -11,10 +11,6 @@
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
 
-#include <llvm/IR/IRBuilder.h>
-#include <llvm/IR/LLVMContext.h>
-#include <llvm/IR/Module.h>
-
 namespace AST {
 
 class AbstractSyntaxTree {
@@ -25,10 +21,6 @@ protected:
     ASTMap<ASTPtr<Type>> types;
     ASTMap<ASTPtr<MethodDef>> stdLibMethodDefs;
 
-    llvm::LLVMContext llvmContext;
-    llvm::IRBuilder<> irBuilder;
-    std::unique_ptr<llvm::Module> llvmModule;
-
 
 public:
     AbstractSyntaxTree();
@@ -37,9 +29,6 @@ public:
     ASTMap<FunctionDef*>& getFunctionDefs();
     ASTMap<ASTPtr<Type>>& getTypes();
     ASTMap<ASTPtr<MethodDef>>& getStdLibMethodDefs();
-    llvm::LLVMContext& getLLVMContext();
-    llvm::IRBuilder<>& getIRBuilder();
-    llvm::Module& getLLVMModule();
 
 }; // class AbstractSyntaxTree
 
