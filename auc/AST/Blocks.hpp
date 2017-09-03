@@ -21,12 +21,13 @@ protected:
     ASTMap<VariableDefStmt*> variables;
 
 public:
-    Block(Block* parentBlock, CodeLocation codeLocation);
+    Block(CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
     StatementList& getStatements();
-    void push_back(ASTPtr<Statement> statement);
+
+    void push_back(StatementPtr statement);
 
     ASTMap<VariableDefStmt*>& getVariables();
 
@@ -36,16 +37,17 @@ public:
 class IfStmt : public Statement {
 
 protected:
-    ASTPtr<Expression> condition;
-    Block body;
+    ExpressionPtr condition;
+    BlockPtr body;
 
 public:
-    IfStmt(ASTPtr<Expression> condition, Block* parentBlock,
-        CodeLocation codeLocation);
+    IfStmt(ExpressionPtr condition, BlockPtr body, CodeLocation codeLocation);
+
     virtual void runPass(ASTPass& pass);
 
-    ASTPtr<Expression> getCondition();
-    Block& getBody();
+    ExpressionPtr getCondition();
+
+    BlockPtr& getBody();
 
 }; // class IfStmt
 
@@ -53,15 +55,17 @@ public:
 class WhileLoop : public Statement {
 
 protected:
-    ASTPtr<Expression> condition;
+    ExpressionPtr condition;
     Block body;
 
 public:
-    WhileLoop(ASTPtr<Expression> condition, Block* parentBlock,
-        CodeLocation codeLocation);
+    WhileLoop(ExpressionPtr condition,
+            CodeLocation codeLocation);
+
     virtual void runPass(ASTPass& pass);
 
-    ASTPtr<Expression> getCondition();
+    ExpressionPtr getCondition();
+
     Block& getBody();
 
 }; // class WhileLoop

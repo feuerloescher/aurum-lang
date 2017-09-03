@@ -7,65 +7,77 @@
 #include "Declarations.hpp"
 #include "ASTPass.hpp"
 #include "TypeStmt.hpp"
-#include "Type.hpp"
+#include "Statements.hpp"
 
 using namespace AST;
 
-Declaration::Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-    CodeLocation codeLocation)
-    : ASTElement(codeLocation), name(name), returnTypeStmt(returnTypeStmt),
-    body(nullptr, codeLocation), exported(false) {
+FunctionDecl::FunctionDecl(TypeStmtPtr returnTypeStmt, std::string name, CodeLocation codeLocation)
+        : ASTElement(codeLocation), name(name), returnTypeStmt(returnTypeStmt), exported(false) {
 }
 
-std::string Declaration::getName() {
+std::string FunctionDecl::getName() {
     return name;
 }
 
-ASTPtr<TypeStmt> Declaration::getReturnTypeStmt() {
+TypeStmtPtr FunctionDecl::getReturnTypeStmt() {
     return returnTypeStmt;
 }
 
-VariableDefStmtList& Declaration::getParameters() {
+VariableDefStmtList& FunctionDecl::getParameters() {
     return parameters;
 }
 
-Block& Declaration::getBody() {
-    return body;
-}
-
-bool Declaration::getExported() {
+bool FunctionDecl::getExported() {
     return exported;
 }
 
-void Declaration::setExported(bool exported) {
+void FunctionDecl::setExported(bool exported) {
     this->exported = exported;
 }
 
 
-FunctionDef::FunctionDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-    CodeLocation codeLocation)
-    : Declaration(returnTypeStmt, name, codeLocation) {
+FunctionDef::FunctionDef(FunctionDeclPtr funcDecl, BlockPtr body, CodeLocation codeLocation)
+        : ASTElement(codeLocation), funcDecl(funcDecl), body(body) {
 }
 
 void FunctionDef::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
+FunctionDeclPtr FunctionDef::getFunctionDecl() {
+    return funcDecl;
+}
 
-MethodDef::MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-        ASTPtr<TypeStmt> objectTypeStmt, CodeLocation codeLocation)
-    : Declaration(returnTypeStmt, name, codeLocation),
-    objectTypeStmt(objectTypeStmt) {
+BlockPtr FunctionDef::getBody() {
+    return body;
+}
+
+
+MethodDef::MethodDef(TypeStmtPtr returnTypeStmt, std::string name,
+        TypeStmtPtr objectTypeStmt, CodeLocation codeLocation)
+        : ASTElement(codeLocation),
+        objectTypeStmt(objectTypeStmt) {
     this->name = objectTypeStmt->getName() + '.' + name;
     parameters.push_back(
-        std::make_shared<VariableDefStmt>(objectTypeStmt, "this",
-        &body, CodeLocation::none));
+            std::make_shared<VariableDefStmt>(objectTypeStmt, "this", CodeLocation::none));
 }
 
 void MethodDef::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTPtr<TypeStmt> MethodDef::getObjectTypeStmt() {
+TypeStmtPtr MethodDef::getReturnTypeStmt() {
+    return returnTypeStmt;
+}
+
+TypeStmtPtr MethodDef::getObjectTypeStmt() {
     return objectTypeStmt;
+}
+
+VariableDefStmtList& MethodDef::getParameters() {
+    return parameters;
+}
+
+BlockPtr MethodDef::getBody() {
+    return body;
 }

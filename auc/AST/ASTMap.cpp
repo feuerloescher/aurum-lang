@@ -11,22 +11,22 @@
 
 using namespace AST;
 
-template <class T>
+template<class T>
 void ASTMap<T>::clear() {
     internalMap.clear();
 }
 
-template <class T>
+template<class T>
 bool ASTMap<T>::insert(T t) {
     return internalMap.insert(std::make_pair(t->getName(), t)).second;
 }
 
-template <class T>
+template<class T>
 bool ASTMap<T>::insert(T t, std::string name) {
     return internalMap.insert(std::make_pair(name, t)).second;
 }
 
-template <class T>
+template<class T>
 T ASTMap<T>::find(std::string name) {
     auto element = internalMap.find(name);
     if (element != internalMap.end()) {
@@ -35,18 +35,21 @@ T ASTMap<T>::find(std::string name) {
     return nullptr;
 }
 
-template <class T>
+template<class T>
 typename InternalMapType<T>::iterator ASTMap<T>::begin() {
     return internalMap.begin();
 }
 
-template <class T>
+template<class T>
 typename InternalMapType<T>::iterator ASTMap<T>::end() {
     return internalMap.end();
 }
 
-template class AST::ASTMap<FunctionDef*>;
-template class AST::ASTMap<MethodDef*>;
-template class AST::ASTMap<ASTPtr<MethodDef>>;
-template class AST::ASTMap<VariableDefStmt*>;
-template class AST::ASTMap<ASTPtr<Type>>;
+template
+class AST::ASTMap<FunctionDefPtr>;
+template
+class AST::ASTMap<MethodDefPtr>;
+template
+class AST::ASTMap<VariableDefStmtPtr>;
+template
+class AST::ASTMap<TypePtr>;

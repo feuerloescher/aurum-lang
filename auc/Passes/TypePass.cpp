@@ -23,26 +23,26 @@ TypePass::TypePass(AbstractSyntaxTree& ast)
 }
 
 void TypePass::run() {
-    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
+    for (ASTElementPtr decl : ast.getASTElements()) {
         decl->runPass(*this);
     }
 }
 
 void TypePass::runOn(FunctionDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+    func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
+    for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
         innerStmt->runPass(*this);
     }
-    func.getBody().runPass(*this);
+    func.getBody()->runPass(*this);
 }
 
 void TypePass::runOn(MethodDef& func) {
     func.getReturnTypeStmt()->runPass(*this);
     func.getObjectTypeStmt()->runPass(*this);
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+    for (VariableDefStmtPtr innerStmt : func.getParameters()) {
         innerStmt->runPass(*this);
     }
-    func.getBody().runPass(*this);
+    func.getBody()->runPass(*this);
 }
 
 void TypePass::runOn(ReturnStmt& stmt) {
@@ -59,7 +59,7 @@ void TypePass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void TypePass::runOn(Block& stmt) {
-    for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
+    for (StatementPtr innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }
 }
@@ -70,7 +70,7 @@ void TypePass::runOn(IfStmt& stmt) {
         /// \todo Add search for implicit cast method
         throw ConditionTypeError(stmt.getCondition()->getType());
     }
-    stmt.getBody().runPass(*this);
+    stmt.getBody()->runPass(*this);
 }
 
 void TypePass::runOn(WhileLoop& stmt) {
@@ -82,14 +82,14 @@ void TypePass::runOn(TypeStmt& stmt) {
 }
 
 void TypePass::runOn(FunctionCallExpr& stmt) {
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
 
     /// Check argument types
-    auto paramIter = stmt.getFunctionDef()->getParameters().begin();
+    auto paramIter = stmt.getFunctionDef()->getFunctionDecl()->getParameters().begin();
     unsigned int argCounter = 0;
-    for (ASTPtr<Expression> arg : stmt.getArgs()) {
+    for (ExpressionPtr arg : stmt.getArgs()) {
         argCounter++;
         if ((*paramIter)->getTypeStmt()->getType() != arg->getType()) {
             /// \todo Add search for implicit cast method
@@ -97,19 +97,18 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
                 (*paramIter)->getTypeStmt()->getType(), arg->getType());
         }
     }
-    stmt.setType(stmt.getFunctionDef()->getReturnTypeStmt()->getType());
+    stmt.setType(stmt.getFunctionDef()->getFunctionDecl()->getReturnTypeStmt()->getType());
     /// \todo Merge common code of FunctionCallExpr and MethodCallExpr handling
 }
 
 void TypePass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
     /// Resolve method identifier (type of stmt.getObjectExpr() is resolved now)
     std::string mangledName = stmt.getMangledName();
-    MethodDef* methodDef =
-        stmt.getObjectExpr()->getType()->getMethodDefs().find(mangledName);
+    MethodDef* methodDef = stmt.getObjectExpr()->getType()->getMethodDefs().find(mangledName);
     if (!methodDef) {
         throw UnknownIdentifierError(mangledName);
     }
@@ -122,7 +121,7 @@ void TypePass::runOn(MethodCallExpr& stmt) {
     /// Check argument types
     auto paramIter = stmt.getMethodDef()->getParameters().begin();
     unsigned int argCounter = 0;
-    for (ASTPtr<Expression> arg : stmt.getArgs()) {
+    for (ExpressionPtr arg : stmt.getArgs()) {
         argCounter++;
         if ((*paramIter)->getTypeStmt()->getType() != arg->getType()) {
             /// \todo Add search for implicit cast method

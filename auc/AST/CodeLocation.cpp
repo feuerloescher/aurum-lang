@@ -8,11 +8,11 @@
 
 using namespace AST;
 
-CodeLocation CodeLocation::none = {"", 0, 0, 0};
+CodeLocation CodeLocation::none = {std::string(), 0, 0, 0};
 
 CodeLocation::CodeLocation(std::string filename, unsigned int line,
-    unsigned int beginChar, unsigned int endChar)
-    : filename(filename), line(line), beginChar(beginChar), endChar(endChar) {
+        unsigned int beginChar, unsigned int endChar)
+        : filename(filename), line(line), beginChar(beginChar), endChar(endChar) {
 }
 
 std::string CodeLocation::getFilename() {

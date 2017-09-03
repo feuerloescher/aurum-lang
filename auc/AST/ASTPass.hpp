@@ -23,7 +23,7 @@ public:
 
     /// \todo Reorganize; multiple dispatch only for virtual base classes
 
-    virtual void runOn(Declaration&);
+    virtual void runOn(FunctionDecl&);
     virtual void runOn(FunctionDef&);
     virtual void runOn(MethodDef&);
 

@@ -14,39 +14,86 @@
 namespace AST {
 
 /// Managed pointer
-template <class T>
+template<class T>
 using ASTPtr = std::shared_ptr<T>;
 
 /// Managed list
-template <class T>
+template<class T>
 using ASTList = std::vector<ASTPtr<T>>;
 
 /// Forward declarations:
 class AbstractSyntaxTree;
 
-class Declaration;
+class ASTElement;
+typedef ASTPtr<ASTElement> ASTElementPtr;
+typedef ASTList<ASTElement> ASTElementList;
+
+class ASTPass;
+
+
+class FunctionDecl;
+typedef ASTPtr<FunctionDecl> FunctionDeclPtr;
+
 class FunctionDef;
+typedef ASTPtr<FunctionDef> FunctionDefPtr;
+
 class MethodDef;
+typedef ASTPtr<MethodDef> MethodDefPtr;
+
 
 class Statement;
-class ReturnStmt;
-class VariableDefStmt;
-class VariableDefAssignStmt;
+typedef ASTList<Statement> StatementList;
+typedef ASTPtr<Statement> StatementPtr;
 
-class Block;
-class IfStmt;
-class WhileLoop;
+class ReturnStmt;
+typedef ASTPtr<ReturnStmt> ReturnStmtPtr;
+
+class VariableDefStmt;
+typedef ASTList<VariableDefStmt> VariableDefStmtList;
+typedef ASTPtr<VariableDefStmt> VariableDefStmtPtr;
+
+class VariableDefAssignStmt;
+typedef ASTPtr<VariableDefAssignStmt> VariableDefAssignStmtPtr;
 
 class TypeStmt;
+typedef ASTPtr<TypeStmt> TypeStmtPtr;
+
+
+class Block;
+typedef ASTPtr<Block> BlockPtr;
+
+class IfStmt;
+typedef ASTPtr<IfStmt> IfStmtPtr;
+
+class WhileLoop;
+typedef ASTPtr<WhileLoop> WhileLoopPtr;
+
 
 class Expression;
+typedef ASTList<Expression> ExpressionList;
+typedef ASTPtr<Expression> ExpressionPtr;
+
 class FunctionCallExpr;
+typedef ASTPtr<FunctionCallExpr> FunctionCallExprPtr;
+
 class MethodCallExpr;
+typedef ASTPtr<MethodCallExpr> MethodCallExprPtr;
+
 class ConstIntExpr;
+typedef ASTPtr<ConstIntExpr> ConstIntExprPtr;
+
 class VariableExpr;
+typedef ASTPtr<VariableExpr> VariableExprPtr;
+
 
 class Type;
-class ASTPass;
+typedef ASTPtr<Type> TypePtr;
+
+class ScalarType;
+typedef ASTPtr<ScalarType> ScalarTypePtr;
+
+class IntType;
+typedef ASTPtr<IntType> IntTypePtr;
 
 } // namespace AST
 

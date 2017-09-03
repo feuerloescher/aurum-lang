@@ -1,10 +1,13 @@
 /**
  * auc - The Aurum compiler
  * Copyright (c) 2016  Alexander Tsaregorodtsev <tuxerr.at@gmail.com>
+ * Copyright (c) 2017  Max Mertens <max.mail@dameweb.de>
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
 #include <string>
+#include <locale>
+#include <codecvt>
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/ScalarTypes.hpp"
 #include "AST/Declarations.hpp"
@@ -13,15 +16,18 @@
 #include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 
-//TODO: Resolve LL(1) conflicts
 COMPILER Aurum
 
-    AbstractSyntaxTree* ast;
+    std::shared_ptr<AST::AbstractSyntaxTree> ast;
 
-    public bool isNextIdent() {
+//    bool FollowedByIdent() {
+//        Token* x = scanner->Peek();
+//        return la->kind == _ident && x->kind == _ident;
+//    }
 
+    std::string to_utf8(wchar_t* str) {
+        return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(str);
     }
-
 
 //TODO: Unicode support
 CHARACTERS
@@ -61,15 +67,14 @@ IGNORE '\t' + '\r' + '\n' + '\f'
 
 PRODUCTIONS
 
-Aurum   (. ast = new AST(); Declaration decl; .)
-=   { DeclarativeExpression<decl> (. ast->getDeclarations().push_back(decl); .)
+Aurum   (. ast = std::make_shared<AST::AbstractSyntaxTree>(); AST::ASTElementPtr elem; .)
+=   { ASTElement<elem> (. ast->getASTElements().push_back(elem); .)
     }.
 
 /*------------------------------------------------------------------------*/
 
-DeclarativeExpression<Declaration &decl> = (. FunctionDef funcDecl, funcDef; .)
-    //~ FunctionDeclaration<funcDecl> (. decl = funcDecl; .)
-   FunctionDefinition<funcDef> (. decl = funcDef; .).
+ASTElement<AST::ASTElementPtr& elem> = (. AST::FunctionDefPtr funcDef; .)
+    FunctionDefinition<funcDef> (. elem = funcDef; .).
 //|   ConstantDefinition<constDef>
 //|   ClassDefinition   TODO: Class definition
 //|   ImportDefinition  TODO: Import definition
@@ -78,35 +83,33 @@ DeclarativeExpression<Declaration &decl> = (. FunctionDef funcDecl, funcDef; .)
 
 /*------------------------------------------------------------------------*/
 
-//~ FunctionDeclaration<FunctionDef &func> = (. FunctionDef func1; .)
+//~ FunctionDeclaration<FunctionDef& func> = (. FunctionDef func1; .)
 //~ FunctionHeader<func1> (. func = func1; .)
 //~ ["{" "}"] ";".
 
 /*------------------------------------------------------------------------*/
 
-FunctionDefinition<FunctionDef &func> = (. FunctionDef func1; Statement stmt; Block block;.)
-FunctionHeader<func1> (. func = func1; block = &func->getBody(); .)
-"{"
-{ImperativeExpression<block, stmt>} (. &func->getBody().push_back(stmt); .)
-"}".
+FunctionDefinition<AST::FunctionDefPtr& funcDef> = (. AST::FunctionDeclPtr funcDecl; AST::BlockPtr block; .)
+FunctionHeader<funcDecl> (
+    Block<block>
+|   ";") (. funcDef = std::make_shared<AST::FunctionDef>(funcDecl, block, AST::CodeLocation::none); .).
 
 /*------------------------------------------------------------------------*/
 
-FunctionHeader<FunctionDef &func> = (. wchar_t* id, name1, name2, name3; .)
+FunctionHeader<AST::FunctionDeclPtr& func> = (. AST::TypeStmtPtr type; .)
 //{FunctionModifier}
-Type<name1> (. if(name1 != "int") { SemError("Only integers are supported"); } .)
+TypeStmt<type>
 //[OperatorDeclaration]
-ident (. id = t.val; .)
+ident (. func = std::make_shared<AST::FunctionDecl>(type, to_utf8(t->val), AST::CodeLocation::none); .)
 "("
 //[ParameterModifier]
-[ Type<name2> (. if(name2 != "int") { SemError("Only integers are supported"); } .)
-ident (.    func = make_shared<FunctionDef>(make_shared<TypeStmt>("uint32", CodeLocation::none), id, CodeLocation::none);
-            auto variable = make_shared<VariableDefStmt>(make_shared<TypeStmt>("uint32", CodeLocation::none), t.val, &func->getBody(), CodeLocation::none);
+[ TypeStmt<type>
+ident (.    auto variable = std::make_shared<AST::VariableDefStmt>(type, to_utf8(t->val), AST::CodeLocation::none);
             func->getParameters().push_back(variable); .)
 {","
-Type<name3> (. if(name3 != "int") { SemError("Only integers are supported"); } .)
-ident (.    auto variable2 = make_shared<VariableDefStmt>(make_shared<TypeStmt>("uint32", CodeLocation::none), t.val, &func->getBody(), CodeLocation::none);
-            func->getParameters().push_back(variable2); .)
+TypeStmt<type>
+ident (.    auto variable = std::make_shared<AST::VariableDefStmt>(type, to_utf8(t->val), AST::CodeLocation::none);
+            func->getParameters().push_back(variable); .)
 }] ")".
 
 /*------------------------------------------------------------------------*/
@@ -119,7 +122,8 @@ ident (.    auto variable2 = make_shared<VariableDefStmt>(make_shared<TypeStmt>(
 /*------------------------------------------------------------------------*/
 
 //TODO: Array support
-Type<wchar_t* &id> = ident (. id = t.val; .).
+TypeStmt<AST::TypeStmtPtr& typeStmt> = ident
+        (. typeStmt = std::make_shared<AST::TypeStmt>(to_utf8(t->val), AST::CodeLocation::none); .).
 //["[" GenericType "]"]
 
 /*------------------------------------------------------------------------*/
@@ -142,127 +146,147 @@ Type<wchar_t* &id> = ident (. id = t.val; .).
 
 /*------------------------------------------------------------------------*/
 
-ImperativeExpression<Block block, Statement &stmt> = (. Statement stmt1, stmt2, stmt3, stmt4, stmt5, stmt6, stmt7; .)
-    Block<block, stmt1> (. stmt = stmt1; .)
-|   Return<block, stmt2> (. stmt = stmt2; .)
-|   VariableDefinition<block, stmt3> (. stmt = stmt3; .)
-|   ValueExpression<block, stmt5> ";".
+Statement<AST::StatementPtr& stmt> =
+    IfStmt<stmt>
+|   BlockStmt<stmt>
+|   ReturnStmt<stmt>
+//|   IF(FollowedByIdent()) VariableDefinition<stmt>
+|   ("const" | "var" | "mut") VariableDefinition<stmt>
+|   ExpressionStmt<stmt>.
 //~ |   UnaryOperator<block, stmt7> (. stmt = stmt7; .).
-
-/*------------------------------------------------------------------------*/
-
-Block<Block block, Statement &stmt> =
-    IfCondition<block, stmt1> (. stmt = stmt1; .).
 //|   WhileLoop    TODO: While loop code generation
 //|   ForLoop       TODO: For loop definition
-//|   SimpleBlock   TODO: Simple block definition
 //|   UnsafeBlock   TODO: Unsafe block definition
 
 /*------------------------------------------------------------------------*/
 
-IfCondition<Block block, IfStmt &stmt> = (. Statement expr1, expr2, expr3, expr4, expr5, expr6, expr7, expr8; .)
+IfStmt<AST::StatementPtr& stmt> = (. AST::ExpressionPtr conditionExpr; AST::BlockPtr block; .)
 "if" "("
-ValueExpression<block, expr1> (. stmt = make_shared<IfStmt>(expr1, block, CodeLocation::none); .)
+Expression<conditionExpr>
 ")"
-(ImperativeExpression<block, expr2> (. stmt->getBody().push_back(expr2); .)
-| "{"
-{ImperativeExpression<block, expr3>} (. stmt->getBody().push_back(expr3); .)
-"}").
-//["else" "if" "(" //TODO: Add else code generation
-//ValueExpression<block, expr4>
-//")" (
-//ImperativeExpression<block, expr5>
-//| "{" {
-//ImperativeExpression<block, expr6>
-//} "}")]
-//["else" (
-//ImperativeExpression<block, expr7>
-//| "{" {
-//ImperativeExpression<block, expr8>
-//} "}")]
+Block<block> (. stmt = std::make_shared<AST::IfStmt>(conditionExpr, block, AST::CodeLocation::none); .).
+//["else" //TODO: Add else code generation
+//    Block<block> (. stmt = std::make_shared<IfStmt>(expr, block, CodeLocation::none); .)
+//|   Block<block> (. stmt = std::make_shared<IfStmt>(expr, block, CodeLocation::none); .)
+//].
+
+Block<AST::BlockPtr& stmt> = (. AST::BlockPtr block = std::make_shared<AST::Block>(AST::CodeLocation::none);
+AST::StatementPtr subStmt; .)
+"{"
+{Statement<subStmt> (. block->push_back(subStmt); .)}
+"}".
+
+BlockStmt<AST::StatementPtr& stmt> = (. AST::BlockPtr block; .)
+    Block<block> (. stmt = block; .).
 
 /*------------------------------------------------------------------------*/
 
-//WhileLoop = "while" "(" ValueExpression ")" (ImperativeExpression | "{" {ImperativeExpression} "}").
+//WhileLoop = "while" "(" Expression ")" (ImperativeExpression | "{" {ImperativeExpression} "}").
 
 /*------------------------------------------------------------------------*/
 
-//TODO: Clarify ident statements
-Return<Block block, Expression &expr> =
+ReturnStmt<AST::StatementPtr& stmt> = (. AST::ExpressionPtr expr; .)
 "return"
-[ident] (. expr = make_shared<ReturnStmt>(make_shared<VariableExpr>(t.val, block), CodeLocation::none), block, CodeLocation::none); .)
+[Expression<expr>] (. stmt = std::make_shared<AST::ReturnStmt>(expr, AST::CodeLocation::none); .)
 ";".
 
 /*------------------------------------------------------------------------*/
 
-VariableDefinition<Block block, Expression &expr> =
-ident (. if(t.val != "int") { SemErr("Only integers are currently supported."); } .)
-ident (. expr = make_shared<VariableExpr>(t.val, block, CodeLocation::none); .)
-[ "=" ValueExpression<block, stmt1> ] ";".
+VariableDefinition<AST::StatementPtr& stmt> = (. AST::TypeStmtPtr type; .)
+TypeStmt<type>
+ident (. stmt = std::make_shared<AST::VariableDefStmt>(type, to_utf8(t->val), AST::CodeLocation::none); .).
+//[ "=" Expression<block, stmt1> ] ";".
 
 /*------------------------------------------------------------------------*/
 
-//~ VariableDefinitionAssignment<Block block, Expression &expr> = (. wchar_t* id; Expression expr1; .)
+ExpressionStmt<AST::StatementPtr& stmt> = (. AST::ExpressionPtr expr; .)
+Expression<expr> (. stmt = expr; .) ";".
+
+/*------------------------------------------------------------------------*/
+
+//~ VariableDefinitionAssignment<Block block, Expression& expr> = (. wchar_t* id; Expression expr1; .)
 //~ ident (. if(t.val != "int") { SemErr("Only integers are currently supported."); } .)
 //~ ident (. id = t.val; .)
 //~ "="
-//~ ValueExpression<block, expr1> (.    expr = make_shared<MethodCallExpr>(make_shared<VariableExpr>(id, block, CodeLocation::none), "=", block, CodeLocation::none);
+//~ Expression<block, expr1> (.    expr = make_shared<MethodCallExpr>(make_shared<VariableExpr>(id, block, CodeLocation::none), "=", block, CodeLocation::none);
                                     //~ expr->getArgs().push_back(expr1); .)
 //~ ";".
 
 //~ /*------------------------------------------------------------------------*/
 
-//~ FunctionCall<Block block, Expression &expr> = (. Expression expr1; .)
+//~ FunctionCall<Block block, Expression& expr> = (. Expression expr1; .)
 //~ InlineFunctionCall<block, expr1> (. expr = expr1.)
 //~ ";".
 
 //~ /*------------------------------------------------------------------------*/
 
-//~ InlineFunctionCall<Block block, Expression &expr> = (. Expression expr1; Expression expr2; .)
+//~ InlineFunctionCall<Block block, Expression& expr> = (. Expression expr1; Expression expr2; .)
 //~ ident (. expr = make_shared<FunctionCallExpr>(t.val, block, CodeLocation::none); .)
 //~ "("
-//~ [ValueExpression<block, expr1> (. expr->getParameters().push_back(expr1); .)
+//~ [Expression<block, expr1> (. expr->getParameters().push_back(expr1); .)
 //~ {","
-//~ ValueExpression<block, expr2> (. expr->getParameters().push_back(expr2); .)
+//~ Expression<block, expr2> (. expr->getParameters().push_back(expr2); .)
 //~ }] ")".
 
 //~ /*------------------------------------------------------------------------*/
 
-//~ AssignOperator<Block block, Expression &expr> = (. wchar_t* id; Expression expr1; .)
+//~ AssignOperator<Block block, Expression& expr> = (. wchar_t* id; Expression expr1; .)
 //~ ident (. id = t.val; .)
 //~ "="
-//~ ValueExpression<block, expr1> (.    expr = make_shared<MethodCallExpr>(make_shared<VariableExpr>(id, block, CodeLocation::none), "=", block, CodeLocation::none);
+//~ Expression<block, expr1> (.    expr = make_shared<MethodCallExpr>(make_shared<VariableExpr>(id, block, CodeLocation::none), "=", block, CodeLocation::none);
                                     //~ expr->getArgs().push_back(make_shared<VariableExpr>(expr1, block, CodeLocation::none)); .)
 //~ ";".
 
 /*------------------------------------------------------------------------*/
 
-//~ UnaryOperator<Block block, Expression &expr> = (. wchar_t* id; Expression expr1; .)
+//~ UnaryOperator<Block block, Expression& expr> = (. wchar_t* id; Expression expr1; .)
 //~ ident (. id = t.val; .)
-//~ ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, id, block, CodeLocation::none); .)
+//~ Expression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, id, block, CodeLocation::none); .)
 //~ ";".
 
 /*------------------------------------------------------------------------*/
 
-SimpleValueExpr = SimpleValueStart { SimpleValueModifier }.
+//SimpleValueExpr = SimpleValueStart { SimpleValueModifier }.
+//
+//SimpleValueModifier = "(" [ArgumentList] ")" | "[" [ArgumentList] "]" | "." ident.
+//
+//SimpleValueStart = ident | integer | "(" Expression<expr1> ")".
+//
+//ArgumentList = Expression<expr1> { "," Expression<expr1>}.
 
-SimpleValueModifier = "(" [ArgumentList] ")" | "[" [ArgumentList] "]" | "." ident.
+//Expression<AST::ExpressionPtr& expr> = //(. wchar_t* op1, op2; AST::ExpressionPtr expr1; AST::ExpressionPtr expr2; .)
+//(
+//        VariableExpr<expr>
+//                | ConstantExpr<expr>
+//                | "(" Expression<expr> ")"
+//)
+//{
+//"." ident
+//| "(" ")"
+//| "[" "]"
+//| operator Expression<operandExpr>
+//}.
 
-SimpleValueStart = ident | integer | "(" ValueExpression<block, expr1> ")".
-
-ArgumentList = ValueExpression<block, expr1> { "," ValueExpression<block, expr1>}.
-
-ValueExpression<Block block, Expression &expr> = (. wchar_t* op1, op2; Expression expr1; Expression expr2; .)
-[
-operator (. op1 = t.val; .)
-]
-SimpleValueExpr (.  .)
+Expression<AST::ExpressionPtr& expr> = (. AST::ExpressionPtr operandExpr; .)
+BasicExpression<expr>
 {
-operator (. op2 = t.val; .)
-SimpleValueExpr
+operator BasicExpression<operandExpr>
 }.
 
+BasicExpression<AST::ExpressionPtr& expr> =
+(
+    "(" Expression<expr> ")"
+    | VariableExpr<expr>
+    | ConstantExpr<expr>
+)
+{
+"." ident
+| "(" ")"
+| "[" "]"
+}.
 
+VariableExpr<AST::ExpressionPtr& expr> = ident.
+ConstantExpr<AST::ExpressionPtr& expr> = integer.
 
 //~ ident (. id = t.val; .)
 //~ | integer (. expr = make_shared<ConstIntExpr>(id, stoi(t.val), block, CodeLocation::none); .)
@@ -270,19 +294,19 @@ SimpleValueExpr
 //~ | string (. SemErr("Only integer types are implemented"); .)
 //~ | InlineFunctionCall<block, expr1> (. expr = expr1; .)
 //~ | "("
-    //~ ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
+    //~ Expression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
   //~ ")".
-/*| ValueExpression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
+/*| Expression<block, expr1> (. expr = make_shared<MethodCallExpr>(expr1, la.val, block, CodeLocation::none); .)
   operator
-  ValueExpression<block, expr2> (. expr->getArgs().push_back(expr2); .).*/
+  Expression<block, expr2> (. expr->getArgs().push_back(expr2); .).*/
 
 /*------------------------------------------------------------------------*/
 
 //TODO: Implement const, float, string
-//ConstantDefinition<Block block, VariableDefAssignStmt &stmt> =
+//ConstantDefinition<Block block, VariableDefAssignStmt& stmt> =
 //"const"
 // ident (. if(t.val != "int") { SemErr("Only integer types are implemented"); } .)
-// ident (. stmt = make_shared<MethodCallExpr>(make_shared<VariableExpr>(t.val, &block, CodeLocation::none), "=", &block, CodeLocation::none);.)
+// ident (. stmt = make_shared<MethodCallExpr>(make_shared<VariableExpr>(t.val,& block, CodeLocation::none), "=",& block, CodeLocation::none);.)
 // "="
 // integer (. stmt->getArgs().push_back(make_shared<ConstIntExpr>(t.val, stoi(t.val), block, CodeLocation::none)); .)
 // //| float (. SemErr("Only integer types are implemented"); .)

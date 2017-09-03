@@ -14,7 +14,7 @@ set(GENERATED_SOURCES
     )
 add_custom_command(OUTPUT ${GENERATED_SOURCES}
     COMMAND coco-cpp -frames ${PROJECT_SOURCE_DIR}/coco-r-cpp -o ${PROJECT_SOURCE_DIR}/Parser/ -lines ${PROJECT_SOURCE_DIR}/Parser/aurum.atg
-    DEPENDS coco-cpp
+    DEPENDS coco-cpp ${PROJECT_SOURCE_DIR}/Parser/aurum.atg
     )
 
 include_directories("${PROJECT_SOURCE_DIR}")
@@ -27,7 +27,7 @@ file(GLOB_RECURSE LIB_SOURCES
 
 set(MAIN_SRC "${PROJECT_SOURCE_DIR}/main.cpp")
 
-list(APPEND LIB_SOURCES ${GENERATED_SOURCES})
+list(INSERT LIB_SOURCES 0 ${GENERATED_SOURCES})
 
 add_library(auc_lib STATIC ${LIB_SOURCES})
 

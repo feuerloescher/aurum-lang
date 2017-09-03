@@ -9,6 +9,7 @@
 
 #include "common.hpp"
 #include "ASTElement.hpp"
+#include "Type.hpp"
 
 #include <string>
 
@@ -18,7 +19,7 @@ class TypeStmt : public ASTElement {
 
 protected:
     std::string name;
-    ASTPtr<Type> type;
+    TypePtr type;
 
 public:
     TypeStmt(std::string name, CodeLocation codeLocation);
@@ -26,10 +27,11 @@ public:
     void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<Type> getType();
-    void setType(ASTPtr<Type> type);
+    TypePtr getType();
+    void setType(TypePtr type);
 
 }; // class TypeStmt
+
 
 } // namespace AST
 

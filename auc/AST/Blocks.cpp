@@ -9,8 +9,8 @@
 
 using namespace AST;
 
-Block::Block(Block* parentBlock, CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation) {
+Block::Block(CodeLocation codeLocation)
+        : Statement(codeLocation) {
     /// \todo Add a getName() method to Blocks,
     /// for context in error messages
 }
@@ -23,7 +23,7 @@ StatementList& Block::getStatements() {
     return statements;
 }
 
-void Block::push_back(ASTPtr<Statement> statement) {
+void Block::push_back(StatementPtr statement) {
     statements.push_back(statement);
 }
 
@@ -32,16 +32,15 @@ ASTMap<VariableDefStmt*>& Block::getVariables() {
 }
 
 
-IfStmt::IfStmt(ASTPtr<Expression> condition, Block* parentBlock,
-    CodeLocation codeLocation) : Statement(parentBlock, codeLocation),
-    condition(condition), body(parentBlock, codeLocation) {
+IfStmt::IfStmt(ExpressionPtr condition, BlockPtr body, CodeLocation codeLocation)
+        : Statement(codeLocation), condition(condition), body(body) {
 }
 
-ASTPtr<Expression> IfStmt::getCondition() {
+ExpressionPtr IfStmt::getCondition() {
     return condition;
 }
 
-Block& IfStmt::getBody() {
+BlockPtr& IfStmt::getBody() {
     return body;
 }
 
@@ -49,7 +48,7 @@ void IfStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTPtr<Expression> WhileLoop::getCondition() {
+ExpressionPtr WhileLoop::getCondition() {
     return condition;
 }
 

@@ -26,13 +26,13 @@ void IdentifierPass::run() {
     ast.getFunctionDefs().clear();
     currentBlock = nullptr;
     onlyInsertDeclarations = true;
-    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
-        decl->runPass(*this);
+    for (ASTElementPtr elem : ast.getASTElements()) {
+        elem->runPass(*this);
     }
     currentBlock = nullptr;
     onlyInsertDeclarations = false;
-    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
-        decl->runPass(*this);
+    for (ASTElementPtr elem : ast.getASTElements()) {
+        elem->runPass(*this);
     }
 }
 
@@ -41,32 +41,14 @@ void IdentifierPass::runOn(FunctionDef& func) {
         if (!ast.getFunctionDefs().insert(&func)) {
             throw ExistingIdentifierError(func.getName());
         }
-        func.getReturnTypeStmt()->runPass(*this);
-        currentBlock = &func.getBody();
-        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+        func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
+        currentBlock = func.getBody().get();
+        for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
             innerStmt->runPass(*this);
         }
         /// \todo Reset currentBlock
     } else {
-        func.getBody().runPass(*this);
-    }
-}
-
-void IdentifierPass::runOn(MethodDef& func) {
-    if (onlyInsertDeclarations) {
-        func.getReturnTypeStmt()->runPass(*this);
-        func.getObjectTypeStmt()->runPass(*this);
-        if (!func.getObjectTypeStmt()->getType()->getMethodDefs()
-            .insert(&func)) {
-            throw ExistingIdentifierError(func.getName());
-        }
-        currentBlock = &func.getBody();
-        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-            innerStmt->runPass(*this);
-        }
-        /// \todo Reset currentBlock
-    } else {
-        func.getBody().runPass(*this);
+        func.getBody()->runPass(*this);
     }
 }
 
@@ -90,17 +72,17 @@ void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
 }
 
 void IdentifierPass::runOn(Block& stmt) {
-    assert(currentBlock == stmt.getParentBlock());
+    Block* lastCurrentBlock = currentBlock;
     currentBlock = &stmt;
-    for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
+    for (StatementPtr innerStmt : stmt.getStatements()) {
         innerStmt->runPass(*this);
     }
-    currentBlock = stmt.getParentBlock();
+    currentBlock = lastCurrentBlock;
 }
 
 void IdentifierPass::runOn(IfStmt& stmt) {
     stmt.getCondition()->runPass(*this);
-    stmt.getBody().runPass(*this);
+    stmt.getBody()->runPass(*this);
 }
 
 void IdentifierPass::runOn(WhileLoop& stmt) {
@@ -109,7 +91,7 @@ void IdentifierPass::runOn(WhileLoop& stmt) {
 }
 
 void IdentifierPass::runOn(TypeStmt& stmt) {
-    ASTPtr<Type> type = ast.getTypes().find(stmt.getName());
+    TypePtr type = ast.getTypes().find(stmt.getName());
     if (!type) {
         throw UnknownIdentifierError(stmt.getName());
     }
@@ -117,24 +99,23 @@ void IdentifierPass::runOn(TypeStmt& stmt) {
 }
 
 void IdentifierPass::runOn(FunctionCallExpr& stmt) {
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
-    FunctionDef* functionDef = ast.getFunctionDefs().find(
-        stmt.getName());
+    FunctionDef* functionDef = ast.getFunctionDefs().find(stmt.getName());
     if (!functionDef) {
         throw UnknownIdentifierError(stmt.getName());
     }
-    if (stmt.getArgs().size() != functionDef->getParameters().size()) {
+    if (stmt.getArgs().size() != functionDef->getFunctionDecl()->getParameters().size()) {
         throw ArgumentCountError(stmt.getName(),
-            functionDef->getParameters().size(), stmt.getArgs().size());
+            functionDef->getFunctionDecl()->getParameters().size(), stmt.getArgs().size());
     }
     stmt.setFunctionDef(functionDef);
 }
 
 void IdentifierPass::runOn(MethodCallExpr& stmt) {
     stmt.getObjectExpr()->runPass(*this);
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
     /// Method identifier is resolved in TypePass, as type of
@@ -148,8 +129,7 @@ void IdentifierPass::runOn(ConstIntExpr& stmt) {
 void IdentifierPass::runOn(VariableExpr& stmt) {
     /// \todo Copy variables from parent blocks in runOn(Block),
     /// or search through parent blocks here
-    VariableDefStmt* variableDef = currentBlock->getVariables().find(
-        stmt.getName());
+    VariableDefStmt* variableDef = currentBlock->getVariables().find(stmt.getName());
     if (!variableDef) {
         throw UnknownIdentifierError(stmt.getName());
     }

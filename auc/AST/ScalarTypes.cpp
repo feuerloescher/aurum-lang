@@ -9,11 +9,11 @@
 using namespace AST;
 
 ScalarType::ScalarType(std::string name)
-    : Type(name) {
+        : Type(name) {
 }
 
 IntType::IntType(std::string name, unsigned int width, bool isSigned)
-    : ScalarType(name), width(width), isSigned(isSigned) {
+        : ScalarType(name), width(width), isSigned(isSigned) {
 }
 
 bool IntType::getSigned() {

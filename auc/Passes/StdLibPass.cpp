@@ -7,6 +7,7 @@
 #include "StdLibPass.hpp"
 #include "AST/ScalarTypes.hpp"
 #include "AST/TypeStmt.hpp"
+#include "AST/Statements.hpp"
 
 using namespace AST;
 using namespace Passes;
@@ -45,15 +46,13 @@ void StdLibPass::addScalarTypes() {
                     std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
                     CodeLocation::none);
                 intMethod->getParameters().push_back(
-                    std::make_shared<VariableDefStmt>(intTypeStmt, "param",
-                    &intMethod->getBody(), CodeLocation::none));
+                    std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }
             for (std::string op : {"++", "--"}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
-                    CodeLocation::none);
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, CodeLocation::none);
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }
@@ -62,8 +61,7 @@ void StdLibPass::addScalarTypes() {
                     std::make_shared<MethodDef>(boolTypeStmt, op, intTypeStmt,
                     CodeLocation::none);
                 intMethod->getParameters().push_back(
-                    std::make_shared<VariableDefStmt>(intTypeStmt, "param",
-                    &intMethod->getBody(), CodeLocation::none));
+                    std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }

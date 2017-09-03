@@ -17,46 +17,46 @@ namespace AST {
 class ExistingIdentifierError : public std::runtime_error {
 public:
     ExistingIdentifierError(std::string identifier)
-        : std::runtime_error("The identifier '" + identifier
-        + "' already exists in this context.") {
+            : std::runtime_error("The identifier '" + identifier
+            + "' already exists in this context.") {
     }
 };
 
 class UnknownIdentifierError : public std::runtime_error {
 public:
     UnknownIdentifierError(std::string identifier)
-        : std::runtime_error("The identifier '" + identifier
-        + "' is unknown in this context.") {
+            : std::runtime_error("The identifier '" + identifier
+            + "' is unknown in this context.") {
     }
 };
 
 class ArgumentCountError : public std::runtime_error {
 public:
     ArgumentCountError(std::string functionName,
-        unsigned int expectedParameters, unsigned int providedParameters)
-        : std::runtime_error("The function '" + functionName
-        + "' expects " + std::to_string(expectedParameters)
-        + " parameters, but is provided " + std::to_string(providedParameters)
-        + ".") {
+            unsigned int expectedParameters, unsigned int providedParameters)
+            : std::runtime_error("The function '" + functionName
+            + "' expects " + std::to_string(expectedParameters)
+            + " parameters, but is provided " + std::to_string(providedParameters)
+            + ".") {
     }
 };
 
 class ArgumentTypeError : public std::runtime_error {
 public:
     ArgumentTypeError(std::string functionName, unsigned int argumentIndex,
-        ASTPtr<Type> expectedType, ASTPtr<Type> providedType)
-        : std::runtime_error("The function '" + functionName
-        + "' expects argument " + std::to_string(argumentIndex)
-        + " to be of type " + expectedType->getName() + ", but is provided "
-        + providedType->getName() + ".") {
+            TypePtr expectedType, TypePtr providedType)
+            : std::runtime_error("The function '" + functionName
+            + "' expects argument " + std::to_string(argumentIndex)
+            + " to be of type " + expectedType->getName() + ", but is provided "
+            + providedType->getName() + ".") {
     }
 };
 
 class ConditionTypeError : public std::runtime_error {
 public:
-    ConditionTypeError(ASTPtr<Type> providedType)
-        : std::runtime_error("The condition has to be of type bool, "
-        "but is of type " + providedType->getName() + ".") {
+    ConditionTypeError(TypePtr providedType)
+            : std::runtime_error("The condition has to be of type bool, "
+            "but is of type " + providedType->getName() + ".") {
     }
 };
 

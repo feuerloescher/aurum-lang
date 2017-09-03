@@ -9,32 +9,25 @@
 
 using namespace AST;
 
-Statement::Statement(Block* parentBlock, CodeLocation codeLocation)
-    : ASTElement(codeLocation), parentBlock(parentBlock) {
-}
-
-Block* Statement::getParentBlock() {
-    return parentBlock;
+Statement::Statement(CodeLocation codeLocation) : ASTElement(codeLocation) {
 }
 
 
-ReturnStmt::ReturnStmt(ASTPtr<Expression> value, Block* parentBlock,
-    CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation), value(value) {
+ReturnStmt::ReturnStmt(ExpressionPtr value, CodeLocation codeLocation)
+        : Statement(codeLocation), value(value) {
 }
 
 void ReturnStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTPtr<Expression> ReturnStmt::getValue() {
+ExpressionPtr ReturnStmt::getValue() {
     return value;
 }
 
 
-VariableDefStmt::VariableDefStmt(ASTPtr<TypeStmt> typeStmt, std::string name,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation), typeStmt(typeStmt), name(name) {
+VariableDefStmt::VariableDefStmt(TypeStmtPtr typeStmt, std::string name, CodeLocation codeLocation)
+        : Statement(codeLocation), typeStmt(typeStmt), name(name) {
 }
 
 void VariableDefStmt::runPass(ASTPass& pass) {
@@ -45,21 +38,19 @@ std::string VariableDefStmt::getName() {
     return name;
 }
 
-ASTPtr<TypeStmt> VariableDefStmt::getTypeStmt() {
+TypeStmtPtr VariableDefStmt::getTypeStmt() {
     return typeStmt;
 }
 
 
-VariableDefAssignStmt::VariableDefAssignStmt(ASTPtr<TypeStmt> type,
-    std::string name, ASTPtr<Expression> value, Block* parentBlock,
-    CodeLocation codeLocation)
-    : VariableDefStmt(type, name, parentBlock, codeLocation), value(value) {
+VariableDefAssignStmt::VariableDefAssignStmt(TypeStmtPtr type, std::string name, ExpressionPtr value,
+        CodeLocation codeLocation) : VariableDefStmt(type, name, codeLocation), value(value) {
 }
 
 void VariableDefAssignStmt::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTPtr<Expression> VariableDefAssignStmt::getValue() {
+ExpressionPtr VariableDefAssignStmt::getValue() {
     return value;
 }

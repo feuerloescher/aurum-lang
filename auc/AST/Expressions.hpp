@@ -18,18 +18,17 @@ namespace AST {
 class Expression : public Statement {
 
 protected:
-    ASTPtr<Type> type;
+    TypePtr type;
 
 public:
-    Expression(Block* parentBlock, CodeLocation codeLocation);
+    Expression(CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass) = 0;
-    ASTPtr<Type> getType();
-    void setType(ASTPtr<Type> type);
+    TypePtr getType();
+    void setType(TypePtr type);
 
 }; // class Expression
 
-typedef ASTList<Expression> ExpressionList;
 
 
 class FunctionCallExpr : public Expression {
@@ -40,8 +39,8 @@ protected:
     FunctionDef* functionDef;
 
 public:
-    FunctionCallExpr(std::string name, Block* parentBlock,
-        CodeLocation codeLocation);
+    FunctionCallExpr(std::string name,
+            CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
@@ -52,20 +51,21 @@ public:
 }; // class FunctionCallExpr
 
 
+
 class MethodCallExpr : public Expression {
 
 protected:
-    ASTPtr<Expression> objectExpr;
+    ExpressionPtr objectExpr;
     std::string name;
     ASTList<Expression> args;
     MethodDef* methodDef;
 
 public:
-    MethodCallExpr(ASTPtr<Expression> tmpObjectExpr, std::string name,
-        Block* parentBlock, CodeLocation codeLocation);
+    MethodCallExpr(ExpressionPtr tmpObjectExpr, std::string name,
+            CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
-    ASTPtr<Expression> getObjectExpr();
+    ExpressionPtr getObjectExpr();
     std::string getName();
     std::string getMangledName();
     ASTList<Expression>& getArgs();
@@ -76,38 +76,40 @@ public:
 }; // class MethodCallExpr
 
 
+
 class ConstIntExpr : public Expression {
 
 protected:
     std::string valueStr;
     uint64_t numValue;
-    ASTPtr<TypeStmt> typeStmt;
+    TypeStmtPtr typeStmt;
 
 public:
     ConstIntExpr(std::string valueStr, uint8_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int8_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint16_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int16_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint32_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int32_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, uint64_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int64_t numValue,
-        Block* parentBlock, CodeLocation codeLocation);
+            CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
     std::string getValueStr();
     uint64_t getNumValue();
-    ASTPtr<TypeStmt> getTypeStmt();
+    TypeStmtPtr getTypeStmt();
 
 }; // class ConstIntExpr
+
 
 
 class VariableExpr : public Expression {
@@ -117,8 +119,8 @@ protected:
     VariableDefStmt* variableDefStmt;
 
 public:
-    VariableExpr(std::string name, Block* parentBlock,
-        CodeLocation codeLocation);
+    VariableExpr(std::string name,
+            CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
@@ -127,6 +129,7 @@ public:
     void setVariableDefStmt(VariableDefStmt* variableDefStmt);
 
 }; // class VariableExpr
+
 
 
 } // namespace AST

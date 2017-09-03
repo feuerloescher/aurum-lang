@@ -27,7 +27,6 @@ public:
     void setExported(bool exported);
 
 }; // class ASTElement
-
 } // namespace AST
 
 #endif // AUC_ASTELEMENT_HPP

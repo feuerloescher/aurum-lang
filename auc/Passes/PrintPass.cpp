@@ -29,7 +29,7 @@ std::ostream& PrintPass::indent() {
 
 void PrintPass::run() {
     stream << "// Aurum to C transpiled code\n#define uint32 int\n";
-    for (ASTPtr<Declaration> decl : ast.getDeclarations()) {
+    for (ASTElementPtr decl : ast.getASTElements()) {
         stream << "\n";
         indent();
         decl->runPass(*this);
@@ -39,10 +39,10 @@ void PrintPass::run() {
 }
 
 void PrintPass::runOn(FunctionDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
+    func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
     stream << " " << func.getName() << "(";
     bool first = true;
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+    for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
         if (!first) {
             stream << ", ";
         }
@@ -50,7 +50,7 @@ void PrintPass::runOn(FunctionDef& func) {
         innerStmt->runPass(*this);
     }
     stream << ") ";
-    func.getBody().runPass(*this);
+    func.getBody()->runPass(*this);
 }
 
 void PrintPass::runOn(MethodDef& func) {
@@ -59,7 +59,7 @@ void PrintPass::runOn(MethodDef& func) {
     func.getObjectTypeStmt()->runPass(*this);
     stream << "::" << func.getName() << "(";
     bool first = true;
-    for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+    for (VariableDefStmtPtr innerStmt : func.getParameters()) {
         if (!first) {
             stream << ", ";
         }
@@ -67,7 +67,7 @@ void PrintPass::runOn(MethodDef& func) {
         innerStmt->runPass(*this);
     }
     stream << ") ";
-    func.getBody().runPass(*this);
+    func.getBody()->runPass(*this);
 }
 
 void PrintPass::runOn(ReturnStmt& stmt) {
@@ -89,7 +89,7 @@ void PrintPass::runOn(VariableDefAssignStmt& stmt) {
 void PrintPass::runOn(Block& stmt) {
     stream << "{\n";
     indentWidth++;
-    for (ASTPtr<Statement> innerStmt : stmt.getStatements()) {
+    for (StatementPtr innerStmt : stmt.getStatements()) {
         indent();
         innerStmt->runPass(*this);
         stream << ";\n";
@@ -102,7 +102,7 @@ void PrintPass::runOn(IfStmt& stmt) {
     stream << "if (";
     stmt.getCondition()->runPass(*this);
     stream << ") ";
-    stmt.getBody().runPass(*this);
+    stmt.getBody()->runPass(*this);
 }
 
 void PrintPass::runOn(WhileLoop& stmt) {
@@ -119,7 +119,7 @@ void PrintPass::runOn(TypeStmt& stmt) {
 void PrintPass::runOn(FunctionCallExpr& stmt) {
     stream << stmt.getName() << "(";
     bool first = true;
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         if (!first) {
             stream << ", ";
         }
@@ -144,7 +144,7 @@ void PrintPass::runOn(MethodCallExpr& stmt) {
         stream << "." << stmt.getName() << "(";
     }
     bool first = true;
-    for (ASTPtr<Expression> expr : stmt.getArgs()) {
+    for (ExpressionPtr expr : stmt.getArgs()) {
         if (!first) {
             stream << ", ";
         }

@@ -11,18 +11,18 @@ using namespace AST;
 AbstractSyntaxTree::AbstractSyntaxTree() {
 }
 
-DeclarationList& AbstractSyntaxTree::getDeclarations() {
-    return declarations;
+ASTElementList& AbstractSyntaxTree::getASTElements() {
+    return astElements;
 }
 
 ASTMap<FunctionDef*>& AbstractSyntaxTree::getFunctionDefs() {
     return functionDefs;
 }
 
-ASTMap<ASTPtr<Type>>& AbstractSyntaxTree::getTypes() {
+ASTMap<TypePtr>& AbstractSyntaxTree::getTypes() {
     return types;
 }
 
-ASTMap<ASTPtr<MethodDef>>& AbstractSyntaxTree::getStdLibMethodDefs() {
+ASTMap<MethodDefPtr>& AbstractSyntaxTree::getStdLibMethodDefs() {
     return stdLibMethodDefs;
 }

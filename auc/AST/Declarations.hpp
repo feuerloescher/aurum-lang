@@ -8,7 +8,6 @@
 #define AUC_DECLARATIONS_HPP
 
 #include "common.hpp"
-#include "Blocks.hpp"
 #include "ASTElement.hpp"
 
 #include <string>
@@ -16,60 +15,70 @@
 
 namespace AST {
 
-class Declaration : public ASTElement {
+class FunctionDecl : public ASTElement {
 
 protected:
     std::string name;
-    ASTPtr<TypeStmt> returnTypeStmt;
+    TypeStmtPtr returnTypeStmt;
     ASTList<VariableDefStmt> parameters;
-    Block body;
     bool exported;
 
 public:
-    Declaration(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-        CodeLocation codeLocation);
+    FunctionDecl(TypeStmtPtr returnTypeStmt, std::string name, CodeLocation codeLocation);
 
-    virtual void runPass(ASTPass& pass) = 0;
+    virtual void runPass(ASTPass& pass);
 
     std::string getName();
-    ASTPtr<TypeStmt> getReturnTypeStmt();
+    TypeStmtPtr getReturnTypeStmt();
     VariableDefStmtList& getParameters();
-    Block& getBody();
     bool getExported();
     void setExported(bool exported);
 
 }; // class Declaration
 
-typedef ASTList<Declaration> DeclarationList;
 
-
-class FunctionDef : public Declaration {
+class FunctionDef : public ASTElement {
 
 protected:
+    BlockPtr body;
+    FunctionDeclPtr funcDecl;
 
 public:
-    FunctionDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-        CodeLocation codeLocation);
+    FunctionDef(FunctionDeclPtr funcDecl, BlockPtr body, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
+
+    std::string getName();
+    FunctionDeclPtr getFunctionDecl();
+    BlockPtr getBody();
 
 }; // class FunctionDef
 
 
-class MethodDef : public Declaration {
-
+class MethodDef : public ASTElement {
+#warning TODO: Replace MethodDef with FunctionDef
 protected:
-    ASTPtr<TypeStmt> objectTypeStmt;
+    std::string name;
+    TypeStmtPtr returnTypeStmt;
+    TypeStmtPtr objectTypeStmt;
+    ASTList<VariableDefStmt> parameters;
+    BlockPtr body;
+    bool exported;
 
 public:
-    MethodDef(ASTPtr<TypeStmt> returnTypeStmt, std::string name,
-        ASTPtr<TypeStmt> objectTypeStmt, CodeLocation codeLocation);
+    MethodDef(TypeStmtPtr returnTypeStmt, std::string name,
+            TypeStmtPtr objectTypeStmt, CodeLocation codeLocation);
 
     virtual void runPass(ASTPass& pass);
 
-    ASTPtr<TypeStmt> getObjectTypeStmt();
+    std::string getName();
+    TypeStmtPtr getReturnTypeStmt();
+    TypeStmtPtr getObjectTypeStmt();
+    VariableDefStmtList& getParameters();
+    BlockPtr getBody();
 
 }; // class MethodDef
+
 
 } // namespace AST
 

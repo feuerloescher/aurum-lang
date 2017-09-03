@@ -22,7 +22,7 @@ protected:
 
 public:
     CodeLocation(std::string filename, unsigned int line,
-        unsigned int beginChar, unsigned int endChar);
+            unsigned int beginChar, unsigned int endChar);
 
     std::string getFilename();
     unsigned int getLine();

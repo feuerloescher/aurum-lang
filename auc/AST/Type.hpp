@@ -9,6 +9,7 @@
 
 #include "common.hpp"
 #include "ASTMap.hpp"
+#include "Declarations.hpp"
 
 #include <string>
 
@@ -28,6 +29,7 @@ public:
     ASTMap<MethodDef*>& getMethodDefs();
 
 }; // class Type
+
 
 } // namespace AST
 

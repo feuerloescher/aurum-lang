@@ -15,10 +15,10 @@
 
 namespace AST {
 
-template <class T>
+template<class T>
 using InternalMapType = std::map<std::string, T>;
 
-template <class T>
+template<class T>
 class ASTMap {
 
 protected:

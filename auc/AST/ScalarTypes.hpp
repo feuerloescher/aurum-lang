@@ -22,6 +22,7 @@ public:
 }; // class ScalarType
 
 
+
 class IntType : public ScalarType {
 
 protected:
@@ -34,6 +35,7 @@ public:
     bool getSigned();
 
 }; // class IntType
+
 
 } // namespace AST
 

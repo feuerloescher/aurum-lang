@@ -10,7 +10,7 @@
 using namespace AST;
 
 TypeStmt::TypeStmt(std::string name, CodeLocation codeLocation)
-    : ASTElement(codeLocation), name(name), type(nullptr) {
+        : ASTElement(codeLocation), name(name), type(nullptr) {
 }
 
 void TypeStmt::runPass(ASTPass& pass) {
@@ -21,10 +21,10 @@ std::string TypeStmt::getName() {
     return name;
 }
 
-ASTPtr<Type> TypeStmt::getType() {
+TypePtr TypeStmt::getType() {
     return type;
 }
 
-void TypeStmt::setType(ASTPtr<Type> type) {
+void TypeStmt::setType(TypePtr type) {
     this->type = type;
 }

@@ -11,22 +11,20 @@
 
 using namespace AST;
 
-Expression::Expression(Block* parentBlock, CodeLocation codeLocation)
-    : Statement(parentBlock, codeLocation) {
+Expression::Expression(CodeLocation codeLocation) : Statement(codeLocation) {
 }
 
-ASTPtr<Type> Expression::getType() {
+TypePtr Expression::getType() {
     return type;
 }
 
-void Expression::setType(ASTPtr<Type> type) {
+void Expression::setType(TypePtr type) {
     this->type = type;
 }
 
 
-FunctionCallExpr::FunctionCallExpr(std::string name, Block* parentBlock,
-    CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation), name(name), functionDef(nullptr) {
+FunctionCallExpr::FunctionCallExpr(std::string name, CodeLocation codeLocation)
+        : Expression(codeLocation), name(name), functionDef(nullptr) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
@@ -50,17 +48,15 @@ void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
 }
 
 
-MethodCallExpr::MethodCallExpr(ASTPtr<Expression> objectExpr, std::string name,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation), objectExpr(objectExpr), name(name),
-    methodDef(nullptr) {
+MethodCallExpr::MethodCallExpr(ExpressionPtr objectExpr, std::string name, CodeLocation codeLocation)
+        : Expression(codeLocation), objectExpr(objectExpr), name(name), methodDef(nullptr) {
 }
 
 void MethodCallExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
 }
 
-ASTPtr<Expression> MethodCallExpr::getObjectExpr() {
+ExpressionPtr MethodCallExpr::getObjectExpr() {
     return objectExpr;
 }
 
@@ -87,58 +83,49 @@ void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
 bool MethodCallExpr::isOperator() {
     char first = this->name.at(0);
     return (this->args.size() > 1) ||
-        ! (first == '_' || (first >= 'A' && first <= 'Z')
-        || (first >= 'a' && first <= 'z'));
+            !(first == '_' || (first >= 'A' && first <= 'Z')
+                    || (first >= 'a' && first <= 'z'));
 }
 
 
-ConstIntExpr::ConstIntExpr(std::string valueStr, uint8_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("uint8", CodeLocation::none)) {
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint8_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("uint8", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, int8_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("int8", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, int8_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("int8", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, uint16_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("uint16", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint16_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("uint16", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, int16_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("int16", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, int16_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("int16", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, uint32_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("uint32", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint32_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("uint32", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, int32_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("int32", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, int32_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("int32", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, uint64_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("uint64", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, uint64_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("uint64", CodeLocation::none)) {
 }
-ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue,
-    Block* parentBlock, CodeLocation codeLocation)
-    : Expression(parentBlock, codeLocation),
-    valueStr(valueStr), numValue((uint64_t) numValue),
-    typeStmt(std::make_shared<TypeStmt>("int64", CodeLocation::none)) {
+
+ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue, CodeLocation codeLocation)
+        : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
+        typeStmt(std::make_shared<TypeStmt>("int64", CodeLocation::none)) {
 }
 
 std::string ConstIntExpr::getValueStr() {
@@ -153,14 +140,14 @@ uint64_t ConstIntExpr::getNumValue() {
     return numValue;
 }
 
-ASTPtr<TypeStmt> ConstIntExpr::getTypeStmt() {
+TypeStmtPtr ConstIntExpr::getTypeStmt() {
     return typeStmt;
 }
 
 
-VariableExpr::VariableExpr(std::string name, Block* parentBlock,
-    CodeLocation codeLocation) : Expression(parentBlock, codeLocation),
-    name(name), variableDefStmt(nullptr) {
+VariableExpr::VariableExpr(std::string name,
+        CodeLocation codeLocation) : Expression(codeLocation),
+        name(name), variableDefStmt(nullptr) {
 }
 
 void VariableExpr::runPass(ASTPass& pass) {

@@ -9,7 +9,7 @@
 using namespace AST;
 
 ASTElement::ASTElement(CodeLocation codeLocation)
-    : codeLocation(codeLocation) {
+        : codeLocation(codeLocation) {
 }
 
 CodeLocation ASTElement::getCodeLocation() {

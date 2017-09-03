@@ -16,19 +16,19 @@ namespace AST {
 class AbstractSyntaxTree {
 
 protected:
-    DeclarationList declarations;
+    ASTElementList astElements;
     ASTMap<FunctionDef*> functionDefs;
-    ASTMap<ASTPtr<Type>> types;
-    ASTMap<ASTPtr<MethodDef>> stdLibMethodDefs;
+    ASTMap<TypePtr> types;
+    ASTMap<MethodDefPtr> stdLibMethodDefs;
 
 
 public:
     AbstractSyntaxTree();
 
-    DeclarationList& getDeclarations();
+    ASTElementList& getASTElements();
     ASTMap<FunctionDef*>& getFunctionDefs();
-    ASTMap<ASTPtr<Type>>& getTypes();
-    ASTMap<ASTPtr<MethodDef>>& getStdLibMethodDefs();
+    ASTMap<TypePtr>& getTypes();
+    ASTMap<MethodDefPtr>& getStdLibMethodDefs();
 
 }; // class AbstractSyntaxTree
 
