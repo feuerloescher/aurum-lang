@@ -24,6 +24,7 @@ protected:
 
 public:
     StdLibPass(AST::AbstractSyntaxTree& ast);
+    virtual ~StdLibPass() {};
 
     void run();
 

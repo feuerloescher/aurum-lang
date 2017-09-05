@@ -5,19 +5,14 @@
  */
 
 #include "AST/AbstractSyntaxTree.hpp"
-#include "AST/ScalarTypes.hpp"
-#include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
-#include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "Passes/PrintPass.hpp"
 #include "Passes/StdLibPass.hpp"
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
-#include "Passes/VerifyOptimizePass.hpp"
 
-#include <fstream>
 #include <iostream>
 
 using namespace AST;
@@ -31,87 +26,63 @@ int main() {
     AbstractSyntaxTree ast;
 
     auto funcDecl = make_shared<FunctionDef>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "factorial", CodeLocation::none);
+            make_shared<FunctionDecl>(make_shared<TypeStmt>("uint32", CodeLocation::none),
+                    "factorial", true, CodeLocation::none), make_shared<Block>(CodeLocation::none), CodeLocation::none);
     auto variable = make_shared<VariableDefStmt>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "var", &funcDecl->getBody(), CodeLocation::none);
-    funcDecl->getParameters().push_back(variable);
+            make_shared<TypeStmt>("uint32", CodeLocation::none), "var", CodeLocation::none);
+    funcDecl->getFunctionDecl()->getParameters().push_back(variable);
 
     auto cmpOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("var", &funcDecl->getBody(),
-        CodeLocation::none), "==", &funcDecl->getBody(), CodeLocation::none);
-    cmpOp->getArgs().push_back(
-        make_shared<ConstIntExpr>("0", 0u, &funcDecl->getBody(),
-        CodeLocation::none));
-    auto ifBlock = make_shared<IfStmt>(cmpOp, &funcDecl->getBody(),
-        CodeLocation::none);
-    auto ret = make_shared<ReturnStmt>(make_shared<ConstIntExpr>("1", 1u,
-        &ifBlock->getBody(), CodeLocation::none), &ifBlock->getBody(),
-        CodeLocation::none);
-    ifBlock->getBody().push_back(ret);
-    funcDecl->getBody().push_back(ifBlock);
+            make_shared<VariableExpr>("var", CodeLocation::none), "==", CodeLocation::none);
+    cmpOp->getArgs().push_back(make_shared<ConstIntExpr>("0", 0u, CodeLocation::none));
+    auto ifBlock = make_shared<IfStmt>(cmpOp, make_shared<Block>(CodeLocation::none), CodeLocation::none);
+    auto ret = make_shared<ReturnStmt>(make_shared<ConstIntExpr>("1", 1u, CodeLocation::none), CodeLocation::none);
+    ifBlock->getBody()->push_back(ret);
+    funcDecl->getBody()->push_back(ifBlock);
 
     auto subOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("var", &funcDecl->getBody(),
-        CodeLocation::none), "-", &funcDecl->getBody(), CodeLocation::none);
-    subOp->getArgs().push_back(
-        make_shared<ConstIntExpr>("1", 1u, &funcDecl->getBody(),
-        CodeLocation::none));
-    auto recurseOp = make_shared<FunctionCallExpr>(
-        "factorial", &funcDecl->getBody(), CodeLocation::none);
+            make_shared<VariableExpr>("var", CodeLocation::none), "-", CodeLocation::none);
+    subOp->getArgs().push_back(make_shared<ConstIntExpr>("1", 1u, CodeLocation::none));
+    auto recurseOp = make_shared<FunctionCallExpr>("factorial", CodeLocation::none);
     recurseOp->getArgs().push_back(subOp);
     auto mulOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("var", &funcDecl->getBody(),
-        CodeLocation::none), "*", &funcDecl->getBody(), CodeLocation::none);
+            make_shared<VariableExpr>("var", CodeLocation::none), "*", CodeLocation::none);
     mulOp->getArgs().push_back(recurseOp);
-    auto ret2 = make_shared<ReturnStmt>(mulOp, &funcDecl->getBody(),
-        CodeLocation::none);
-    funcDecl->getBody().push_back(ret2);
+    auto ret2 = make_shared<ReturnStmt>(mulOp, CodeLocation::none);
+    funcDecl->getBody()->push_back(ret2);
 
     auto mainDecl = make_shared<FunctionDef>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "main", CodeLocation::none);
+            make_shared<FunctionDecl>(make_shared<TypeStmt>("uint32", CodeLocation::none), "main", true,
+                    CodeLocation::none), make_shared<Block>(CodeLocation::none), CodeLocation::none);
     mainDecl->setExported(true);
     auto argcDef = make_shared<VariableDefStmt>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "argc", &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getParameters().push_back(argcDef);
-    ast.getDeclarations().push_back(mainDecl);
+            make_shared<TypeStmt>("uint32", CodeLocation::none), "argc", CodeLocation::none);
+    mainDecl->getFunctionDecl()->getParameters().push_back(argcDef);
+    ast.getASTElements().push_back(mainDecl);
     /// factorial() is forward referenced
-    ast.getDeclarations().push_back(funcDecl);
+    ast.getASTElements().push_back(funcDecl);
 
-    auto funcCall = make_shared<FunctionCallExpr>("factorial",
-        &mainDecl->getBody(), CodeLocation::none);
-    funcCall->getArgs().push_back(make_shared<VariableExpr>("argc",
-        &mainDecl->getBody(), CodeLocation::none));
+    auto funcCall = make_shared<FunctionCallExpr>("factorial", CodeLocation::none);
+    funcCall->getArgs().push_back(make_shared<VariableExpr>("argc", CodeLocation::none));
     auto defAssignX = make_shared<VariableDefAssignStmt>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "x", funcCall, &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getBody().push_back(defAssignX);
+            make_shared<TypeStmt>("uint32", CodeLocation::none), "x", funcCall, CodeLocation::none);
+    mainDecl->getBody()->push_back(defAssignX);
 
     auto defY = make_shared<VariableDefStmt>(
-        make_shared<TypeStmt>("uint32", CodeLocation::none),
-        "y", &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getBody().push_back(defY);
+            make_shared<TypeStmt>("uint32", CodeLocation::none), "y", CodeLocation::none);
+    mainDecl->getBody()->push_back(defY);
 
     auto assignOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("y", &mainDecl->getBody(),
-        CodeLocation::none), "=", &mainDecl->getBody(), CodeLocation::none);
-    assignOp->getArgs().push_back(
-        make_shared<VariableExpr>("x", &mainDecl->getBody(),
-        CodeLocation::none));
-    mainDecl->getBody().push_back(assignOp);
+            make_shared<VariableExpr>("y", CodeLocation::none), "=", CodeLocation::none);
+    assignOp->getArgs().push_back(make_shared<VariableExpr>("x", CodeLocation::none));
+    mainDecl->getBody()->push_back(assignOp);
 
     auto unaryAssignOp = make_shared<MethodCallExpr>(
-        make_shared<VariableExpr>("y", &mainDecl->getBody(),
-        CodeLocation::none), "++", &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getBody().push_back(unaryAssignOp);
+            make_shared<VariableExpr>("y", CodeLocation::none), "++", CodeLocation::none);
+    mainDecl->getBody()->push_back(unaryAssignOp);
 
-    auto ret3 = make_shared<ReturnStmt>(
-        make_shared<VariableExpr>("y", &mainDecl->getBody(),
-        CodeLocation::none), &mainDecl->getBody(), CodeLocation::none);
-    mainDecl->getBody().push_back(ret3);
+    auto ret3 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y", CodeLocation::none), CodeLocation::none);
+    mainDecl->getBody()->push_back(ret3);
 
     PrintPass printer(ast, cout);
     printer.run();

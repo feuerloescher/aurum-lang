@@ -15,36 +15,48 @@
 
 namespace AST {
 
-class FunctionDecl : public ASTElement {
+class Declaration : public ASTElement {
+protected:
+    bool exported;
+
+public:
+    Declaration(bool exported, CodeLocation codeLocation);
+    virtual ~Declaration() {}
+
+    bool getExported();
+    void setExported(bool exported);
+
+};
+
+class FunctionDecl : public Declaration {
 
 protected:
     std::string name;
     TypeStmtPtr returnTypeStmt;
     ASTList<VariableDefStmt> parameters;
-    bool exported;
 
 public:
-    FunctionDecl(TypeStmtPtr returnTypeStmt, std::string name, CodeLocation codeLocation);
+    FunctionDecl(TypeStmtPtr returnTypeStmt, std::string name, bool exported, CodeLocation codeLocation);
+    virtual ~FunctionDecl() {};
 
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
     TypeStmtPtr getReturnTypeStmt();
     VariableDefStmtList& getParameters();
-    bool getExported();
-    void setExported(bool exported);
 
 }; // class Declaration
 
 
-class FunctionDef : public ASTElement {
+class FunctionDef : public Declaration {
 
 protected:
-    BlockPtr body;
     FunctionDeclPtr funcDecl;
+    BlockPtr body;
 
 public:
     FunctionDef(FunctionDeclPtr funcDecl, BlockPtr body, CodeLocation codeLocation);
+    virtual ~FunctionDef() {}
 
     virtual void runPass(ASTPass& pass);
 
@@ -55,7 +67,7 @@ public:
 }; // class FunctionDef
 
 
-class MethodDef : public ASTElement {
+class MethodDef : public Declaration {
 #warning TODO: Replace MethodDef with FunctionDef
 protected:
     std::string name;
@@ -63,11 +75,11 @@ protected:
     TypeStmtPtr objectTypeStmt;
     ASTList<VariableDefStmt> parameters;
     BlockPtr body;
-    bool exported;
 
 public:
     MethodDef(TypeStmtPtr returnTypeStmt, std::string name,
-            TypeStmtPtr objectTypeStmt, CodeLocation codeLocation);
+            TypeStmtPtr objectTypeStmt, bool exported, CodeLocation codeLocation);
+    virtual ~MethodDef() {}
 
     virtual void runPass(ASTPass& pass);
 

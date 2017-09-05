@@ -5,7 +5,7 @@
 cmake_minimum_required(VERSION 2.8)
 project(aurum_tests)
 
-include_directories("${PROJECT_SOURCE_DIR}/../src/auc")
+include_directories("${PROJECT_SOURCE_DIR}/../auc")
 
 file(GLOB SOURCE_FILES
     RELATIVE "${PROJECT_SOURCE_DIR}"

@@ -23,6 +23,7 @@ protected:
 
 public:
     TypeStmt(std::string name, CodeLocation codeLocation);
+    virtual ~TypeStmt() {};
 
     void runPass(ASTPass& pass);
 

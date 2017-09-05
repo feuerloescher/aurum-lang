@@ -7,7 +7,7 @@
 #ifndef AUC_TYPEPASS_HPP
 #define AUC_TYPEPASS_HPP
 
-#include "AST/ASTPass.hpp"
+#include "ASTPass.hpp"
 #include "AST/common.hpp"
 
 namespace Passes {
@@ -17,6 +17,7 @@ class TypePass : public AST::ASTPass {
 
 public:
     TypePass(AST::AbstractSyntaxTree& ast);
+    virtual ~TypePass() {};
 
     virtual void run();
 

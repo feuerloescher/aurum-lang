@@ -46,10 +46,12 @@ typename InternalMapType<T>::iterator ASTMap<T>::end() {
 }
 
 template
-class AST::ASTMap<FunctionDefPtr>;
+class AST::ASTMap<FunctionDef*>;
+template
+class AST::ASTMap<MethodDef*>;
 template
 class AST::ASTMap<MethodDefPtr>;
 template
-class AST::ASTMap<VariableDefStmtPtr>;
+class AST::ASTMap<VariableDefStmt*>;
 template
 class AST::ASTMap<TypePtr>;

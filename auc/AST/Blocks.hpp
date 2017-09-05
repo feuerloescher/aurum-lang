@@ -22,6 +22,7 @@ protected:
 
 public:
     Block(CodeLocation codeLocation);
+    virtual ~Block() {};
 
     virtual void runPass(ASTPass& pass);
 
@@ -42,6 +43,7 @@ protected:
 
 public:
     IfStmt(ExpressionPtr condition, BlockPtr body, CodeLocation codeLocation);
+    virtual ~IfStmt() {};
 
     virtual void runPass(ASTPass& pass);
 
@@ -61,6 +63,7 @@ protected:
 public:
     WhileLoop(ExpressionPtr condition,
             CodeLocation codeLocation);
+    virtual ~WhileLoop() {};
 
     virtual void runPass(ASTPass& pass);
 

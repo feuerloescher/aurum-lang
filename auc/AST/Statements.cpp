@@ -5,11 +5,15 @@
  */
 
 #include "Statements.hpp"
-#include "ASTPass.hpp"
+#include "Passes/ASTPass.hpp"
 
 using namespace AST;
 
-Statement::Statement(CodeLocation codeLocation) : ASTElement(codeLocation) {
+Statement::Statement(CodeLocation codeLocation) : codeLocation(codeLocation) {
+}
+
+CodeLocation Statement::getCodeLocation() {
+    return codeLocation;
 }
 
 

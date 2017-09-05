@@ -42,11 +42,31 @@ void IdentifierPass::runOn(FunctionDef& func) {
             throw ExistingIdentifierError(func.getName());
         }
         func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
+        Block* lastCurrentBlock = currentBlock;
         currentBlock = func.getBody().get();
         for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
             innerStmt->runPass(*this);
         }
-        /// \todo Reset currentBlock
+        currentBlock = lastCurrentBlock;
+    } else {
+        func.getBody()->runPass(*this);
+    }
+}
+
+void IdentifierPass::runOn(MethodDef& func) {
+    if (onlyInsertDeclarations) {
+        func.getReturnTypeStmt()->runPass(*this);
+        func.getObjectTypeStmt()->runPass(*this);
+        if (!func.getObjectTypeStmt()->getType()->getMethodDefs()
+                .insert(&func)) {
+            throw ExistingIdentifierError(func.getName());
+        }
+        Block* lastCurrentBlock = currentBlock;
+        currentBlock = func.getBody().get();
+        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
+            innerStmt->runPass(*this);
+        }
+        currentBlock = lastCurrentBlock;
     } else {
         func.getBody()->runPass(*this);
     }

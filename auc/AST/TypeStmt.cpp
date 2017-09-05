@@ -5,7 +5,7 @@
  */
 
 #include "TypeStmt.hpp"
-#include "ASTPass.hpp"
+#include "Passes/ASTPass.hpp"
 
 using namespace AST;
 

@@ -18,13 +18,12 @@ protected:
     CodeLocation codeLocation;
 
 public:
-    ASTElement(CodeLocation codeLocation);
+    explicit ASTElement(CodeLocation codeLocation);
+    virtual ~ASTElement() {};
 
     virtual void runPass(ASTPass& pass) = 0;
 
     CodeLocation getCodeLocation();
-    bool getExported();
-    void setExported(bool exported);
 
 }; // class ASTElement
 } // namespace AST

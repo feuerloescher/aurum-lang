@@ -5,7 +5,7 @@
  */
 
 #include "Expressions.hpp"
-#include "ASTPass.hpp"
+#include "Passes/ASTPass.hpp"
 #include "Type.hpp"
 #include "TypeStmt.hpp"
 

@@ -100,7 +100,8 @@ FunctionHeader<AST::FunctionDeclPtr& func> = (. AST::TypeStmtPtr type; .)
 //{FunctionModifier}
 TypeStmt<type>
 //[OperatorDeclaration]
-ident (. func = std::make_shared<AST::FunctionDecl>(type, to_utf8(t->val), AST::CodeLocation::none); .)
+ident (. func = std::make_shared<AST::FunctionDecl>(type, to_utf8(t->val), true, AST::CodeLocation::none); .)
+//TODO: handle "export" keyword
 "("
 //[ParameterModifier]
 [ TypeStmt<type>

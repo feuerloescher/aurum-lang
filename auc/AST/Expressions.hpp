@@ -22,6 +22,7 @@ protected:
 
 public:
     Expression(CodeLocation codeLocation);
+    virtual ~Expression() {};
 
     virtual void runPass(ASTPass& pass) = 0;
     TypePtr getType();
@@ -41,6 +42,7 @@ protected:
 public:
     FunctionCallExpr(std::string name,
             CodeLocation codeLocation);
+    virtual ~FunctionCallExpr() {};
 
     virtual void runPass(ASTPass& pass);
     std::string getName();
@@ -63,6 +65,7 @@ protected:
 public:
     MethodCallExpr(ExpressionPtr tmpObjectExpr, std::string name,
             CodeLocation codeLocation);
+    virtual ~MethodCallExpr() {};
 
     virtual void runPass(ASTPass& pass);
     ExpressionPtr getObjectExpr();
@@ -101,6 +104,7 @@ public:
             CodeLocation codeLocation);
     ConstIntExpr(std::string valueStr, int64_t numValue,
             CodeLocation codeLocation);
+    virtual ~ConstIntExpr() {};
 
     virtual void runPass(ASTPass& pass);
 
@@ -121,6 +125,7 @@ protected:
 public:
     VariableExpr(std::string name,
             CodeLocation codeLocation);
+    virtual ~VariableExpr() {};
 
     virtual void runPass(ASTPass& pass);
 

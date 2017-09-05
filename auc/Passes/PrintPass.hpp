@@ -7,7 +7,7 @@
 #ifndef AUC_PRINTPASS_HPP
 #define AUC_PRINTPASS_HPP
 
-#include "AST/ASTPass.hpp"
+#include "ASTPass.hpp"
 #include "AST/common.hpp"
 
 #include <ostream>
@@ -25,6 +25,7 @@ class PrintPass : public AST::ASTPass {
 
 public:
     PrintPass(AST::AbstractSyntaxTree& ast, std::ostream& stream);
+    virtual ~PrintPass() {};
 
     virtual void run();
 

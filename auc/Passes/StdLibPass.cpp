@@ -43,7 +43,7 @@ void StdLibPass::addScalarTypes() {
 
             for (std::string op : {"+", "-", "*", "/", "="}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt,
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, true,
                     CodeLocation::none);
                 intMethod->getParameters().push_back(
                     std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
@@ -52,13 +52,13 @@ void StdLibPass::addScalarTypes() {
             }
             for (std::string op : {"++", "--"}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, CodeLocation::none);
+                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, true, CodeLocation::none);
                 ast.getStdLibMethodDefs().insert(intMethod);
                 intType->getMethodDefs().insert(intMethod.get());
             }
             for (std::string op : {"==", "!=", ">", "<", ">=", "<="}) {
                 std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(boolTypeStmt, op, intTypeStmt,
+                    std::make_shared<MethodDef>(boolTypeStmt, op, intTypeStmt, true,
                     CodeLocation::none);
                 intMethod->getParameters().push_back(
                     std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));

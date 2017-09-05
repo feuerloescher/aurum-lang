@@ -7,7 +7,7 @@
 #ifndef AUC_IDENTIFIERPASS_HPP
 #define AUC_IDENTIFIERPASS_HPP
 
-#include "AST/ASTPass.hpp"
+#include "ASTPass.hpp"
 #include "AST/Declarations.hpp"
 #include "AST/common.hpp"
 
@@ -22,6 +22,7 @@ protected:
 
 public:
     IdentifierPass(AST::AbstractSyntaxTree& ast);
+    virtual ~IdentifierPass() {};
 
     virtual void run();
 

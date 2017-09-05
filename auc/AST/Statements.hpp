@@ -15,12 +15,18 @@
 
 namespace AST {
 
-class Statement : public ASTElement {
+class Statement {
 
 protected:
+    CodeLocation codeLocation;
 
 public:
     Statement(CodeLocation codeLocation);
+    virtual ~Statement() {};
+
+    virtual void runPass(ASTPass& pass) = 0;
+
+    CodeLocation getCodeLocation();
 
 }; // class Statement
 
@@ -33,6 +39,7 @@ protected:
 
 public:
     ReturnStmt(ExpressionPtr value, CodeLocation codeLocation);
+    virtual ~ReturnStmt() {};
     virtual void runPass(ASTPass& pass);
 
     ExpressionPtr getValue();
@@ -49,6 +56,7 @@ protected:
 
 public:
     VariableDefStmt(TypeStmtPtr typeStmt, std::string name, CodeLocation codeLocation);
+    virtual ~VariableDefStmt() {};
     virtual void runPass(ASTPass& pass);
 
     std::string getName();
@@ -66,6 +74,7 @@ protected:
 public:
     VariableDefAssignStmt(TypeStmtPtr type, std::string name,
             ExpressionPtr value, CodeLocation codeLocation);
+    virtual ~VariableDefAssignStmt() {};
     virtual void runPass(ASTPass& pass);
 
     ExpressionPtr getValue();

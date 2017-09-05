@@ -23,6 +23,7 @@ protected:
 public:
     CodeLocation(std::string filename, unsigned int line,
             unsigned int beginChar, unsigned int endChar);
+    virtual ~CodeLocation() {};
 
     std::string getFilename();
     unsigned int getLine();

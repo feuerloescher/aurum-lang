@@ -7,7 +7,7 @@
 #ifndef AUC_ASTPASS_HPP
 #define AUC_ASTPASS_HPP
 
-#include "common.hpp"
+#include "AST/common.hpp"
 
 namespace AST {
 
@@ -18,6 +18,7 @@ protected:
 
 public:
     ASTPass(AbstractSyntaxTree& ast);
+    virtual ~ASTPass() {};
 
     virtual void run() = 0;
 
