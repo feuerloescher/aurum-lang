@@ -7,7 +7,7 @@
 #ifndef AUC_SCALARTYPES_HPP
 #define AUC_SCALARTYPES_HPP
 
-#include "common.hpp"
+#include "AST/common.hpp"
 #include "Type.hpp"
 
 #include <string>

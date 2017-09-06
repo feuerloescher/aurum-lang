@@ -9,7 +9,7 @@
 #include <locale>
 #include <codecvt>
 #include "AST/AbstractSyntaxTree.hpp"
-#include "AST/ScalarTypes.hpp"
+#include "Types/ScalarTypes.hpp"
 #include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"

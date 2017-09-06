@@ -6,7 +6,6 @@
 
 #include "Expressions.hpp"
 #include "Passes/ASTPass.hpp"
-#include "Type.hpp"
 #include "TypeStmt.hpp"
 
 using namespace AST;

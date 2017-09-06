@@ -5,7 +5,7 @@
  */
 
 #include "StdLibPass.hpp"
-#include "AST/ScalarTypes.hpp"
+#include "Types/ScalarTypes.hpp"
 #include "AST/TypeStmt.hpp"
 #include "AST/Statements.hpp"
 

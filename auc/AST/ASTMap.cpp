@@ -7,7 +7,7 @@
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
 #include "Statements.hpp"
-#include "Type.hpp"
+#include "Types/Type.hpp"
 
 using namespace AST;
 

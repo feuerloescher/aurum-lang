@@ -13,7 +13,7 @@
 #include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "AST/Errors.hpp"
-#include "AST/Type.hpp"
+#include "Types/Type.hpp"
 
 using namespace AST;
 using namespace Passes;

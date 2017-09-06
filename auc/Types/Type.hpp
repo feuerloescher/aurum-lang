@@ -7,9 +7,8 @@
 #ifndef AUC_TYPE_HPP
 #define AUC_TYPE_HPP
 
-#include "common.hpp"
-#include "ASTMap.hpp"
-#include "Declarations.hpp"
+#include "AST/common.hpp"
+#include "AST/ASTMap.hpp"
 
 #include <string>
 

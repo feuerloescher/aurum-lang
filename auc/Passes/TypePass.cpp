@@ -12,8 +12,8 @@
 #include "AST/TypeStmt.hpp"
 #include "AST/Expressions.hpp"
 #include "AST/Errors.hpp"
-#include "AST/Type.hpp"
-#include "AST/ScalarTypes.hpp"
+#include "Types/Type.hpp"
+#include "Types/ScalarTypes.hpp"
 
 using namespace AST;
 using namespace Passes;

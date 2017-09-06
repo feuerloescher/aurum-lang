@@ -8,7 +8,7 @@
 #define AUC_ERRORS_HPP
 
 #include "common.hpp"
-#include "Type.hpp"
+#include "Types/Type.hpp"
 
 #include <exception>
 

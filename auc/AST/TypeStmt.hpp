@@ -9,7 +9,7 @@
 
 #include "common.hpp"
 #include "ASTElement.hpp"
-#include "Type.hpp"
+#include "Types/Type.hpp"
 
 #include <string>
 

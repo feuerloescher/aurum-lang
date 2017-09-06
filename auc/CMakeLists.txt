@@ -23,6 +23,7 @@ file(GLOB_RECURSE LIB_SOURCES
     "${PROJECT_SOURCE_DIR}/AST/*.cpp"
     "${PROJECT_SOURCE_DIR}/Parser/*.cpp"
     "${PROJECT_SOURCE_DIR}/Passes/*.cpp"
+    "${PROJECT_SOURCE_DIR}/Types/*.cpp"
     )
 
 set(MAIN_SRC "${PROJECT_SOURCE_DIR}/main.cpp")
