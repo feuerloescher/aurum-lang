@@ -34,7 +34,7 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     add_custom_command(OUTPUT coverage.info
         COMMAND rm -f coverage.info
         COMMAND lcov --directory .. --capture --output-file coverage.info --gcov-tool "${GCOV_TOOL}"
-        COMMAND lcov --remove coverage.info 'tests/*' '/usr/*' '/tmp/*' --output-file coverage.info
+        COMMAND lcov --remove coverage.info 'tests/*' 'auc/coco-r-cpp/*' '/usr/*' '/tmp/*' --output-file coverage.info
         COMMAND lcov --list coverage.info
         DEPENDS CMakeFiles/ast_test.dir/ast_test.cpp.gcda)
     add_custom_target(test_coverage

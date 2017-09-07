@@ -6,8 +6,7 @@
  */
 
 #include <string>
-#include <locale>
-#include <codecvt>
+#include <cwchar>
 #include "AST/AbstractSyntaxTree.hpp"
 #include "Types/ScalarTypes.hpp"
 #include "AST/Declarations.hpp"
@@ -26,7 +25,10 @@ COMPILER Aurum
 //    }
 
     std::string to_utf8(wchar_t* str) {
-        return std::wstring_convert<std::codecvt_utf8<wchar_t>>().to_bytes(str);
+        std::size_t len = std::wcslen(str);
+        char multibyteStr[4*len];
+        std::wcstombs(multibyteStr, str, 4*len);
+        return std::string(multibyteStr);
     }
 
 //TODO: Unicode support
