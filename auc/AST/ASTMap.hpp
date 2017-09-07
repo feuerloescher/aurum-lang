@@ -15,6 +15,7 @@
 
 namespace AST {
 
+#warning Use unordered_map instead of map?
 template<class T>
 using InternalMapType = std::map<std::string, T>;
 
@@ -26,8 +27,8 @@ protected:
 
 public:
     void clear();
-    bool insert(T t);
-    bool insert(T t, std::string name);
+    void insert(T t);
+    void insert(T t, std::string name);
     T find(std::string name);
     typename InternalMapType<T>::iterator begin();
     typename InternalMapType<T>::iterator end();

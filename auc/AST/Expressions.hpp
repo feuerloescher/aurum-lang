@@ -17,16 +17,12 @@ namespace AST {
 
 class Expression : public Statement {
 
-protected:
-    TypePtr type;
-
 public:
     Expression(CodeLocation codeLocation);
     virtual ~Expression() {};
 
     virtual void runPass(ASTPass& pass) = 0;
-    TypePtr getType();
-    void setType(TypePtr type);
+    virtual TypePtr getType() = 0;
 
 }; // class Expression
 
@@ -37,7 +33,7 @@ class FunctionCallExpr : public Expression {
 protected:
     std::string name;
     ASTList<Expression> args;
-    FunctionDef* functionDef;
+    FunctionDecl* functionDecl;
 
 public:
     FunctionCallExpr(std::string name,
@@ -45,38 +41,13 @@ public:
     virtual ~FunctionCallExpr() {};
 
     virtual void runPass(ASTPass& pass);
+    virtual TypePtr getType();
     std::string getName();
     ASTList<Expression>& getArgs();
-    FunctionDef* getFunctionDef();
-    void setFunctionDef(FunctionDef* functionDef);
+    FunctionDecl* getFunctionDecl();
+    void setFunctionDecl(FunctionDecl* functionDecl);
 
 }; // class FunctionCallExpr
-
-
-
-class MethodCallExpr : public Expression {
-
-protected:
-    ExpressionPtr objectExpr;
-    std::string name;
-    ASTList<Expression> args;
-    MethodDef* methodDef;
-
-public:
-    MethodCallExpr(ExpressionPtr tmpObjectExpr, std::string name,
-            CodeLocation codeLocation);
-    virtual ~MethodCallExpr() {};
-
-    virtual void runPass(ASTPass& pass);
-    ExpressionPtr getObjectExpr();
-    std::string getName();
-    std::string getMangledName();
-    ASTList<Expression>& getArgs();
-    MethodDef* getMethodDef();
-    void setMethodDef(MethodDef* functionDef);
-    bool isOperator();
-
-}; // class MethodCallExpr
 
 
 
@@ -107,6 +78,7 @@ public:
     virtual ~ConstIntExpr() {};
 
     virtual void runPass(ASTPass& pass);
+    virtual TypePtr getType();
 
     std::string getValueStr();
     uint64_t getNumValue();
@@ -128,6 +100,7 @@ public:
     virtual ~VariableExpr() {};
 
     virtual void runPass(ASTPass& pass);
+    virtual TypePtr getType();
 
     std::string getName();
     VariableDefStmt* getVariableDefStmt();

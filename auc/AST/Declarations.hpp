@@ -67,31 +67,6 @@ public:
 }; // class FunctionDef
 
 
-class MethodDef : public Declaration {
-#warning TODO: Replace MethodDef with FunctionDef
-protected:
-    std::string name;
-    TypeStmtPtr returnTypeStmt;
-    TypeStmtPtr objectTypeStmt;
-    ASTList<VariableDefStmt> parameters;
-    BlockPtr body;
-
-public:
-    MethodDef(TypeStmtPtr returnTypeStmt, std::string name,
-            TypeStmtPtr objectTypeStmt, bool exported, CodeLocation codeLocation);
-    virtual ~MethodDef() {}
-
-    virtual void runPass(ASTPass& pass);
-
-    std::string getName();
-    TypeStmtPtr getReturnTypeStmt();
-    TypeStmtPtr getObjectTypeStmt();
-    VariableDefStmtList& getParameters();
-    BlockPtr getBody();
-
-}; // class MethodDef
-
-
 } // namespace AST
 
 #endif // AUC_DECLARATIONS_HPP

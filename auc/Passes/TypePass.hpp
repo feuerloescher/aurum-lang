@@ -21,8 +21,8 @@ public:
 
     virtual void run();
 
+    virtual void runOn(AST::FunctionDecl&);
     virtual void runOn(AST::FunctionDef&);
-    virtual void runOn(AST::MethodDef&);
 
     virtual void runOn(AST::ReturnStmt&);
     virtual void runOn(AST::VariableDefStmt&);
@@ -35,7 +35,6 @@ public:
     virtual void runOn(AST::TypeStmt&);
 
     virtual void runOn(AST::FunctionCallExpr&);
-    virtual void runOn(AST::MethodCallExpr&);
     virtual void runOn(AST::ConstIntExpr&);
     virtual void runOn(AST::VariableExpr&);
 

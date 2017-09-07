@@ -15,6 +15,8 @@ std::string Type::getName() {
     return name;
 }
 
-ASTMap<MethodDef*>& Type::getMethodDefs() {
-    return methodDefs;
+ASTMap<FunctionDecl*>& Type::getFunctionDecls() {
+    return functionDecls;
 }
+
+TypePtr Type::voidType = std::make_shared<Type>("void");

@@ -65,36 +65,3 @@ FunctionDeclPtr FunctionDef::getFunctionDecl() {
 BlockPtr FunctionDef::getBody() {
     return body;
 }
-
-
-MethodDef::MethodDef(TypeStmtPtr returnTypeStmt, std::string name,
-        TypeStmtPtr objectTypeStmt, bool exported, CodeLocation codeLocation)
-        : Declaration(exported, codeLocation), returnTypeStmt(returnTypeStmt), objectTypeStmt(objectTypeStmt) {
-    this->name = objectTypeStmt->getName() + '.' + name;
-    parameters.push_back(
-            std::make_shared<VariableDefStmt>(objectTypeStmt, "this", CodeLocation::none));
-}
-
-void MethodDef::runPass(ASTPass& pass) {
-    pass.runOn(*this);
-}
-
-std::string MethodDef::getName() {
-    return name;
-}
-
-TypeStmtPtr MethodDef::getReturnTypeStmt() {
-    return returnTypeStmt;
-}
-
-TypeStmtPtr MethodDef::getObjectTypeStmt() {
-    return objectTypeStmt;
-}
-
-VariableDefStmtList& MethodDef::getParameters() {
-    return parameters;
-}
-
-BlockPtr MethodDef::getBody() {
-    return body;
-}

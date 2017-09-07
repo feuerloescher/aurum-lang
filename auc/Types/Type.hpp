@@ -19,13 +19,16 @@ class Type {
 
 protected:
     std::string name;
-    ASTMap<MethodDef*> methodDefs;
+    ASTMap<FunctionDecl*> functionDecls;
 
 public:
     Type(std::string name);
 
     std::string getName();
-    ASTMap<MethodDef*>& getMethodDefs();
+    ASTMap<FunctionDecl*>& getFunctionDecls();
+
+    // functions without parameters are registered for the 'void' type:
+    static TypePtr voidType;
 
 }; // class Type
 

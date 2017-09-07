@@ -38,28 +38,15 @@ void PrintPass::run() {
     indent() << "\n// End of C code\n";
 }
 
+void PrintPass::runOn(AST::FunctionDecl& funcDecl) {
+    throw std::runtime_error("PrintPass::runOn(FunctionDecl) not implemented");
+}
+
 void PrintPass::runOn(FunctionDef& func) {
     func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
     stream << " " << func.getName() << "(";
     bool first = true;
     for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
-        if (!first) {
-            stream << ", ";
-        }
-        first = false;
-        innerStmt->runPass(*this);
-    }
-    stream << ") ";
-    func.getBody()->runPass(*this);
-}
-
-void PrintPass::runOn(MethodDef& func) {
-    func.getReturnTypeStmt()->runPass(*this);
-    stream << " ";
-    func.getObjectTypeStmt()->runPass(*this);
-    stream << "::" << func.getName() << "(";
-    bool first = true;
-    for (VariableDefStmtPtr innerStmt : func.getParameters()) {
         if (!first) {
             stream << ", ";
         }
@@ -127,33 +114,6 @@ void PrintPass::runOn(FunctionCallExpr& stmt) {
         expr->runPass(*this);
     }
     stream << ")";
-}
-
-void PrintPass::runOn(MethodCallExpr& stmt) {
-    if (stmt.isOperator()) {
-        if (stmt.getArgs().size() == 1) {
-            stream << "(";
-            stmt.getObjectExpr()->runPass(*this);
-            stream << " " << stmt.getName() << " ";
-        } else {
-            stmt.getObjectExpr()->runPass(*this);
-            stream << stmt.getName();
-        }
-    } else {
-        stmt.getObjectExpr()->runPass(*this);
-        stream << "." << stmt.getName() << "(";
-    }
-    bool first = true;
-    for (ExpressionPtr expr : stmt.getArgs()) {
-        if (!first) {
-            stream << ", ";
-        }
-        first = false;
-        expr->runPass(*this);
-    }
-    if (!stmt.isOperator() || stmt.getArgs().size() == 1) {
-        stream << ")";
-    }
 }
 
 void PrintPass::runOn(ConstIntExpr& stmt) {

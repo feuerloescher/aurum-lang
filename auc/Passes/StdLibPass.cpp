@@ -38,32 +38,42 @@ void StdLibPass::addScalarTypes() {
             types.insert(intType);
 
             std::shared_ptr<TypeStmt> intTypeStmt = std::make_shared<TypeStmt>(
-                intTypeName, CodeLocation::none);
-            intTypeStmt->setType(intType);
+                    intTypeName, CodeLocation::none);
+            // intTypeStmt type is set to intType in IdentifierPass
+            #warning intRefTypeStmt has to declare a reference-to-int type
+            std::shared_ptr<TypeStmt> intRefTypeStmt = std::make_shared<TypeStmt>(
+                    intTypeName, CodeLocation::none);
+            // intRefTypeStmt type is set to intType in IdentifierPass
 
             for (std::string op : {"+", "-", "*", "/", "="}) {
-                std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, true,
+                std::shared_ptr<FunctionDecl> intFunc =
+                    std::make_shared<FunctionDecl>(intTypeStmt, op, true,
                     CodeLocation::none);
-                intMethod->getParameters().push_back(
-                    std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
-                ast.getStdLibMethodDefs().insert(intMethod);
-                intType->getMethodDefs().insert(intMethod.get());
+                intFunc->getParameters().push_back(
+                        std::make_shared<VariableDefStmt>(intRefTypeStmt, "self", CodeLocation::none));
+                intFunc->getParameters().push_back(
+                        std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
+                ast.getStdLibFunctionDecls().push_back(intFunc);
+                // function is added to intType in IdentifierPass
             }
             for (std::string op : {"++", "--"}) {
-                std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(intTypeStmt, op, intTypeStmt, true, CodeLocation::none);
-                ast.getStdLibMethodDefs().insert(intMethod);
-                intType->getMethodDefs().insert(intMethod.get());
+                std::shared_ptr<FunctionDecl> intFunc =
+                    std::make_shared<FunctionDecl>(intTypeStmt, op, true, CodeLocation::none);
+                intFunc->getParameters().push_back(
+                        std::make_shared<VariableDefStmt>(intRefTypeStmt, "self", CodeLocation::none));
+                ast.getStdLibFunctionDecls().push_back(intFunc);
+                // function is added to intType in IdentifierPass
             }
             for (std::string op : {"==", "!=", ">", "<", ">=", "<="}) {
-                std::shared_ptr<MethodDef> intMethod =
-                    std::make_shared<MethodDef>(boolTypeStmt, op, intTypeStmt, true,
+                std::shared_ptr<FunctionDecl> intFunc =
+                    std::make_shared<FunctionDecl>(boolTypeStmt, op, true,
                     CodeLocation::none);
-                intMethod->getParameters().push_back(
+                intFunc->getParameters().push_back(
+                        std::make_shared<VariableDefStmt>(intRefTypeStmt, "self", CodeLocation::none));
+                intFunc->getParameters().push_back(
                     std::make_shared<VariableDefStmt>(intTypeStmt, "param", CodeLocation::none));
-                ast.getStdLibMethodDefs().insert(intMethod);
-                intType->getMethodDefs().insert(intMethod.get());
+                ast.getStdLibFunctionDecls().push_back(intFunc);
+                // function is added to intType in IdentifierPass
             }
         }
     }

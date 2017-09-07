@@ -8,6 +8,7 @@
 #include "Declarations.hpp"
 #include "Statements.hpp"
 #include "Types/Type.hpp"
+#include "Errors.hpp"
 
 using namespace AST;
 
@@ -17,13 +18,15 @@ void ASTMap<T>::clear() {
 }
 
 template<class T>
-bool ASTMap<T>::insert(T t) {
-    return internalMap.insert(std::make_pair(t->getName(), t)).second;
+void ASTMap<T>::insert(T t) {
+    insert(t, t->getName());
 }
 
 template<class T>
-bool ASTMap<T>::insert(T t, std::string name) {
-    return internalMap.insert(std::make_pair(name, t)).second;
+void ASTMap<T>::insert(T t, std::string name) {
+    if (!internalMap.insert(std::make_pair(name, t)).second) {
+        throw ExistingIdentifierError(name);
+    }
 }
 
 template<class T>
@@ -48,9 +51,9 @@ typename InternalMapType<T>::iterator ASTMap<T>::end() {
 template
 class AST::ASTMap<FunctionDef*>;
 template
-class AST::ASTMap<MethodDef*>;
+class AST::ASTMap<FunctionDecl*>;
 template
-class AST::ASTMap<MethodDefPtr>;
+class AST::ASTMap<FunctionDeclPtr>;
 template
 class AST::ASTMap<VariableDefStmt*>;
 template

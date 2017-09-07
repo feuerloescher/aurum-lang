@@ -23,6 +23,10 @@ ASTMap<TypePtr>& AbstractSyntaxTree::getTypes() {
     return types;
 }
 
-ASTMap<MethodDefPtr>& AbstractSyntaxTree::getStdLibMethodDefs() {
-    return stdLibMethodDefs;
+ASTList<FunctionDecl>& AbstractSyntaxTree::getStdLibFunctionDecls() {
+    return stdLibFunctionDecls;
+}
+
+ASTMap<FunctionDefPtr>& AbstractSyntaxTree::getStdLibFunctionDefs() {
+    return stdLibFunctionDefs;
 }

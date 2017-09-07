@@ -26,7 +26,6 @@ public:
 
     virtual void runOn(FunctionDecl&);
     virtual void runOn(FunctionDef&);
-    virtual void runOn(MethodDef&);
 
     virtual void runOn(Statement&);
     virtual void runOn(ReturnStmt&);
@@ -41,7 +40,6 @@ public:
 
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);
-    virtual void runOn(MethodCallExpr&);
     virtual void runOn(ConstIntExpr&);
     virtual void runOn(VariableExpr&);
 

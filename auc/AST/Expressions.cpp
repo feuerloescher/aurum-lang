@@ -6,28 +6,24 @@
 
 #include "Expressions.hpp"
 #include "Passes/ASTPass.hpp"
-#include "TypeStmt.hpp"
+#include "Declarations.hpp"
 
 using namespace AST;
 
 Expression::Expression(CodeLocation codeLocation) : Statement(codeLocation) {
 }
 
-TypePtr Expression::getType() {
-    return type;
-}
-
-void Expression::setType(TypePtr type) {
-    this->type = type;
-}
-
 
 FunctionCallExpr::FunctionCallExpr(std::string name, CodeLocation codeLocation)
-        : Expression(codeLocation), name(name), functionDef(nullptr) {
+        : Expression(codeLocation), name(name), functionDecl(nullptr) {
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+TypePtr FunctionCallExpr::getType() {
+    return functionDecl->getReturnTypeStmt()->getType();
 }
 
 std::string FunctionCallExpr::getName() {
@@ -38,52 +34,12 @@ ASTList<Expression>& FunctionCallExpr::getArgs() {
     return args;
 }
 
-FunctionDef* FunctionCallExpr::getFunctionDef() {
-    return functionDef;
+FunctionDecl* FunctionCallExpr::getFunctionDecl() {
+    return functionDecl;
 }
 
-void FunctionCallExpr::setFunctionDef(FunctionDef* functionDef) {
-    this->functionDef = functionDef;
-}
-
-
-MethodCallExpr::MethodCallExpr(ExpressionPtr objectExpr, std::string name, CodeLocation codeLocation)
-        : Expression(codeLocation), objectExpr(objectExpr), name(name), methodDef(nullptr) {
-}
-
-void MethodCallExpr::runPass(ASTPass& pass) {
-    pass.runOn(*this);
-}
-
-ExpressionPtr MethodCallExpr::getObjectExpr() {
-    return objectExpr;
-}
-
-std::string MethodCallExpr::getName() {
-    return name;
-}
-
-std::string MethodCallExpr::getMangledName() {
-    return objectExpr->getType()->getName() + '.' + name;
-}
-
-ASTList<Expression>& MethodCallExpr::getArgs() {
-    return args;
-}
-
-MethodDef* MethodCallExpr::getMethodDef() {
-    return methodDef;
-}
-
-void MethodCallExpr::setMethodDef(MethodDef* methodDef) {
-    this->methodDef = methodDef;
-}
-
-bool MethodCallExpr::isOperator() {
-    char first = this->name.at(0);
-    return (this->args.size() > 1) ||
-            !(first == '_' || (first >= 'A' && first <= 'Z')
-                    || (first >= 'a' && first <= 'z'));
+void FunctionCallExpr::setFunctionDecl(FunctionDecl* functionDecl) {
+    this->functionDecl = functionDecl;
 }
 
 
@@ -127,12 +83,16 @@ ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue, CodeLocation 
         typeStmt(std::make_shared<TypeStmt>("int64", CodeLocation::none)) {
 }
 
-std::string ConstIntExpr::getValueStr() {
-    return valueStr;
-}
-
 void ConstIntExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+TypePtr ConstIntExpr::getType() {
+    return typeStmt->getType();
+}
+
+std::string ConstIntExpr::getValueStr() {
+    return valueStr;
 }
 
 uint64_t ConstIntExpr::getNumValue() {
@@ -151,6 +111,10 @@ VariableExpr::VariableExpr(std::string name,
 
 void VariableExpr::runPass(ASTPass& pass) {
     pass.runOn(*this);
+}
+
+TypePtr VariableExpr::getType() {
+    return variableDefStmt->getTypeStmt()->getType();
 }
 
 std::string VariableExpr::getName() {

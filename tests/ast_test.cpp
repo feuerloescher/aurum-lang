@@ -25,31 +25,31 @@ int main() {
 
     AbstractSyntaxTree ast;
 
-    auto funcDecl = make_shared<FunctionDef>(
-            make_shared<FunctionDecl>(make_shared<TypeStmt>("uint32", CodeLocation::none),
-                    "factorial", true, CodeLocation::none), make_shared<Block>(CodeLocation::none), CodeLocation::none);
+    auto funcDecl = make_shared<FunctionDecl>(
+            make_shared<TypeStmt>("uint32", CodeLocation::none), "factorial", true, CodeLocation::none);
+    auto funcDef = make_shared<FunctionDef>(funcDecl, make_shared<Block>(CodeLocation::none), CodeLocation::none);
     auto variable = make_shared<VariableDefStmt>(
             make_shared<TypeStmt>("uint32", CodeLocation::none), "var", CodeLocation::none);
-    funcDecl->getFunctionDecl()->getParameters().push_back(variable);
+    funcDecl->getParameters().push_back(variable);
 
-    auto cmpOp = make_shared<MethodCallExpr>(
-            make_shared<VariableExpr>("var", CodeLocation::none), "==", CodeLocation::none);
+    auto cmpOp = make_shared<FunctionCallExpr>("==", CodeLocation::none);
+    cmpOp->getArgs().push_back(make_shared<VariableExpr>("var", CodeLocation::none));
     cmpOp->getArgs().push_back(make_shared<ConstIntExpr>("0", 0u, CodeLocation::none));
     auto ifBlock = make_shared<IfStmt>(cmpOp, make_shared<Block>(CodeLocation::none), CodeLocation::none);
     auto ret = make_shared<ReturnStmt>(make_shared<ConstIntExpr>("1", 1u, CodeLocation::none), CodeLocation::none);
     ifBlock->getBody()->push_back(ret);
-    funcDecl->getBody()->push_back(ifBlock);
+    funcDef->getBody()->push_back(ifBlock);
 
-    auto subOp = make_shared<MethodCallExpr>(
-            make_shared<VariableExpr>("var", CodeLocation::none), "-", CodeLocation::none);
+    auto subOp = make_shared<FunctionCallExpr>("-", CodeLocation::none);
+    subOp->getArgs().push_back(make_shared<VariableExpr>("var", CodeLocation::none));
     subOp->getArgs().push_back(make_shared<ConstIntExpr>("1", 1u, CodeLocation::none));
     auto recurseOp = make_shared<FunctionCallExpr>("factorial", CodeLocation::none);
     recurseOp->getArgs().push_back(subOp);
-    auto mulOp = make_shared<MethodCallExpr>(
-            make_shared<VariableExpr>("var", CodeLocation::none), "*", CodeLocation::none);
+    auto mulOp = make_shared<FunctionCallExpr>("*", CodeLocation::none);
+    mulOp->getArgs().push_back(make_shared<VariableExpr>("var", CodeLocation::none));
     mulOp->getArgs().push_back(recurseOp);
     auto ret2 = make_shared<ReturnStmt>(mulOp, CodeLocation::none);
-    funcDecl->getBody()->push_back(ret2);
+    funcDef->getBody()->push_back(ret2);
 
     auto mainDecl = make_shared<FunctionDef>(
             make_shared<FunctionDecl>(make_shared<TypeStmt>("uint32", CodeLocation::none), "main", true,
@@ -60,7 +60,7 @@ int main() {
     mainDecl->getFunctionDecl()->getParameters().push_back(argcDef);
     ast.getASTElements().push_back(mainDecl);
     /// factorial() is forward referenced
-    ast.getASTElements().push_back(funcDecl);
+    ast.getASTElements().push_back(funcDef);
 
     auto funcCall = make_shared<FunctionCallExpr>("factorial", CodeLocation::none);
     funcCall->getArgs().push_back(make_shared<VariableExpr>("argc", CodeLocation::none));
@@ -72,13 +72,13 @@ int main() {
             make_shared<TypeStmt>("uint32", CodeLocation::none), "y", CodeLocation::none);
     mainDecl->getBody()->push_back(defY);
 
-    auto assignOp = make_shared<MethodCallExpr>(
-            make_shared<VariableExpr>("y", CodeLocation::none), "=", CodeLocation::none);
+    auto assignOp = make_shared<FunctionCallExpr>("=", CodeLocation::none);
+    assignOp->getArgs().push_back(make_shared<VariableExpr>("y", CodeLocation::none));
     assignOp->getArgs().push_back(make_shared<VariableExpr>("x", CodeLocation::none));
     mainDecl->getBody()->push_back(assignOp);
 
-    auto unaryAssignOp = make_shared<MethodCallExpr>(
-            make_shared<VariableExpr>("y", CodeLocation::none), "++", CodeLocation::none);
+    auto unaryAssignOp = make_shared<FunctionCallExpr>("++", CodeLocation::none);
+    unaryAssignOp->getArgs().push_back(make_shared<VariableExpr>("y", CodeLocation::none));
     mainDecl->getBody()->push_back(unaryAssignOp);
 
     auto ret3 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y", CodeLocation::none), CodeLocation::none);

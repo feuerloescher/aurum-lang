@@ -21,10 +21,6 @@ void ASTPass::runOn(FunctionDef& expr) {
     throw std::runtime_error("FunctionDef unhandled");
 }
 
-void ASTPass::runOn(MethodDef& expr) {
-    throw std::runtime_error("MethodDef unhandled");
-}
-
 void ASTPass::runOn(Statement& expr) {
     throw std::runtime_error("Statement unhandled");
 }
@@ -63,10 +59,6 @@ void ASTPass::runOn(Expression& expr) {
 
 void ASTPass::runOn(FunctionCallExpr& expr) {
     throw std::runtime_error("FunctionCallExpr unhandled");
-}
-
-void ASTPass::runOn(MethodCallExpr& expr) {
-    throw std::runtime_error("MethodCallExpr unhandled");
 }
 
 void ASTPass::runOn(ConstIntExpr& expr) {

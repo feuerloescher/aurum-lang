@@ -19,7 +19,10 @@ protected:
     ASTElementList astElements;
     ASTMap<FunctionDef*> functionDefs;
     ASTMap<TypePtr> types;
-    ASTMap<MethodDefPtr> stdLibMethodDefs;
+
+    // storage for shared_ptrs (no Statements in AST that hold the shared_ptrs)
+    ASTList<FunctionDecl> stdLibFunctionDecls;
+    ASTMap<FunctionDefPtr> stdLibFunctionDefs;
 
 
 public:
@@ -28,7 +31,8 @@ public:
     ASTElementList& getASTElements();
     ASTMap<FunctionDef*>& getFunctionDefs();
     ASTMap<TypePtr>& getTypes();
-    ASTMap<MethodDefPtr>& getStdLibMethodDefs();
+    ASTList<FunctionDecl>& getStdLibFunctionDecls();
+    ASTMap<FunctionDefPtr>& getStdLibFunctionDefs();
 
 }; // class AbstractSyntaxTree
 

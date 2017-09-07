@@ -37,9 +37,6 @@ typedef ASTPtr<FunctionDecl> FunctionDeclPtr;
 class FunctionDef;
 typedef ASTPtr<FunctionDef> FunctionDefPtr;
 
-class MethodDef;
-typedef ASTPtr<MethodDef> MethodDefPtr;
-
 
 class Statement;
 typedef ASTList<Statement> StatementList;
@@ -75,9 +72,6 @@ typedef ASTPtr<Expression> ExpressionPtr;
 
 class FunctionCallExpr;
 typedef ASTPtr<FunctionCallExpr> FunctionCallExprPtr;
-
-class MethodCallExpr;
-typedef ASTPtr<MethodCallExpr> MethodCallExprPtr;
 
 class ConstIntExpr;
 typedef ASTPtr<ConstIntExpr> ConstIntExprPtr;

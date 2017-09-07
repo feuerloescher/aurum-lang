@@ -23,9 +23,11 @@ IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast)
 }
 
 void IdentifierPass::run() {
-    ast.getFunctionDefs().clear();
     currentBlock = nullptr;
     onlyInsertDeclarations = true;
+    for (FunctionDeclPtr func : ast.getStdLibFunctionDecls()) {
+        func->runPass(*this);
+    }
     for (ASTElementPtr elem : ast.getASTElements()) {
         elem->runPass(*this);
     }
@@ -36,37 +38,28 @@ void IdentifierPass::run() {
     }
 }
 
-void IdentifierPass::runOn(FunctionDef& func) {
-    if (onlyInsertDeclarations) {
-        if (!ast.getFunctionDefs().insert(&func)) {
-            throw ExistingIdentifierError(func.getName());
-        }
-        func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
-        Block* lastCurrentBlock = currentBlock;
-        currentBlock = func.getBody().get();
-        for (VariableDefStmtPtr innerStmt : func.getFunctionDecl()->getParameters()) {
-            innerStmt->runPass(*this);
-        }
-        currentBlock = lastCurrentBlock;
-    } else {
-        func.getBody()->runPass(*this);
+void IdentifierPass::runOn(AST::FunctionDecl& funcDecl) {
+    funcDecl.getReturnTypeStmt()->runPass(*this);
+    for (VariableDefStmtPtr innerStmt : funcDecl.getParameters()) {
+        innerStmt->runPass(*this);
     }
+    // TODO: move the type getting code to FunctionDecl class
+    TypePtr type;
+    if (funcDecl.getParameters().size() > 0) {
+        type = funcDecl.getParameters().front()->getTypeStmt()->getType();
+    } else {
+        type = Type::voidType;
+    }
+    type->getFunctionDecls().insert(&funcDecl);
 }
 
-void IdentifierPass::runOn(MethodDef& func) {
+void IdentifierPass::runOn(FunctionDef& func) {
     if (onlyInsertDeclarations) {
-        func.getReturnTypeStmt()->runPass(*this);
-        func.getObjectTypeStmt()->runPass(*this);
-        if (!func.getObjectTypeStmt()->getType()->getMethodDefs()
-                .insert(&func)) {
-            throw ExistingIdentifierError(func.getName());
-        }
         Block* lastCurrentBlock = currentBlock;
         currentBlock = func.getBody().get();
-        for (ASTPtr<VariableDefStmt> innerStmt : func.getParameters()) {
-            innerStmt->runPass(*this);
-        }
+        func.getFunctionDecl()->runPass(*this);
         currentBlock = lastCurrentBlock;
+        ast.getFunctionDefs().insert(&func);
     } else {
         func.getBody()->runPass(*this);
     }
@@ -77,16 +70,16 @@ void IdentifierPass::runOn(ReturnStmt& stmt) {
 }
 
 void IdentifierPass::runOn(VariableDefStmt& stmt) {
-    if (!currentBlock->getVariables().insert(&stmt)) {
-        throw ExistingIdentifierError(stmt.getName());
+    // if currentBlock==nullptr, 'stmt' is a parameter definition of a
+    // FunctionDeclStmt, so there is no block to insert the variables into
+    if (currentBlock) {
+        currentBlock->getVariables().insert(&stmt);
     }
     stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
-    if (!currentBlock->getVariables().insert(&stmt)) {
-        throw ExistingIdentifierError(stmt.getName());
-    }
+    currentBlock->getVariables().insert(&stmt);
     stmt.getTypeStmt()->runPass(*this);
     stmt.getValue()->runPass(*this);
 }
@@ -122,24 +115,22 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     for (ExpressionPtr expr : stmt.getArgs()) {
         expr->runPass(*this);
     }
-    FunctionDef* functionDef = ast.getFunctionDefs().find(stmt.getName());
-    if (!functionDef) {
+    // TODO: move the type getting code to FunctionCallExpr class
+    TypePtr type;
+    if (stmt.getArgs().size() > 0) {
+        type = stmt.getArgs().front()->getType();
+    } else {
+        type = Type::voidType;
+    }
+    FunctionDecl* functionDecl = type->getFunctionDecls().find(stmt.getName());
+    if (!functionDecl) {
         throw UnknownIdentifierError(stmt.getName());
     }
-    if (stmt.getArgs().size() != functionDef->getFunctionDecl()->getParameters().size()) {
+    if (stmt.getArgs().size() != functionDecl->getParameters().size()) {
         throw ArgumentCountError(stmt.getName(),
-            functionDef->getFunctionDecl()->getParameters().size(), stmt.getArgs().size());
+            functionDecl->getParameters().size(), stmt.getArgs().size());
     }
-    stmt.setFunctionDef(functionDef);
-}
-
-void IdentifierPass::runOn(MethodCallExpr& stmt) {
-    stmt.getObjectExpr()->runPass(*this);
-    for (ExpressionPtr expr : stmt.getArgs()) {
-        expr->runPass(*this);
-    }
-    /// Method identifier is resolved in TypePass, as type of
-    /// stmt.getObjectExpr() is not resolved yet
+    stmt.setFunctionDecl(functionDecl);
 }
 
 void IdentifierPass::runOn(ConstIntExpr& stmt) {
