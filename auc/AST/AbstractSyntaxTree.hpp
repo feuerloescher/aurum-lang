@@ -10,6 +10,7 @@
 #include "common.hpp"
 #include "ASTMap.hpp"
 #include "Declarations.hpp"
+#include "Types/Type.hpp"
 
 namespace AST {
 
@@ -18,7 +19,8 @@ class AbstractSyntaxTree {
 protected:
     ASTElementList astElements;
     ASTMap<FunctionDef*> functionDefs;
-    ASTMap<TypePtr> types;
+    ASTMap<type::TypePtr> types;
+#warning TODO: add a voidType shared_ptr for quicker access
 
     // storage for shared_ptrs (no Statements in AST that hold the shared_ptrs)
     ASTList<FunctionDecl> stdLibFunctionDecls;
@@ -30,7 +32,7 @@ public:
 
     ASTElementList& getASTElements();
     ASTMap<FunctionDef*>& getFunctionDefs();
-    ASTMap<TypePtr>& getTypes();
+    ASTMap<type::TypePtr>& getTypes();
     ASTList<FunctionDecl>& getStdLibFunctionDecls();
     ASTMap<FunctionDefPtr>& getStdLibFunctionDefs();
 

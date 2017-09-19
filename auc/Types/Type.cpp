@@ -6,17 +6,8 @@
 
 #include "Type.hpp"
 
-using namespace AST;
+using namespace type;
 
-Type::Type(std::string name) : name(name) {
-}
-
-std::string Type::getName() {
-    return name;
-}
-
-ASTMap<FunctionDecl*>& Type::getFunctionDecls() {
+AST::ASTMap<AST::FunctionDecl*>& Type::getFunctionDecls() {
     return functionDecls;
 }
-
-TypePtr Type::voidType = std::make_shared<Type>("void");

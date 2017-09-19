@@ -6,14 +6,29 @@
 
 #include "ScalarTypes.hpp"
 
-using namespace AST;
+using namespace type;
 
-ScalarType::ScalarType(std::string name)
-        : Type(name) {
+ScalarType::ScalarType(std::string name, size_t size) : name(name), size(size) {
 }
 
-IntType::IntType(std::string name, unsigned int width, bool isSigned)
-        : ScalarType(name), width(width), isSigned(isSigned) {
+std::string ScalarType::getName() {
+    return name;
+}
+
+size_t ScalarType::getSize() {
+    return size;
+}
+
+
+VoidType::VoidType() : ScalarType("void", 0) {
+}
+
+
+IntType::IntType(std::string name, size_t bitwidth, bool isSigned)
+        : ScalarType(name, bitwidth / 8), isSigned(isSigned) {
+    if (bitwidth % 8 != 0) {
+        throw std::runtime_error("Bitwidth must be a multiple of 8: " + std::to_string(bitwidth));
+    }
 }
 
 bool IntType::getSigned() {

@@ -9,6 +9,7 @@
 #include "Declarations.hpp"
 
 using namespace AST;
+using namespace type;
 
 Expression::Expression(CodeLocation codeLocation) : Statement(codeLocation) {
 }
@@ -24,6 +25,10 @@ void FunctionCallExpr::runPass(ASTPass& pass) {
 
 TypePtr FunctionCallExpr::getType() {
     return functionDecl->getReturnTypeStmt()->getType();
+}
+
+bool FunctionCallExpr::getIsReferenceable() {
+    return functionDecl->getReturnTypeStmt()->getIsReference();
 }
 
 std::string FunctionCallExpr::getName() {
@@ -45,42 +50,42 @@ void FunctionCallExpr::setFunctionDecl(FunctionDecl* functionDecl) {
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, uint8_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("uint8", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("uint8", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, int8_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("int8", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("int8", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, uint16_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("uint16", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("uint16", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, int16_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("int16", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("int16", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, uint32_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("uint32", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("uint32", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, int32_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("int32", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("int32", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, uint64_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("uint64", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("uint64", CodeLocation::none)) {
 }
 
 ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue, CodeLocation codeLocation)
         : Expression(codeLocation), valueStr(valueStr), numValue((uint64_t) numValue),
-        typeStmt(std::make_shared<TypeStmt>("int64", CodeLocation::none)) {
+        typeStmt(std::make_shared<BasicTypeStmt>("int64", CodeLocation::none)) {
 }
 
 void ConstIntExpr::runPass(ASTPass& pass) {
@@ -89,6 +94,10 @@ void ConstIntExpr::runPass(ASTPass& pass) {
 
 TypePtr ConstIntExpr::getType() {
     return typeStmt->getType();
+}
+
+bool ConstIntExpr::getIsReferenceable() {
+    return false;
 }
 
 std::string ConstIntExpr::getValueStr() {
@@ -115,6 +124,10 @@ void VariableExpr::runPass(ASTPass& pass) {
 
 TypePtr VariableExpr::getType() {
     return variableDefStmt->getTypeStmt()->getType();
+}
+
+bool VariableExpr::getIsReferenceable() {
+    return true;
 }
 
 std::string VariableExpr::getName() {

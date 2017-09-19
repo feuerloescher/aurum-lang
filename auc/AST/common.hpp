@@ -52,8 +52,11 @@ typedef ASTPtr<VariableDefStmt> VariableDefStmtPtr;
 class VariableDefAssignStmt;
 typedef ASTPtr<VariableDefAssignStmt> VariableDefAssignStmtPtr;
 
+
 class TypeStmt;
 typedef ASTPtr<TypeStmt> TypeStmtPtr;
+class BasicTypeStmt;
+typedef ASTPtr<BasicTypeStmt> BasicTypeStmtPtr;
 
 
 class Block;
@@ -78,16 +81,6 @@ typedef ASTPtr<ConstIntExpr> ConstIntExprPtr;
 
 class VariableExpr;
 typedef ASTPtr<VariableExpr> VariableExprPtr;
-
-
-class Type;
-typedef ASTPtr<Type> TypePtr;
-
-class ScalarType;
-typedef ASTPtr<ScalarType> ScalarTypePtr;
-
-class IntType;
-typedef ASTPtr<IntType> IntTypePtr;
 
 } // namespace AST
 

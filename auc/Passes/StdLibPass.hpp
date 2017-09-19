@@ -18,7 +18,7 @@ class StdLibPass {
 
 protected:
     AST::AbstractSyntaxTree& ast;
-    AST::ASTMap<AST::TypePtr>& types;
+    AST::ASTMap<type::TypePtr>& types;
 
     void addScalarTypes();
 

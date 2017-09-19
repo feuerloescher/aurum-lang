@@ -22,7 +22,8 @@ public:
     virtual ~Expression() {};
 
     virtual void runPass(ASTPass& pass) = 0;
-    virtual TypePtr getType() = 0;
+    virtual type::TypePtr getType() = 0;
+    virtual bool getIsReferenceable() = 0;
 
 }; // class Expression
 
@@ -40,8 +41,9 @@ public:
             CodeLocation codeLocation);
     virtual ~FunctionCallExpr() {};
 
-    virtual void runPass(ASTPass& pass);
-    virtual TypePtr getType();
+    void runPass(ASTPass& pass) override;
+    type::TypePtr getType() override;
+    bool getIsReferenceable() override;
     std::string getName();
     ASTList<Expression>& getArgs();
     FunctionDecl* getFunctionDecl();
@@ -77,8 +79,9 @@ public:
             CodeLocation codeLocation);
     virtual ~ConstIntExpr() {};
 
-    virtual void runPass(ASTPass& pass);
-    virtual TypePtr getType();
+    void runPass(ASTPass& pass) override;
+    type::TypePtr getType() override;
+    bool getIsReferenceable() override;
 
     std::string getValueStr();
     uint64_t getNumValue();
@@ -99,8 +102,9 @@ public:
             CodeLocation codeLocation);
     virtual ~VariableExpr() {};
 
-    virtual void runPass(ASTPass& pass);
-    virtual TypePtr getType();
+    void runPass(ASTPass& pass) override;
+    type::TypePtr getType() override;
+    bool getIsReferenceable() override;
 
     std::string getName();
     VariableDefStmt* getVariableDefStmt();

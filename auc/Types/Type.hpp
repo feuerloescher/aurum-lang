@@ -12,25 +12,22 @@
 
 #include <string>
 
-namespace AST {
+namespace type {
 
-/// \todo Implement reference types for function/method call-by-reference
 class Type {
 
 protected:
-    std::string name;
-    ASTMap<FunctionDecl*> functionDecls;
+    AST::ASTMap<AST::FunctionDecl*> functionDecls;
 
 public:
-    Type(std::string name);
+    virtual ~Type() {}
 
-    std::string getName();
-    ASTMap<FunctionDecl*>& getFunctionDecls();
-
-    // functions without parameters are registered for the 'void' type:
-    static TypePtr voidType;
+    virtual std::string getName() = 0;
+    virtual size_t getSize() = 0;
+    AST::ASTMap<AST::FunctionDecl*>& getFunctionDecls();
 
 }; // class Type
+typedef std::shared_ptr<Type> TypePtr;
 
 
 } // namespace AST

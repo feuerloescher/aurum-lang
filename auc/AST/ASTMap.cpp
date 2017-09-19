@@ -11,6 +11,7 @@
 #include "Errors.hpp"
 
 using namespace AST;
+using namespace type;
 
 template<class T>
 void ASTMap<T>::clear() {

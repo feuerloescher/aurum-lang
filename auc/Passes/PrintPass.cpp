@@ -99,8 +99,11 @@ void PrintPass::runOn(WhileLoop& stmt) {
     stmt.getBody().runPass(*this);
 }
 
-void PrintPass::runOn(TypeStmt& stmt) {
+void PrintPass::runOn(BasicTypeStmt& stmt) {
     stream << stmt.getName();
+    if (stmt.getIsReference()) {
+        stream << '&';
+    }
 }
 
 void PrintPass::runOn(FunctionCallExpr& stmt) {

@@ -12,25 +12,40 @@
 
 #include <string>
 
-namespace AST {
+namespace type {
 
 class ScalarType : public Type {
 
+protected:
+    std::string name;
+    size_t size; // in bytes
+
 public:
-    ScalarType(std::string name);
+    ScalarType(std::string name, size_t size);
+
+    std::string getName() override;
+    size_t getSize() override;
 
 }; // class ScalarType
 
+
+class VoidType : public ScalarType {
+
+public:
+    VoidType();
+
+    virtual ~VoidType() {}
+
+}; // class VoidType
 
 
 class IntType : public ScalarType {
 
 protected:
-    unsigned int width;
     bool isSigned;
 
 public:
-    IntType(std::string name, unsigned int width, bool isSigned);
+    IntType(std::string name, size_t bitwidth, bool isSigned);
 
     bool getSigned();
 

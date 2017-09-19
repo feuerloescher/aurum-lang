@@ -37,6 +37,7 @@ public:
     virtual void runOn(WhileLoop&);
 
     virtual void runOn(TypeStmt&);
+    virtual void runOn(BasicTypeStmt&);
 
     virtual void runOn(Expression&);
     virtual void runOn(FunctionCallExpr&);

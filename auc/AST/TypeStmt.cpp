@@ -8,17 +8,10 @@
 #include "Passes/ASTPass.hpp"
 
 using namespace AST;
+using namespace type;
 
-TypeStmt::TypeStmt(std::string name, CodeLocation codeLocation)
-        : ASTElement(codeLocation), name(name), type(nullptr) {
-}
-
-void TypeStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
-}
-
-std::string TypeStmt::getName() {
-    return name;
+TypeStmt::TypeStmt(CodeLocation codeLocation)
+        : ASTElement(codeLocation), type(nullptr), isReference(false) {
 }
 
 TypePtr TypeStmt::getType() {
@@ -27,4 +20,25 @@ TypePtr TypeStmt::getType() {
 
 void TypeStmt::setType(TypePtr type) {
     this->type = type;
+}
+
+bool TypeStmt::getIsReference() {
+    return isReference;
+}
+
+void TypeStmt::setIsReference(bool isReference) {
+    this->isReference = isReference;
+}
+
+
+BasicTypeStmt::BasicTypeStmt(std::string name, CodeLocation codeLocation)
+        : TypeStmt(codeLocation), name(name) {
+}
+
+void BasicTypeStmt::runPass(ASTPass& pass) {
+    pass.runOn(*this);
+}
+
+std::string BasicTypeStmt::getName() {
+    return name;
 }

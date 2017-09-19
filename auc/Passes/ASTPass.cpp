@@ -53,6 +53,10 @@ void ASTPass::runOn(TypeStmt& expr) {
     throw std::runtime_error("TypeStmt unhandled");
 }
 
+void ASTPass::runOn(BasicTypeStmt& expr) {
+    throw std::runtime_error("BasicTypeStmt unhandled");
+}
+
 void ASTPass::runOn(Expression& expr) {
     throw std::runtime_error("Expression unhandled");
 }

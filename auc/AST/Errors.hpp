@@ -44,7 +44,7 @@ public:
 class ArgumentTypeError : public std::runtime_error {
 public:
     ArgumentTypeError(std::string functionName, unsigned int argumentIndex,
-            TypePtr expectedType, TypePtr providedType)
+            type::TypePtr expectedType, type::TypePtr providedType)
             : std::runtime_error("The function '" + functionName
             + "' expects argument " + std::to_string(argumentIndex)
             + " to be of type " + expectedType->getName() + ", but is provided "
@@ -52,9 +52,18 @@ public:
     }
 };
 
+class ArgumentReferenceError : public std::runtime_error {
+public:
+    ArgumentReferenceError(std::string functionName, unsigned int argumentIndex, std::string parameterName)
+            : std::runtime_error("The function '" + functionName
+            + "' expects argument " + std::to_string(argumentIndex) + " (parameter '" + parameterName
+            + "') to be a referenceable type.") {
+    }
+};
+
 class ConditionTypeError : public std::runtime_error {
 public:
-    ConditionTypeError(TypePtr providedType)
+    ConditionTypeError(type::TypePtr providedType)
             : std::runtime_error("The condition has to be of type bool, "
             "but is of type " + providedType->getName() + ".") {
     }

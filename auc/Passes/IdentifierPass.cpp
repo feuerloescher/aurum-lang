@@ -17,6 +17,7 @@
 
 using namespace AST;
 using namespace Passes;
+using namespace type;
 
 IdentifierPass::IdentifierPass(AbstractSyntaxTree& ast)
     : ASTPass(ast), currentBlock(nullptr), onlyInsertDeclarations(true) {
@@ -48,7 +49,7 @@ void IdentifierPass::runOn(AST::FunctionDecl& funcDecl) {
     if (funcDecl.getParameters().size() > 0) {
         type = funcDecl.getParameters().front()->getTypeStmt()->getType();
     } else {
-        type = Type::voidType;
+        type = ast.getTypes().find("void");
     }
     type->getFunctionDecls().insert(&funcDecl);
 }
@@ -103,7 +104,7 @@ void IdentifierPass::runOn(WhileLoop& stmt) {
     stmt.getBody().runPass(*this);
 }
 
-void IdentifierPass::runOn(TypeStmt& stmt) {
+void IdentifierPass::runOn(BasicTypeStmt& stmt) {
     TypePtr type = ast.getTypes().find(stmt.getName());
     if (!type) {
         throw UnknownIdentifierError(stmt.getName());
@@ -120,7 +121,7 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     if (stmt.getArgs().size() > 0) {
         type = stmt.getArgs().front()->getType();
     } else {
-        type = Type::voidType;
+        type = ast.getTypes().find("void");
     }
     FunctionDecl* functionDecl = type->getFunctionDecls().find(stmt.getName());
     if (!functionDecl) {

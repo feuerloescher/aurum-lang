@@ -7,6 +7,7 @@
 #include "AbstractSyntaxTree.hpp"
 
 using namespace AST;
+using namespace type;
 
 AbstractSyntaxTree::AbstractSyntaxTree() {
 }

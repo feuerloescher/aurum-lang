@@ -25,7 +25,7 @@ COMPILER Aurum
 //    }
 
     std::string to_utf8(wchar_t* str) {
-        std::size_t len = std::wcslen(str);
+        std::size_t len = std::wcslen(str) + 1; // one character for terminating '\0'
         char multibyteStr[4*len];
         std::wcstombs(multibyteStr, str, 4*len);
         return std::string(multibyteStr);
@@ -39,6 +39,7 @@ CHARACTERS
     octdigit = '0'..'7'.
     bindigit = '0'..'1'.
     idstart = letter + '_'.
+    idletter = letter + digit.
     opstart = '#'.
     opletter = ANY - letter - digit - '(' - ')' - opstart - idstart - '"' - '\''.
     char = ANY.
@@ -46,7 +47,7 @@ CHARACTERS
 
 //TODO: Float and String support
 TOKENS
-    ident = idstart {letter}.
+    ident = idstart {idletter}.
     operator = opstart {char}
     | opletter { opletter }.
     integer =   "0x" hexdigit {hexdigit}
@@ -125,9 +126,12 @@ ident (.    auto variable = std::make_shared<AST::VariableDefStmt>(type, to_utf8
 /*------------------------------------------------------------------------*/
 
 //TODO: Array support
-TypeStmt<AST::TypeStmtPtr& typeStmt> = ident
-        (. typeStmt = std::make_shared<AST::TypeStmt>(to_utf8(t->val), AST::CodeLocation::none); .).
-//["[" GenericType "]"]
+TypeStmt<AST::TypeStmtPtr& typeStmt> = (. AST::BasicTypeStmtPtr basicTypeStmt; .)
+    BasicTypeStmt<basicTypeStmt> (. typeStmt = basicTypeStmt; .)
+    [ '&' (. basicTypeStmt->setIsReference(true); .) ].
+
+BasicTypeStmt<AST::BasicTypeStmtPtr& basicTypeStmt> = ident
+        (. basicTypeStmt = std::make_shared<AST::BasicTypeStmt>(to_utf8(t->val), AST::CodeLocation::none); .).
 
 /*------------------------------------------------------------------------*/
 

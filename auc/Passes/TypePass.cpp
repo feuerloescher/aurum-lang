@@ -73,7 +73,7 @@ void TypePass::runOn(WhileLoop& stmt) {
     stmt.getBody().runPass(*this);
 }
 
-void TypePass::runOn(TypeStmt& stmt) {
+void TypePass::runOn(BasicTypeStmt& stmt) {
 }
 
 void TypePass::runOn(FunctionCallExpr& stmt) {
@@ -91,6 +91,10 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
             throw ArgumentTypeError(stmt.getName(), argCounter,
                     (*paramIter)->getTypeStmt()->getType(), arg->getType());
         }
+        if ((*paramIter)->getTypeStmt()->getIsReference() && !arg->getIsReferenceable()) {
+            throw ArgumentReferenceError(stmt.getName(), argCounter, (*paramIter)->getName());
+        }
+        ++paramIter;
     }
 }
 

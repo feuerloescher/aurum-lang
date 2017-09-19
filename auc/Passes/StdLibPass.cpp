@@ -11,6 +11,7 @@
 
 using namespace AST;
 using namespace Passes;
+using namespace type;
 
 StdLibPass::StdLibPass(AST::AbstractSyntaxTree& ast)
     : ast(ast), types(ast.getTypes()) {
@@ -22,10 +23,13 @@ void StdLibPass::run() {
 }
 
 void StdLibPass::addScalarTypes() {
+    std::shared_ptr<VoidType> voidType = std::make_shared<VoidType>();
+    types.insert(voidType);
+
     std::shared_ptr<IntType> boolType = std::make_shared<IntType>(
-        "bool", 1, false);
+        "bool", 8, false);
     types.insert(boolType);
-    std::shared_ptr<TypeStmt> boolTypeStmt = std::make_shared<TypeStmt>(
+    std::shared_ptr<TypeStmt> boolTypeStmt = std::make_shared<BasicTypeStmt>(
         "bool", CodeLocation::none);
     boolTypeStmt->setType(boolType);
 
@@ -37,12 +41,12 @@ void StdLibPass::addScalarTypes() {
                 intTypeName, width, isSigned);
             types.insert(intType);
 
-            std::shared_ptr<TypeStmt> intTypeStmt = std::make_shared<TypeStmt>(
+            std::shared_ptr<BasicTypeStmt> intTypeStmt = std::make_shared<BasicTypeStmt>(
                     intTypeName, CodeLocation::none);
             // intTypeStmt type is set to intType in IdentifierPass
-            #warning intRefTypeStmt has to declare a reference-to-int type
-            std::shared_ptr<TypeStmt> intRefTypeStmt = std::make_shared<TypeStmt>(
+            std::shared_ptr<BasicTypeStmt> intRefTypeStmt = std::make_shared<BasicTypeStmt>(
                     intTypeName, CodeLocation::none);
+            intRefTypeStmt->setIsReference(true);
             // intRefTypeStmt type is set to intType in IdentifierPass
 
             for (std::string op : {"+", "-", "*", "/", "="}) {

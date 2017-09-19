@@ -40,7 +40,7 @@ public:
     virtual void runOn(AST::IfStmt&);
     virtual void runOn(AST::WhileLoop&);
 
-    virtual void runOn(AST::TypeStmt&);
+    virtual void runOn(AST::BasicTypeStmt&);
 
     virtual void runOn(AST::FunctionCallExpr&);
     virtual void runOn(AST::ConstIntExpr&);
