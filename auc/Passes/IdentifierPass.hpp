@@ -21,27 +21,27 @@ protected:
     bool onlyInsertDeclarations;
 
 public:
-    IdentifierPass(AST::AbstractSyntaxTree& ast);
+    explicit IdentifierPass(AST::AbstractSyntaxTree& ast);
     virtual ~IdentifierPass() {};
 
-    virtual void run();
+    void run() override;
 
-    virtual void runOn(AST::FunctionDecl&);
-    virtual void runOn(AST::FunctionDef&);
+    void runOn(AST::FunctionDecl&) override;
+    void runOn(AST::FunctionDef&) override;
 
-    virtual void runOn(AST::ReturnStmt&);
-    virtual void runOn(AST::VariableDefStmt&);
-    virtual void runOn(AST::VariableDefAssignStmt&);
+    void runOn(AST::ReturnStmt&) override;
+    void runOn(AST::VariableDefStmt&) override;
+    void runOn(AST::VariableDefAssignStmt&) override;
 
-    virtual void runOn(AST::Block&);
-    virtual void runOn(AST::IfStmt&);
-    virtual void runOn(AST::WhileLoop&);
+    void runOn(AST::Block&) override;
+    void runOn(AST::IfStmt&) override;
+    void runOn(AST::WhileLoop&) override;
 
-    virtual void runOn(AST::BasicTypeStmt&);
+    void runOn(AST::BasicTypeStmt&) override;
 
-    virtual void runOn(AST::FunctionCallExpr&);
-    virtual void runOn(AST::ConstIntExpr&);
-    virtual void runOn(AST::VariableExpr&);
+    void runOn(AST::FunctionCallExpr&) override;
+    void runOn(AST::ConstIntExpr&) override;
+    void runOn(AST::VariableExpr&) override;
 
 }; // class IdentifierPass
 

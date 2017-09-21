@@ -4,6 +4,7 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
+#include <sstream>
 #include "CodeLocation.hpp"
 
 using namespace AST;
@@ -29,4 +30,10 @@ unsigned int CodeLocation::getBeginChar() {
 
 unsigned int CodeLocation::getEndChar() {
     return endChar;
+}
+
+std::string CodeLocation::toString() {
+    std::ostringstream str;
+    str << "Line " << line << ", char " << beginChar << " to " << endChar;
+    return str.str();
 }

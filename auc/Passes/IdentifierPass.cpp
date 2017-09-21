@@ -51,7 +51,7 @@ void IdentifierPass::runOn(AST::FunctionDecl& funcDecl) {
     } else {
         type = ast.getTypes().find("void");
     }
-    type->getFunctionDecls().insert(&funcDecl);
+    type->getFunctionDecls().insert(&funcDecl, funcDecl.getCodeLocation());
 }
 
 void IdentifierPass::runOn(FunctionDef& func) {
@@ -60,7 +60,7 @@ void IdentifierPass::runOn(FunctionDef& func) {
         currentBlock = func.getBody().get();
         func.getFunctionDecl()->runPass(*this);
         currentBlock = lastCurrentBlock;
-        ast.getFunctionDefs().insert(&func);
+        ast.getFunctionDefs().insert(&func, func.getCodeLocation());
     } else {
         func.getBody()->runPass(*this);
     }
@@ -74,13 +74,13 @@ void IdentifierPass::runOn(VariableDefStmt& stmt) {
     // if currentBlock==nullptr, 'stmt' is a parameter definition of a
     // FunctionDeclStmt, so there is no block to insert the variables into
     if (currentBlock) {
-        currentBlock->getVariables().insert(&stmt);
+        currentBlock->getVariables().insert(&stmt, stmt.getCodeLocation());
     }
     stmt.getTypeStmt()->runPass(*this);
 }
 
 void IdentifierPass::runOn(VariableDefAssignStmt& stmt) {
-    currentBlock->getVariables().insert(&stmt);
+    currentBlock->getVariables().insert(&stmt, stmt.getCodeLocation());
     stmt.getTypeStmt()->runPass(*this);
     stmt.getValue()->runPass(*this);
 }
@@ -107,7 +107,7 @@ void IdentifierPass::runOn(WhileLoop& stmt) {
 void IdentifierPass::runOn(BasicTypeStmt& stmt) {
     TypePtr type = ast.getTypes().find(stmt.getName());
     if (!type) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw UnknownIdentifierError(stmt.getCodeLocation(), stmt.getName());
     }
     stmt.setType(type);
 }
@@ -125,10 +125,10 @@ void IdentifierPass::runOn(FunctionCallExpr& stmt) {
     }
     FunctionDecl* functionDecl = type->getFunctionDecls().find(stmt.getName());
     if (!functionDecl) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw UnknownIdentifierError(stmt.getCodeLocation(), stmt.getName());
     }
     if (stmt.getArgs().size() != functionDecl->getParameters().size()) {
-        throw ArgumentCountError(stmt.getName(),
+        throw ArgumentCountError(stmt.getCodeLocation(), stmt.getName(),
             functionDecl->getParameters().size(), stmt.getArgs().size());
     }
     stmt.setFunctionDecl(functionDecl);
@@ -143,7 +143,7 @@ void IdentifierPass::runOn(VariableExpr& stmt) {
     /// or search through parent blocks here
     VariableDefStmt* variableDef = currentBlock->getVariables().find(stmt.getName());
     if (!variableDef) {
-        throw UnknownIdentifierError(stmt.getName());
+        throw UnknownIdentifierError(stmt.getCodeLocation(), stmt.getName());
     }
     stmt.setVariableDefStmt(variableDef);
 }

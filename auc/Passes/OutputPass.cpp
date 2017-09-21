@@ -4,7 +4,8 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#include "PrintPass.hpp"
+#include <AST/Errors.hpp>
+#include "OutputPass.hpp"
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/Declarations.hpp"
 #include "AST/Statements.hpp"
@@ -15,19 +16,19 @@
 using namespace AST;
 using namespace Passes;
 
-PrintPass::PrintPass(AbstractSyntaxTree& ast, std::ostream& stream)
-    : ASTPass(ast), stream(stream) {
+OutputPass::OutputPass(AbstractSyntaxTree& ast, std::ostream& stream)
+        : ASTPass(ast), stream(stream) {
     indentWidth = 0;
 }
 
-std::ostream& PrintPass::indent() {
+std::ostream& OutputPass::indent() {
     for (int i = 0; i < indentWidth; i++) {
         stream << "  ";
     }
     return stream;
 }
 
-void PrintPass::run() {
+void OutputPass::run() {
     stream << "// Aurum to C transpiled code\n#define uint32 int\n";
     for (ASTElementPtr decl : ast.getASTElements()) {
         stream << "\n";
@@ -38,11 +39,11 @@ void PrintPass::run() {
     indent() << "\n// End of C code\n";
 }
 
-void PrintPass::runOn(AST::FunctionDecl& funcDecl) {
-    throw std::runtime_error("PrintPass::runOn(FunctionDecl) not implemented");
+void OutputPass::runOn(AST::FunctionDecl& funcDecl) {
+    throw std::runtime_error("OutputPass::runOn(FunctionDecl) not implemented");
 }
 
-void PrintPass::runOn(FunctionDef& func) {
+void OutputPass::runOn(FunctionDef& func) {
     func.getFunctionDecl()->getReturnTypeStmt()->runPass(*this);
     stream << " " << func.getName() << "(";
     bool first = true;
@@ -57,23 +58,23 @@ void PrintPass::runOn(FunctionDef& func) {
     func.getBody()->runPass(*this);
 }
 
-void PrintPass::runOn(ReturnStmt& stmt) {
+void OutputPass::runOn(ReturnStmt& stmt) {
     stream << "return ";
     stmt.getValue()->runPass(*this);
 }
 
-void PrintPass::runOn(VariableDefStmt& stmt) {
+void OutputPass::runOn(VariableDefStmt& stmt) {
     stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName();
 }
 
-void PrintPass::runOn(VariableDefAssignStmt& stmt) {
+void OutputPass::runOn(VariableDefAssignStmt& stmt) {
     stmt.getTypeStmt()->runPass(*this);
     stream << " " << stmt.getName() << " = ";
     stmt.getValue()->runPass(*this);
 }
 
-void PrintPass::runOn(Block& stmt) {
+void OutputPass::runOn(Block& stmt) {
     stream << "{\n";
     indentWidth++;
     for (StatementPtr innerStmt : stmt.getStatements()) {
@@ -85,44 +86,59 @@ void PrintPass::runOn(Block& stmt) {
     indent() << "}";
 }
 
-void PrintPass::runOn(IfStmt& stmt) {
+void OutputPass::runOn(IfStmt& stmt) {
     stream << "if (";
     stmt.getCondition()->runPass(*this);
     stream << ") ";
     stmt.getBody()->runPass(*this);
 }
 
-void PrintPass::runOn(WhileLoop& stmt) {
+void OutputPass::runOn(WhileLoop& stmt) {
     stream << "while (";
     stmt.getCondition()->runPass(*this);
     stream << ") ";
     stmt.getBody().runPass(*this);
 }
 
-void PrintPass::runOn(BasicTypeStmt& stmt) {
+void OutputPass::runOn(BasicTypeStmt& stmt) {
     stream << stmt.getName();
     if (stmt.getIsReference()) {
         stream << '&';
     }
 }
 
-void PrintPass::runOn(FunctionCallExpr& stmt) {
+void OutputPass::runOn(FunctionCallExpr& stmt) {
     stream << stmt.getName() << "(";
     bool first = true;
+    auto paramIter = stmt.getFunctionDecl()->getParameters().begin();
+    unsigned int i = 0;
     for (ExpressionPtr expr : stmt.getArgs()) {
         if (!first) {
             stream << ", ";
         }
         first = false;
+        if ((*paramIter)->getTypeStmt()->getIsReference()) {
+            if (expr->getIsReference()) {
+                // nothing to do
+            } else if (expr->getIsReferenceable()) {
+                // take a reference of the expression
+                stream << '&';
+            } else {
+                // this should already be caught in TypePass
+                throw AST::ArgumentReferenceError(expr->getCodeLocation(), stmt.getName(), i, (*paramIter)->getName());
+            }
+        }
         expr->runPass(*this);
+        ++paramIter;
+        i++;
     }
     stream << ")";
 }
 
-void PrintPass::runOn(ConstIntExpr& stmt) {
+void OutputPass::runOn(ConstIntExpr& stmt) {
     stream << stmt.getValueStr();
 }
 
-void PrintPass::runOn(VariableExpr& stmt) {
+void OutputPass::runOn(VariableExpr& stmt) {
     stream << stmt.getName();
 }

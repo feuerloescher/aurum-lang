@@ -4,8 +4,8 @@
 uint32 main(uint32 argc) {
   uint32 x = factorial(argc);
   uint32 y;
-  =(y, x);
-  ++(y);
+  =(&y, x);
+  ++(&y);
   return y;
 }
 

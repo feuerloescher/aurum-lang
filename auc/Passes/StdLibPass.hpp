@@ -23,7 +23,7 @@ protected:
     void addScalarTypes();
 
 public:
-    StdLibPass(AST::AbstractSyntaxTree& ast);
+    explicit StdLibPass(AST::AbstractSyntaxTree& ast);
     virtual ~StdLibPass() {};
 
     void run();

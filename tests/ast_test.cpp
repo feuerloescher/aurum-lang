@@ -8,7 +8,7 @@
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
 #include "AST/Expressions.hpp"
-#include "Passes/PrintPass.hpp"
+#include "Passes/OutputPass.hpp"
 #include "Passes/StdLibPass.hpp"
 #include "Passes/IdentifierPass.hpp"
 #include "Passes/TypePass.hpp"
@@ -84,9 +84,6 @@ int main() {
     auto ret3 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y", CodeLocation::none), CodeLocation::none);
     mainDecl->getBody()->push_back(ret3);
 
-    PrintPass printer(ast, cout);
-    printer.run();
-
     StdLibPass stdLibPass(ast);
     stdLibPass.run();
 
@@ -95,6 +92,9 @@ int main() {
 
     TypePass typePass(ast);
     typePass.run();
+
+    OutputPass printer(ast, cout);
+    printer.run();
 
     return 0;
 }

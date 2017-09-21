@@ -29,6 +29,7 @@ public:
     unsigned int getLine();
     unsigned int getBeginChar();
     unsigned int getEndChar();
+    std::string toString();
 
     static CodeLocation none;
 

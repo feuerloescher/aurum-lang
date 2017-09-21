@@ -19,14 +19,14 @@ void ASTMap<T>::clear() {
 }
 
 template<class T>
-void ASTMap<T>::insert(T t) {
-    insert(t, t->getName());
+void ASTMap<T>::insert(T t, CodeLocation codeLocation) {
+    insert(t, t->getName(), codeLocation);
 }
 
 template<class T>
-void ASTMap<T>::insert(T t, std::string name) {
+void ASTMap<T>::insert(T t, std::string name, CodeLocation codeLocation) {
     if (!internalMap.insert(std::make_pair(name, t)).second) {
-        throw ExistingIdentifierError(name);
+        throw ExistingIdentifierError(codeLocation, name);
     }
 }
 

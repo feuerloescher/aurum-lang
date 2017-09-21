@@ -23,6 +23,7 @@ public:
 
     virtual void runPass(ASTPass& pass) = 0;
     virtual type::TypePtr getType() = 0;
+    virtual bool getIsReference() = 0;
     virtual bool getIsReferenceable() = 0;
 
 }; // class Expression
@@ -43,6 +44,7 @@ public:
 
     void runPass(ASTPass& pass) override;
     type::TypePtr getType() override;
+    bool getIsReference() override;
     bool getIsReferenceable() override;
     std::string getName();
     ASTList<Expression>& getArgs();
@@ -81,6 +83,7 @@ public:
 
     void runPass(ASTPass& pass) override;
     type::TypePtr getType() override;
+    bool getIsReference() override;
     bool getIsReferenceable() override;
 
     std::string getValueStr();
@@ -104,6 +107,7 @@ public:
 
     void runPass(ASTPass& pass) override;
     type::TypePtr getType() override;
+    bool getIsReference() override;
     bool getIsReferenceable() override;
 
     std::string getName();

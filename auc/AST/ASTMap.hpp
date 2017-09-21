@@ -8,6 +8,7 @@
 #define AUC_ASTMAP_HPP
 
 #include "common.hpp"
+#include "CodeLocation.hpp"
 
 #include <functional>
 #include <map>
@@ -27,8 +28,8 @@ protected:
 
 public:
     void clear();
-    void insert(T t);
-    void insert(T t, std::string name);
+    void insert(T t, CodeLocation codeLocation);
+    void insert(T t, std::string name, CodeLocation codeLocation);
     T find(std::string name);
     typename InternalMapType<T>::iterator begin();
     typename InternalMapType<T>::iterator end();

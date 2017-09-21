@@ -27,8 +27,13 @@ TypePtr FunctionCallExpr::getType() {
     return functionDecl->getReturnTypeStmt()->getType();
 }
 
-bool FunctionCallExpr::getIsReferenceable() {
+bool FunctionCallExpr::getIsReference() {
     return functionDecl->getReturnTypeStmt()->getIsReference();
+}
+
+bool FunctionCallExpr::getIsReferenceable() {
+    // you can't take the reference of a function return value
+    return false;
 }
 
 std::string FunctionCallExpr::getName() {
@@ -96,6 +101,10 @@ TypePtr ConstIntExpr::getType() {
     return typeStmt->getType();
 }
 
+bool ConstIntExpr::getIsReference() {
+    return false;
+}
+
 bool ConstIntExpr::getIsReferenceable() {
     return false;
 }
@@ -126,8 +135,13 @@ TypePtr VariableExpr::getType() {
     return variableDefStmt->getTypeStmt()->getType();
 }
 
+bool VariableExpr::getIsReference() {
+    return variableDefStmt->getTypeStmt()->getIsReference();
+}
+
 bool VariableExpr::getIsReferenceable() {
-    return true;
+    // if the variable is already a reference, you can't take a reference of it
+    return !variableDefStmt->getTypeStmt()->getIsReference();
 }
 
 std::string VariableExpr::getName() {

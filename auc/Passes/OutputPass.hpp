@@ -4,20 +4,28 @@
  * Distributed under the GNU GPL v3. For full terms see the file LICENSE.
  */
 
-#ifndef AUC_TYPEPASS_HPP
-#define AUC_TYPEPASS_HPP
+#ifndef AUC_OUTPUTPASS_HPP
+#define AUC_OUTPUTPASS_HPP
 
 #include "ASTPass.hpp"
 #include "AST/common.hpp"
 
+#include <ostream>
+
 namespace Passes {
 
-/// Resolve and check types of expressions
-class TypePass : public AST::ASTPass {
+/// Print an AST as C code to an output stream
+class OutputPass : public AST::ASTPass {
+
+    std::ostream& stream;
+    uint16_t indentWidth;
+
+    OutputPass();
+    std::ostream& indent();
 
 public:
-    explicit TypePass(AST::AbstractSyntaxTree& ast);
-    virtual ~TypePass() {};
+    OutputPass(AST::AbstractSyntaxTree& ast, std::ostream& stream);
+    virtual ~OutputPass() {};
 
     void run() override;
 
@@ -38,8 +46,8 @@ public:
     void runOn(AST::ConstIntExpr&) override;
     void runOn(AST::VariableExpr&) override;
 
-}; // class TypePass
+}; // class OutputPass
 
 } // namespace Passes
 
-#endif // AUC_TYPEPASS_HPP
+#endif // AUC_OUTPUTPASS_HPP

@@ -46,6 +46,9 @@ void TypePass::runOn(ReturnStmt& stmt) {
 
 void TypePass::runOn(VariableDefStmt& stmt) {
     stmt.getTypeStmt()->runPass(*this);
+    if (stmt.getTypeStmt()->getIsReference()) {
+        throw ReferenceInitializationError(stmt.getCodeLocation());
+    }
 }
 
 void TypePass::runOn(VariableDefAssignStmt& stmt) {
@@ -63,7 +66,7 @@ void TypePass::runOn(IfStmt& stmt) {
     stmt.getCondition()->runPass(*this);
     if (stmt.getCondition()->getType() != ast.getTypes().find("bool")) {
         /// \todo Add search for implicit cast method
-        throw ConditionTypeError(stmt.getCondition()->getType());
+        throw ConditionTypeError(stmt.getCondition()->getCodeLocation(), stmt.getCondition()->getType());
     }
     stmt.getBody()->runPass(*this);
 }
@@ -88,11 +91,12 @@ void TypePass::runOn(FunctionCallExpr& stmt) {
         argCounter++;
         if ((*paramIter)->getTypeStmt()->getType() != arg->getType()) {
             /// \todo Add search for implicit cast method
-            throw ArgumentTypeError(stmt.getName(), argCounter,
+            throw ArgumentTypeError(arg->getCodeLocation(), stmt.getName(), argCounter,
                     (*paramIter)->getTypeStmt()->getType(), arg->getType());
         }
-        if ((*paramIter)->getTypeStmt()->getIsReference() && !arg->getIsReferenceable()) {
-            throw ArgumentReferenceError(stmt.getName(), argCounter, (*paramIter)->getName());
+        if ((*paramIter)->getTypeStmt()->getIsReference() &&
+                !(arg->getIsReference() || arg->getIsReferenceable())) {
+            throw ArgumentReferenceError(arg->getCodeLocation(), stmt.getName(), argCounter, (*paramIter)->getName());
         }
         ++paramIter;
     }
