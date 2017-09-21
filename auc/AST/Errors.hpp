@@ -16,7 +16,7 @@
 namespace AST {
 
 class ASTError : public std::runtime_error {
-protected:
+public:
     ASTError(CodeLocation codeLocation, std::string message)
             : std::runtime_error(codeLocation.toString() + ": " + message) {
     }
@@ -77,7 +77,7 @@ public:
     }
 };
 
-class ReferenceInitializationError : ASTError {
+class ReferenceInitializationError : public ASTError {
 public:
     ReferenceInitializationError(CodeLocation codeLocation)
             : ASTError(codeLocation, "A reference variable cannot be declared without being initialized.") {

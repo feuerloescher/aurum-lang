@@ -7,6 +7,7 @@
 #include "AST/AbstractSyntaxTree.hpp"
 #include "AST/Statements.hpp"
 #include "AST/Blocks.hpp"
+#include <AST/Errors.hpp>
 #include "AST/Expressions.hpp"
 #include "Passes/OutputPass.hpp"
 #include "Passes/StdLibPass.hpp"
@@ -58,9 +59,9 @@ int main() {
     auto argcDef = make_shared<VariableDefStmt>(
             make_shared<BasicTypeStmt>("uint32", CodeLocation::none), "argc", CodeLocation::none);
     mainDecl->getFunctionDecl()->getParameters().push_back(argcDef);
-    ast.getASTElements().push_back(mainDecl);
+    ast.getDeclarations().push_back(mainDecl);
     /// factorial() is forward referenced
-    ast.getASTElements().push_back(funcDef);
+    ast.getDeclarations().push_back(funcDef);
 
     auto funcCall = make_shared<FunctionCallExpr>("factorial", CodeLocation::none);
     funcCall->getArgs().push_back(make_shared<VariableExpr>("argc", CodeLocation::none));
@@ -68,8 +69,9 @@ int main() {
             make_shared<BasicTypeStmt>("uint32", CodeLocation::none), "x", funcCall, CodeLocation::none);
     mainDecl->getBody()->push_back(defAssignX);
 
-    auto defY = make_shared<VariableDefStmt>(
-            make_shared<BasicTypeStmt>("uint32", CodeLocation::none), "y", CodeLocation::none);
+    auto intRefDecl = make_shared<BasicTypeStmt>("uint32", CodeLocation::none);
+//    intRefDecl->setIsReference(true);
+    auto defY = make_shared<VariableDefStmt>(intRefDecl, "y", CodeLocation::none);
     mainDecl->getBody()->push_back(defY);
 
     auto assignOp = make_shared<FunctionCallExpr>("=", CodeLocation::none);
@@ -84,17 +86,23 @@ int main() {
     auto ret3 = make_shared<ReturnStmt>(make_shared<VariableExpr>("y", CodeLocation::none), CodeLocation::none);
     mainDecl->getBody()->push_back(ret3);
 
-    StdLibPass stdLibPass(ast);
-    stdLibPass.run();
+    try {
+        StdLibPass stdLibPass(ast);
+        stdLibPass.run();
 
-    IdentifierPass identifier(ast);
-    identifier.run();
+        IdentifierPass identifier(ast);
+        identifier.run();
 
-    TypePass typePass(ast);
-    typePass.run();
+        TypePass typePass(ast);
+        typePass.run();
 
-    OutputPass printer(ast, cout);
-    printer.run();
+        OutputPass printer(ast, cout);
+        printer.run();
+    } catch (const ASTError& err) {
+        std::cerr << "Error " << err.what() << std::endl;
+        std::cerr << "Cannot continue execution. Aborting." << std::endl;
+        abort();
+    }
 
     return 0;
 }

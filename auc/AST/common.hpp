@@ -26,10 +26,13 @@ class AbstractSyntaxTree;
 
 class ASTElement;
 typedef ASTPtr<ASTElement> ASTElementPtr;
-typedef ASTList<ASTElement> ASTElementList;
 
 class ASTPass;
 
+
+class Declaration;
+typedef ASTPtr<Declaration> DeclarationPtr;
+typedef ASTList<Declaration> DeclarationList;
 
 class FunctionDecl;
 typedef ASTPtr<FunctionDecl> FunctionDeclPtr;

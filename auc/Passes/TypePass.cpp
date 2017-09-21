@@ -23,7 +23,7 @@ TypePass::TypePass(AbstractSyntaxTree& ast)
 }
 
 void TypePass::run() {
-    for (ASTElementPtr decl : ast.getASTElements()) {
+    for (DeclarationPtr decl : ast.getDeclarations()) {
         decl->runPass(*this);
     }
 }

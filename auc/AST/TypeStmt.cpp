@@ -36,7 +36,7 @@ BasicTypeStmt::BasicTypeStmt(std::string name, CodeLocation codeLocation)
 }
 
 void BasicTypeStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 std::string BasicTypeStmt::getName() {

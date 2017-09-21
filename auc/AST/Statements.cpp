@@ -9,11 +9,7 @@
 
 using namespace AST;
 
-Statement::Statement(CodeLocation codeLocation) : codeLocation(codeLocation) {
-}
-
-CodeLocation Statement::getCodeLocation() {
-    return codeLocation;
+Statement::Statement(CodeLocation codeLocation) : ASTElement(codeLocation) {
 }
 
 
@@ -22,7 +18,7 @@ ReturnStmt::ReturnStmt(ExpressionPtr value, CodeLocation codeLocation)
 }
 
 void ReturnStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 ExpressionPtr ReturnStmt::getValue() {
@@ -35,7 +31,7 @@ VariableDefStmt::VariableDefStmt(TypeStmtPtr typeStmt, std::string name, CodeLoc
 }
 
 void VariableDefStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 std::string VariableDefStmt::getName() {
@@ -52,7 +48,7 @@ VariableDefAssignStmt::VariableDefAssignStmt(TypeStmtPtr type, std::string name,
 }
 
 void VariableDefAssignStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 ExpressionPtr VariableDefAssignStmt::getValue() {

@@ -20,7 +20,7 @@ FunctionCallExpr::FunctionCallExpr(std::string name, CodeLocation codeLocation)
 }
 
 void FunctionCallExpr::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 TypePtr FunctionCallExpr::getType() {
@@ -94,7 +94,7 @@ ConstIntExpr::ConstIntExpr(std::string valueStr, int64_t numValue, CodeLocation 
 }
 
 void ConstIntExpr::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 TypePtr ConstIntExpr::getType() {
@@ -128,7 +128,7 @@ VariableExpr::VariableExpr(std::string name,
 }
 
 void VariableExpr::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 TypePtr VariableExpr::getType() {

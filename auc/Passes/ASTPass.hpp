@@ -8,6 +8,7 @@
 #define AUC_ASTPASS_HPP
 
 #include "AST/common.hpp"
+#include "AST/Errors.hpp"
 
 namespace AST {
 
@@ -16,6 +17,8 @@ class ASTPass {
 protected:
     AbstractSyntaxTree& ast;
 
+    void handleError(ASTElement& elem, const ASTError& err);
+
 public:
     ASTPass(AbstractSyntaxTree& ast);
     virtual ~ASTPass() {};
@@ -23,6 +26,15 @@ public:
     virtual void run() = 0;
 
     /// \todo Reorganize; multiple dispatch only for virtual base classes
+
+    template<class T>
+    void tryRunOn(T& t) {
+        try {
+            this->runOn(t);
+        } catch (const ASTError& err) {
+            handleError(t, err);
+        }
+    }
 
     virtual void runOn(FunctionDecl&);
     virtual void runOn(FunctionDef&);

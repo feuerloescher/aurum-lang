@@ -16,7 +16,7 @@ Block::Block(CodeLocation codeLocation)
 }
 
 void Block::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 StatementList& Block::getStatements() {
@@ -45,7 +45,7 @@ BlockPtr& IfStmt::getBody() {
 }
 
 void IfStmt::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 ExpressionPtr WhileLoop::getCondition() {
@@ -57,5 +57,5 @@ Block& WhileLoop::getBody() {
 }
 
 void WhileLoop::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }

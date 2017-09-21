@@ -12,8 +12,8 @@ using namespace type;
 AbstractSyntaxTree::AbstractSyntaxTree() {
 }
 
-ASTElementList& AbstractSyntaxTree::getASTElements() {
-    return astElements;
+DeclarationList& AbstractSyntaxTree::getDeclarations() {
+    return declarations;
 }
 
 ASTMap<FunctionDef*>& AbstractSyntaxTree::getFunctionDefs() {

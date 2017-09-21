@@ -15,18 +15,13 @@
 
 namespace AST {
 
-class Statement {
-
-protected:
-    CodeLocation codeLocation;
+class Statement : public ASTElement {
 
 public:
     Statement(CodeLocation codeLocation);
     virtual ~Statement() {};
 
     virtual void runPass(ASTPass& pass) = 0;
-
-    CodeLocation getCodeLocation();
 
 }; // class Statement
 

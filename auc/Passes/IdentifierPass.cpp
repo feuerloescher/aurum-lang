@@ -29,13 +29,13 @@ void IdentifierPass::run() {
     for (FunctionDeclPtr func : ast.getStdLibFunctionDecls()) {
         func->runPass(*this);
     }
-    for (ASTElementPtr elem : ast.getASTElements()) {
-        elem->runPass(*this);
+    for (DeclarationPtr decl : ast.getDeclarations()) {
+        decl->runPass(*this);
     }
     currentBlock = nullptr;
     onlyInsertDeclarations = false;
-    for (ASTElementPtr elem : ast.getASTElements()) {
-        elem->runPass(*this);
+    for (DeclarationPtr decl : ast.getDeclarations()) {
+        decl->runPass(*this);
     }
 }
 

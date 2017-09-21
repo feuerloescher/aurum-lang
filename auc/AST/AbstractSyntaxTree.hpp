@@ -17,7 +17,7 @@ namespace AST {
 class AbstractSyntaxTree {
 
 protected:
-    ASTElementList astElements;
+    DeclarationList declarations;
     ASTMap<FunctionDef*> functionDefs;
     ASTMap<type::TypePtr> types;
 #warning TODO: add a voidType shared_ptr for quicker access
@@ -30,7 +30,7 @@ protected:
 public:
     AbstractSyntaxTree();
 
-    ASTElementList& getASTElements();
+    DeclarationList& getDeclarations();
     ASTMap<FunctionDef*>& getFunctionDefs();
     ASTMap<type::TypePtr>& getTypes();
     ASTList<FunctionDecl>& getStdLibFunctionDecls();

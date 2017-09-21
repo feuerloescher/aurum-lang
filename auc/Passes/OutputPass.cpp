@@ -30,7 +30,7 @@ std::ostream& OutputPass::indent() {
 
 void OutputPass::run() {
     stream << "// Aurum to C transpiled code\n#define uint32 int\n";
-    for (ASTElementPtr decl : ast.getASTElements()) {
+    for (DeclarationPtr decl : ast.getDeclarations()) {
         stream << "\n";
         indent();
         decl->runPass(*this);

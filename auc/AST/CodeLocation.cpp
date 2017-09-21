@@ -34,6 +34,6 @@ unsigned int CodeLocation::getEndChar() {
 
 std::string CodeLocation::toString() {
     std::ostringstream str;
-    str << "Line " << line << ", char " << beginChar << " to " << endChar;
+    str << "in file '" << filename << "', line " << line << ", char " << beginChar << " to " << endChar;
     return str.str();
 }

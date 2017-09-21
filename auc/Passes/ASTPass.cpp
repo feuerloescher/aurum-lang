@@ -5,12 +5,20 @@
  */
 
 #include "ASTPass.hpp"
+#include "AST/ASTElement.hpp"
 
 #include <stdexcept>
+#include <iostream>
 
 using namespace AST;
 
 ASTPass::ASTPass(AbstractSyntaxTree& ast) : ast(ast) {
+}
+
+void ASTPass::handleError(ASTElement& elem, const ASTError& err) {
+//    std::cerr << "Error " << err.what() << std::endl;
+    std::cerr << elem.getCodeLocation().toString() << std::endl;
+    throw err;
 }
 
 void ASTPass::runOn(FunctionDecl& expr) {

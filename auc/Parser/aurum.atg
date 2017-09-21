@@ -70,13 +70,13 @@ IGNORE '\t' + '\r' + '\n' + '\f'
 
 PRODUCTIONS
 
-Aurum   (. ast = std::make_shared<AST::AbstractSyntaxTree>(); AST::ASTElementPtr elem; .)
-=   { ASTElement<elem> (. ast->getASTElements().push_back(elem); .)
+Aurum   (. ast = std::make_shared<AST::AbstractSyntaxTree>(); AST::DeclarationPtr elem; .)
+=   { Declaration<elem> (. ast->getDeclarations().push_back(elem); .)
     }.
 
 /*------------------------------------------------------------------------*/
 
-ASTElement<AST::ASTElementPtr& elem> = (. AST::FunctionDefPtr funcDef; .)
+Declaration<AST::DeclarationPtr& elem> = (. AST::FunctionDefPtr funcDef; .)
     FunctionDefinition<funcDef> (. elem = funcDef; .).
 //|   ConstantDefinition<constDef>
 //|   ClassDefinition   TODO: Class definition

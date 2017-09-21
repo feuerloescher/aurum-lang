@@ -30,7 +30,7 @@ FunctionDecl::FunctionDecl(TypeStmtPtr returnTypeStmt, std::string name, bool ex
 }
 
 void FunctionDecl::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 std::string FunctionDecl::getName() {
@@ -51,7 +51,7 @@ FunctionDef::FunctionDef(FunctionDeclPtr funcDecl, BlockPtr body, CodeLocation c
 }
 
 void FunctionDef::runPass(ASTPass& pass) {
-    pass.runOn(*this);
+    pass.tryRunOn(*this);
 }
 
 std::string FunctionDef::getName() {
