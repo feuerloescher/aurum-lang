@@ -1,0 +1,7 @@
+<map id="Passes::TypePass::~TypePass" name="Passes::TypePass::~TypePass">
+<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a0cae85c1bf017d12f5bb94860df71f26" title="Passes::TypePass::run" alt="" coords="203,21,362,47"/>
+<area shape="rect" id="node4" href="$classPasses_1_1TypePass.html#a8d6152d1f9473a3f02773c8d46bae7d2" title="Passes::TypePass::runOn" alt="" coords="195,78,371,105"/>
+<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html#af93ead0a5261387ce51fdfc828a7ca0a" title="AST::AbstractSyntaxTree\l::getDeclarations" alt="" coords="419,5,591,47"/>
+<area shape="rect" id="node5" href="$classAST_1_1FunctionDecl.html#a58598a83c6791dc7860f32ef113a4dfc" title="AST::FunctionDecl::\lgetReturnTypeStmt" alt="" coords="435,71,575,112"/>
+<area shape="rect" id="node6" href="$classAST_1_1FunctionDecl.html#a696f870fd8422ca86e821aa476f7a012" title="AST::FunctionDecl::\lgetParameters" alt="" coords="435,136,575,177"/>
+</map>

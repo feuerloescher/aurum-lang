@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['type',['Type',['../classAST_1_1Type.html',1,'AST']]],
-  ['typepass',['TypePass',['../classPasses_1_1TypePass.html',1,'Passes']]],
-  ['typestmt',['TypeStmt',['../classAST_1_1TypeStmt.html',1,'AST']]]
+  ['variabledefassignstmt',['VariableDefAssignStmt',['../classAST_1_1VariableDefAssignStmt.html',1,'AST']]],
+  ['variabledefstmt',['VariableDefStmt',['../classAST_1_1VariableDefStmt.html',1,'AST']]],
+  ['variableexpr',['VariableExpr',['../classAST_1_1VariableExpr.html',1,'AST']]],
+  ['voidtype',['VoidType',['../classtype_1_1VoidType.html',1,'type']]]
 ];

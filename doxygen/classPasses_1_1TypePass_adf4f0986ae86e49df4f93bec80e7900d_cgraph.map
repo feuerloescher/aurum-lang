@@ -1,5 +1,0 @@
-<map id="Passes::TypePass::runOn" name="Passes::TypePass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="241,5,393,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1VariableExpr.html#aa9bc0d5b2ceafd8c38dbba7948697e32" title="AST::VariableExpr::\lgetVariableDefStmt" alt="" coords="248,71,387,112"/>
-<area shape="rect" id="node4" href="$classAST_1_1Expression.html#a8b2990b2a0c03339f132c1621408a9e3" title="AST::Expression::setType" alt="" coords="229,137,405,163"/>
-</map>

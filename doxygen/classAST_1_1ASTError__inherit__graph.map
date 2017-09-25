@@ -1,0 +1,11 @@
+<map id="AST::ASTError" name="AST::ASTError">
+<area shape="rect" id="node4" href="$classAST_1_1ArgumentCountError.html" title="AST::ArgumentCountError" alt="" coords="500,5,675,32"/>
+<area shape="rect" id="node5" href="$classAST_1_1ArgumentReferenceError.html" title="AST::ArgumentReferenceError" alt="" coords="488,56,687,83"/>
+<area shape="rect" id="node6" href="$classAST_1_1ArgumentTypeError.html" title="AST::ArgumentTypeError" alt="" coords="503,107,672,133"/>
+<area shape="rect" id="node7" href="$classAST_1_1ConditionTypeError.html" title="AST::ConditionTypeError" alt="" coords="504,157,671,184"/>
+<area shape="rect" id="node8" href="$classAST_1_1ExistingIdentifierError.html" title="AST::ExistingIdentifierError" alt="" coords="497,208,678,235"/>
+<area shape="rect" id="node9" href="$classAST_1_1ReferenceInitializationError.html" title="AST::ReferenceInitialization\lError" alt="" coords="495,259,679,301"/>
+<area shape="rect" id="node10" href="$classAST_1_1UnknownIdentifierError.html" title="AST::UnknownIdentifierError" alt="" coords="494,325,681,352"/>
+<area shape="rect" id="node2" title="STL class. " alt="" coords="157,157,281,184"/>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="5,157,109,184"/>
+</map>

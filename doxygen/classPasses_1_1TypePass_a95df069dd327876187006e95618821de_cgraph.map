@@ -1,6 +1,0 @@
-<map id="Passes::TypePass::runOn" name="Passes::TypePass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1WhileLoop.html#ac671323fac73d8722ae0b0329668820b" title="AST::WhileLoop::getBody" alt="" coords="242,5,415,32"/>
-<area shape="rect" id="node3" href="$classAST_1_1WhileLoop.html#a15c311222ef725a7d2148da83597f69d" title="AST::WhileLoop::getCondition" alt="" coords="229,56,428,83"/>
-<area shape="rect" id="node4" href="$classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="256,107,401,133"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="476,107,631,133"/>
-</map>

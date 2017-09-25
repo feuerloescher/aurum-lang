@@ -1,5 +1,0 @@
-<map id="AST::AbstractSyntaxTree::getTypes" name="AST::AbstractSyntaxTree::getTypes">
-<area shape="rect" id="node2" href="$classPasses_1_1LLVMPass.html#a7815c96cba4cab739384b51f24016f28" title="Passes::LLVMPass::create\lLLVMTypes" alt="" coords="225,5,408,47"/>
-<area shape="rect" id="node4" href="$classPasses_1_1IdentifierPass.html#a5cc91576ef7cca8aacbee6da835ef202" title="Passes::IdentifierPass\l::runOn" alt="" coords="239,71,394,112"/>
-<area shape="rect" id="node3" href="$classPasses_1_1LLVMPass.html#a1faeede5a7256fc23b9c1eb0cb99b626" title="Passes::LLVMPass::run" alt="" coords="456,13,620,39"/>
-</map>

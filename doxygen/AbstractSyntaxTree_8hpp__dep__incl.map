@@ -1,13 +1,9 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/AbstractSyntaxTree.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/AbstractSyntaxTree.hpp">
-<area shape="rect" id="node2" href="$AbstractSyntaxTree_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/AbstractSyntaxTree.cpp" alt="" coords="5,117,249,173"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/main.cpp" alt="" coords="274,117,429,173"/>
-<area shape="rect" id="node4" href="$IdentifierPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IdentifierPass.cpp" alt="" coords="453,117,679,173"/>
-<area shape="rect" id="node5" href="$IRExportPass_8hpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IRExportPass.hpp" alt="" coords="704,117,932,173"/>
-<area shape="rect" id="node7" href="$LLVMPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/LLVMPass.cpp" alt="" coords="957,117,1167,173"/>
-<area shape="rect" id="node8" href="$PrintPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/PrintPass.cpp" alt="" coords="1191,117,1394,173"/>
-<area shape="rect" id="node9" href="$StdLibPass_8hpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/StdLibPass.hpp" alt="" coords="1418,117,1631,173"/>
-<area shape="rect" id="node11" href="$TypePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/TypePass.cpp" alt="" coords="1655,117,1861,173"/>
-<area shape="rect" id="node12" href="$VerifyOptimizePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/VerifyOptimize\lPass.cpp" alt="" coords="1885,109,2092,180"/>
-<area shape="rect" id="node6" href="$IRExportPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IRExportPass.cpp" alt="" coords="704,228,932,284"/>
-<area shape="rect" id="node10" href="$StdLibPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/StdLibPass.cpp" alt="" coords="1418,228,1631,284"/>
+<map id="auc/AST/AbstractSyntaxTree.hpp" name="auc/AST/AbstractSyntaxTree.hpp">
+<area shape="rect" id="node2" href="$AbstractSyntaxTree_8cpp.html" title="auc/AST/AbstractSyntaxTree.cpp" alt="" coords="5,80,224,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="auc/main.cpp" alt="" coords="249,80,349,107"/>
+<area shape="rect" id="node4" href="$IdentifierPass_8cpp.html" title="auc/Passes/IdentifierPass.cpp" alt="" coords="372,80,572,107"/>
+<area shape="rect" id="node5" href="$OutputPass_8cpp.html" title="auc/Passes/OutputPass.cpp" alt="" coords="596,80,785,107"/>
+<area shape="rect" id="node6" href="$StdLibPass_8hpp.html" title="auc/Passes/StdLibPass.hpp" alt="" coords="809,80,996,107"/>
+<area shape="rect" id="node8" href="$TypePass_8cpp.html" title="auc/Passes/TypePass.cpp" alt="" coords="1020,80,1199,107"/>
+<area shape="rect" id="node7" href="$StdLibPass_8cpp.html" title="auc/Passes/StdLibPass.cpp" alt="" coords="809,155,996,181"/>
 </map>

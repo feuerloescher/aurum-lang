@@ -1,6 +1,0 @@
-<map id="Passes::IdentifierPass::runOn" name="Passes::IdentifierPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1Statement.html#ac808e143418221450675e0ef6e251d30" title="AST::Statement::getParent\lBlock" alt="" coords="209,5,389,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1Block.html#ab0a461d2187e21e9d18dcb1365e7953c" title="AST::Block::getStatements" alt="" coords="208,71,391,98"/>
-<area shape="rect" id="node4" href="$classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="227,122,372,149"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="439,122,593,149"/>
-</map>

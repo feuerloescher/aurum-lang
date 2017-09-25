@@ -1,6 +1,6 @@
 <map id="AST::TypeStmt" name="AST::TypeStmt">
-<area shape="rect" id="node2" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="85,275,215,301"/>
-<area shape="rect" id="node3" href="$classAST_1_1CodeLocation.html" title="AST::CodeLocation" alt="" coords="85,185,221,212"/>
-<area shape="rect" id="node4" title="STL class. " alt="" coords="29,96,109,123"/>
-<area shape="rect" id="node5" title="STL class. " alt="" coords="5,5,132,47"/>
+<area shape="rect" id="node2" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="7,275,138,301"/>
+<area shape="rect" id="node3" href="$classAST_1_1CodeLocation.html" title="AST::CodeLocation" alt="" coords="5,185,140,212"/>
+<area shape="rect" id="node4" title="STL class. " alt="" coords="33,96,113,123"/>
+<area shape="rect" id="node5" title="STL class. " alt="" coords="9,5,136,47"/>
 </map>

@@ -1,4 +1,8 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/Passes/TypePass.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/Passes/TypePass.hpp">
-<area shape="rect" id="node2" href="$ASTPass_8hpp.html" title="AST/ASTPass.hpp" alt="" coords="25,109,158,136"/>
-<area shape="rect" id="node3" href="$common_8hpp.html" title="common.hpp" alt="" coords="95,184,192,211"/>
+<map id="auc/Passes/TypePass.hpp" name="auc/Passes/TypePass.hpp">
+<area shape="rect" id="node2" href="$ASTPass_8hpp.html" title="ASTPass.hpp" alt="" coords="401,80,503,107"/>
+<area shape="rect" id="node3" href="$common_8hpp.html" title="AST/common.hpp" alt="" coords="326,453,453,480"/>
+<area shape="rect" id="node7" href="$Errors_8hpp.html" title="AST/Errors.hpp" alt="" coords="267,155,379,181"/>
+<area shape="rect" id="node8" href="$CodeLocation_8hpp.html" title="AST/CodeLocation.hpp" alt="" coords="145,379,301,405"/>
+<area shape="rect" id="node10" href="$Type_8hpp.html" title="Types/Type.hpp" alt="" coords="58,229,174,256"/>
+<area shape="rect" id="node11" href="$ASTMap_8hpp.html" title="AST/ASTMap.hpp" alt="" coords="47,304,175,331"/>
 </map>

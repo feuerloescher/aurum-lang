@@ -1,3 +1,7 @@
 <map id="AST::Block::runPass" name="AST::Block::runPass">
-<area shape="rect" id="node2" href="$classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="199,5,353,32"/>
+<area shape="rect" id="node2" href="$classAST_1_1ASTPass.html#a41531c5e3b4053cdbc1be9ca6ea9acc3" title="AST::ASTPass::tryRunOn" alt="" coords="199,70,373,97"/>
+<area shape="rect" id="node3" href="$classAST_1_1ASTPass.html#a18af60a0f4aa5425433378ba7ab4a9cb" title="AST::ASTPass::handleError" alt="" coords="421,45,608,71"/>
+<area shape="rect" id="node6" href="$classAST_1_1ASTPass.html#a813fb5660edc025d03c7bf866aaff618" title="AST::ASTPass::runOn" alt="" coords="437,95,592,122"/>
+<area shape="rect" id="node4" href="$classAST_1_1ASTElement.html#ac407357f83ae6ff2401e6d8aed49cce0" title="AST::ASTElement::getCode\lLocation" alt="" coords="656,5,843,47"/>
+<area shape="rect" id="node5" href="$classAST_1_1CodeLocation.html#afdb03dee64bfc1838735da53899fe743" title="AST::CodeLocation::\ltoString" alt="" coords="678,71,821,112"/>
 </map>

@@ -1,4 +1,5 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Type.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Type.hpp">
-<area shape="rect" id="node2" href="$common_8hpp.html" title="common.hpp" alt="" coords="82,184,179,211"/>
-<area shape="rect" id="node6" href="$ASTMap_8hpp.html" title="ASTMap.hpp" alt="" coords="204,109,303,136"/>
+<map id="auc/Types/Type.hpp" name="auc/Types/Type.hpp">
+<area shape="rect" id="node2" href="$common_8hpp.html" title="AST/common.hpp" alt="" coords="21,229,147,256"/>
+<area shape="rect" id="node6" href="$ASTMap_8hpp.html" title="AST/ASTMap.hpp" alt="" coords="179,80,307,107"/>
+<area shape="rect" id="node7" href="$CodeLocation_8hpp.html" title="CodeLocation.hpp" alt="" coords="78,155,205,181"/>
 </map>

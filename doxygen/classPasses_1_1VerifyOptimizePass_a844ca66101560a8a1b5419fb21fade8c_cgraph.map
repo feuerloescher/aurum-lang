@@ -1,6 +1,0 @@
-<map id="Passes::VerifyOptimizePass::runOn" name="Passes::VerifyOptimizePass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1IfStmt.html#adb35201ee81baea27c717759fc18be77" title="AST::IfStmt::getBody" alt="" coords="257,5,405,32"/>
-<area shape="rect" id="node3" href="$classAST_1_1IfStmt.html#ab0b56fb9d0675447f5fc75afdc4cd079" title="AST::IfStmt::getCondition" alt="" coords="244,56,417,83"/>
-<area shape="rect" id="node4" href="$classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="258,107,403,133"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="465,107,620,133"/>
-</map>

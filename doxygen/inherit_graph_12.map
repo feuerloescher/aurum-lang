@@ -1,5 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classAST_1_1Type.html" title="AST::Type" alt="" coords="5,5,91,32"/>
-<area shape="rect" id="node2" href="$classAST_1_1ScalarType.html" title="AST::ScalarType" alt="" coords="139,5,261,32"/>
-<area shape="rect" id="node3" href="$classAST_1_1IntType.html" title="AST::IntType" alt="" coords="309,5,409,32"/>
+<area shape="rect" id="node1" href="$classtype_1_1Type.html" title="type::Type" alt="" coords="5,31,89,57"/>
+<area shape="rect" id="node2" href="$classtype_1_1ScalarType.html" title="type::ScalarType" alt="" coords="137,31,259,57"/>
+<area shape="rect" id="node3" href="$classtype_1_1IntType.html" title="type::IntType" alt="" coords="313,5,411,32"/>
+<area shape="rect" id="node4" href="$classtype_1_1VoidType.html" title="type::VoidType" alt="" coords="307,56,417,83"/>
 </map>

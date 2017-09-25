@@ -1,11 +1,16 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/TypeStmt.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/TypeStmt.hpp">
-<area shape="rect" id="node2" href="$Declarations_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/Declarations.cpp" alt="" coords="5,117,207,173"/>
-<area shape="rect" id="node3" href="$Expressions_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/Expressions.cpp" alt="" coords="231,117,431,173"/>
-<area shape="rect" id="node4" href="$TypeStmt_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/TypeStmt.cpp" alt="" coords="456,117,641,173"/>
-<area shape="rect" id="node5" href="$IdentifierPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IdentifierPass.cpp" alt="" coords="666,117,893,173"/>
-<area shape="rect" id="node6" href="$LLVMPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/LLVMPass.cpp" alt="" coords="917,117,1127,173"/>
-<area shape="rect" id="node7" href="$PrintPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/PrintPass.cpp" alt="" coords="1151,117,1354,173"/>
-<area shape="rect" id="node8" href="$StdLibPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/StdLibPass.cpp" alt="" coords="1378,117,1591,173"/>
-<area shape="rect" id="node9" href="$TypePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/TypePass.cpp" alt="" coords="1615,117,1821,173"/>
-<area shape="rect" id="node10" href="$VerifyOptimizePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/VerifyOptimize\lPass.cpp" alt="" coords="1845,109,2052,180"/>
+<map id="auc/AST/TypeStmt.hpp" name="auc/AST/TypeStmt.hpp">
+<area shape="rect" id="node2" href="$Statements_8hpp.html" title="auc/AST/Statements.hpp" alt="" coords="653,80,822,107"/>
+<area shape="rect" id="node6" href="$IdentifierPass_8cpp.html" title="auc/Passes/IdentifierPass.cpp" alt="" coords="119,229,319,256"/>
+<area shape="rect" id="node7" href="$OutputPass_8cpp.html" title="auc/Passes/OutputPass.cpp" alt="" coords="1036,229,1226,256"/>
+<area shape="rect" id="node8" href="$TypePass_8cpp.html" title="auc/Passes/TypePass.cpp" alt="" coords="510,229,688,256"/>
+<area shape="rect" id="node9" href="$Declarations_8cpp.html" title="auc/AST/Declarations.cpp" alt="" coords="964,155,1138,181"/>
+<area shape="rect" id="node14" href="$StdLibPass_8cpp.html" title="auc/Passes/StdLibPass.cpp" alt="" coords="1163,155,1350,181"/>
+<area shape="rect" id="node15" href="$TypeStmt_8cpp.html" title="auc/AST/TypeStmt.cpp" alt="" coords="1425,80,1584,107"/>
+<area shape="rect" id="node3" href="$ASTMap_8cpp.html" title="auc/AST/ASTMap.cpp" alt="" coords="265,155,418,181"/>
+<area shape="rect" id="node4" href="$Blocks_8hpp.html" title="auc/AST/Blocks.hpp" alt="" coords="494,155,637,181"/>
+<area shape="rect" id="node10" href="$Expressions_8hpp.html" title="auc/AST/Expressions.hpp" alt="" coords="713,155,888,181"/>
+<area shape="rect" id="node13" href="$Statements_8cpp.html" title="auc/AST/Statements.cpp" alt="" coords="72,155,241,181"/>
+<area shape="rect" id="node5" href="$Blocks_8cpp.html" title="auc/AST/Blocks.cpp" alt="" coords="342,229,485,256"/>
+<area shape="rect" id="node11" href="$Expressions_8cpp.html" title="auc/AST/Expressions.cpp" alt="" coords="713,229,888,256"/>
+<area shape="rect" id="node12" href="$main_8cpp.html" title="auc/main.cpp" alt="" coords="912,229,1012,256"/>
 </map>

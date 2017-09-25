@@ -1,4 +1,4 @@
 <map id="AST::VariableExpr::getName" name="AST::VariableExpr::getName">
-<area shape="rect" id="node2" href="$classPasses_1_1IdentifierPass.html#a92919402e495f317449e6c44cdac0b9b" title="Passes::IdentifierPass\l::runOn" alt="" coords="192,5,347,47"/>
-<area shape="rect" id="node3" href="$classPasses_1_1PrintPass.html#abda4eefca1842efd9e7a7973f731ae26" title="Passes::PrintPass::\lrunOn" alt="" coords="200,71,339,112"/>
+<area shape="rect" id="node2" href="$classPasses_1_1IdentifierPass.html#a4b4294db6edb91d2eb438cfe50511048" title="Passes::IdentifierPass\l::runOn" alt="" coords="192,5,347,47"/>
+<area shape="rect" id="node3" href="$classPasses_1_1OutputPass.html#a74a82f23d88db6b4ccc223739d8532bf" title="Passes::OutputPass\l::runOn" alt="" coords="198,71,341,112"/>
 </map>

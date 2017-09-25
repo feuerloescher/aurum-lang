@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unknownidentifiererror',['UnknownIdentifierError',['../classAST_1_1UnknownIdentifierError.html',1,'AST']]]
+  ['whileloop',['WhileLoop',['../classAST_1_1WhileLoop.html',1,'AST']]]
 ];

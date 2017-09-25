@@ -1,14 +1,13 @@
 <map id="AST::Statement" name="AST::Statement">
-<area shape="rect" id="node3" href="$classAST_1_1Block.html" title="AST::Block" alt="" coords="379,31,469,57"/>
-<area shape="rect" id="node4" href="$classAST_1_1Expression.html" title="AST::Expression" alt="" coords="363,81,485,108"/>
-<area shape="rect" id="node9" href="$classAST_1_1IfStmt.html" title="AST::IfStmt" alt="" coords="378,132,470,159"/>
-<area shape="rect" id="node10" href="$classAST_1_1ReturnStmt.html" title="AST::ReturnStmt" alt="" coords="363,183,485,209"/>
-<area shape="rect" id="node11" href="$classAST_1_1VariableDefStmt.html" title="AST::VariableDefStmt" alt="" coords="348,233,500,260"/>
-<area shape="rect" id="node13" href="$classAST_1_1WhileLoop.html" title="AST::WhileLoop" alt="" coords="365,284,483,311"/>
-<area shape="rect" id="node2" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="5,157,136,184"/>
-<area shape="rect" id="node5" href="$classAST_1_1ConstIntExpr.html" title="AST::ConstIntExpr" alt="" coords="577,5,711,32"/>
-<area shape="rect" id="node6" href="$classAST_1_1FunctionCallExpr.html" title="AST::FunctionCallExpr" alt="" coords="566,56,722,83"/>
-<area shape="rect" id="node7" href="$classAST_1_1MethodCallExpr.html" title="AST::MethodCallExpr" alt="" coords="569,107,719,133"/>
-<area shape="rect" id="node8" href="$classAST_1_1VariableExpr.html" title="AST::VariableExpr" alt="" coords="579,157,709,184"/>
-<area shape="rect" id="node12" href="$classAST_1_1VariableDefAssignStmt.html" title="AST::VariableDefAssignStmt" alt="" coords="548,233,740,260"/>
+<area shape="rect" id="node3" href="$classAST_1_1Block.html" title="AST::Block" alt="" coords="379,5,468,32"/>
+<area shape="rect" id="node4" href="$classAST_1_1Expression.html" title="AST::Expression" alt="" coords="363,56,484,83"/>
+<area shape="rect" id="node8" href="$classAST_1_1IfStmt.html" title="AST::IfStmt" alt="" coords="377,107,469,133"/>
+<area shape="rect" id="node9" href="$classAST_1_1ReturnStmt.html" title="AST::ReturnStmt" alt="" coords="362,157,485,184"/>
+<area shape="rect" id="node10" href="$classAST_1_1VariableDefStmt.html" title="AST::VariableDefStmt" alt="" coords="348,208,499,235"/>
+<area shape="rect" id="node12" href="$classAST_1_1WhileLoop.html" title="AST::WhileLoop" alt="" coords="365,259,481,285"/>
+<area shape="rect" id="node2" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="5,132,136,159"/>
+<area shape="rect" id="node5" href="$classAST_1_1ConstIntExpr.html" title="AST::ConstIntExpr" alt="" coords="576,5,708,32"/>
+<area shape="rect" id="node6" href="$classAST_1_1FunctionCallExpr.html" title="AST::FunctionCallExpr" alt="" coords="565,56,719,83"/>
+<area shape="rect" id="node7" href="$classAST_1_1VariableExpr.html" title="AST::VariableExpr" alt="" coords="577,107,707,133"/>
+<area shape="rect" id="node11" href="$classAST_1_1VariableDefAssignStmt.html" title="AST::VariableDefAssignStmt" alt="" coords="547,208,737,235"/>
 </map>

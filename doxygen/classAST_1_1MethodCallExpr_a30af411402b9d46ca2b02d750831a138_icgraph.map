@@ -1,4 +1,0 @@
-<map id="AST::MethodCallExpr::getMethodDef" name="AST::MethodCallExpr::getMethodDef">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a3e65f49e105b9286424a45e8cfc10b2b" title="Passes::TypePass::runOn" alt="" coords="205,5,381,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1LLVMPass.html#a5cf5638488f76a72f20d1327640febbb" title="Passes::LLVMPass::runOn" alt="" coords="203,56,384,83"/>
-</map>

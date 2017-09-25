@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['llvmpass',['LLVMPass',['../classPasses_1_1LLVMPass.html',1,'Passes']]]
+  ['outputpass',['OutputPass',['../classPasses_1_1OutputPass.html',1,'Passes']]]
 ];

@@ -1,3 +1,4 @@
 <map id="AST::Block::getVariables" name="AST::Block::getVariables">
-<area shape="rect" id="node2" href="$classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae" title="Passes::IdentifierPass\l::runOn" alt="" coords="223,5,377,47"/>
+<area shape="rect" id="node2" href="$classPasses_1_1IdentifierPass.html#a2ca9579be72e6d57ec2200968e570020" title="Passes::IdentifierPass\l::runOn" alt="" coords="223,5,377,47"/>
+<area shape="rect" id="node3" href="$classAST_1_1Block.html#a4ef9b5dc99c82ba42820035af5387dad" title="AST::Block::~Block" alt="" coords="231,71,369,98"/>
 </map>

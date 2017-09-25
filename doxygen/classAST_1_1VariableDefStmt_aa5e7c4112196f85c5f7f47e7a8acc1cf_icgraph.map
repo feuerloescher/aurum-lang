@@ -1,7 +1,0 @@
-<map id="AST::VariableDefStmt::getTypeStmt" name="AST::VariableDefStmt::getTypeStmt">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a5dc2f8d3b55392e833f2aa58d523c8b2" title="Passes::TypePass::runOn" alt="" coords="213,5,389,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a60b1d25180c42e8cc65337cf909878ae" title="Passes::IdentifierPass\l::runOn" alt="" coords="223,57,378,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#a8ee46e765b42959e27de8d921a66cadb" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="205,122,396,163"/>
-<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#a979ae47978076b556115e0b923963f28" title="Passes::PrintPass::\lrunOn" alt="" coords="231,187,370,229"/>
-<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#ab6f8c2f1c83d3b110ef1bfdd4abd6895" title="Passes::LLVMPass::runOn" alt="" coords="210,253,391,280"/>
-</map>

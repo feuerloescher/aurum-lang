@@ -1,7 +1,0 @@
-<map id="Passes::LLVMPass" name="Passes::LLVMPass">
-<area shape="rect" id="node2" href="$classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="609,111,721,138"/>
-<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="367,111,539,138"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
-<area shape="rect" id="node6" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
-<area shape="rect" id="node7" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
-</map>

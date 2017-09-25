@@ -1,5 +1,0 @@
-<map id="Passes::IdentifierPass::runOn" name="Passes::IdentifierPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1TypeStmt.html#ad993d368ad96d6b822fe20e683378d56" title="AST::TypeStmt::getName" alt="" coords="208,5,383,32"/>
-<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html#ac4a6c6dc56755abb2dcd9a297a96a975" title="AST::AbstractSyntaxTree\l::getTypes" alt="" coords="209,57,381,98"/>
-<area shape="rect" id="node4" href="$classAST_1_1TypeStmt.html#a1f8e5c2331d97ac9e201768bab9ab738" title="AST::TypeStmt::setType" alt="" coords="211,123,379,149"/>
-</map>

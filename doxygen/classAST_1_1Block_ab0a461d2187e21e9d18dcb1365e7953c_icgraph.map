@@ -1,7 +1,6 @@
 <map id="AST::Block::getStatements" name="AST::Block::getStatements">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#aedaf93210809adede0d0f59e41507589" title="Passes::TypePass::runOn" alt="" coords="243,5,419,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a9cd86d1a70154b10412919d7023da25b" title="Passes::IdentifierPass\l::runOn" alt="" coords="254,57,409,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#a32a60e39e4ffb0b5ebae970afba8f2fe" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="236,122,427,163"/>
-<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#a2dd117b722c0015938831d851378bb65" title="Passes::PrintPass::\lrunOn" alt="" coords="262,187,401,229"/>
-<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#abcdd3e482bf1c4e87031f1a6b487f5f7" title="Passes::LLVMPass::runOn" alt="" coords="241,253,422,280"/>
+<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a53db66c54da4bf1596f98bb84eae131c" title="Passes::TypePass::runOn" alt="" coords="236,5,412,32"/>
+<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a08da2904c44f7f0a3a6bf5f5da8e3bea" title="Passes::IdentifierPass\l::runOn" alt="" coords="247,57,401,98"/>
+<area shape="rect" id="node4" href="$classPasses_1_1OutputPass.html#a620c5b7dc18ecc29df578549f54df47c" title="Passes::OutputPass\l::runOn" alt="" coords="253,122,395,163"/>
+<area shape="rect" id="node5" href="$classAST_1_1Block.html#a4ef9b5dc99c82ba42820035af5387dad" title="AST::Block::~Block" alt="" coords="255,188,393,215"/>
 </map>

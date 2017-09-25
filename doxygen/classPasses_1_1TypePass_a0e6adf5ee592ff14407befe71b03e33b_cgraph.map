@@ -1,4 +1,0 @@
-<map id="Passes::TypePass::runOn" name="Passes::TypePass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1ConstIntExpr.html#a2e486b0531770c78336543c9b388be36" title="AST::ConstIntExpr::\lgetTypeStmt" alt="" coords="247,5,388,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1Expression.html#a8b2990b2a0c03339f132c1621408a9e3" title="AST::Expression::setType" alt="" coords="229,71,405,98"/>
-</map>

@@ -1,7 +1,5 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/ScalarTypes.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/ScalarTypes.hpp">
-<area shape="rect" id="node2" href="$ScalarTypes_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/ScalarTypes.cpp" alt="" coords="5,109,207,165"/>
-<area shape="rect" id="node3" href="$IRExportPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IRExportPass.cpp" alt="" coords="231,109,459,165"/>
-<area shape="rect" id="node4" href="$LLVMPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/LLVMPass.cpp" alt="" coords="483,109,694,165"/>
-<area shape="rect" id="node5" href="$StdLibPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/StdLibPass.cpp" alt="" coords="718,109,931,165"/>
-<area shape="rect" id="node6" href="$TypePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/TypePass.cpp" alt="" coords="955,109,1161,165"/>
+<map id="auc/Types/ScalarTypes.hpp" name="auc/Types/ScalarTypes.hpp">
+<area shape="rect" id="node2" href="$StdLibPass_8cpp.html" title="auc/Passes/StdLibPass.cpp" alt="" coords="5,80,192,107"/>
+<area shape="rect" id="node3" href="$TypePass_8cpp.html" title="auc/Passes/TypePass.cpp" alt="" coords="216,80,395,107"/>
+<area shape="rect" id="node4" href="$ScalarTypes_8cpp.html" title="auc/Types/ScalarTypes.cpp" alt="" coords="419,80,605,107"/>
 </map>

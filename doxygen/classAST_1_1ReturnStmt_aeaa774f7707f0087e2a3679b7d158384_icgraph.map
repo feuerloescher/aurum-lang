@@ -1,7 +1,0 @@
-<map id="AST::ReturnStmt::getValue" name="AST::ReturnStmt::getValue">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a3046ef0513bd55e31199fb0c75f3294a" title="Passes::TypePass::runOn" alt="" coords="243,5,419,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a21f627316665d5ccb94cbbf2f14b470a" title="Passes::IdentifierPass\l::runOn" alt="" coords="254,57,409,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#a41448232c584152130f53d3221d984d3" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="236,122,427,163"/>
-<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#ae78857cc6526eca8157744e34c66caf1" title="Passes::PrintPass::\lrunOn" alt="" coords="262,187,401,229"/>
-<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#a4d61ffc2a6dba27c73b6ee3e5ce1282a" title="Passes::LLVMPass::runOn" alt="" coords="241,253,422,280"/>
-</map>

@@ -1,7 +1,6 @@
 <map id="Passes::StdLibPass" name="Passes::StdLibPass">
-<area shape="rect" id="node2" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="367,45,563,87"/>
-<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="379,111,551,138"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="25,71,188,112"/>
-<area shape="rect" id="node6" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="25,136,188,177"/>
-<area shape="rect" id="node7" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="5,201,208,243"/>
+<area shape="rect" id="node2" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; type::\lTypePtr \&gt;" alt="" coords="5,5,157,47"/>
+<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="183,109,355,136"/>
+<area shape="rect" id="node4" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef *\&gt;" alt="" coords="181,5,384,47"/>
+<area shape="rect" id="node5" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; FunctionDef\lPtr \&gt;" alt="" coords="408,5,597,47"/>
 </map>

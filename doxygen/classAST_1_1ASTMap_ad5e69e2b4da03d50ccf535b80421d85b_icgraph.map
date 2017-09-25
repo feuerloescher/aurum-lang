@@ -1,4 +1,8 @@
 <map id="AST::ASTMap::find" name="AST::ASTMap::find">
-<area shape="rect" id="node2" href="$classPasses_1_1StdLibPass.html#ac13e2ae13e6fe6ae024a06a37b3280e3" title="Passes::StdLibPass\l::addScalarTypes" alt="" coords="189,5,331,47"/>
-<area shape="rect" id="node3" href="$classPasses_1_1StdLibPass.html#a63ffb2e26ba4b83f64bfb9231ec50d99" title="Passes::StdLibPass::run" alt="" coords="379,13,545,39"/>
+<area shape="rect" id="node2" href="$classPasses_1_1StdLibPass.html#ac13e2ae13e6fe6ae024a06a37b3280e3" title="Passes::StdLibPass\l::addScalarTypes" alt="" coords="207,5,348,47"/>
+<area shape="rect" id="node5" href="$classPasses_1_1IdentifierPass.html#ab00c639ff7b93e8ce2dd09114670c45c" title="Passes::IdentifierPass\l::runOn" alt="" coords="200,71,355,112"/>
+<area shape="rect" id="node7" href="$classPasses_1_1TypePass.html#a3514c3e4e89cb579bc90de7ab5ca8a6a" title="Passes::TypePass::runOn" alt="" coords="189,137,365,163"/>
+<area shape="rect" id="node3" href="$classPasses_1_1StdLibPass.html#a63ffb2e26ba4b83f64bfb9231ec50d99" title="Passes::StdLibPass::run" alt="" coords="413,13,580,39"/>
+<area shape="rect" id="node4" href="$classPasses_1_1StdLibPass.html#a746b2bd0ebbde52dd27543473ac0e5ec" title="Passes::StdLibPass\l::~StdLibPass" alt="" coords="628,5,769,47"/>
+<area shape="rect" id="node6" href="$classPasses_1_1IdentifierPass.html#a88ded3aa7d4743b1dc88db894e3dfbb9" title="Passes::IdentifierPass\l::~IdentifierPass" alt="" coords="419,71,574,112"/>
 </map>

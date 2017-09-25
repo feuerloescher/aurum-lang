@@ -1,9 +1,7 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Expressions.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Expressions.hpp">
-<area shape="rect" id="node2" href="$Expressions_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/AST/Expressions.cpp" alt="" coords="5,117,205,173"/>
-<area shape="rect" id="node3" href="$main_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/main.cpp" alt="" coords="229,117,384,173"/>
-<area shape="rect" id="node4" href="$IdentifierPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/IdentifierPass.cpp" alt="" coords="408,117,635,173"/>
-<area shape="rect" id="node5" href="$LLVMPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/LLVMPass.cpp" alt="" coords="659,117,869,173"/>
-<area shape="rect" id="node6" href="$PrintPass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/PrintPass.cpp" alt="" coords="893,117,1096,173"/>
-<area shape="rect" id="node7" href="$TypePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/TypePass.cpp" alt="" coords="1120,117,1325,173"/>
-<area shape="rect" id="node8" href="$VerifyOptimizePass_8cpp.html" title="/home/ladmin/SafeBox\l/Software/aurum&#45;lang\l/src/auc/Passes/VerifyOptimize\lPass.cpp" alt="" coords="1350,109,1557,180"/>
+<map id="auc/AST/Expressions.hpp" name="auc/AST/Expressions.hpp">
+<area shape="rect" id="node2" href="$Expressions_8cpp.html" title="auc/AST/Expressions.cpp" alt="" coords="5,80,180,107"/>
+<area shape="rect" id="node3" href="$main_8cpp.html" title="auc/main.cpp" alt="" coords="204,80,304,107"/>
+<area shape="rect" id="node4" href="$IdentifierPass_8cpp.html" title="auc/Passes/IdentifierPass.cpp" alt="" coords="327,80,527,107"/>
+<area shape="rect" id="node5" href="$OutputPass_8cpp.html" title="auc/Passes/OutputPass.cpp" alt="" coords="551,80,741,107"/>
+<area shape="rect" id="node6" href="$TypePass_8cpp.html" title="auc/Passes/TypePass.cpp" alt="" coords="765,80,943,107"/>
 </map>

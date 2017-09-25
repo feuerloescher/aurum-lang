@@ -1,14 +1,14 @@
 <map id="Passes::IdentifierPass" name="Passes::IdentifierPass">
-<area shape="rect" id="node2" href="$classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="881,117,993,143"/>
-<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="557,117,729,143"/>
-<area shape="rect" id="node5" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::MethodDef \&gt; \&gt;" alt="" coords="201,136,364,177"/>
-<area shape="rect" id="node6" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; ASTPtr\l\&lt; AST::Type \&gt; \&gt;" alt="" coords="201,201,364,243"/>
-<area shape="rect" id="node7" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef * \&gt;" alt="" coords="181,5,384,47"/>
-<area shape="rect" id="node8" href="$classAST_1_1Block.html" title="AST::Block" alt="" coords="893,195,982,222"/>
-<area shape="rect" id="node9" href="$classAST_1_1Statement.html" title="AST::Statement" alt="" coords="1147,241,1263,267"/>
-<area shape="rect" id="node10" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="872,282,1003,309"/>
-<area shape="rect" id="node11" href="$classAST_1_1CodeLocation.html" title="AST::CodeLocation" alt="" coords="575,293,711,319"/>
-<area shape="rect" id="node12" title="STL class. " alt="" coords="243,293,323,319"/>
-<area shape="rect" id="node13" title="STL class. " alt="" coords="5,285,132,327"/>
-<area shape="rect" id="node14" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Variable\lDefStmt * \&gt;" alt="" coords="543,188,743,229"/>
+<area shape="rect" id="node2" href="$classAST_1_1ASTPass.html" title="AST::ASTPass" alt="" coords="1300,121,1412,147"/>
+<area shape="rect" id="node3" href="$classAST_1_1AbstractSyntaxTree.html" title="AST::AbstractSyntaxTree" alt="" coords="1009,85,1181,111"/>
+<area shape="rect" id="node4" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; type::\lTypePtr \&gt;" alt="" coords="652,5,804,47"/>
+<area shape="rect" id="node5" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Function\lDef *\&gt;" alt="" coords="627,71,829,112"/>
+<area shape="rect" id="node6" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; FunctionDef\lPtr \&gt;" alt="" coords="633,136,823,177"/>
+<area shape="rect" id="node7" href="$classAST_1_1Block.html" title="AST::Block" alt="" coords="1311,186,1401,213"/>
+<area shape="rect" id="node8" href="$classAST_1_1Statement.html" title="AST::Statement" alt="" coords="1037,186,1153,213"/>
+<area shape="rect" id="node9" href="$classAST_1_1ASTElement.html" title="AST::ASTElement" alt="" coords="663,202,793,229"/>
+<area shape="rect" id="node10" href="$classAST_1_1CodeLocation.html" title="AST::CodeLocation" alt="" coords="363,202,497,229"/>
+<area shape="rect" id="node11" title="STL class. " alt="" coords="181,202,261,229"/>
+<area shape="rect" id="node12" title="STL class. " alt="" coords="5,195,132,236"/>
+<area shape="rect" id="node13" href="$classAST_1_1ASTMap.html" title="AST::ASTMap\&lt; AST::Variable\lDefStmt *\&gt;" alt="" coords="995,237,1195,279"/>
 </map>

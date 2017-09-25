@@ -1,5 +1,8 @@
-<map id="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Statements.hpp" name="/home/ladmin/SafeBox/Software/aurum&#45;lang/src/auc/AST/Statements.hpp">
-<area shape="rect" id="node2" href="$common_8hpp.html" title="common.hpp" alt="" coords="95,259,192,285"/>
-<area shape="rect" id="node6" href="$ASTElement_8hpp.html" title="ASTElement.hpp" alt="" coords="184,109,305,136"/>
-<area shape="rect" id="node7" href="$CodeLocation_8hpp.html" title="CodeLocation.hpp" alt="" coords="181,184,308,211"/>
+<map id="auc/AST/Statements.hpp" name="auc/AST/Statements.hpp">
+<area shape="rect" id="node2" href="$common_8hpp.html" title="common.hpp" alt="" coords="109,379,206,405"/>
+<area shape="rect" id="node6" href="$ASTElement_8hpp.html" title="ASTElement.hpp" alt="" coords="94,229,215,256"/>
+<area shape="rect" id="node9" href="$TypeStmt_8hpp.html" title="TypeStmt.hpp" alt="" coords="192,80,296,107"/>
+<area shape="rect" id="node7" href="$CodeLocation_8hpp.html" title="CodeLocation.hpp" alt="" coords="246,304,373,331"/>
+<area shape="rect" id="node10" href="$Type_8hpp.html" title="Types/Type.hpp" alt="" coords="297,155,413,181"/>
+<area shape="rect" id="node11" href="$ASTMap_8hpp.html" title="AST/ASTMap.hpp" alt="" coords="323,229,451,256"/>
 </map>

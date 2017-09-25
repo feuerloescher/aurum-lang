@@ -1,0 +1,8 @@
+<map id="AST::FunctionDecl::getReturnTypeStmt" name="AST::FunctionDecl::getReturnTypeStmt">
+<area shape="rect" id="node2" href="$classAST_1_1FunctionCallExpr.html#aa04452d6789d93fde33c959492a50b6d" title="AST::FunctionCallExpr\l::getIsReference" alt="" coords="204,5,359,47"/>
+<area shape="rect" id="node3" href="$classAST_1_1FunctionCallExpr.html#a7582782432cd01d95e695170a9fffe63" title="AST::FunctionCallExpr\l::getType" alt="" coords="204,71,359,112"/>
+<area shape="rect" id="node4" href="$classPasses_1_1TypePass.html#a8d6152d1f9473a3f02773c8d46bae7d2" title="Passes::TypePass::runOn" alt="" coords="193,137,369,163"/>
+<area shape="rect" id="node6" href="$classPasses_1_1IdentifierPass.html#ab00c639ff7b93e8ce2dd09114670c45c" title="Passes::IdentifierPass\l::runOn" alt="" coords="204,189,359,231"/>
+<area shape="rect" id="node5" href="$classPasses_1_1TypePass.html#a26f21ebb78bafe1eb738b730795fdded" title="Passes::TypePass::\l~TypePass" alt="" coords="424,127,565,168"/>
+<area shape="rect" id="node7" href="$classPasses_1_1IdentifierPass.html#a88ded3aa7d4743b1dc88db894e3dfbb9" title="Passes::IdentifierPass\l::~IdentifierPass" alt="" coords="417,192,572,233"/>
+</map>

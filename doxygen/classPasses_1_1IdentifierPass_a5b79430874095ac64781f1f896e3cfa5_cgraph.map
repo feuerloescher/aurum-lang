@@ -1,4 +1,0 @@
-<map id="Passes::IdentifierPass::runOn" name="Passes::IdentifierPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1MethodCallExpr.html#a5e54384bc466e4774165923a84ce8706" title="AST::MethodCallExpr\l::getArgs" alt="" coords="208,5,357,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1MethodCallExpr.html#aed7c1c396c682f1c2e247edc9766cdae" title="AST::MethodCallExpr\l::getObjectExpr" alt="" coords="208,71,357,112"/>
-</map>

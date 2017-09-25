@@ -1,4 +1,0 @@
-<map id="Passes::PrintPass::runOn" name="Passes::PrintPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1VariableDefStmt.html#a028a1c21b1409732d7e09d1a9ffd4210" title="AST::VariableDefStmt\l::getName" alt="" coords="192,5,344,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="192,71,344,112"/>
-</map>

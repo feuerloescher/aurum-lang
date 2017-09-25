@@ -1,6 +1,0 @@
-<map id="Passes::IdentifierPass::runOn" name="Passes::IdentifierPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1VariableDefStmt.html#a028a1c21b1409732d7e09d1a9ffd4210" title="AST::VariableDefStmt\l::getName" alt="" coords="228,5,380,47"/>
-<area shape="rect" id="node3" href="$classAST_1_1VariableDefStmt.html#aa5e7c4112196f85c5f7f47e7a8acc1cf" title="AST::VariableDefStmt\l::getTypeStmt" alt="" coords="228,71,380,112"/>
-<area shape="rect" id="node4" href="$classAST_1_1VariableDefAssignStmt.html#a532cc5dc83eb3720457684484b6fc48d" title="AST::VariableDefAssignStmt\l::getValue" alt="" coords="208,136,400,177"/>
-<area shape="rect" id="node5" href="$classAST_1_1Block.html#a746073544796a0d7888560a14f2ab5e2" title="AST::Block::getVariables" alt="" coords="219,202,389,229"/>
-</map>

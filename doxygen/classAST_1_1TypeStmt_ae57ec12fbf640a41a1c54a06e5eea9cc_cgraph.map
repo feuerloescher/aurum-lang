@@ -1,0 +1,6 @@
+<map id="AST::TypeStmt::~TypeStmt" name="AST::TypeStmt::~TypeStmt">
+<area shape="rect" id="node2" href="$classAST_1_1TypeStmt.html#a2b8efdab82c902105c1e19b9fab9a462" title="AST::TypeStmt::getIsReference" alt="" coords="240,5,449,32"/>
+<area shape="rect" id="node3" href="$classAST_1_1TypeStmt.html#a13f55a7691fc7ef85ae48455bfdfe70e" title="AST::TypeStmt::getType" alt="" coords="261,56,429,83"/>
+<area shape="rect" id="node4" href="$classAST_1_1TypeStmt.html#a7a970a13f2799d764c4d47a1d78e0297" title="AST::TypeStmt::setIsReference" alt="" coords="240,107,449,133"/>
+<area shape="rect" id="node5" href="$classAST_1_1TypeStmt.html#aa720661272a0def9ed88089035517b70" title="AST::TypeStmt::setType" alt="" coords="261,157,429,184"/>
+</map>

@@ -1,7 +1,0 @@
-<map id="AST::IfStmt::getBody" name="AST::IfStmt::getBody">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#ac5221c0be5344e0b385f8eb44b871c37" title="Passes::TypePass::runOn" alt="" coords="209,5,385,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a075a568652d2f75cca8796a0913054dc" title="Passes::IdentifierPass\l::runOn" alt="" coords="219,57,374,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#a844ca66101560a8a1b5419fb21fade8c" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="201,122,392,163"/>
-<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#a2ae608c071e5cfdeb46d51b5749d268d" title="Passes::PrintPass::\lrunOn" alt="" coords="227,187,366,229"/>
-<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#a9588e7692349c51be39040e74daee8d4" title="Passes::LLVMPass::runOn" alt="" coords="206,253,387,280"/>
-</map>

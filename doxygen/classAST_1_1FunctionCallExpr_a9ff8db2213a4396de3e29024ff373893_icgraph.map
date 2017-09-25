@@ -1,5 +1,5 @@
 <map id="AST::FunctionCallExpr::getName" name="AST::FunctionCallExpr::getName">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a60a56ca3c5f2ae5345e1e63578655ed9" title="Passes::TypePass::runOn" alt="" coords="209,5,385,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#ae1be186a1ac4905d7a339250b209e098" title="Passes::IdentifierPass\l::runOn" alt="" coords="220,57,375,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1PrintPass.html#a333291d4a65ff122addf11757e24ea60" title="Passes::PrintPass::\lrunOn" alt="" coords="228,122,367,163"/>
+<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#ad59722a6964a0489698312319d1f0973" title="Passes::TypePass::runOn" alt="" coords="208,5,384,32"/>
+<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a5e05903ea8818a9e6474de2b8220c335" title="Passes::IdentifierPass\l::runOn" alt="" coords="219,57,373,98"/>
+<area shape="rect" id="node4" href="$classPasses_1_1OutputPass.html#ac58a5a961375a5c17c7a6524ad3b80ac" title="Passes::OutputPass\l::runOn" alt="" coords="225,122,367,163"/>
 </map>

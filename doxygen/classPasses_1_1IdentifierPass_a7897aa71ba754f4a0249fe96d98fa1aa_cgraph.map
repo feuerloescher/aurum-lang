@@ -1,9 +1,0 @@
-<map id="Passes::IdentifierPass::runOn" name="Passes::IdentifierPass::runOn">
-<area shape="rect" id="node2" href="$classAST_1_1Declaration.html#ab46ea94b065e876f050ea68b742cd08d" title="AST::Declaration::getBody" alt="" coords="226,5,405,32"/>
-<area shape="rect" id="node3" href="$classAST_1_1Declaration.html#a7c423a251eeda40271dba6598599d9f5" title="AST::Declaration::getName" alt="" coords="224,56,407,83"/>
-<area shape="rect" id="node4" href="$classAST_1_1MethodDef.html#ad935966ccd804d2a274077215a1b2adb" title="AST::MethodDef::getObject\lTypeStmt" alt="" coords="223,107,407,149"/>
-<area shape="rect" id="node5" href="$classAST_1_1Declaration.html#a30c97ebce3138d0c8693ed97a8874f1c" title="AST::Declaration::getParameters" alt="" coords="208,173,423,200"/>
-<area shape="rect" id="node6" href="$classAST_1_1Declaration.html#a64f69f1f9a69c399c804265c45a343f7" title="AST::Declaration::getReturn\lTypeStmt" alt="" coords="222,225,409,266"/>
-<area shape="rect" id="node7" href="$classAST_1_1Block.html#ae3598cf642a27f1ca88cb8fcb78e714c" title="AST::Block::runPass" alt="" coords="243,291,388,317"/>
-<area shape="rect" id="node8" href="$classAST_1_1ASTPass.html#a0e318cba88fc52a94c297cab2e3234f7" title="AST::ASTPass::runOn" alt="" coords="471,291,625,317"/>
-</map>

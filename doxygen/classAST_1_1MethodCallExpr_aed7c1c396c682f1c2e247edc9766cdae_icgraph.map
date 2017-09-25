@@ -1,7 +1,0 @@
-<map id="AST::MethodCallExpr::getObjectExpr" name="AST::MethodCallExpr::getObjectExpr">
-<area shape="rect" id="node2" href="$classPasses_1_1TypePass.html#a3e65f49e105b9286424a45e8cfc10b2b" title="Passes::TypePass::runOn" alt="" coords="210,5,386,32"/>
-<area shape="rect" id="node3" href="$classPasses_1_1IdentifierPass.html#a5b79430874095ac64781f1f896e3cfa5" title="Passes::IdentifierPass\l::runOn" alt="" coords="221,57,375,98"/>
-<area shape="rect" id="node4" href="$classPasses_1_1VerifyOptimizePass.html#a0d8c3478447e5ac13e8e306f62ce3436" title="Passes::VerifyOptimizePass\l::runOn" alt="" coords="203,122,393,163"/>
-<area shape="rect" id="node5" href="$classPasses_1_1PrintPass.html#a2edd029327e4aeeb1ab2cab1ccaa1ee1" title="Passes::PrintPass::\lrunOn" alt="" coords="229,187,367,229"/>
-<area shape="rect" id="node6" href="$classPasses_1_1LLVMPass.html#a5cf5638488f76a72f20d1327640febbb" title="Passes::LLVMPass::runOn" alt="" coords="207,253,389,280"/>
-</map>
